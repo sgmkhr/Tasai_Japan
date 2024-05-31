@@ -8,13 +8,13 @@
 }
 
 html {
-  min-height: 100%;
-  position:   relative;
+  height:     100%;
 }
 
 body {
-  background-color: rgb(157, 149, 135);
-  margin-bottom: 150px; //フッターの高さに対応している
+  min-height:       100%;
+  background-color: rgb(212, 211, 202);
+  position:         relative;
 }
 
 html, body {
@@ -24,43 +24,55 @@ html, body {
   font-style:          normal;
 }
 
+a:link, a:visited { 
+  color:            rgb(81, 78, 77);
+  text-shadow:      2px 2px 3px #808080;
+}
+
+a:hover {
+  color:            rgb(245, 243, 242);
+  text-shadow:      2px 2px 3px #808080;
+  text-decoration:  none;
+}
+
+a:active {
+  color:            rgb(245, 243, 242);
+}
+
 header {
-  width:            100%;
+  position:         absolute;
+  top:              20px;
+  right:            20px;
+  width:            50px;
+}
+
+header li {
+  writing-mode:     vertical-rl;
+  list-style:       none;
 }
 
 footer {
   position:         absolute;
-  bottom:           0;
-  left:             0;
-  width:            100%;
-  height:           150px;
-  padding:          20px 60px;
-  background-color: rgb(105, 81, 46);
+  bottom:           10px;
+  left:             10px;
+  width:            50px;
+  writing-mode:     vertical-rl;
+  color:            rgb(81, 78, 77);
 }
 
 section {
-  padding:          30px 40px;
+  width:            70%;
+  margin:           70px auto;
 }
 
 .section-title {
-  text-align:       center;
-  padding-bottom:   30px;
-  border-bottom:    1px solid #808080;
-}
-
-.content-box {
-  width:            70%;
-  margin:           40px auto;
-}
-
-nav {
-  background-color: rgb(202, 168, 70);
-  box-shadow:       5px 5px 5px #808080;
-}
-
-nav a,
-footer a {
-  color:            rgb(245, 243, 242);
+  font-size:        50px;
+  width:            40%;
+  text-align:       right;
+  padding-right:    40px;
+  margin-top:       30px;
+  padding-bottom:   10px;
+  border-bottom:    1px solid rgb(81, 78, 77);
 }
 
 .success-btn {
