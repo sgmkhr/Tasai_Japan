@@ -1,22 +1,5 @@
-<footer class="text-white py-5">
-  <div class="container">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <h1>Coffee Recorder</h1>
-      </div>
-      <div class="col-md-8">
-        <ul class="list-unstyled">
-          <li class='text-right mb-2'>
-            <%= link_to I18n.t('links.home'), root_path, class: "text-white-50" %>
-          </li>
-          <li class='text-right mb-2'>
-            <%= link_to I18n.t('links.about'), about_path, class: "text-white-50" %>
-          </li>
-          <li class='text-right'>
-            <%= link_to I18n.t('links.admin'), new_admin_session_path, class: "text-white-50" %>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
+<div>
+  <p class='text-right mb-3'><%= link_to I18n.t('top_page'), root_path  %></p>
+  <p class='text-right'     ><%= link_to I18n.t('about'),    about_path %></p>
+</div>
+<p class='text-center mt-auto mb-1'>Copyright © sgmkhr All Rights Reserved.</p>

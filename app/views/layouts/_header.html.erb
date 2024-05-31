@@ -2,7 +2,7 @@
   <div class="container">
     
     <%= link_to root_path, class: 'navbar-brand' do %>
-      Tasai Japan<!--後ほどロゴ作成し、入れ替える予定-->
+      <%= I18n.t('site_name') %><!--後ほどロゴ作成し、入れ替える予定-->
     <% end %>
     
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
