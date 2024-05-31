@@ -18,8 +18,8 @@ body {
 html, body {
   font-family: "Noto Serif JP", serif;
   font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
+  font-weight:         300;
+  font-style:          normal;
 }
 
 section {
@@ -34,11 +34,11 @@ section {
 }
 
 .content-box {
-  width: 70%;
+  width:  70%;
   margin: 40px auto;
 }
 
 .success-btn {
   background-color: rgb(245, 243, 242);
-  box-shadow: 5px 5px 5px #808080;
+  box-shadow:       5px 5px 5px #808080;
 }
