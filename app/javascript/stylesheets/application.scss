@@ -1,1 +1,36 @@
 @use '~bootstrap/scss/bootstrap';
+
+* {
+  padding:    0;
+  margin:     0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+section {
+  padding:          30px 40px;
+  background-color: rgb(157, 149, 135);
+}
+
+.section-title {
+  text-align:     center;
+  padding-bottom: 30px;
+  border-bottom:  1px solid #808080;
+}
+
+.content-box {
+  width: 70%;
+  margin: 40px auto;
+}
+
+.success-btn {
+  background-color: rgb(245, 243, 242);
+  box-shadow: 5px 5px 5px #808080;
+}

@@ -13,6 +13,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      
+    </header>
+    
+    <main>
+      <div class='w-100 text-center bg-secondary-subtle text-secondary-emphasis'><%= flash[:alert] %></div>
+      <div class='w-100 text-center bg-danger-subtle text-danger-emphasis'><%= flash[:notice] %></div>
+      <%= yield %>
+    </main>
+    
+    <footer>
+      
+    </footer>
   </body>
 </html>

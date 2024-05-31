@@ -1,6 +1,10 @@
 ja:
   enums:
-    # これからenum設定していく予定
+    user:
+      position:
+        beginner: '初心者'
+        intermediate: '中級者'
+        veteran: 'ベテラン'
   activerecord:
     errors:
       messages:
@@ -8,6 +12,12 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  flash:
+    alert:
+      reject_inactive_user: '退会済みのアカウントです。再度新規登録をしてご利用ください。'
+  login: 'ログイン'
+  signin: '新規登録'
+  signout: 'ログアウト'
   date:
     abbr_day_names:
     - 日
