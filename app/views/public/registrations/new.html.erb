@@ -43,9 +43,9 @@
     
       <div class='form-group row d-flex'>
         <div class='col-md-3'>
-          <%= f.label :password, class: 'mb-0' %></br>
+          <%= f.label :password, class: 'mb-0' %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(<%= @minimum_password_length.to_s + I18n.t('min-letters') %>)</em>
           <% end %>
         </div>
         <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control col-9' %>

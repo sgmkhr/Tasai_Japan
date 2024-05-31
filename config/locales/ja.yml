@@ -1,4 +1,10 @@
 ja:
+  login: 'ログイン'
+  signin: '新規登録'
+  signout: 'ログアウト'
+  menu: 'メニューページ'
+  mypage: 'マイページ'
+  about: '当サイトについて'
   enums:
     user:
       position:
@@ -15,9 +21,6 @@ ja:
   flash:
     alert:
       reject_inactive_user: '退会済みのアカウントです。再度新規登録をしてご利用ください。'
-  login: 'ログイン'
-  signin: '新規登録'
-  signout: 'ログアウト'
   date:
     abbr_day_names:
     - 日
@@ -95,6 +98,7 @@ ja:
       year: 年
   errors:
     format: "%{attribute}%{message}"
+    count: 件のエラーが発生しました。
     messages:
       accepted: を受諾してください
       blank: を入力してください

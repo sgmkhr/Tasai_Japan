@@ -1,4 +1,5 @@
 ja:
+  min-letters: 文字以上
   activerecord:
     attributes:
       user:
