@@ -14,6 +14,16 @@ ja:
     users: ユーザーを探す
     posts: おすすめを紹介する
     rooms: 意見を共有する
+  users:
+    update:
+      notice: ユーザー情報を更新しました。
+      alert: 不備があり更新できませんでした。
+    withdraw:
+      notice: 退会処理が完了しました。
+  admin:
+    users:
+      destroy:
+        notice: ユーザーを削除しました。
   enums:
     user:
       position:
@@ -40,7 +50,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -66,7 +76,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
