@@ -27,11 +27,11 @@
     <div class='form-group row d-flex'>
       <%= f.label :position, class: 'col-md-3' %>
       <div class='col-9 d-flex no-shadow'>
-        <%= f.radio_button :position, 0, selected: true %>
+        <%= f.radio_button :position, 'beginner' %>
         <%= f.label :position, I18n.t('enums.user.position.beginner'),     { value: 0 } %>
-        <%= f.radio_button :position, 1, class: 'ml-2' %>
+        <%= f.radio_button :position, 'intermediate', class: 'ml-2' %>
         <%= f.label :position, I18n.t('enums.user.position.intermediate'), { value: 1 } %>
-        <%= f.radio_button :position, 2, class: 'ml-2' %>
+        <%= f.radio_button :position, 'veteran', class: 'ml-2' %>
         <%= f.label :position, I18n.t('enums.user.position.veteran'),      { value: 2 } %>
       </div>
     </div>
