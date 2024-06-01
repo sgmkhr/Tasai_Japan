@@ -1,18 +1,21 @@
 ja:
   site_name: 多彩な日本
   top_page: トップページ
-  login: 'ログイン'
-  signin: '新規登録'
-  signout: 'ログアウト'
-  menu: 'メニューページ'
-  mypage: 'マイページ'
-  about: '当サイトについて'
+  login: ログイン
+  signin: 新規登録
+  guest_login: ゲストログイン
+  signout: ログアウト
+  menu: メニューページ
+  mypage: マイページ
+  about: 当サイトについて
+  top:
+    caption: 日本生活の初心者とベテランが繋がるためのサイトです。
   enums:
     user:
       position:
-        beginner: '初心者'
-        intermediate: '中級者'
-        veteran: 'ベテラン'
+        beginner: 初心者
+        intermediate: 中級者
+        veteran: ベテラン
   activerecord:
     errors:
       messages:

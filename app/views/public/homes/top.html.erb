@@ -1,2 +1,13 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<section>
+  <div id='toppage-box'>
+    <h1 id='toppage-title'><%= I18n.t('site_name') %></h1>
+  </div>
+  <p id='toppage-caption'><%= I18n.t('top.caption') %></p>
+  
+  <div class='mt-5 d-flex justify-content-center'>
+    <h5><%=link_to I18n.t('login'),  new_user_session_path,      class: 'mr-5' %></h5>
+    <h5><%=link_to I18n.t('signin'), new_user_registration_path, class: 'ml-5' %></h5>
+  </div>
+  <h6 class='text-center mt-5'><%=link_to I18n.t('guest_login'), new_user_session_path %></h6><!--後から正しいリンク先貼る-->
+  
+</section>
