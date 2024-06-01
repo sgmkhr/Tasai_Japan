@@ -10,6 +10,10 @@ ja:
   about: 当サイトについて
   top:
     caption: 日本生活の初心者とベテランが繋がるためのサイトです。
+  menus:
+    users: ユーザーを探す
+    posts: おすすめを紹介する
+    rooms: 意見を共有する
   enums:
     user:
       position:
