@@ -8,6 +8,7 @@ ja:
   menu: メニューページ
   mypage: マイページ
   about: 当サイトについて
+  update: 更新
   placeholder:
     canonical_name: 20文字以内の半角英数字のみ可能
     public_name: 公開用のお名前を入力
@@ -23,6 +24,13 @@ ja:
       alert: 不備があり更新できませんでした。
     withdraw:
       notice: 退会処理が完了しました。
+    show:
+      position_start: 私は、日本生活の
+      position_end: です。
+    edit:
+      title: 登録情報編集
+    index:
+      title: ユーザー 一覧
   admin:
     users:
       destroy:

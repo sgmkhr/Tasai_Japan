@@ -27,6 +27,6 @@ class Admin::UsersController < ApplicationController
   private
   
   def set_selected_user
-    @user = User.find_by_canonical_name_or_id(params[:id])
+    @user = User.find_by(canonical_name: params[:canonical_name])
   end
 end

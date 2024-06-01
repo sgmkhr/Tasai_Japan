@@ -1,2 +1,15 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),    root_path %>>
+  <%= link_to I18n.t('menu'),        menu_path %>>
+  <%= link_to I18n.t('menus.users'), users_path %>>
+  <%=link_to '@' + @user.canonical_name,  user_path(@user.canonical_name) %>>
+  <%= I18n.t('users.edit.title') %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('users.edit.title') %></h2></div>
+
+<section>
+
+  <%= render 'public/users/form', user: @user, btn_name: I18n.t('update') %>
+
+</section>

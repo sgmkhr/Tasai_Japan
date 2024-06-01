@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
   before_action :set_current_user, only: [:edit, :update, :withdraw]
   
   def show
-    @user = User.find_by_canonical_name_or_id(params[:id])
+    @user = User.find_by(canonical_name: params[:canonical_name])
   end
 
   def index
@@ -15,7 +15,7 @@ class Public::UsersController < ApplicationController
   
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user.id), notice: I18n.t('users.update.notice')
+      redirect_to user_path(@user.canonical_name), notice: I18n.t('users.update.notice')
     else
       flash.now[:alert] = I18m.t('users.update.alert')
       render :edit
@@ -38,7 +38,7 @@ class Public::UsersController < ApplicationController
   end
     
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :public_name, :position, :introduction)
+    params.require(:user).permit(:last_name, :first_name, :public_name, :email, :position, :introduction)
   end
   
 end

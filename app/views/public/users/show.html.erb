@@ -1,2 +1,30 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),    root_path %>>
+  <%= link_to I18n.t('menu'),        menu_path %>>
+  <%= link_to I18n.t('menus.users'), users_path %>>
+  @<%= @user.canonical_name %>
+</p>
+
+<div class='section-title'><h2>@<%= @user.canonical_name %></h2></div>
+
+<section>
+  <div class='row justify-content-center'>
+    
+    <div class='col-md-4'>
+      <% if @user == current_user %><!--自分のページでのみ編集ボタン表示される-->
+        <%= link_to edit_user_path(current_user.canonical_name) do %>
+          <i class="fa-solid fa-gear"></i>
+        <% end %>
+      <% end %>
+      
+      <p class='my-3'><strong><%= @user.public_name %></strong></p>
+      <p class='mb-3'><%= I18n.t('users.show.position_start') + @user.position_i18n + I18n.t('users.show.position_end') %></p>
+      <p><%= @user.introduction %></p>
+    </div>
+    
+    <div class='col-md-6'>
+      <!--ユーザーの投稿一覧表示予定-->
+    </div>
+    
+  </div>
+</section>

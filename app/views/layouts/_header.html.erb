@@ -2,7 +2,7 @@
   
   <% if user_signed_in? %>
     <li class='mb-4'><%= link_to menu_path do %><i class="fa-solid fa-house"></i><% end %></li>
-    <li class='mb-4'><%= link_to I18n.t('mypage'),  user_path(current_user.id) %></li>
+    <li class='mb-4'><%= link_to I18n.t('mypage'),  user_path(current_user.canonical_name) %></li>
     <li             ><%= link_to I18n.t('signout'), destroy_user_session_path, method: :delete %></li>
     
   <% elsif admin_signed_in? %>

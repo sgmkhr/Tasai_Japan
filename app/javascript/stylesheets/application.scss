@@ -77,6 +77,10 @@ section {
   padding-bottom: 10px;
   border-bottom:  1px solid rgb(81, 78, 77);
 }
+.guide-links {
+  font-size:      14px;
+  margin-left:    20px;
+}
 
 // フォームのレイアウト
 .success-btn {
@@ -86,7 +90,7 @@ section {
 input {
   box-shadow:       5px 5px 5px #808080;
 }
-.no-shadow input { //ラジオボタンの親要素に設定
+.no-shadow input { // ラジオボタンの親要素に設定
   box-shadow:       none;
 }
 
@@ -108,9 +112,14 @@ input {
   font-size:    14px;
 }
 
+
 @media screen and (max-width:768px) {
   .section-title {
     font-size:      30px;
     width:          60%;
   }
+  .guide-links {
+  font-size:      10px;
+  margin-left:    10px;
+}
 }
