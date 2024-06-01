@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_current_user, only: [:edit, :update, :withdraw]
+  before_action :set_current_user, only: [:edit, :update, :unsubscribe, :withdraw]
   
   def show
     @user = User.find_by(canonical_name: params[:canonical_name])

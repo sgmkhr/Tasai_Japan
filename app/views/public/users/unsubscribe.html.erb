@@ -1,2 +1,7 @@
-<h1>Public::Users#unsubscribe</h1>
-<p>Find me in app/views/public/users/unsubscribe.html.erb</p>
+<section>
+  <p class='text-center my-5'><%= I18n.t('users.unsubscribe_confirmation') %></p>
+  <div class='mt-5 d-flex justify-content-center'>
+    <%= link_to I18n.t('users.unsubscribe_cancel'), user_path(@user.canonical_name),     class: 'mr-5' %>
+    <%= link_to I18n.t('users.unsubscribe'),        withdraw_path(@user.canonical_name), method: :patch %>
+  </div>
+</section>

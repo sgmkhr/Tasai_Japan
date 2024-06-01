@@ -9,9 +9,9 @@
 <div class='section-title'><h2><%= I18n.t('users.edit.title') %></h2></div>
 
 <section>
-  
-  <%= render 'layouts/errors', obj: @user %>
 
+  <%= render 'layouts/errors', obj: @user %>
   <%= render 'public/users/form', user: @user, btn_name: I18n.t('update') %>
+  <p class='text-right py-5'><%= link_to I18n.t('users.unsubscribe'), unsubscribe_path(@user.canonical_name) %></p>
 
 </section>

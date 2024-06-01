@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     get 'about', to: 'homes#about'
     get 'menu',  to: 'homes#menu'
     resources :users, only: [:show, :index, :edit, :update], param: :canonical_name
-    patch 'users/withdraw', to: 'users#withdraw', as: 'withdraw'
-    get 'users/unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
+    patch 'users/:canonical_name/withdraw', to: 'users#withdraw', as: 'withdraw'
+    get 'users/:canonical_name/unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
