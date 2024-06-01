@@ -17,7 +17,7 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user.canonical_name), notice: I18n.t('users.update.notice')
     else
-      flash.now[:alert] = I18m.t('users.update.alert')
+      flash.now[:alert] = I18n.t('users.update.alert')
       render :edit
     end
   end

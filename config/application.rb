@@ -18,6 +18,11 @@ module TasaiJapan
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    
+    #デフォルト言語を日本語に設定
     config.i18n.default_locale = :ja
+    
+    #エラー表示によるレイアウト崩れの防止
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag } 
   end
 end
