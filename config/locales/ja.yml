@@ -8,6 +8,9 @@ ja:
   menu: メニューページ
   mypage: マイページ
   about: 当サイトについて
+  placeholder:
+    canonical_name: 20文字以内の半角英数字のみ可能
+    public_name: 公開用のお名前を入力
   top:
     caption: 日本生活の初心者とベテランが繋がるためのサイトです。
   menus:

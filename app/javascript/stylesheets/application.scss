@@ -86,6 +86,9 @@ section {
 input {
   box-shadow:       5px 5px 5px #808080;
 }
+.no-shadow input { //ラジオボタンの親要素に設定
+  box-shadow:       none;
+}
 
 // homes/topのレイアウト
 #toppage-box {

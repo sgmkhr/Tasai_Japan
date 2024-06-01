@@ -10,7 +10,7 @@ class User < ApplicationRecord
     validates :email,          uniqueness: true
     validates :last_name
     validates :first_name
-    validates :canonical_name, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\z/ }
+    validates :canonical_name, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\z/ }, length: { minimum: 1, maximum: 20 }
     validates :public_name
     validates :position
   end

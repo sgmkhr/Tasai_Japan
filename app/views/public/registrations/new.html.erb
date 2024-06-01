@@ -6,39 +6,39 @@
     
     <div class='form-group row d-flex'>
       <%= f.label :last_name, class: 'col-md-3' %>
-      <%= f.text_field :last_name, autofocus: true, autocomplete: 'last_name', placeholder: '' , class: 'form-control col-9' %>
+      <%= f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control col-9' %>
     </div>
     
     <div class='form-group row d-flex'>
       <%= f.label :first_name, class: 'col-md-3' %>
-      <%= f.text_field :first_name, autocomplete: 'first_name', placeholder: '' , class: 'form-control col-9' %>
+      <%= f.text_field :first_name, autocomplete: 'first_name', class: 'form-control col-9' %>
     </div>
     
     <div class='form-group row d-flex'>
       <%= f.label :canonical_name, class: 'col-md-3' %>
-      <%= f.text_field :canonical_name, autocomplete: 'canonical_name', placeholder: '' , class: 'form-control col-9' %>
+      <%= f.text_field :canonical_name, autocomplete: 'canonical_name', placeholder: I18n.t('placeholder.canonical_name') , class: 'form-control col-9' %>
     </div>
     
     <div class='form-group row d-flex'>
       <%= f.label :public_name, class: 'col-md-3' %>
-      <%= f.text_field :public_name, autocomplete: 'public_name', placeholder: '' , class: 'form-control col-9' %>
+      <%= f.text_field :public_name, autocomplete: 'public_name', placeholder: I18n.t('placeholder.public_name') , class: 'form-control col-9' %>
     </div>
     
     <div class='form-group row d-flex'>
       <%= f.label :position, class: 'col-md-3' %>
-      <div class='col-9 d-flex'>
+      <div class='col-9 d-flex no-shadow'>
         <%= f.radio_button :position, 0, selected: true %>
-        <%= f.label :position, I18n.t('enums.user.position.beginner'), { value: 0 } %>
+        <%= f.label :position, I18n.t('enums.user.position.beginner'),     { value: 0 } %>
         <%= f.radio_button :position, 1, class: 'ml-2' %>
         <%= f.label :position, I18n.t('enums.user.position.intermediate'), { value: 1 } %>
         <%= f.radio_button :position, 2, class: 'ml-2' %>
-        <%= f.label :position, I18n.t('enums.user.position.veteran'), { value: 2 } %>
+        <%= f.label :position, I18n.t('enums.user.position.veteran'),      { value: 2 } %>
       </div>
     </div>
     
     <div class='form-group row d-flex'>
       <%= f.label :email, class: 'col-md-3' %>
-      <%= f.email_field :email, autocomplete: 'email', placeholder: '' , class: 'form-control col-9' %>
+      <%= f.email_field :email, autocomplete: 'email', placeholder: 'xxxx@xxx' , class: 'form-control col-9' %>
     </div>
   
     <div class='form-group row d-flex'>
@@ -48,7 +48,7 @@
         <em>(<%= @minimum_password_length.to_s + I18n.t('min-letters') %>)</em>
         <% end %>
       </div>
-      <%= f.password_field :password, autocomplete: 'new-password', placeholder: '' , class: 'form-control col-9' %>
+      <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control col-9' %>
     </div>
   
     <div class='form-group row d-flex'>
