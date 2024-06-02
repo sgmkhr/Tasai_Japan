@@ -31,10 +31,12 @@ ja:
       title: 登録情報編集
     index:
       title: ユーザー 一覧
+      not_exist: ヒットするユーザーが存在しません。
     unsubscribe: 退会する
     unsubscribe_confirmation: 本当に退会処理に進んでよろしいですか？
     unsubscribe_cancel: 退会しない
   admin:
+    login_link: 管理者ログイン
     users:
       destroy:
         notice: ユーザーを削除しました。

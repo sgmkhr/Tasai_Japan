@@ -7,7 +7,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.where(is_active: true).all #退会済みユーザーは表示しない
+    @users = User.where(is_active: true).page(params[:page]).per(40) #退会済みユーザーは表示しない
   end
 
   def edit
@@ -38,7 +38,7 @@ class Public::UsersController < ApplicationController
   end
     
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :public_name, :email, :position, :introduction)
+    params.require(:user).permit(:last_name, :first_name, :public_name, :email, :position, :introduction, :profile_image)
   end
   
 end

@@ -1,2 +1,36 @@
-<h1>Public::Users#index</h1>
-<p>Find me in app/views/public/users/index.html.erb</p>
+<div class='section-title'><h2><%= I18n.t('users.index.title') %></h2></div>
+
+<section>
+  <div class='d-flex flex-wrap'>
+    
+    <% if @users %><!--ユーザーが存在する場合-->
+    
+      <% @users.each do |user| %> <!--各ユーザーの情報表示-->
+        <%= link_to user_path(user.canonical_name) do %>
+          <div class='index-item'>
+            
+            <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle' %>
+            
+            <p>@<%= user.canonical_name %></p><hr>
+            
+            <p><%= user.public_name %></p>
+            
+            <p class=<%= user.get_class_associated_with_position %>> 
+              <%= user.position_i18n %>
+            </p>
+            
+            <p class='overflow-hidden text-nowrap text-truncate'>
+              <%= user.introduction %>
+            </p>
+            
+          </div>
+        <% end %>
+      <% end %>
+      
+    <% else %>     <!--ユーザーが存在しない場合-->
+      <p class='text-center mt-5'><%= I18n.t('users.index.not_exist') %></p>
+    <% end %>
+    
+  </div>
+  <%= paginate @users, theme: 'bootstrap-5' %>
+</section>

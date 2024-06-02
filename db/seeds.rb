@@ -20,7 +20,7 @@ User.create!(
       public_name: 'はな',
       position: 2,
       email: 'hanako@example.com',
-      password: '111111'
+      password: '111111',
     },
     {
       last_name: '青木',

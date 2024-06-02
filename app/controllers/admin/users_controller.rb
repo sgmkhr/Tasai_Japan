@@ -6,7 +6,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all #退会済みも含む全ユーザーを表示
+    @users = User.page(params[:page]).per(40) #退会済みも含む全ユーザーを表示
   end
   
   def cancel

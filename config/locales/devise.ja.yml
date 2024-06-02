@@ -31,6 +31,8 @@ ja:
         canonical_name: ユーザーID
         public_name: 表示名
         position: 立場
+        profile_image: プロフィール画像
+        introduction: 自己紹介
       admin:
         email: Eメール
         password: パスワード

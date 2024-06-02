@@ -90,7 +90,7 @@ section {
 input {
   box-shadow:       5px 5px 5px #808080;
 }
-.no-shadow input { // ラジオボタンの親要素に設定
+.no-shadow input { // radio_buttonとfile_fieldの親要素に設定
   box-shadow:       none;
 }
 
@@ -112,13 +112,39 @@ input {
   font-size:    14px;
 }
 
+// indexの共通レイアウト
+.index-item {
+  width:            150px;
+  height:           250px;
+  padding:          10px;
+  margin:           5px;
+  background-color: rgb(245, 243, 242);
+  border:           1px solid rgb(81, 78, 77);
+  border-radius:    5px;
+  box-shadow:       5px 5px 5px #808080;
+}
 
+// user.positionを表示する際のレイアウト
+.position-beginner {
+  border: 1px solid rgb(84, 195, 241);
+  color:  rgb(84, 195, 241);
+}
+.position-intermediate {
+  border: 1px solid rgb(220, 188, 0);
+  color:  rgb(220, 188, 0)
+}
+.position-veteran {
+  border: 1px solid rgb(169, 175, 29);
+  color:  rgb(169, 175, 29);
+}
+
+// スマホサイズのレスポンシブ対応
 @media screen and (max-width:768px) {
-  .section-title {
+  .section-title { //各ページの見出しサイズを少し小さくしてる
     font-size:      30px;
     width:          60%;
   }
-  .guide-links {
+  .guide-links { //各ページのリンク案内のサイズを少し小さくしてる
   font-size:      10px;
   margin-left:    10px;
 }
