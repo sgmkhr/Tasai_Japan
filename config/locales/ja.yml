@@ -12,6 +12,11 @@ ja:
   placeholder:
     canonical_name: 20文字以内の半角英数字のみ可能
     public_name: 公開用のお名前を入力
+  guestuser:
+    signin:
+      notice: ゲストユーザーとしてログインしました。
+    edit:
+      validates: ゲストユーザーはプロフィール編集画面へ遷移できません。
   top:
     caption: 日本生活の初心者とベテランが繋がるためのサイトです。
   menus:

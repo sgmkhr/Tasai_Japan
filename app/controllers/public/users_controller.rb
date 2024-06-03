@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_user, only: [:edit, :update, :unsubscribe, :withdraw]
+  before_action :ensure_guest_user, only: [:edit]
   
   def show
     @user = User.find_by(canonical_name: params[:canonical_name])
@@ -39,6 +40,12 @@ class Public::UsersController < ApplicationController
     
   def user_params
     params.require(:user).permit(:last_name, :first_name, :public_name, :email, :position, :introduction, :profile_image)
+  end
+  
+  def ensure_guest_user
+    if current_user.guest_user?
+      redirect_to user_path(current_user.canonical_name), alert: I18n.t('guestuser.edit.validates')
+    end
   end
   
 end

@@ -8,6 +8,6 @@
     <h5><%=link_to I18n.t('login'),  new_user_session_path,      class: 'mr-5' %></h5>
     <h5><%=link_to I18n.t('signin'), new_user_registration_path, class: 'ml-5' %></h5>
   </div>
-  <h6 class='text-center mt-5'><%=link_to I18n.t('guest_login'), new_user_session_path %></h6><!--後から正しいリンク先貼る-->
+  <h6 class='text-center mt-5'><%=link_to I18n.t('guest_login'), users_guest_sign_in_path, method: :post %></h6>
   
 </section>

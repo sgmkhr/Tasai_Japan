@@ -18,6 +18,8 @@ class User < ApplicationRecord
   end
 
   validates :introduction, length: { maximum: 200 }
+  
+  GUEST_USER_EMAIL = 'guest@example.com'
 
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -36,6 +38,23 @@ class User < ApplicationRecord
     else
       return 'position-veteran'
     end
+  end
+  
+  #ゲストログイン時のメソッド
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.last_name = 'guest'
+      user.first_name = 'user'
+      user.public_name = 'guestuser'
+      user.canonical_name = 'guestuser'
+      user.position = 1
+    end
+  end
+  
+  # ゲストユーザーか確かめるためのメソッド
+  def guest_user?
+    email == GUEST_USER_EMAIL
   end
   
 end
