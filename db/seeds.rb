@@ -11,6 +11,7 @@ Admin.create!(
   password: 'adminadmin'
 )
 
+# 以下、ユーザーデータ
 User.create!(
   [
     {
@@ -155,7 +156,8 @@ User.create!(
       public_name: 'aoi',
       position: 2,
       email: 'aoi@example.com',
-      password: '161616'
+      password: '161616',
+      introduction: '福岡生まれ福岡育ちです！福岡の魅力を伝えたいです！'
     },
     {
       last_name: '渡部',
@@ -164,7 +166,8 @@ User.create!(
       public_name: 'dan',
       position: 0,
       email: 'dan@example.com',
-      password: '171717'
+      password: '171717',
+      introduction: '東京に長く住んでいます。東京のおすすめを発信します。'
     },
     {
       last_name: '山本',
@@ -173,7 +176,8 @@ User.create!(
       public_name: 'ritsu',
       position: 0,
       email: 'ritsu@example.com',
-      password: '181818'
+      password: '181818',
+      introduction: '岐阜生まれです。岐阜のおすすめスポットを投稿します。'
     },
     {
       last_name: '鈴木',
@@ -182,7 +186,9 @@ User.create!(
       public_name: 'ゆうま',
       position: 0,
       email: 'yuma@example.com',
-      password: '191919'
+      password: '191919',
+      introduction: '旅行が趣味です。日本国内で行って良かったところをお伝えしていきたいです！'
+
     },
     {
       last_name: '川口',
@@ -191,7 +197,8 @@ User.create!(
       public_name: 'ゆい',
       position: 0,
       email: 'yuka@example.com',
-      password: '202020'
+      password: '202020',
+      introduction: '千葉県在住です。千葉にもいろんなおすすめスポットあるので、紹介していきたいと思います。'
     },
     {
       last_name: '木村',
@@ -228,6 +235,162 @@ User.create!(
       position: 0,
       email: 'mio@example.com',
       password: '242424'
+    }
+  ]
+)
+
+# 以下、投稿データ
+# 福岡に馴染み深いサンプルユーザー
+User.find_by(canonical_name: 'aoi16').posts.create!(
+  [
+    {
+      title: '糸島の芥屋',
+      caption: '福岡のドライブスポットといえば！',
+      body: 'この前はドライブではなく、遊覧船に乗って鍾乳洞を覗きにいけるアクティビティに参加してきました。',
+      prefecture: 7,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/fukuoka_itoshima.jpeg")),filename: 'no_image.jpg')
+    },
+    {
+      title: '明太子のお重',
+      caption: '博多に来たら必ず行ってほしい',
+      body: '明太子好きにはたまらない！重厚な雰囲気だけどカジュアルにランチで楽しめる。',
+      prefecture: 7,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/fukuoka_mentaizyu.jpeg")),filename: 'no_image.jpg')
+    },
+    {
+      title: '柳川',
+      caption: 'うなぎも有名な場所',
+      body: '福岡市からは少し離れていますが、美味しい鰻重と穏やかな川下りが楽しめますよ。',
+      prefecture: 7,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/fukuoka_yanagawa.jpeg")),filename: 'no_image.jpg')
+    }
+  ]
+)
+
+# 東京に馴染み深いサンプルユーザー
+User.find_by(canonical_name: 'dan17').posts.create!(
+  [
+    {
+      title: '竜王スキー場',
+      caption: '関東のスキー場といえばここ！',
+      body: '関東に住まいの方に人気のスキー場。上の方に登ると、素敵な景色と共にビールも飲めちゃいます！',
+      prefecture: 20,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/nagano_ryuo.jpeg")),filename: 'no_image.jpg')
+    },
+    {
+      title: '秩父',
+      caption: '東京から日帰りドライブにおすすめ',
+      body: '秩父では荒川のライン下りが楽しいですよ！ランチはここがお気に入り。新鮮なジビエを岩の上で焼いて、きのこもたっぷり、自然の中で味わえる贅沢ランチです！',
+      prefecture: 11,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/saitama_chichibu.jpg")),filename: 'no_image.jpg')
+    },
+    {
+      title: '浅草寺',
+      caption: '日本の象徴的な観光スポット',
+      body: '浅草寺の雷門が有名ですが、奥に進んだ場所から見えるこの眺めもおすすめです。夜は空いているので写真も撮りやすいですよ。',
+      prefecture: 13,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/tokyo_asakusa.jpeg")),filename: 'no_image.jpg')
+    },
+    {
+      title: '渋谷スカイ',
+      caption: '渋谷にできた高層商業施設の屋上！',
+      body: '入場料は少しお高めですが、ここからの展望は本当に最高！芝生があるのでゆっくりできますよ。',
+      prefecture: 13,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/tokyo_shibuya.jpg")),filename: 'no_image.jpg')
+    }
+  ]
+)
+
+# 岐阜に馴染み深いサンプルユーザー
+User.find_by(canonical_name: 'ritsu18').posts.create!(
+  [
+    {
+      title: '青川',
+      caption: '付知川の清流',
+      body: '本当に今まで見た川の中で一番エメラルド色！心も癒されるので、自然が好きな人にはぜひ訪れていただきたい！',
+      prefecture: 21,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/gifu_river.jpeg")),filename: 'no_image.jpg')
+    },
+    {
+      title: '白川郷',
+      caption: 'ここでしか見れない景色',
+      body: '観光地として日本人にとっては馴染み深いですが、海外から来た人はあまり知らないかも。感動すること間違いなし！',
+      prefecture: 21,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/gifu_shirakawago.jpg")),filename: 'no_image.jpg')
+    }
+  ]
+)
+
+# 旅行好きのサンプルユーザー
+User.find_by(canonical_name: 'yuma19').posts.create!(
+  [
+    {
+      title: '神戸',
+      caption: '県名よりもよく知られている場所',
+      body: '程よく品もあるエリア。遊ぶスポットもたくさんある、栄えた場所です。住む場所としても人気があります！',
+      prefecture: 28,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/hyogo_kobe.jpeg")),filename: 'no_image.jpg')
+    },
+    {
+      title: '江ノ電',
+      caption: 'ドライブも良し、電車旅も良し',
+      body: '関東エリアに住まいの人々は定期的に足を運ぶような場所。気軽に海を眺めに行けます。',
+      prefecture: 14,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/kanagawa_enoden.jpg")),filename: 'no_image.jpg')
+    },
+    {
+      title: '鴨川',
+      caption: '京都の代表的な景色',
+      body: '5月から夏にかけては川沿いに川床が出されることでも有名。ランクの高い飲食店も多く、鴨川を眺めながら贅沢な食事の時間を過ごせます。',
+      prefecture: 26,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/kyoto_kamogawa.jpeg")),filename: 'no_image.jpg')
+    },
+    {
+      title: '京都で日本酒',
+      caption: 'お酒好きにはたまりません！',
+      body: '日本酒の飲み比べに加えて、京都では、おちょこも選べちゃうお店が多い！',
+      prefecture: 26,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/kyoto_nihonsyu.jpeg")),filename: 'no_image.jpg')
+    }
+  ]
+)
+
+# 千葉に馴染みの深いユーザー
+User.find_by(canonical_name: 'yuka20').posts.create!(
+  [
+    {
+      title: '東京ドイツ村',
+      caption: '名前は東京だけど千葉にあるよ！',
+      body: '年中平和な雰囲気が漂っているテーマパーク！でも、冬のイルミネーションの時期は一味違います！！規模が桁違いの、すばらしい景色が観れるので、ぜひこの冬訪れてみてください！',
+      prefecture: 12,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/chiba_doitumura.jpeg")),filename: 'no_image.jpg')
+    },
+    {
+      title: 'いすみ市',
+      caption: '星を見るならここ',
+      body: '田舎町ではありますが、グランピング施設が多く点在しており、喧騒から離れて自然の中で癒されたい時におすすめのスポットです。',
+      prefecture: 12,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/chiba_isumi.jpg")),filename: 'no_image.jpg')
+    }
+  ]
+)
+
+# 日本生活中級者のユーザー
+User.find_by(canonical_name: 'henry4').posts.create!(
+  [
+    {
+      title: 'Tokyo Tower',
+      caption: 'A beautiful tower',
+      body: 'The color change on each day. You can see the tower in mostly red but sometimes other colors.',
+      prefecture: 13,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/tokyo_tower.jpeg")),filename: 'no_image.jpg')
+    },
+    {
+      title: 'Kamosui',
+      caption: 'Aquarium',
+      body: 'I visited Yamagata and found this beautiful aquarium. It was amazing.',
+      prefecture: 6,
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/yamagata_kamosui.jpeg")),filename: 'no_image.jpg')
     }
   ]
 )
