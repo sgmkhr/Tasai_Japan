@@ -2,39 +2,43 @@
 
 <section>
   <div class='d-flex flex-wrap'>
-    
+
     <% if @users %><!--ユーザーが存在する場合-->
-    
+
       <% @users.each do |user| %> <!--各ユーザーの情報表示-->
         <%= link_to admin_user_path(user.canonical_name) do %>
           <div class='index-item'>
-            
+
             <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle mr-2' %>
-            
+
             <p>@<%= user.canonical_name %></p><hr>
-            
+
             <p><%= user.public_name %></p>
-            
-            <p class=<%= user.get_class_associated_with_position %>> 
+
+            <p class=<%= user.get_class_associated_with_position %>>
               <%= user.position_i18n %>
             </p>
-            
+
             <p class='overflow-hidden text-nowrap text-truncate'>
               <%= user.introduction %>
             </p>
-            
+
             <% unless user.is_active %>
               <p class='text-danger'><strong>退会済み</strong></p>
             <% end %>
-            
+
           </div>
         <% end %>
       <% end %>
-      
+
     <% else %>     <!--ユーザーが存在しない場合-->
       <p class='text-center mt-5'><%= I18n.t('users.index.not_exist') %></p>
     <% end %>
-    
+
   </div>
-  <%= paginate @users, theme: 'bootstrap-5' %>
+
+  <div class='d-flex justify-content-center py-3'>
+    <%= paginate @users, theme: 'bootstrap-5' %>
+  </div>
+
 </section>
