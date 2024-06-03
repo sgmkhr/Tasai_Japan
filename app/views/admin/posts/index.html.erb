@@ -1,2 +1,11 @@
-<h1>Admin::Posts#index</h1>
-<p>Find me in app/views/admin/posts/index.html.erb</p>
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),    root_path %>>
+  <%= link_to I18n.t('menu'),        admin_root_path %>>
+  <%= I18n.t('posts.index.title') %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('posts.index.title') %></h2></div>
+
+<section>
+  <%= render 'partials/post_index', posts: @posts, link: admin_post_path(a_post.id) %>
+</section>

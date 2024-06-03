@@ -1,2 +1,36 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),    root_path %>>
+  <%= link_to I18n.t('menu'),        menu_path %>>
+  <%= link_to I18n.t('menus.posts'), posts_path %>>
+  <%= @post.title %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('posts.show.title') %></h2></div>
+
+<section>
+  
+  <%= image_tag @post.get_post_image(300, 300) %>
+  
+  <p><%= @post.title %></p>
+
+  <p><%= @post.caption %></p>
+  
+  <p><%= @post.body %></p>
+  
+  <p>
+    <i class="fa-regular fa-clock"></i>
+    <%= @post.created_at.strftime('%y/%m/%d %H:%M') %>
+  </p>
+  
+  <p class='mb-3'>
+    <%= link_to post_path(@post.id) do %>
+      by <i class="fa-solid fa-user"></i><%= @post.user.public_name %>
+    <% end %>
+  </p>
+  
+  <% if @post.user == current_user %>
+    <hr>
+    <%= link_to I18n.t('posts.show.edit_btn'), edit_post_path(@post.id) %>
+  <% end %>
+  
+</section>

@@ -50,6 +50,28 @@ ja:
         notice: ユーザーを削除しました。
       cancel: 退会を取り消す
       withdraw: 退会させる
+  posts:
+    destroy: 投稿を削除しました。
+    create:
+      notice: 新規投稿しました。
+      alert: 投稿に失敗しました。
+    update:
+      notice: 編集内容を更新しました。
+      alert: 更新に失敗しました。
+    index:
+      title: 投稿一覧
+      not_exist: ヒットする投稿が存在しません。
+    show:
+      title: 投稿詳細
+      edit_btn: 編集
+    new:
+      title: 新規投稿
+      create_btn: 投稿
+    edit:
+      title: 投稿内容編集
+      destroy_btn: 投稿を削除する
+    destroy:
+      confirmation: 本当に削除してもいいですか？
 
   enums:
     user:

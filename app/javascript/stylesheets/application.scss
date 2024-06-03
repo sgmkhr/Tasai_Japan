@@ -130,6 +130,27 @@ input {
   box-shadow:       none;
 }
 
+// posts/indexの共通レイアウト
+.post-index-item {
+  width:            300px;
+  height:           600px;
+  padding:          10px;
+  margin:           5px;
+  background-color: rgb(245, 243, 242);
+  border:           1px solid rgb(81, 78, 77);
+  border-radius:    5px;
+  box-shadow:       5px 5px 5px #808080;
+}
+.post-index-item:hover {
+  background-color: rgb(245, 243, 250);
+}
+.post-index-item:active {
+  box-shadow:       none;
+}
+.post-index-post-image { // 投稿一覧にて画像の高さによってレイアウト崩れないためのcss
+  height:           300px;
+}
+
 // user.positionを表示する際のレイアウト
 .position-beginner {
   border: 1px solid rgb(84, 195, 241);

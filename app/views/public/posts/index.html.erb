@@ -1,2 +1,12 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),    root_path %>>
+  <%= link_to I18n.t('menu'),        menu_path %>>
+  <%= I18n.t('posts.index.title') %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('posts.index.title') %></h2></div>
+
+<section>
+  <%= link_to I18n.t('posts.new.title'), new_post_path, class: 'mb-3' %>
+  <%= render 'partials/post_index', posts: @posts, link: post_path(a_post.id) %>
+</section>

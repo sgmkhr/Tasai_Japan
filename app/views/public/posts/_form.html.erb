@@ -1,0 +1,32 @@
+<%= form_with model: a_post do |f| %>
+
+  <div class='form-group row d-flex no-shadow'>
+    <%= f.label :post_image, class: 'col-md-3' %>
+    <%= f.file_field :post_image, accept: 'image/*' %>
+  </div>
+
+  <div class='form-group row d-flex'>
+    <%= f.label :title, class: 'col-md-3' %>
+    <%= f.text_field :title, autofocus: true, class: 'form-control col-9' %>
+  </div>
+  
+  <div class='form-group row d-flex'>
+    <%= f.label :caption, class: 'col-md-3' %>
+    <%= f.text_field :caption, class: 'form-control col-9' %>
+  </div>
+  
+  <div class='form-group row d-flex'>
+    <%= f.label :body, class: 'col-md-3' %>
+    <%= f.text_area :body, class: 'form-control col-9' %>
+  </div>
+  
+  <div class='form-group row d-flex'>
+    <%= f.label :prefecture, class: 'col-md-3' %>
+    <%= f.select :prefecture, options_for_select(prefectures), class: 'form-control col-9' %>
+  </div>
+  
+  <div class='actions text-right'>
+    <%= f.submit btn_name, class: 'btn btn-sm success-btn mr-2' %>
+  </div>
+  
+<% end %>

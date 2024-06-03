@@ -1,0 +1,34 @@
+<div class='d-flex flex-wrap'>
+
+  <% if posts %><!--投稿が存在する場合-->
+
+    <% posts.each do |a_post| %> <!--各ユーザーの情報表示-->
+      <%= link_to link do %>
+        <div class='post-index-item'>
+
+          <div class='index-post-image'>
+            <%= image_tag a_post.get_post_image(250, 250), class: 'rounded-circle mx-auto' %>
+          </div>
+          <hr>
+
+          <p><%= a_post.title %></p>
+
+          <p class='overflow-hidden text-nowrap text-truncate'>
+            <%= a_post.caption %>
+          </p>
+
+          <p><i class="fa-solid fa-user"></i><%= a_post.user.public_name %></p>
+
+        </div>
+      <% end %>
+    <% end %>
+
+  <% else %>     <!--投稿が存在しない場合-->
+    <p class='text-center mt-5'><%= I18n.t('posts.index.not_exist') %></p>
+  <% end %>
+
+</div>
+
+<div class='d-flex justify-content-center py-3'>
+  <%= paginate posts, theme: 'bootstrap-5' %>
+</div>
