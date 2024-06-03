@@ -123,6 +123,12 @@ input {
   border-radius:    5px;
   box-shadow:       5px 5px 5px #808080;
 }
+.index-item:hover {
+  background-color: rgb(245, 243, 250);
+}
+.index-item:active {
+  box-shadow:       none;
+}
 
 // user.positionを表示する際のレイアウト
 .position-beginner {
