@@ -39,7 +39,11 @@ ja:
     login_link: 管理者ログイン
     users:
       destroy:
+        btn: アカウントを削除する
+        confirmation: 本当に削除してもいいですか？
         notice: ユーザーを削除しました。
+      cancel: 退会を取り消す
+      withdraw: 退会させる
   enums:
     user:
       position:

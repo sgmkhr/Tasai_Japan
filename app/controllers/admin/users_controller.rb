@@ -11,12 +11,12 @@ class Admin::UsersController < ApplicationController
   
   def cancel
     @user.update(is_active: true)
-    #このあと非同期処理 jsファイルが呼び出される
+    redirect_to request.referer
   end
   
   def withdraw
     @user.update(is_active: false)
-    #このあと非同期処理 jsファイルが呼び出される
+    redirect_to request.referer
   end
   
   def destroy

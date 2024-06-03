@@ -9,13 +9,7 @@
         <%= link_to admin_user_path(user.canonical_name) do %>
           <div class='index-item'>
             
-            <div class='d-flex'>
-              <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle mr-2' %>
-              <% unless user.is_active %>
-                <p class='text-danger'><strong>退会済み</strong></p>
-              <% end %>
-            </div>
-            
+            <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle mr-2' %>
             
             <p>@<%= user.canonical_name %></p><hr>
             
@@ -28,6 +22,10 @@
             <p class='overflow-hidden text-nowrap text-truncate'>
               <%= user.introduction %>
             </p>
+            
+            <% unless user.is_active %>
+              <p class='text-danger'><strong>退会済み</strong></p>
+            <% end %>
             
           </div>
         <% end %>
