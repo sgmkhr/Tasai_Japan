@@ -11,6 +11,9 @@
   <div class='row justify-content-center'>
 
     <div class='col-md-4'>
+      
+      <%= image_tag @user.get_profile_image(60, 60), class: 'rounded-circle' %>
+      
       <p class='my-3'>
         <% if @user.is_active %>
           <p class='text-success'><strong>有効ユーザー</strong></p>
@@ -18,8 +21,17 @@
           <p class='text-danger'><strong>退会済みユーザー</strong></p>
         <% end %>
       </p>
+      
       <p class='mb-3'><strong><%= @user.public_name %></strong></p>
-      <p class='mb-3'><%= I18n.t('users.show.position_start') + @user.position_i18n + I18n.t('users.show.position_end') %></p>
+      
+      <p class='mb-3'> <!--positionによってcss表示カラー変わる-->
+        <%= I18n.t('users.show.position_start') %>
+        <span class=<%= @user.get_class_associated_with_position %>>
+          <%= @user.position_i18n %>
+        </span>
+        <%= I18n.t('users.show.position_end') %>
+      </p>
+      
       <p><%= @user.introduction %></p>
     </div>
 

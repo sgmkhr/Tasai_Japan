@@ -9,11 +9,13 @@
         <%= link_to admin_user_path(user.canonical_name) do %>
           <div class='index-item'>
             
-            <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle' %>
+            <div class='d-flex'>
+              <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle mr-2' %>
+              <% unless user.is_active %>
+                <p class='text-danger'><strong>退会済み</strong></p>
+              <% end %>
+            </div>
             
-            <% unless user.is_active %>
-              <p class='text-danger'><strong>退会済み</strong></p>
-            <% end %>
             
             <p>@<%= user.canonical_name %></p><hr>
             
