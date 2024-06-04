@@ -53,7 +53,6 @@ ja:
       cancel: 退会を取り消す
       withdraw: 退会させる
   posts:
-    destroy: 投稿を削除しました。
     create:
       notice: 新規投稿しました。
       alert: 投稿に失敗しました。
@@ -62,7 +61,7 @@ ja:
       alert: 更新に失敗しました。
     index:
       title: 投稿一覧
-      not_exist: 対象の投稿が存在しません。
+      not_exist: 投稿が存在しません。
     show:
       title: 投稿詳細
       edit_btn: 編集
@@ -74,6 +73,7 @@ ja:
       destroy_btn: 投稿を削除する
     destroy:
       confirmation: 本当に削除してもいいですか？
+      success: 投稿を削除しました。
     validates: 他のユーザーの投稿編集画面には遷移できません。
 
   enums:
@@ -143,6 +143,7 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       post: 投稿
+      user: ユーザー
     attributes:
       post:
         post_image: 投稿画像

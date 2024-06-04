@@ -22,7 +22,7 @@
   
   <div class='form-group row d-flex'>
     <%= f.label :prefecture, class: 'col-md-3' %>
-    <%= f.select :prefecture, options_for_select(prefectures), class: 'form-control col-9' %>
+    <%= f.select :prefecture, Post.prefectures.keys.map {|k| [I18n.t("enums.post.prefecture.#{k}"), k]}, class: 'form-control col-9' %>
   </div>
   
   <div class='actions text-right'>

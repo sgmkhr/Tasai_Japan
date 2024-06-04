@@ -1,6 +1,6 @@
-<div class='d-flex flex-wrap'>
+<div class='d-flex flex-wrap justify-content-center'>
 
-  <% if posts %><!--投稿が存在する場合-->
+  <% if posts.present? %><!--投稿が存在する場合-->
 
     <% posts.each do |a_post| %> <!--各ユーザーの情報表示-->
       <%= link_to post_path(a_post.id) do %>
@@ -24,7 +24,7 @@
     <% end %>
 
   <% else %><!--投稿が存在しない場合-->
-    <p class='text-center mt-5'><%= I18n.t('posts.index.not_exist') %></p>
+    <p class='mt-5'><%= I18n.t('posts.index.not_exist') %></p>
   <% end %>
 
 </div>

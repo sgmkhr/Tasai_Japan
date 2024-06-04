@@ -8,26 +8,30 @@
 <div class='section-title'><h2><%= I18n.t('posts.show.title') %></h2></div>
 
 <section>
-  
+
   <%= image_tag @post.get_post_image(300, 300) %>
-  
-  <p><%= @post.title %></p>
+
+  <h5 class='pt-3'><%= @post.title %></h5>
 
   <p><%= @post.caption %></p>
-  
+
+  <hr>
+
   <p><%= @post.body %></p>
-  
+
+  <hr>
+
   <p>
     <i class="fa-regular fa-clock"></i>
     <%= @post.created_at.strftime('%y/%m/%d %H:%M') %>
   </p>
-  
+
   <p>
-    <%= link_to admin_post_path(@post.id) do %>
+    <%= link_to admin_user_path(@post.user.canonical_name) do %>
       by <i class="fa-solid fa-user"></i><%= @post.user.public_name %>
     <% end %>
   </p>
-  
+
   <p class='text-right py-5'>
     <%= link_to I18n.t('posts.edit.destroy_btn'), admin_post_path(@post.id), method: :delete, 'data-confirm' => I18n.t('posts.destroy.confirmation') %>
   </p>

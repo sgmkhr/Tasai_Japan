@@ -39,7 +39,7 @@
       <%= link_to I18n.t('admin.users.destroy.btn'), admin_user_path(@user.canonical_name), method: :delete, class: 'ml-2', 'data-confirm' => I18n.t('admin.users.destroy.confirmation') %>
     </div>
 
-    <div class='col-md-6'>
+    <div class='col-md-8'>
       <%= render 'admin/posts/index', posts: @posts %>
     </div>
 

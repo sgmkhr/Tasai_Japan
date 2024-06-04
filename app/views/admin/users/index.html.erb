@@ -1,9 +1,15 @@
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),    root_path %>>
+  <%= link_to I18n.t('menu'),        admin_root_path %>>
+  <%=  I18n.t('menus.users') %>
+</p>
+
 <div class='section-title'><h2><%= I18n.t('users.index.title') %></h2></div>
 
 <section>
-  <div class='d-flex flex-wrap'>
+  <div class='d-flex flex-wrap justify-content-center'>
 
-    <% if @users %><!--ユーザーが存在する場合-->
+    <% if @users.present? %><!--ユーザーが存在する場合-->
 
       <% @users.each do |user| %> <!--各ユーザーの情報表示-->
         <%= link_to admin_user_path(user.canonical_name) do %>
@@ -32,7 +38,7 @@
       <% end %>
 
     <% else %>     <!--ユーザーが存在しない場合-->
-      <p class='text-center mt-5'><%= I18n.t('users.index.not_exist') %></p>
+      <p class='mt-5'><%= I18n.t('users.index.not_exist') %></p>
     <% end %>
 
   </div>

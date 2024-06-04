@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user,   except: [:show, :index]
-  before_action :ensure_correct_user, except: [:show, :index]
+  before_action :ensure_correct_user, only: [:edit, :withdraw, :unsubscribe]
   before_action :set_current_user,    except: [:show, :index]
   
   def show
