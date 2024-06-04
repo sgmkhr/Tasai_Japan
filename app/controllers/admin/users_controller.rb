@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :set_selected_user, except: [:index]
   
   def show
-    @posts = @user.posts.page(params[:page]).per(10)
+    @posts = @user.posts.page(params[:page]).per(12)
   end
 
   def index

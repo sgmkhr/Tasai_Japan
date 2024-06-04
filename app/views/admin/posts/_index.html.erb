@@ -3,11 +3,11 @@
   <% if posts %><!--投稿が存在する場合-->
 
     <% posts.each do |a_post| %> <!--各ユーザーの情報表示-->
-      <%= link_to link do %>
+      <%= link_to admin_post_path(a_post.id) do %>
         <div class='post-index-item'>
 
           <div class='index-post-image'>
-            <%= image_tag a_post.get_post_image(250, 250), class: 'rounded-circle mx-auto' %>
+            <%= image_tag a_post.get_post_image(278, 208) %>
           </div>
           <hr>
 
@@ -23,7 +23,7 @@
       <% end %>
     <% end %>
 
-  <% else %>     <!--投稿が存在しない場合-->
+  <% else %><!--投稿が存在しない場合-->
     <p class='text-center mt-5'><%= I18n.t('posts.index.not_exist') %></p>
   <% end %>
 
