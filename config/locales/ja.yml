@@ -15,8 +15,7 @@ ja:
   guestuser:
     signin:
       notice: ゲストユーザーとしてログインしました。
-    edit:
-      validates: ゲストユーザーはプロフィール編集画面へ遷移できません。
+    validates: ゲストユーザーは情報編集に関わる画面へは遷移できません。
 
   top:
     caption: 日本生活の初心者とベテランが繋がるためのサイトです。
@@ -25,6 +24,9 @@ ja:
     posts: おすすめを紹介する
     rooms: 意見を共有する
   users:
+    reject_inactive_user: 退会済みのアカウントです。再度新規登録をしてご利用ください。
+    incorrect_user:
+      validates: 他のユーザーの情報編集に関わる画面へは遷移できません。
     update:
       notice: ユーザー情報を更新しました。
       alert: 不備があり更新できませんでした。
@@ -37,7 +39,7 @@ ja:
       title: 登録情報編集
     index:
       title: ユーザー 一覧
-      not_exist: ヒットするユーザーが存在しません。
+      not_exist: 対象のユーザーが存在しません。
     unsubscribe: 退会する
     unsubscribe_confirmation: 本当に退会処理に進んでよろしいですか？
     unsubscribe_cancel: 退会しない
@@ -60,7 +62,7 @@ ja:
       alert: 更新に失敗しました。
     index:
       title: 投稿一覧
-      not_exist: ヒットする投稿が存在しません。
+      not_exist: 対象の投稿が存在しません。
     show:
       title: 投稿詳細
       edit_btn: 編集
@@ -72,6 +74,7 @@ ja:
       destroy_btn: 投稿を削除する
     destroy:
       confirmation: 本当に削除してもいいですか？
+    validates: 他のユーザーの投稿編集画面には遷移できません。
 
   enums:
     user:
@@ -138,10 +141,6 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-
-  flash:
-    alert:
-      reject_inactive_user: '退会済みのアカウントです。再度新規登録をしてご利用ください。'
 
   date:
     abbr_day_names:

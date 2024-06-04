@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2024_06_03_022634) do
     t.string "title", null: false
     t.string "caption"
     t.text "body"
-    t.integer "prefecture", default: 48, null: false
+    t.integer "prefecture", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"

@@ -19,7 +19,7 @@ class Post < ApplicationRecord
   end
 
   validates :caption, length: { maximum: 100 }
-  validtaes :body, length: { maximum: 2000 }
+  validates :body,    length: { maximum: 2000 }
 
   def get_post_image(width, height)
     post_image.variant(resize_to_limit: [width, height]).processed

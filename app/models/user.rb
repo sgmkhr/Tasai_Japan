@@ -23,6 +23,7 @@ class User < ApplicationRecord
   
   GUEST_USER_EMAIL = 'guest@example.com'
 
+  #プロフィール画像がなければデフォルト画像を表示するメソッド
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -33,24 +34,20 @@ class User < ApplicationRecord
 
   #ポジションによって別のcssクラスを呼び出すメソッド
   def get_class_associated_with_position
-    if position == 'beginner'
-      return 'position-beginner'
-    elsif position == 'intermediate'
-      return 'position-intermediate'
-    else
-      return 'position-veteran'
-    end
+    return 'position-beginner'     if position == 'beginner'
+    return 'position-intermediate' if position == 'intermediate'
+    return 'position-veteran'
   end
   
   #ゲストログイン時のメソッド
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
-      user.password = SecureRandom.urlsafe_base64
-      user.last_name = 'guest'
-      user.first_name = 'user'
-      user.public_name = 'guestuser'
+      user.password       = SecureRandom.urlsafe_base64
+      user.last_name      = 'guest'
+      user.first_name     = 'user'
+      user.public_name    = 'guestuser'
       user.canonical_name = 'guestuser'
-      user.position = 1
+      user.position       = 1
     end
   end
   

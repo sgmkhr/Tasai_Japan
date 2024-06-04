@@ -350,7 +350,7 @@ User.find_by(canonical_name: 'yuma19').posts.create!(
       caption: 'お酒好きにはたまりません！',
       body: '日本酒の飲み比べに加えて、京都では、おちょこも選べちゃうお店が多い！',
       prefecture: 26,
-      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/kyoto_nihonsyu.jpeg")),filename: 'kyoto_nihonsyu.jpeg')
+      post_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/kyoto_nihonsyu.jpg")),filename: 'kyoto_nihonsyu.jpg')
     }
   ]
 )
