@@ -10,7 +10,7 @@
 <section>
   <div class='row justify-content-center'>
 
-    <div class='col-md-4'>
+    <div class='col-md-4'><!--ユーザー情報-->
       
       <div class='my-3 d-flex'>
         <%= image_tag @user.get_profile_image(60, 60), class: 'rounded-circle mr-2' %>
@@ -18,9 +18,9 @@
       
       <p class='mb-3'><strong><%= @user.public_name %></strong></p>
       
-      <p class='mb-3'> <!--positionによってcss表示カラー変わる-->
+      <p class='mb-3'>
         <%= I18n.t('users.show.position_start') %>
-        <span class=<%= @user.get_class_associated_with_position %>>
+        <span class=<%= @user.get_class_associated_with_position %>><!--positionによって違うcss-->
           <%= @user.position_i18n %>
         </span>
         <%= I18n.t('users.show.position_end') %>
@@ -29,17 +29,19 @@
       <p class='mb-5'><%= @user.introduction %></p>
       
       <hr>
+      
       <% if @user.is_active %>
         <p class='text-success'><strong>有効ユーザー</strong></p>
-        <%= link_to I18n.t('admin.users.withdraw'), admin_withdraw_path(@user.canonical_name), method: :patch %>
+        <%= link_to I18n.t('admin.users.withdraw'),  admin_withdraw_path(@user.canonical_name), method: :patch %>
       <% else %>
         <p class='text-danger'><strong>退会済みユーザー</strong></p>
-        <%= link_to I18n.t('admin.users.cancel'), admin_cancel_path(@user.canonical_name), method: :patch %>
+        <%= link_to I18n.t('admin.users.cancel'),    admin_cancel_path(@user.canonical_name),   method: :patch %>
       <% end %>
-      <%= link_to I18n.t('admin.users.destroy.btn'), admin_user_path(@user.canonical_name), method: :delete, class: 'ml-2', 'data-confirm' => I18n.t('admin.users.destroy.confirmation') %>
+      <%= link_to I18n.t('admin.users.destroy.btn'), admin_user_path(@user.canonical_name),     method: :delete, class: 'ml-2', 'data-confirm' => I18n.t('admin.users.destroy.confirmation') %>
+    
     </div>
 
-    <div class='col-md-8'>
+    <div class='col-md-8'><!--ユーザーの投稿一覧表示-->
       <%= render 'admin/posts/index', posts: @posts %>
     </div>
 

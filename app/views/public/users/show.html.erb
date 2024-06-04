@@ -8,19 +8,20 @@
 <div class='section-title'><h2>@<%= @user.canonical_name %></h2></div>
 
 <section>
+
   <div class='row justify-content-center'>
-    <div class='col-md-4'>
-      
+    <div class='col-md-4'><!--ユーザーの情報-->
+
       <%= image_tag @user.get_profile_image(60, 60), class: 'rounded-circle' %>
-      
+
       <% if @user == current_user %><!--自分のページでのみ編集ボタン表示される-->
         <%= link_to edit_user_path(current_user.canonical_name) do %>
           <i class="fa-solid fa-gear"></i>
         <% end %>
       <% end %>
-      
+
       <p class='my-3'><strong><%= @user.public_name %></strong></p>
-      
+
       <p class='mb-3'> <!--positionによってcss表示カラー変わる-->
         <%= I18n.t('users.show.position_start') %>
         <span class=<%= @user.get_class_associated_with_position %>>
@@ -28,13 +29,13 @@
         </span>
         <%= I18n.t('users.show.position_end') %>
       </p>
-        
+
       <p><%= @user.introduction %></p>
     </div>
-    
-    <div class='col-md-8'>
+
+    <div class='col-md-8'><!--ユーザーの投稿一覧表示-->
       <%= render 'public/posts/index', posts: @posts %>
     </div>
-    
   </div>
+
 </section>

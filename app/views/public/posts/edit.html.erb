@@ -12,6 +12,7 @@
   
   <%= render 'layouts/errors', obj: @post %>
   <%= render 'public/posts/form', a_post: @post, btn_name: I18n.t('update') %>
+  
   <p class='text-right py-5'>
     <%= link_to I18n.t('posts.edit.destroy_btn'), post_path(@post.id), method: :delete, 'data-confirm' => I18n.t('posts.destroy.confirmation') %>
   </p>

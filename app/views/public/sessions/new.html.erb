@@ -1,7 +1,9 @@
 <div class='section-title'><h2><%= I18n.t('login') %></h2></div>
+
 <section>
 
   <%= form_with model: @user, url: user_session_path do |f| %>
+  
     <div class='form-group row d-flex'>
       <%= f.label :email, class: 'col-md-3' %>
       <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control col-9' %>
@@ -23,6 +25,7 @@
       <%= f.submit I18n.t('login'), class: 'btn btn-sm success-btn mr-2' %>
       <%= render 'public/shared/links' %>
     </div>
+    
   <% end %>
   
   <p class='text-right mt-5'>

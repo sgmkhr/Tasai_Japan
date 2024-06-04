@@ -1,12 +1,13 @@
 <p class='guide-links'>
-  <%= link_to I18n.t('top_page'),    root_path %>>
-  <%= link_to I18n.t('menu'),        menu_path %>>
+  <%= link_to I18n.t('top_page'), root_path %>>
+  <%= link_to I18n.t('menu'),     menu_path %>>
   <%= I18n.t('posts.index.title') %>
 </p>
 
 <div class='section-title'><h2><%= I18n.t('posts.index.title') %></h2></div>
 
 <section>
+  
   <p class='mb-3 text-right pr-5'>
     <%= link_to new_post_path do %>
       <%= I18n.t('posts.new.title') %>
@@ -15,4 +16,5 @@
   </p>
   
   <%= render 'public/posts/index', posts: @posts %>
+  
 </section>

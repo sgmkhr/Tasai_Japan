@@ -9,6 +9,7 @@
           <div class='index-post-image'>
             <%= image_tag a_post.get_post_image(278, 208) %>
           </div>
+          
           <hr>
 
           <p><%= a_post.title %></p>
@@ -17,7 +18,9 @@
             <%= a_post.caption %>
           </p>
 
-          <p><i class="fa-solid fa-user"></i><%= a_post.user.public_name %></p>
+          <p>
+            <i class="fa-solid fa-user"></i><%= a_post.user.public_name %>
+          </p>
 
         </div>
       <% end %>
