@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <script src="https://kit.fontawesome.com/945e2890b0.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,21 +13,19 @@
   </head>
 
   <body>
-    
     <header>
       <%= render 'layouts/header' %>
     </header>
-    
+
     <main>
       <div class='w-100 text-center mt-2' style='color: #8f2e14'><%= flash[:alert] %></div>
       <div class='w-100 text-center mt-2' style='color: #84a2d4'><%= flash[:notice] %></div>
       <%= yield %>
       <%= render 'layouts/btn_to_pagetop' %>
     </main>
-    
+
     <footer>
       <%= render 'layouts/footer' %>
     </footer>
-    
   </body>
 </html>
