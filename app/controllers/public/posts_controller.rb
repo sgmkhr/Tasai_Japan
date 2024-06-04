@@ -30,7 +30,7 @@ class Public::PostsController < ApplicationController
   
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post.id), notice: I18n.t('posts.update.notice')
+      redirect_to user_path(@post.user.canonical_name), notice: I18n.t('posts.update.notice')
     else
       flash.now[:alert] = I18n.t('posts.update.alert')
       render :edit
