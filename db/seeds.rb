@@ -6,10 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Admin.find_or_create_by!(
-  email: 'admin@admin.com',
-  password: 'adminadmin'
-)
+puts 'seedの実行を開始'
+
+# 管理者
+Admin.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |admin|
+  admin.password = ENV['ADMIN_PASSWORD']
+end
 
 # 以下、ユーザーデータ
 hana = User.find_or_create_by!(email: 'hanako@example.com') do |user|
@@ -59,7 +61,7 @@ abramo = User.find_or_create_by!(email: 'abramo@example.com') do |user|
   user.password = '555555'
 end
 
-brunello = User.find_or_create_by!(email: 'Brunello@example.com') do |user|
+brunello = User.find_or_create_by!(email: 'brunello@example.com') do |user|
   user.last_name = 'Arditi'
   user.first_name = 'Brunello'
   user.canonical_name = 'Brunello6'
@@ -372,3 +374,5 @@ Post.find_or_create_by!(title: 'Kamosui') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/yamagata_kamosui.jpeg"),filename: 'yamagata_kamosui.jpeg')
   po.user = henry # 日本生活中級者のユーザー
 end
+
+puts 'seedの実行が完了しました'
