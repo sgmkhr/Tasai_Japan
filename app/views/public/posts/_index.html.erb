@@ -23,6 +23,11 @@
           </p>
 
           <p><i class="fa-solid fa-user"></i><%= a_post.user.public_name %></p>
+          
+          <div class='text-right'>
+            <i class="fa-regular fa-comment"></i>
+            <span class='comment-count'><%= a_post.comments.count %></span>
+          </div>
 
         </div>
       <% end %>

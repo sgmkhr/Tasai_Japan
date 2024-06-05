@@ -1,0 +1,3 @@
+$('.comments').html('<%= escape_javascript(render partial: 'public/comments/list', locals: {a_post: @post}) %>');
+$('.comment-count').html('<%= @post.comments.count %>');
+$('.comment-form input').val('');
