@@ -18,6 +18,8 @@
     
     <p><%= comment.content %></p>
     
+    <sm><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></sm>
+    
   </div>
   
 <% end %>
