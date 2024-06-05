@@ -14,7 +14,11 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.where(is_active: true).page(params[:page]).per(18) #退会済みユーザーは表示しない
+    if params[:content]
+      @users = User.search_for(params[:content]).where(is_active: true).page(params[:page]).per(18)
+    else
+      @users = User.where(is_active: true).page(params[:page]).per(18) #退会済みユーザーは表示しない
+    end
   end
 
   def edit

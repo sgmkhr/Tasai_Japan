@@ -56,4 +56,9 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
   
+  def self.search_for(content)
+    return User.all if content == ''
+    User.where(['public_name LIKE(?) OR canonical_name LIKE(?) OR introduction LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
+  end
+  
 end
