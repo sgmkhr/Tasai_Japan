@@ -8,8 +8,13 @@
 <div class='section-title'><h2><%= I18n.t('posts.show.title') %></h2></div>
 
 <section>
-
-  <%= image_tag @post.get_post_image(300, 300) %>
+  
+  <div class='responsive-disabled'>
+    <%= image_tag @post.get_post_image(400, 400) %>
+  </div>
+  <div class='resposive-displayed'>
+    <%= image_tag @post.get_post_image(224, 224) %>
+  </div>
 
   <h5 class='pt-3'><%= @post.title %></h5>
 
@@ -23,7 +28,7 @@
 
   <p>
     <i class="fa-regular fa-clock"></i>
-    <%= @post.created_at.strftime('%y/%m/%d %H:%M') %>
+    <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
   </p>
 
   <p class='pb-3'>
