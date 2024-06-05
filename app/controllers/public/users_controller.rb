@@ -6,11 +6,19 @@ class Public::UsersController < ApplicationController
   
   def show
     @user  = User.find_by(canonical_name: params[:canonical_name])
-    @posts = @user.posts.page(params[:page]).per(12)
+    if params[:content]
+      @posts = @user.posts.search_with_user_for(params[:content], @user).page(params[:page]).per(12)
+    else
+      @posts = @user.posts.page(params[:page]).per(12)
+    end
   end
 
   def index
-    @users = User.where(is_active: true).page(params[:page]).per(18) #退会済みユーザーは表示しない
+    if params[:content]
+      @users = User.search_for(params[:content]).where(is_active: true).page(params[:page]).per(18)
+    else
+      @users = User.where(is_active: true).page(params[:page]).per(18) #退会済みユーザーは表示しない
+    end
   end
 
   def edit

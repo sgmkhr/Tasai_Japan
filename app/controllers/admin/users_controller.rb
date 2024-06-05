@@ -3,11 +3,19 @@ class Admin::UsersController < ApplicationController
   before_action :set_selected_user, except: [:index]
   
   def show
-    @posts = @user.posts.page(params[:page]).per(12)
+    if params[:content]
+      @posts = @user.posts.search_with_user_for(params[:content], @user).page(params[:page]).per(12)
+    else
+      @posts = @user.posts.page(params[:page]).per(12)
+    end
   end
 
   def index
-    @users = User.page(params[:page]).per(18) #退会済みも含む全ユーザーを表示
+    if params[:content]
+      @users = User.search_for(params[:content]).page(params[:page]).per(18)
+    else
+      @users = User.page(params[:page]).per(18) #退会済みも含む全ユーザーを表示
+    end
   end
   
   def cancel
