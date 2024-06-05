@@ -9,9 +9,13 @@ ja:
   mypage: マイページ
   about: 当サイトについて
   update: 更新
+  search: 検索
+  destroy: 削除
+  search_blank: 全件表示は空で検索
   placeholder:
     canonical_name: 20文字以内の半角英数字
     public_name: 公開用のお名前を入力
+    comment: こちらにコメントをどうぞ
   guestuser:
     signin:
       notice: ゲストユーザーとしてログインしました。
@@ -65,6 +69,7 @@ ja:
     show:
       title: 投稿詳細
       edit_btn: 編集
+      comment: コメント
     new:
       title: 新規投稿
       create_btn: 投稿

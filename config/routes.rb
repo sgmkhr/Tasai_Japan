@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :index, :destroy], param: :canonical_name
     patch 'users/:canonical_name/cancel', to: 'users#cancel', as: 'cancel'
     patch 'users/:canonical_name/withdraw', to: 'users#withdraw', as: 'withdraw'
-    resources :posts, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
+    end
   end
 
   devise_for :users, skip: [:passwords], controllers: {
@@ -28,7 +30,9 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :index, :edit, :update], param: :canonical_name
     patch 'users/:canonical_name/withdraw', to: 'users#withdraw', as: 'withdraw'
     get 'users/:canonical_name/unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
-    resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+    resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
+      resources :comments, only: [:create, :destroy]
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

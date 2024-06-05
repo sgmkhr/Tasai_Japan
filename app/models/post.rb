@@ -1,7 +1,9 @@
 class Post < ApplicationRecord
-  belongs_to :user
-
+  
   has_one_attached :post_image
+  
+  belongs_to :user
+  has_many :comments, dependent: :destroy
 
   enum prefecture: {
     unspecified: 0, hokkaido: 1, aomori: 2, iwate: 3, miyagi: 4, akita: 5, yamagata: 6, fukushima: 7,
@@ -23,6 +25,16 @@ class Post < ApplicationRecord
 
   def get_post_image(width, height)
     post_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  def self.search_for(content)
+    return Post.all if content == ''
+    Post.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
+  end
+  
+  def self.search_with_user_for(content, user)
+    return Post.where(user_id: user.id) if content == ''
+    Post.where(user_id: user.id).where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
 
 end

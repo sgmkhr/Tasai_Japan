@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   enum position: { beginner: 0, intermediate: 1, veteran: 2 }
 
@@ -54,6 +55,11 @@ class User < ApplicationRecord
   # ゲストユーザーか確かめるためのメソッド
   def guest_user?
     email == GUEST_USER_EMAIL
+  end
+  
+  def self.search_for(content)
+    return User.all if content == ''
+    User.where(['public_name LIKE(?) OR canonical_name LIKE(?) OR introduction LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
   
 end

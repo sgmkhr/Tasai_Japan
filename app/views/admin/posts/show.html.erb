@@ -26,19 +26,32 @@
 
   <hr>
 
-  <p>
-    <i class="fa-regular fa-clock"></i>
-    <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
-  </p>
-
-  <p>
-    <%= link_to admin_user_path(@post.user.canonical_name) do %>
-      by <i class="fa-solid fa-user"></i><%= @post.user.public_name %>
-    <% end %>
-  </p>
-
-  <p class='text-right py-5'>
-    <%= link_to I18n.t('posts.edit.destroy_btn'), admin_post_path(@post.id), method: :delete, 'data-confirm' => I18n.t('posts.destroy.confirmation') %>
-  </p>
+  <div class='row'>
+    <p class='col-10'>
+      <i class="fa-regular fa-clock"></i>
+      <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
+    </p>
+    <div class='col-2'>
+      <%= link_to I18n.t('posts.edit.destroy_btn'), admin_post_path(@post.id), method: :delete, 'data-confirm' => I18n.t('posts.destroy.confirmation') %>
+    </div>
+  </div>
+  
+  <div class='row pb-3'>
+    <div class='col-8'>
+      <%= link_to admin_user_path(@post.user.canonical_name) do %>
+        by <i class="fa-regular fa-user"></i><%= @post.user.public_name %>
+      <% end %>
+    </div>
+    <div class='col-4 text-right'>
+      <i class="fa-regular fa-comment"></i>
+      <span class='comment-count'><%= @post.comments.count %></span>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class='comments pb-5'>
+    <%= render 'admin/comments/list', a_post: @post %>
+  </div>
 
 </section>
