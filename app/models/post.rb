@@ -25,4 +25,9 @@ class Post < ApplicationRecord
     post_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def self.search_for(content)
+    return Post.all if content == ''
+    Post.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
+  end
+
 end
