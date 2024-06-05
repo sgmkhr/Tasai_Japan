@@ -38,11 +38,17 @@
     <% end %>
   </div>
 
-  <p class='pb-3'>
-    <%= link_to user_path(@post.user.canonical_name) do %>
-      by <i class="fa-solid fa-user"></i><%= @post.user.public_name %>
-    <% end %>
-  </p>
+  <div class='row pb-3'>
+    <div class='col-8'>
+      <%= link_to user_path(@post.user.canonical_name) do %>
+        by <i class="fa-regular fa-user"></i><%= @post.user.public_name %>
+      <% end %>
+    </div>
+    <div class='col-4 text-right'>
+      <i class="fa-regular fa-comment"></i>
+      <span class='comment-count'><%= @post.comments.count %></span>
+    </div>
+  </div>
   
   <hr>
   
