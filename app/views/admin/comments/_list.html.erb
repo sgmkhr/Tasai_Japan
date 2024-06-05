@@ -9,7 +9,10 @@
         <%= comment.user.public_name %>
       <% end %>
 
-      <%= link_to I18n.t('destroy'), admin_post_comment_path(a_post.id, comment.id), method: :delete, remote: true, data: {"turbolinks" => false}, class: 'btn btn-sm bordered ml-auto' %>
+      <%= link_to I18n.t('destroy'), admin_post_comment_path(a_post.id, comment.id), method: :delete, 
+                                     remote: true, data: {"turbolinks" => false}, 
+                                     class: 'btn btn-sm bordered ml-auto', 
+                                     'data-confirm' => I18n.t('posts.destroy.confirmation') %>
       
     </div>
     

@@ -14,7 +14,10 @@
       <% end %>
       
       <% if comment.user == current_user %>
-        <%= link_to I18n.t('destroy'), post_comment_path(a_post.id, comment.id), method: :delete, remote: true, data: {"turbolinks" => false}, class: 'btn btn-sm bordered ml-auto' %>
+        <%= link_to I18n.t('destroy'), post_comment_path(a_post.id, comment.id), method: :delete, 
+                                       remote: true, data: {"turbolinks" => false}, 
+                                       class: 'btn btn-sm bordered ml-auto', 
+                                       'data-confirm' => I18n.t('posts.destroy.confirmation') %>
       <% end %>
       
     </div>
