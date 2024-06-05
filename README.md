@@ -1,4 +1,5 @@
 # 多彩な日本 /Tasai Japan
+
 ​
 ## サイト概要
 ### サイトテーマ
@@ -28,24 +29,15 @@
 - 日本生活初心者の方々に向けて日本の常識やマナーを伝えたい時
 - 日本生活初心者の方々の相談に乗ってあげたい時
 - 日本生活初心者の方々に向けて日本のおすすめを発信し、魅力を伝えたい時
-
 ​
 ## 設計書
-- UI flows
+- [UI flow](https://drive.google.com/file/d/1Xsy9hlnE58SA3ef4Wai-Wkb-LZytL5dW/view?usp=sharing)
 
-https://drive.google.com/file/d/1Xsy9hlnE58SA3ef4Wai-Wkb-LZytL5dW/view?usp=sharing
+- [ER図](https://drive.google.com/file/d/1gAZHHiRnKwPMgy-c4J3Vs8n52jfqGiAn/view?usp=sharing)
 
-- ER図
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1GZ96y44L9wB1F5dxZzIp8NPVm2jfN4naFiKuUNCjv9g/edit?usp=sharing)
 
-https://drive.google.com/file/d/1gAZHHiRnKwPMgy-c4J3Vs8n52jfqGiAn/view?usp=sharing
-
-- テーブル定義書
-
-https://docs.google.com/spreadsheets/d/1GZ96y44L9wB1F5dxZzIp8NPVm2jfN4naFiKuUNCjv9g/edit?usp=sharing
-
-- アプリケーション詳細設計書
-
-https://docs.google.com/spreadsheets/d/1zb_RIa7NAd_15SDPLVpoQ4k6yhgtl-jUilJD33MpGNY/edit?usp=sharing
+- [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1zb_RIa7NAd_15SDPLVpoQ4k6yhgtl-jUilJD33MpGNY/edit?usp=sharing)
 
 ## 開発環境
 - OS：Linux(CentOS)
