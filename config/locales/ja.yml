@@ -10,7 +10,7 @@ ja:
   about: 当サイトについて
   update: 更新
   placeholder:
-    canonical_name: 20文字以内の半角英数字のみ可能
+    canonical_name: 20文字以内の半角英数字
     public_name: 公開用のお名前を入力
   guestuser:
     signin:

@@ -33,8 +33,16 @@
       <p><%= @user.introduction %></p>
     </div>
 
-    <div class='col-md-8'><!--ユーザーの投稿一覧表示-->
-      <%= render 'public/posts/index', posts: @posts %>
+    <div class='col-md-8'>
+
+      <% if @user == current_user %><!--自分のページでのみ新規作成ボタン表示される-->
+        <%= link_to new_post_path do %>
+          <%= I18n.t('posts.new.title') %>
+          <i class="fa-solid fa-plus"></i>
+        <% end %>
+      <% end %>
+
+      <%= render 'public/posts/index', posts: @posts %><!--ユーザーの投稿一覧表示-->
     </div>
   </div>
 
