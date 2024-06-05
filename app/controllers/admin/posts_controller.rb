@@ -2,7 +2,11 @@ class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @posts = Post.page(params[:page]).per(12)
+    if params[:content]
+      @posts = Post.search_for(params[:content]).page(params[:page]).per(12)
+    else
+      @posts = Post.page(params[:page]).per(12)
+    end
   end
 
   def show
