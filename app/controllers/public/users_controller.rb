@@ -6,7 +6,11 @@ class Public::UsersController < ApplicationController
   
   def show
     @user  = User.find_by(canonical_name: params[:canonical_name])
-    @posts = @user.posts.page(params[:page]).per(12)
+    if params[:content]
+      @posts = @user.posts.search_with_user_for(params[:content], @user).page(params[:page]).per(12)
+    else
+      @posts = @user.posts.page(params[:page]).per(12)
+    end
   end
 
   def index
