@@ -1,0 +1,26 @@
+<% a_post.comments.each do |comment| %>
+
+  <div class='border-bottom p-3'>
+    
+    <div class='d-flex'>
+      
+      <%= link_to user_path(comment.user.canonical_name) do %>
+        <% if comment.user == current_user %>
+          <i class="fa-solid fa-user"></i> <!--自分のコメントはアイコンの色が変わる-->
+        <% else %>
+          <i class="fa-regular fa-user"></i>
+        <% end %>
+        <%= comment.user.public_name %>
+      <% end %>
+      
+      <% if comment.user == current_user %>
+        <%= link_to I18n.t('destroy'), post_comment_path(a_post.id, comment.id), method: :delete, remote: true, data: {"turbolinks" => false}, class: 'btn btn-sm bordered ml-auto' %>
+      <% end %>
+      
+    </div>
+    
+    <p><%= comment.content %></p>
+    
+  </div>
+  
+<% end %>

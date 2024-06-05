@@ -16,6 +16,7 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def create

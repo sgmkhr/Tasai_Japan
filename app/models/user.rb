@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   enum position: { beginner: 0, intermediate: 1, veteran: 2 }
 

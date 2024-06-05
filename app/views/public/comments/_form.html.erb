@@ -1,0 +1,8 @@
+<%= form_with model: [a_post, comment], local: false do |f| %>
+
+  <div class='form-group col-md-8 d-flex'>
+    <%= f.text_field :content, placeholder: I18n.t('placeholder.comment'), class: 'form-control' %>
+    <%= f.submit I18n.t('posts.show.comment'), class: 'btn btn-sm success-btn ml-3' %>
+  </div>
+  
+<% end %>

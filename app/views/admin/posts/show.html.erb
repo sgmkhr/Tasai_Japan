@@ -26,19 +26,27 @@
 
   <hr>
 
-  <p>
-    <i class="fa-regular fa-clock"></i>
-    <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
-  </p>
-
+  <div class='row'>
+    <p class='col-10'>
+      <i class="fa-regular fa-clock"></i>
+      <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
+    </p>
+    <div class='col-2'>
+      <%= link_to I18n.t('posts.edit.destroy_btn'), admin_post_path(@post.id), method: :delete, 'data-confirm' => I18n.t('posts.destroy.confirmation') %>
+    </div>
+  </div>
+  
   <p>
     <%= link_to admin_user_path(@post.user.canonical_name) do %>
       by <i class="fa-solid fa-user"></i><%= @post.user.public_name %>
     <% end %>
   </p>
 
-  <p class='text-right py-5'>
-    <%= link_to I18n.t('posts.edit.destroy_btn'), admin_post_path(@post.id), method: :delete, 'data-confirm' => I18n.t('posts.destroy.confirmation') %>
-  </p>
+  
+  <hr>
+  
+  <div class='comments pb-5'>
+    <%= render 'admin/comments/list', a_post: @post %>
+  </div>
 
 </section>
