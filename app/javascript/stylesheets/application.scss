@@ -25,7 +25,7 @@ html, body {
 p, h2, h4, sm {
   color:               rgb(81, 78, 77);
 }
-nav > h4 {
+nav > h4 { //トップ画面とメニュー画面で適用
   writing-mode:    vertical-rl;
 }
 
