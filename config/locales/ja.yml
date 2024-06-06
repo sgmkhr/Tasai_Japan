@@ -80,6 +80,8 @@ ja:
       confirmation: 本当に削除してもいいですか？
       success: 投稿を削除しました。
     validates: 他のユーザーの投稿編集画面には遷移できません。
+  comments:
+    validates: 他のユーザーのコメントは削除できません。
 
   enums:
     user:
@@ -138,6 +140,14 @@ ja:
         okinawa: 沖縄県
         others: その他
         unspecified: 指定なし
+
+  views:
+    pagination:
+      first: 最初
+      last: 最後
+      previous: 前
+      next: 次
+      truncate: ...
 
   activerecord:
     errors:
