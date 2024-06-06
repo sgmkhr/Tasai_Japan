@@ -1,2 +1,51 @@
-<h1>Admin::CounselingRooms#show</h1>
-<p>Find me in app/views/admin/counseling_rooms/show.html.erb</p>
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),         root_path %>>
+  <%= link_to I18n.t('menu'),             admin_menu_path %>>
+  <%= link_to I18n.t('categories.title'), admin_categories_path %>>
+  <%= link_to @category.name, admin_category_counseling_rooms_path(@category.id) %>>
+  <%= I18n.t('counseling_rooms.show.title') %>
+</p>
+
+<div class='section-title'>
+  <h2 class='overflow-hidden text-nowrap text-truncate'>
+    <%= @counseling_room.caption %>
+  </h2>
+</div>
+
+<p class='text-right'>
+  <%= link_to I18n.t('counseling_rooms.show.destroy.btn'), 
+              admin_category_counseling_room_path(@category.id, @counseling_room.id), method: :delete,
+              'data-confirm' => I18n.t('counseling_rooms.show.destroy.confirmation') %>
+</p>
+
+<section>
+  
+  <div class='responsive-disabled'>
+    <%= image_tag @counseling_room.get_topic_image(400, 400) %>
+  </div>
+  <div class='resposive-displayed'>
+    <%= image_tag @counseling_room.get_topic_image(224, 224) %>
+  </div>
+  
+  <p><%= @counseling_room.caption %></p>
+  
+  <p><%= @counseling_room.detail %></p>
+  
+  <hr>
+  
+  <div>
+    <i class="fa-solid fa-user-group"></i>
+    <div>
+      <% @participations.each do |participation| %>
+        <%= link_to admin_user_path(participation.user.id) do %>
+          <%= image_tag participation.user.get_profile_image(15, 15), class: 'rounded-circle mr-2' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <!--後ほどここに意見一覧作成予定-->
+  
+</section>

@@ -83,11 +83,22 @@ ja:
   comments:
     validates: 他のユーザーのコメントは削除できません。
   categories:
-    destroy: カテゴリを削除しました。
+    title: 相談室カテゴリ一覧
+    destroy: 
+      success: カテゴリを削除しました。
+      confirmation: カテゴリ内の相談室も削除されますが、本当に削除してもいいですか？
     create:
       succeeded: カテゴリを作成しました。
       failed: カテゴリの作成に失敗しました。
   counseling_rooms:
+    title: 相談室を探す
+    index:
+      title: 相談室一覧
+    show:
+      title: 相談室詳細
+      destroy:
+        btn: この相談室を削除する
+        confirmation: この相談室内の全ての意見履歴も消えますが、本当に削除してもいいですか？
     create:
       succeeded: 相談室を作成しました。
       failed: 相談室の作成に失敗しました。

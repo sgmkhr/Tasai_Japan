@@ -1,2 +1,29 @@
-<h1>Admin::Categories#index</h1>
-<p>Find me in app/views/admin/categories/index.html.erb</p>
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'), root_path %>>
+  <%= link_to I18n.t('menu'),     admin_menu_path %>>
+  <%= I18n.t('categories.title') %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('categories.title') %></h2></div>
+
+<section>
+  
+  <% @categories.each do |category| %>
+    <div class='row border-bottom'>
+      
+      <div class='col-md-8'>
+        <%= link_to category.name, admin_category_counseling_rooms_path(category.id) %>
+      </div>
+      
+      <div class='col-md-4 text-right'>
+        <i class="fa-solid fa-people-roof"></i>
+        <%= category.counseling_rooms.count %></br>
+        
+        <%= link_to I18n.t('destroy'), admin_category_path(category.id), method: :delete, 
+                                       'data-confirm' => I18n.t('categories.destroy.confirmation') %>
+      </div>
+      
+    </div>
+  <% end %>
+  
+</section>

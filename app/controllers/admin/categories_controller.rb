@@ -7,7 +7,7 @@ class Admin::CategoriesController < ApplicationController
   
   def destroy
     Category.find(params[:id]).destroy
-    redirect_to admin_categories_path, notice: I18n.t('categories.destroy')
+    redirect_to request.referer, notice: I18n.t('categories.destroy.success')
   end
   
 end

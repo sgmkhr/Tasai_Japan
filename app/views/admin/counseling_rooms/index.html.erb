@@ -1,2 +1,28 @@
-<h1>Admin::CounselingRooms#index</h1>
-<p>Find me in app/views/admin/counseling_rooms/index.html.erb</p>
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),         root_path %>>
+  <%= link_to I18n.t('menu'),             admin_menu_path %>>
+  <%= link_to I18n.t('categories.title'), admin_categories_path %>>
+  <%= I18n.t('counseling_rooms.index.title') %>
+</p>
+
+<div class='section-title'><h2><%= @category.name %></h2></div>
+
+<section>
+  
+  <% @counseling_rooms.each do |room| %>
+  
+    <div>
+      <i class="fa-solid fa-people-roof"></i>
+      <%= room.topic %>
+    </div>
+    
+    <div class='text-right'>
+      <i class="fa-solid fa-user-group"></i>
+      <%= room.participations.where(status: true).count %>
+    </div>
+    
+    <hr>
+  
+  <% end %>
+  
+</section>
