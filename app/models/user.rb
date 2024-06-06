@@ -8,6 +8,8 @@ class User < ApplicationRecord
   
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :counseling_rooms, dependent: :destroy
+  has_many :participations, dependent: :destroy
 
   enum position: { beginner: 0, intermediate: 1, veteran: 2 }
 
