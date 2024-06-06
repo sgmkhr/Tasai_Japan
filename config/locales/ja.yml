@@ -82,7 +82,26 @@ ja:
     validates: 他のユーザーの投稿編集画面には遷移できません。
   comments:
     validates: 他のユーザーのコメントは削除できません。
-
+  categories:
+    destroy: カテゴリを削除しました。
+    create:
+      succeeded: カテゴリを作成しました。
+      failed: カテゴリの作成に失敗しました。
+  counseling_rooms:
+    create:
+      succeeded: 相談室を作成しました。
+      failed: 相談室の作成に失敗しました。
+    update:
+      succeeded: 相談室の情報を更新しました。
+      failed: 更新に失敗しました。
+    destroy: 相談室を削除しました。
+    ensure_creator: 他のユーザーが作成した相談室の情報は編集できません。
+  participations:
+    destroy:
+      by_participation: 相談室から脱退しました。
+      by_creator: 参加申請を却下しました。
+    update: 参加を承認しました。
+    
   enums:
     user:
       position:
