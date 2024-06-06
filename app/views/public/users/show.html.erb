@@ -45,7 +45,7 @@
       <!--検索バー-->
       <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
         <div class='form-group row justify-content-end'>
-          <%= f.text_field :content, class: 'form-control col-5', placeholder: I18n.t('search_blank') %>
+          <%= f.text_field :content, class: 'form-control col-md-5 col-9 mt-2', placeholder: I18n.t('search_blank') %>
           <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
         </div>
       <% end %>
