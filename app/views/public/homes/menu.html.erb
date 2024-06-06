@@ -1,17 +1,23 @@
 <div class='section-title'><h2><%= I18n.t('menu') %></h2></div>
 
 <section>
-  
-  <h4>
-    <!--後ほど相談室一覧へのリンク配置予定-->
-  </h4>
-  
-  <h4 class='text-center my-5'>
-    <%= link_to I18n.t('menus.posts'), posts_path %>
-  </h4>
-  
-  <h4 class='text-center my-5'>
-    <%= link_to I18n.t('menus.users'), users_path %>
-  </h4>
-  
+
+  <nav class='d-flex justify-content-center'>
+    <h4 class='mx-md-5 mx-4'>
+      <!--後ほど相談室一覧へのリンク配置予定-->
+    </h4>
+
+    <h4 class='mx-md-5 mx-4'>
+      <%= link_to I18n.t('menus.posts'), posts_path %>
+    </h4>
+
+    <h4 class='mx-md-5 mx-4'>
+      <%= link_to I18n.t('menus.users'), users_path %>
+    </h4>
+
+    <h4 class='mx-md-5 mx-4'>
+      <%= link_to I18n.t('about'), about_path %>
+    </h4>
+  </nav>
+
 </section>
