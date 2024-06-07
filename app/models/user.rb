@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :counseling_rooms, dependent: :destroy
   has_many :participations, dependent: :destroy
+  has_many :opinions, dependent: :destroy
 
   enum position: { beginner: 0, intermediate: 1, veteran: 2 }
 

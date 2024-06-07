@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_06_064118) do
+ActiveRecord::Schema.define(version: 2024_06_07_111108) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(version: 2024_06_06_064118) do
     t.index ["user_id"], name: "index_counseling_rooms_on_user_id"
   end
 
+  create_table "opinions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "counseling_room_id", null: false
+    t.text "content", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["counseling_room_id"], name: "index_opinions_on_counseling_room_id"
+    t.index ["user_id"], name: "index_opinions_on_user_id"
+  end
+
   create_table "participations", force: :cascade do |t|
     t.integer "counseling_room_id", null: false
     t.integer "user_id", null: false
@@ -125,6 +135,8 @@ ActiveRecord::Schema.define(version: 2024_06_06_064118) do
   add_foreign_key "comments", "users"
   add_foreign_key "counseling_rooms", "categories"
   add_foreign_key "counseling_rooms", "users"
+  add_foreign_key "opinions", "counseling_rooms"
+  add_foreign_key "opinions", "users"
   add_foreign_key "participations", "counseling_rooms"
   add_foreign_key "participations", "users"
   add_foreign_key "posts", "users"

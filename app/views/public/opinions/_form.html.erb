@@ -1,0 +1,10 @@
+<%= form_with model: opinion do |f| %>
+
+  <div class='form-group row d-flex justify-content-center'>
+    
+    <%= f.text_area :opinion, class: 'form-control col-md-9', placeholder: I18n.t('opinions.placeholder') %>
+    <%= f.submit I18n.t('opinions.btn'), class: 'btn btn-sm success-btn ml-2' %>
+
+  </div>
+
+<% end %>

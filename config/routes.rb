@@ -13,7 +13,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:destroy]
     end
     resources :categories, only: [:index, :destroy] do
-      resources :counseling_rooms, only: [:index, :show, :destroy]
+      resources :counseling_rooms, only: [:index, :show, :destroy] do
+        resources :opinions, only: [:destroy]
+      end
     end
   end
 
@@ -39,6 +41,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:create, :index] do
       resources :counseling_rooms do
         resources :participations, only: [:create, :destroy, :update]
+        resources :opinions, only: [:create, :destroy]
       end
     end
   end
