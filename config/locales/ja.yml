@@ -142,6 +142,8 @@ ja:
   opinions:
     btn: 意見投稿
     placeholder: 意見を入力
+    destroy:
+      confirmation: 本当に削除していいですか？
 
 
   enums:

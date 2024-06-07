@@ -33,6 +33,22 @@
   
   <p><%= @counseling_room.detail %></p>
   
+  <p class='text-right'>
+    
+    <i class="fa-solid fa-user-group"></i>
+    <span class='mr-2'>
+      <%= @participations.count %>
+    </span>
+    
+    <i class="fa-regular fa-comment"></i>
+    <span class='opinions-count mr-2'>
+      <%= @opinions.count %>
+    </span>
+    
+    <%= I18n.t('counseling_rooms.show.creator') + '' + @counseling_room.user.public_name %>
+    
+  </p>
+  
   <hr>
   
   <div>
@@ -46,6 +62,8 @@
   
   <hr>
   
-  <!--後ほどここに意見一覧作成予定-->
+  <div class='opinions-list px-2 pb-5'>
+    <%= render 'admin/opinions/list', opinions: @opinions, category: @category, counseling_room: @counseling_room %>
+  </div>
   
 </section>

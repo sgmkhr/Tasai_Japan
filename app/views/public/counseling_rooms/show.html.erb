@@ -14,7 +14,7 @@
 
 <section>
 
-  <div class='mb-3 text-right'>
+  <div class='text-right'>
     <div class='participation-status-display'>
       <%= render 'public/participations/btn', counseling_room: @counseling_room, category: @category, participation: @participation %>
     </div>
@@ -34,14 +34,27 @@
 
   <p><%= @counseling_room.detail %></p>
   
-  <div class='text-right'><%= I18n.t('counseling_rooms.show.creator') + '' + @counseling_room.user.public_name %></div>
+  <p class='text-right'>
+    
+    <i class="fa-solid fa-user-group"></i>
+    <span class='mr-2'>
+      <%= @participations.count %>
+    </span>
+    
+    <i class="fa-regular fa-comment"></i>
+    <span class='opinions-count mr-2'>
+      <%= @opinions.count %>
+    </span>
+    
+    <%= I18n.t('counseling_rooms.show.creator') + '' + @counseling_room.user.public_name %>
+    
+  </p>
 
   <hr>
 
   <% if (current_user == @counseling_room.user) || @participations.exists?(user_id: current_user.id) %>
 
     <div>
-      <i class="fa-solid fa-user-group"></i>
       <% @participations.each do |participation| %>
         <%= link_to user_path(participation.user_id) do %>
           <%= image_tag participation.user.get_profile_image(40, 40), class: 'rounded-circle m-1' %>
@@ -50,8 +63,14 @@
     </div>
 
     <hr>
-
-    <!--後ほどここに意見一覧作成予定-->
+    
+    <div class='opinions-list px-2'>
+      <%= render 'public/opinions/list', opinions: @opinions, category: @category, counseling_room: @counseling_room %>
+    </div>
+    
+    <div class='opinion-form pb-5'>
+      <%= render 'public/opinions/form', opinion: @opinion, category: @category, counseling_room: @counseling_room %>
+    </div>
 
   <% else %>
 

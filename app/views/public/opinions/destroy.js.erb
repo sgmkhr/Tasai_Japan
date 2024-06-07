@@ -1,1 +1,2 @@
-$('.opinions-list').html('<%= j(render 'public/opinions/list', opinions: @opinions) %>');
+$('.opinions-list').html('<%= j(render 'public/opinions/list', opinions: @opinions, category: @category, counseling_room: @counseling_room) %>');
+$('.opinions-count').html('<%= @opinions.count %>');
