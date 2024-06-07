@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_image
-  
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :counseling_rooms, dependent: :destroy
@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
   validates :introduction, length: { maximum: 200 }
-  
+
   GUEST_USER_EMAIL = 'guest@example.com'
 
   #プロフィール画像がなければデフォルト画像を表示するメソッド
@@ -41,7 +41,7 @@ class User < ApplicationRecord
     return 'position-intermediate' if position == 'intermediate'
     return 'position-veteran'
   end
-  
+
   #ゲストログイン時のメソッド
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
@@ -53,15 +53,28 @@ class User < ApplicationRecord
       user.position       = 1
     end
   end
-  
+
   # ゲストユーザーか確かめるためのメソッド
   def guest_user?
     email == GUEST_USER_EMAIL
   end
-  
+
   def self.search_for(content)
     return User.all if content == ''
     User.where(['public_name LIKE(?) OR canonical_name LIKE(?) OR introduction LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
-  
+
+  # 相談室の参加ステータスを確認するためのメソッド
+  def get_participation_status(room)
+    if current_user == room.user
+      I18n.t('participations.creator')
+    elsif participations.!exists?(counseling_room_id: room.id)
+      I18n.t('participations.not_participating')
+    elsif participations.find_by(counseling_room_id: room.id).status
+      I18n.t('participations.participating')
+    else
+      I18n.t('participations.applying')
+    end
+  end
+
 end

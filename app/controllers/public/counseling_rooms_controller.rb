@@ -25,10 +25,12 @@ class Public::CounselingRoomsController < ApplicationController
   def show
     @counseling_room = CounselingRoom.find(params[:id])
     @participations = @counseling_room.participations.where(status: true) #参加承認を受けているユーザーのみ表示
+    @participation = current_user.participations.where(counseling_room_id: @counseling_room.id)
   end
 
   def edit
     @counseling_room = CounselingRoom.find(params[:id])
+    @participations = @counseling_room.participations
   end
   
   def update

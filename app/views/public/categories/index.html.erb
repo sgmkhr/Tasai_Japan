@@ -1,2 +1,34 @@
-<h1>Public::Categories#index</h1>
-<p>Find me in app/views/public/categories/index.html.erb</p>
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'), root_path %>>
+  <%= link_to I18n.t('menu'),     menu_path %>>
+  <%= I18n.t('categories.title') %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('categories.title') %></h2></div>
+  
+<section>
+  
+  <!--新規カテゴリ作成バー-->
+  <div class='mb-3 row text-right'>
+    <%= form_with model: @category do |f| %>
+      <%= f.text_field :name, placeholder: I18n.t('categories.placeholder'), class: 'form-control col-md-5' %>
+      <%= f.submit I18n.t('create'), class: 'btn btn-sm ml-2' %>
+    <% end %>
+  </div>
+  
+  <% @categories.each do |category| %>
+    <div class='row border-bottom'>
+      
+      <div class='col-md-8'>
+        <%= link_to category.name, category_counseling_rooms_path(category.id) %>
+      </div>
+      
+      <div class='col-md-4 text-right'>
+        <i class="fa-solid fa-people-roof"></i>
+        <%= category.counseling_rooms.count %></br>
+      </div>
+      
+    </div>
+  <% end %>
+  
+</section>

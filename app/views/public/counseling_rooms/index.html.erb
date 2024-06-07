@@ -1,2 +1,42 @@
-<h1>Public::CounselingRooms#index</h1>
-<p>Find me in app/views/public/counseling_rooms/index.html.erb</p>
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),         root_path %>>
+  <%= link_to I18n.t('menu'),             menu_path %>>
+  <%= link_to I18n.t('categories.title'), categories_path %>>
+  <%= I18n.t('counseling_rooms.index.title') %>
+</p>
+
+<div class='section-title'><h2><%= @category.name %></h2></div>
+
+<section>
+  
+  <!--新規相談室作成のリンク-->
+  <div class='mb-3 text-right'>
+    <%= link_to new_category_counseling_room_path(@category.id) do %>
+      <i class="fa-solid fa-plus"></i>
+      <%= I18n.t('counseling_rooms.index.new') %>
+    <% end %>
+  </div>
+    
+  <% @counseling_rooms.each do |room| %>
+  
+    <div>
+      <i class="fa-solid fa-people-roof"></i>
+      <%= room.topic %>
+    </div>
+    
+    <div class='d-flex text-right'>
+      <div>
+        <i class="fa-solid fa-user-group"></i>
+        <%= room.participations.where(status: true).count %>
+      </div>
+      
+      <div class='ml-3 rounded'>
+        <%= current_user.get_participation_status(room) %>
+      </div>
+    </div>
+    
+    <hr>
+  
+  <% end %>
+  
+</section>

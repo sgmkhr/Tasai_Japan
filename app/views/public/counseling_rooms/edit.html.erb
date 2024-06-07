@@ -1,2 +1,56 @@
-<h1>Public::CounselingRooms#edit</h1>
-<p>Find me in app/views/public/counseling_rooms/edit.html.erb</p>
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),         root_path %>>
+  <%= link_to I18n.t('menu'),             menu_path %>>
+  <%= link_to I18n.t('categories.title'), categories_path %>>
+  <%= link_to @category.name, category_counseling_rooms_path(@category.id) %>>
+  <%= I18n.t('counseling_rooms.edit.title') %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('counseling_rooms.participations.title') %></h2></div>
+
+<section>
+  
+  <% @participations.each do |participation| %>
+  
+    <div class='row d-flex'>
+      
+      <div>
+        <%= participation.user.public_name %>
+        <span class=<%= participation.get_class_associated_with_position %>>
+          <%= participation.user.position %>
+        </span>
+        <p><%= participation.user.introduction %></p>
+      </div>
+      
+      <div>
+        <% if participation.status %>
+          <%= link_to I18n.t('participations.edit.leave'),    category_counseling_room_participation_path(@category.id, @counseling_room.id, participation.id),
+                                                              method: :destroy, 'data-confirm' => I18n.t('participations.destroy.confirmation.by_creator') %>
+        <% else %>
+          <%= link_to I18n.t('participations.edit.approve'),  category_counseling_room_participation_path(@category.id, @counseling_room.id, participation.id),
+                                                              method: :patch %>
+          
+          <%= link_to I18n.t('participations.edit.withdraw'), category_counseling_room_participation_path(@category.id, @counseling_room.id, participation.id),
+                                                              method: :destroy, 'data-confirm' => I18n.t('participations.destroy.confirmation.by_creator') %>
+        <% end %>
+      </div>
+      
+    </div>
+  
+  <% end %>
+  
+</section>
+
+<div class='section-title'><h2><%= I18n.t('counseling_rooms.edit.title') %></h2></div>
+
+<section>
+  
+  <%= render 'public/counseling_rooms/_form.html.erb', counseling_room: @counseling_room, btn_name: I18n.t('update') %>
+  
+  <p class='text-right'>
+    <%= link_to I18n.t('counseling_rooms.show.destroy.btn'), 
+                category_counseling_room_path(@category.id, @counseling_room.id), method: :delete,
+                'data-confirm' => I18n.t('counseling_rooms.show.destroy.confirmation') %>
+  </p>
+  
+</section>
