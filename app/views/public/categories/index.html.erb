@@ -1,0 +1,38 @@
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'), root_path %>>
+  <%= link_to I18n.t('menu'),     menu_path %>>
+  <%= I18n.t('categories.title') %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('categories.title') %></h2></div>
+
+<section>
+
+  <!--新規カテゴリ作成バー-->
+  <%= form_with model: @category do |f| %>
+    <div class='form-group row justify-content-end'>
+      <%= f.text_field :name, class: 'form-control col-md-5 col-9', placeholder: I18n.t('categories.placeholder') %>
+      <%= f.submit I18n.t('create'), class: 'btn btn-sm success-btn ml-3' %>
+    </div>
+  <% end %>
+
+  <div class='d-flex flex-wrap justify-content-center'>
+    <% @categories.each do |category| %>
+      <%= link_to category_counseling_rooms_path(category.id) do %>
+        <div class='category-item'>
+
+          <p class='overflow-hidden text-nowrap text-truncate'>
+            <%= category.name %>
+          </p>
+          
+          <div class='text-right'>
+            <i class="fa-solid fa-door-open"></i>
+            <%= category.counseling_rooms.count %></br>
+          </div>
+
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</section>

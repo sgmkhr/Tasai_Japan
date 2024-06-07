@@ -142,10 +142,10 @@ input {
   box-shadow:       none;
 }
 
-// posts/indexの共通レイアウト
-.post-index-item {
-  width:            300px;
-  height:           450px;
+// posts,categories,counseling_roomsのindexレイアウト
+.post-index-item,
+.category-item,
+.counseling-room-item {
   padding:          10px;
   margin:           10px;
   background-color: rgb(245, 243, 242);
@@ -153,11 +153,27 @@ input {
   border-radius:    5px;
   box-shadow:       5px 5px 5px #808080;
 }
-.post-index-item:hover {
+.post-index-item:hover,
+.category-item:hover,
+.counseling-room-item:hover {
   background-color: rgb(245, 243, 250);
 }
-.post-index-item:active {
+.post-index-item:active,
+.category-item:active,
+.counseling-room-item:active {
   box-shadow:       none;
+}
+.post-index-item {
+  width:            300px;
+  height:           450px;
+}
+.category-item {
+  width:            200px;
+  height:           80px;
+}
+.counseling-room-item {
+  width:            200px;
+  height:           120px;
 }
 .index-post-image {
   width:            100%;

@@ -375,4 +375,122 @@ Post.find_or_create_by!(title: 'Kamosui') do |po|
   po.user = henry # 日本生活中級者のユーザー
 end
 
+# 以下、相談室カテゴリデータ
+Category.find_or_create_by!(name: 'マナー')
+Category.find_or_create_by!(name: 'イベント')
+Category.find_or_create_by!(name: '常識')
+Category.find_or_create_by!(name: '食事')
+Category.find_or_create_by!(name: '居住地')
+Category.find_or_create_by!(name: '仕事')
+
+# 以下、相談室データ
+topic_manner = Category.find_by(name: 'マナー').counseling_rooms.find_or_create_by!(topic: 'マナーを知りたい！') do |room|
+  room.user = filipp
+  room.detail = '家に入るとき靴を脱いだり、食べる時に食器を持つのは最近知りました。よく海外から来た人に対して思う、直してほしいマナーがあれば教えてください。'
+end
+
+topic_music_fes = Category.find_by(name: 'イベント').counseling_rooms.find_or_create_by!(topic: '音楽フェス') do |room|
+  room.user = bolek
+  room.detail = '東京に住み始めました。東京かその周辺で、おすすめの音楽フェスがあれば、情報共有しましょう'
+  room.topic_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/music_fes.jpeg"),filename: 'music_fes.jpeg')
+end
+
+topic_transportation = Category.find_by(name: '常識').counseling_rooms.find_or_create_by!(topic: '交通機関') do |room|
+  room.user = bolek
+  room.detail = '電車やバスの乗り方にいつも困ってしまう。支払い方も最初に払ったり後に払ったり。説明してくれる人いませんか。'
+end
+
+topic_moral = Category.find_by(name: '常識').counseling_rooms.find_or_create_by!(topic: '日本で大事にされている常識') do |room|
+  room.user = koharu
+  room.detail = '日本で大事にされている常識を紹介していきたいなと思います！みんなのいろんな意見が聞きたいです。'
+end
+
+topic_dishes = Category.find_by(name: '食事').counseling_rooms.find_or_create_by!(topic: 'びっくりした日本料理') do |room|
+  room.user = filipp
+  room.detail = '日本にくるまで知らなかった料理がたくさんありました！最近は「もんじゃ」にびっくり。美味しかった！みんなのびっくり日本料理あれば知りたい!'
+  room.topic_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/monzya.jpeg"),filename: 'monzya.jpeg')
+end
+
+topic_table_manner = Category.find_by(name: '食事').counseling_rooms.find_or_create_by!(topic: '食べる時のマナー') do |room|
+  room.user = yuko
+  room.detail = '日本では暗黙の了解として気をつけている食べる時のいろんなマナーを話せたらいいなと思います！'
+end
+
+topic_residence = Category.find_by(name: '居住地').counseling_rooms.find_or_create_by!(topic: '住みやすい場所') do |room|
+  room.user = sana
+  room.detail = 'どこの県も素敵で住む場所が選べません。いいところあれば知りたいです。'
+end
+
+topic_job_search = Category.find_by(name: '仕事').counseling_rooms.find_or_create_by!(topic: '仕事探しのやり方') do |room|
+  room.user = char
+  room.detail = 'いろんな仕事探しのサイトがあるけど、日本語がネイティブじゃない人に向けておすすめの転職サイトとか仕事探しの方法があれば知りたい！'
+end
+
+topic_job_offer = Category.find_by(name: '仕事').counseling_rooms.find_or_create_by!(topic: 'お仕事募集') do |room|
+  room.user = dan
+  room.detail = '日本語が堪能じゃない人でもOKのお仕事募集を紹介しています。よかったら気軽に参加だけでもいいので覗いてみてください！'
+end
+
+topic_job_hunting = Category.find_by(name: '仕事').counseling_rooms.find_or_create_by!(topic: '就職活動で必要な準備') do |room|
+  room.user = henry
+  room.detail = '日本の企業に転職をしたいと思っています。転職活動のことでたくさん悩みがあるけど、教えてくれる人いたら参加お願いします。'
+end
+
+# 以下、相談室の参加者データ
+topic_manner.participations.find_or_create_by!(user_id: yuma.id)
+topic_manner.participations.find_or_create_by!(user_id: henry.id)
+topic_manner.participations.find_or_create_by!(user_id: ritsu.id)
+topic_manner.participations.find_or_create_by!(user_id: amado.id)
+
+topic_music_fes.participations.find_or_create_by!(user_id: jacobo.id)
+topic_music_fes.participations.find_or_create_by!(user_id: hana.id)
+topic_music_fes.participations.find_or_create_by!(user_id: abramo.id)
+topic_music_fes.participations.find_or_create_by!(user_id: ambre.id)
+topic_music_fes.participations.find_or_create_by!(user_id: ritsu.id)
+
+topic_transportation.participations.find_or_create_by!(user_id: ambre.id)
+topic_transportation.participations.find_or_create_by!(user_id: henry.id)
+topic_transportation.participations.find_or_create_by!(user_id: ritsu.id)
+topic_transportation.participations.find_or_create_by!(user_id: jacobo.id)
+
+topic_moral.participations.find_or_create_by!(user_id: brunello.id)
+topic_moral.participations.find_or_create_by!(user_id: henry.id)
+topic_moral.participations.find_or_create_by!(user_id: emi.id)
+topic_moral.participations.find_or_create_by!(user_id: amado.id)
+topic_moral.participations.find_or_create_by!(user_id: james.id)
+
+topic_dishes.participations.find_or_create_by!(user_id: james.id)
+topic_dishes.participations.find_or_create_by!(user_id: mio.id)
+topic_dishes.participations.find_or_create_by!(user_id: hana.id)
+topic_dishes.participations.find_or_create_by!(user_id: brunello.id)
+topic_dishes.participations.find_or_create_by!(user_id: celina.id)
+topic_dishes.participations.find_or_create_by!(user_id: ambre.id)
+
+topic_table_manner.participations.find_or_create_by!(user_id: amado.id)
+topic_table_manner.participations.find_or_create_by!(user_id: brunello.id)
+topic_table_manner.participations.find_or_create_by!(user_id: faina.id)
+topic_table_manner.participations.find_or_create_by!(user_id: celina.id)
+topic_table_manner.participations.find_or_create_by!(user_id: ritsu.id)
+
+topic_residence.participations.find_or_create_by!(user_id: faina.id)
+topic_residence.participations.find_or_create_by!(user_id: emi.id)
+topic_residence.participations.find_or_create_by!(user_id: celina.id)
+
+topic_job_search.participations.find_or_create_by!(user_id: henry.id)
+topic_job_search.participations.find_or_create_by!(user_id: amado.id)
+topic_job_search.participations.find_or_create_by!(user_id: brunello.id)
+topic_job_search.participations.find_or_create_by!(user_id: juana.id)
+topic_job_search.participations.find_or_create_by!(user_id: celina.id)
+
+topic_job_offer.participations.find_or_create_by!(user_id: emi.id)
+topic_job_offer.participations.find_or_create_by!(user_id: abramo.id)
+topic_job_offer.participations.find_or_create_by!(user_id: brunello.id)
+topic_job_offer.participations.find_or_create_by!(user_id: henry.id)
+topic_job_offer.participations.find_or_create_by!(user_id: ambre.id)
+
+topic_job_hunting.participations.find_or_create_by!(user_id: ritsu.id)
+topic_job_hunting.participations.find_or_create_by!(user_id: juana.id)
+topic_job_hunting.participations.find_or_create_by!(user_id: james.id)
+topic_job_hunting.participations.find_or_create_by!(user_id: jacobo.id)
+
 puts 'seedの実行が完了しました'

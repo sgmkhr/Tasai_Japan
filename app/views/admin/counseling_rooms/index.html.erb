@@ -1,0 +1,32 @@
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),         root_path %>>
+  <%= link_to I18n.t('menu'),             admin_root_path %>>
+  <%= link_to I18n.t('categories.title'), admin_categories_path %>>
+  <%= I18n.t('counseling_rooms.index.title') %>
+</p>
+
+<div class='section-title'><h2><%= @category.name %></h2></div>
+
+<section>
+
+  <div class='d-flex flex-wrap justify-content-center'>
+    <% @counseling_rooms.each do |room| %>
+      <%= link_to admin_category_counseling_room_path(@category.id, room.id) do %>
+        <div class='counseling-room-item'>
+
+          <p class='overflow-hidden text-nowrap text-truncate'>
+            <i class="fa-solid fa-people-roof"></i>
+            <%= room.topic %>
+          </p>
+
+          <div class='text-right'>
+            <i class="fa-solid fa-user-group"></i>
+            <%= room.participations.where(status: true).count %>
+          </div>
+
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</section>

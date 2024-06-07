@@ -11,6 +11,7 @@ ja:
   update: 更新
   search: 検索
   destroy: 削除
+  create: 作成
   search_blank: 全件表示は空で検索
   placeholder:
     canonical_name: 20文字以内の半角英数字
@@ -82,6 +83,62 @@ ja:
     validates: 他のユーザーの投稿編集画面には遷移できません。
   comments:
     validates: 他のユーザーのコメントは削除できません。
+  categories:
+    title: 相談室カテゴリ一覧
+    destroy:
+      success: カテゴリを削除しました。
+      confirmation: カテゴリ内の相談室も削除されますが、本当に削除してもいいですか？
+    create:
+      succeeded: カテゴリを作成しました。
+      failed: カテゴリの作成に失敗しました。
+    placeholder: 作成するカテゴリ名を入力
+  counseling_rooms:
+    title: 相談室を探す
+    index:
+      title: 相談室一覧
+      new: 新しく相談室を作成する
+    new:
+      title: 新規相談室作成
+    edit:
+      title: 相談室の情報編集
+    show:
+      title: 相談室詳細
+      creator: 相談室作成者：
+      destroy:
+        btn: この相談室を削除する
+        confirmation: この相談室内の全ての意見履歴も消えますが、本当に削除してもいいですか？
+      no_viewing_permission: (参加していないため、参加者や意見の閲覧権限はありません。)
+    create:
+      succeeded: 相談室を作成しました。
+      failed: 相談室の作成に失敗しました。
+    update:
+      succeeded: 相談室の情報を更新しました。
+      failed: 更新に失敗しました。
+    destroy: 相談室を削除しました。
+    ensure_creator: 他のユーザーが作成した相談室の情報は編集できません。
+  participations:
+    destroy:
+      by_participation: 相談室から脱退しました。
+      by_creator: 参加申請を却下しました。
+      confirmation:
+        by_participation: 本当にこの相談室から脱退していいですか？
+        by_creator: 本当にこのユーザーの参加を取り下げていいですか？
+        as_withdraw: 本当に参加申請を取り下げていいですか？
+    leave: 脱退する
+    withdraw: 参加申請を取り下げる
+    apply: 参加申請する
+    update: 参加を承認しました。
+    creator: オーナー
+    not_participating: 未参加
+    participating: 参加中
+    applying: 参加申請中
+    edit:
+      title: 参加申請者、参加者リスト
+      withdraw: 参加申請を却下する
+      leave: 脱退させる
+      approve: 参加申請を承認する
+      no_participations: 参加申請者はいません。
+
 
   enums:
     user:
@@ -159,6 +216,7 @@ ja:
     models:
       post: 投稿
       user: ユーザー
+      counseling_room: 相談室
     attributes:
       post:
         post_image: 投稿画像
@@ -166,7 +224,10 @@ ja:
         caption: 見出し
         body: 本文
         prefecture: 都道府県
-
+      counseling_room:
+        topic: お題
+        detail: 詳細
+        topic_image: お題にまつわるイメージ画像
   date:
     abbr_day_names:
     - 日

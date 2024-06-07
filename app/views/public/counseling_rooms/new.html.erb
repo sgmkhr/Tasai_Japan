@@ -1,0 +1,17 @@
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),         root_path %>>
+  <%= link_to I18n.t('menu'),             menu_path %>>
+  <%= link_to I18n.t('categories.title'), categories_path %>>
+  <%= link_to @category.name, category_counseling_rooms_path(@category.id) %>>
+  <%= I18n.t('counseling_rooms.new.title') %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('counseling_rooms.new.title') %></h2></div>
+
+<section>
+  
+  <%= render 'layouts/errors', obj: @counseling_room %>
+
+  <%= render 'public/counseling_rooms/form', category: @category, counseling_room: @counseling_room, btn_name: I18n.t('create') %>
+
+</section>
