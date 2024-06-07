@@ -1,0 +1,28 @@
+<% opinions.each do |opinion| %>
+  <div class='row d-flex mt-3'>
+
+    <div class='col-8'>
+      <%= link_to user_path(opinion.user.canonical_name) do %>
+        <% if opinion.user == current_user %>
+          <i class="fa-solid fa-user"></i>
+        <% else %>
+          <i class="fa-regular fa-user"></i>
+        <% end %>
+        <%= opinion.user.public_name %>
+      <% end %>
+    </div>
+
+    <% if opinion.user == current_user %>
+      <p class='text-right col-4'>
+        <%= link_to I18n.t('destroy'), category_counseling_room_opinion_path(category.id, counseling_room.id, opinion.id),
+                                       method: :delete, remote:true, data: {"turbolinks" => false},
+                                       'data-confirm' => I18n.t('opinions.destroy.confirmation') %>
+      </p>
+    <% end %>
+
+  </div>
+
+  <p><%= opinion.content %></p>
+
+  <hr>
+<% end %>
