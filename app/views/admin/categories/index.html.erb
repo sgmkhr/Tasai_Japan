@@ -8,22 +8,26 @@
 
 <section>
   
-  <% @categories.each do |category| %>
-    <div class='row border-bottom'>
-      
-      <div class='col-md-8'>
-        <%= link_to category.name, admin_category_counseling_rooms_path(category.id) %>
-      </div>
-      
-      <div class='col-md-4 text-right'>
-        <i class="fa-solid fa-people-roof"></i>
-        <%= category.counseling_rooms.count %></br>
-        
-        <%= link_to I18n.t('destroy'), admin_category_path(category.id), method: :delete, 
-                                       'data-confirm' => I18n.t('categories.destroy.confirmation') %>
-      </div>
-      
-    </div>
-  <% end %>
+  <div class='d-flex flex-wrap justify-content-center'>
+    <% @categories.each do |category| %>
+      <%= link_to admin_category_counseling_rooms_path(category.id) do %>
+        <div class='category-item'>
+
+          <p class='overflow-hidden text-nowrap text-truncate'>
+            <%= category.name %>
+          </p>
+          
+          <div class='text-right'>
+            <i class="fa-solid fa-door-open"></i>
+            <%= category.counseling_rooms.count %></br>
+            
+            <%= link_to I18n.t('destroy'), admin_category_path(category.id), method: :delete, 
+                                           'data-confirm' => I18n.t('categories.destroy.confirmation') %>
+          </div>
+
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   
 </section>

@@ -14,6 +14,7 @@ class Public::CounselingRoomsController < ApplicationController
   def create
     @counseling_room = CounselingRoom.new(counseling_room_params)
     @counseling_room.category_id = @category.id
+    @counseling_room.user_id = current_user.id
     if @counseling_room.save
       redirect_to category_counseling_room_path(@category.id, @counseling_room.id), notice: I18n.t('counseling_rooms.create.succeeded')
     else
@@ -25,12 +26,12 @@ class Public::CounselingRoomsController < ApplicationController
   def show
     @counseling_room = CounselingRoom.find(params[:id])
     @participations = @counseling_room.participations.where(status: true) #参加承認を受けているユーザーのみ表示
-    @participation = current_user.participations.where(counseling_room_id: @counseling_room.id)
+    @participation = current_user.participations.find_by(counseling_room_id: @counseling_room.id)
   end
 
   def edit
     @counseling_room = CounselingRoom.find(params[:id])
-    @participations = @counseling_room.participations
+    @participations = @counseling_room.participations.page(params[:page]).per(10)
   end
   
   def update

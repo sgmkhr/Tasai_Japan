@@ -8,7 +8,7 @@
 
 <div class='section-title'>
   <h2 class='overflow-hidden text-nowrap text-truncate'>
-    <%= @counseling_room.caption %>
+    <%= @counseling_room.topic %>
   </h2>
 </div>
 
@@ -20,14 +20,16 @@
 
 <section>
   
-  <div class='responsive-disabled'>
-    <%= image_tag @counseling_room.get_topic_image(400, 400) %>
-  </div>
-  <div class='resposive-displayed'>
-    <%= image_tag @counseling_room.get_topic_image(224, 224) %>
-  </div>
+  <% if @counseling_room.topic_image.present? %>
+    <div class='responsive-disabled'>
+      <%= image_tag @counseling_room.get_topic_image(400, 400) %>
+    </div>
+    <div class='resposive-displayed'>
+      <%= image_tag @counseling_room.get_topic_image(224, 224) %>
+    </div>
+  <% end %>
   
-  <p><%= @counseling_room.caption %></p>
+  <h4 class='mt-5'><%= @counseling_room.topic %></h4>
   
   <p><%= @counseling_room.detail %></p>
   
@@ -35,13 +37,11 @@
   
   <div>
     <i class="fa-solid fa-user-group"></i>
-    <div>
-      <% @participations.each do |participation| %>
-        <%= link_to admin_user_path(participation.user.id) do %>
-          <%= image_tag participation.user.get_profile_image(15, 15), class: 'rounded-circle mr-2' %>
-        <% end %>
+    <% @participations.each do |participation| %>
+      <%= link_to admin_user_path(participation.user.id) do %>
+        <%= image_tag participation.user.get_profile_image(40, 40), class: 'rounded-circle m-1' %>
       <% end %>
-    </div>
+    <% end %>
   </div>
   
   <hr>

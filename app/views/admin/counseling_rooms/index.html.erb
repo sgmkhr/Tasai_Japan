@@ -8,21 +8,25 @@
 <div class='section-title'><h2><%= @category.name %></h2></div>
 
 <section>
-  
-  <% @counseling_rooms.each do |room| %>
-  
-    <div>
-      <i class="fa-solid fa-people-roof"></i>
-      <%= room.topic %>
-    </div>
-    
-    <div class='text-right'>
-      <i class="fa-solid fa-user-group"></i>
-      <%= room.participations.where(status: true).count %>
-    </div>
-    
-    <hr>
-  
-  <% end %>
-  
+
+  <div class='d-flex flex-wrap justify-content-center'>
+    <% @counseling_rooms.each do |room| %>
+      <%= link_to admin_category_counseling_room_path(@category.id, room.id) do %>
+        <div class='counseling-room-item'>
+
+          <p class='overflow-hidden text-nowrap text-truncate'>
+            <i class="fa-solid fa-people-roof"></i>
+            <%= room.topic %>
+          </p>
+
+          <div class='text-right'>
+            <i class="fa-solid fa-user-group"></i>
+            <%= room.participations.where(status: true).count %>
+          </div>
+
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
 </section>

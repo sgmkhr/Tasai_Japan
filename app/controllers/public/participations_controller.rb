@@ -4,8 +4,10 @@ class Public::ParticipationsController < ApplicationController
   before_action :ensure_room_creator,   only: [:update]
   
   def create
-    @counseling_room.participations.create(user_id: current_user.id)
-    @participation = current_user.participations.where(counseling_room_id: @counseling_room.id)
+    @participation = Participation.new
+    @participation.counseling_room_id = @counseling_room.id
+    @participation.user_id = current_user.id
+    @participation.save
     # 非同期通信のため、participations/create.js.erbが呼び出される
   end
   
@@ -17,13 +19,12 @@ class Public::ParticipationsController < ApplicationController
   
   def destroy
     participation = Participation.find(params[:id])
-    if participation.user == current_user   #参加者による脱退の場合
-      flash[:notice] = I18n.t('participations.destroy.by_participation')
-    else                                    #作成者による参加却下の場合
-      flash[:notice] = I18n.t('participations.destroy.by_creator')
-    end
     participation.destroy
-    redirect_to request.referer
+    if participation.user == current_user   #参加者による脱退の場合
+      redirect_to category_counseling_room_path(@category.id, @counseling_room.id), notice: I18n.t('participations.destroy.by_participation')
+    else                                    #作成者による参加却下の場合
+      redirect_to edit_category_counseling_room_path(@category.id, @counseling_room.id), notice: I18n.t('participations.destroy.by_creator')
+    end
   end
   
   private

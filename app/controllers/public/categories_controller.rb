@@ -2,7 +2,7 @@ class Public::CategoriesController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @categories = Category.pade(params[:page]).per(30)
+    @categories = Category.page(params[:page]).per(30)
     @category = Category.new
   end
   

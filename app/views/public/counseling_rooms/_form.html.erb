@@ -1,6 +1,6 @@
-<%= form_with model: counseling_room do |f| %>
+<%= form_with model: [category, counseling_room] do |f| %>
 
-  <div class='form-group row'>
+  <div class='form-group row no-shadow'>
     <%= f.label :topic_image %>
     <%= f.file_field :topic_image, accept: 'image/*' %>
   </div>

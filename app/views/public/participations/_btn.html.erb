@@ -1,25 +1,24 @@
-<% if couseling_room.user == curent_user %>
+<%= current_user.get_participation_status(@counseling_room) %></br>
+
+<% if counseling_room.user == current_user %>
       
   <!--作成者にのみ表示の相談室編集リンク-->
   <%= link_to edit_category_counseling_room_path(category.id, counseling_room.id) do %>
     <i class="fa-solid fa-gear"></i>
   <% end %>
   
-<% elsif participation.status.present? %>
+<% elsif participation.present? %>
 
   <% if participation.status %>
-  
     <%= link_to I18n.t('participations.leave'),    category_counseling_room_participation_path(category.id, counseling_room.id, participation.id), 
                                                    method: :delete, 'data-confirm' => I18n.t('participations.destroy.confirmation.by_participation') %>
   <% else %>
-  
     <%= link_to I18n.t('participations.withdraw'), category_counseling_room_participation_path(category.id, counseling_room.id, participation.id), 
                                                    method: :delete, 'data-confirm' => I18n.t('participations.destroy.confirmation.as_withdraw') %>
-                                                   
   <% end %>
   
 <% else %>
 
-  <%= link_to I18n.t('participations.apply'),      category_counseling_room_participation_path(category.id, counseling_room.id),
+  <%= link_to I18n.t('participations.apply'),      category_counseling_room_participations_path(category.id, counseling_room.id),
                                                    method: :post, remote: true, data: {"turbolinks" => false} %>
 <% end %>

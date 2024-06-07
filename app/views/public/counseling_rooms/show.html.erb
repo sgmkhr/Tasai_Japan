@@ -8,58 +8,57 @@
 
 <div class='section-title'>
   <h2 class='overflow-hidden text-nowrap text-truncate'>
-    <%= @counseling_room.caption %>
+    <%= @counseling_room.topic %>
   </h2>
 </div>
 
 <section>
-  
+
   <div class='mb-3 text-right'>
-    
-    <%= current_user.get_participation_status(@counseling_room) %>
-  
     <div class='participation-status-display'>
       <%= render 'public/participations/btn', counseling_room: @counseling_room, category: @category, participation: @participation %>
     </div>
-    
+
   </div>
 
-  <div class='responsive-disabled'>
-    <%= image_tag @counseling_room.get_topic_image(400, 400) %>
-  </div>
-  <div class='resposive-displayed'>
-    <%= image_tag @counseling_room.get_topic_image(224, 224) %>
-  </div>
-  
-  <p><%= @counseling_room.caption %></p>
-  
+  <% if @counseling_room.topic_image.present? %>
+    <div class='responsive-disabled'>
+      <%= image_tag @counseling_room.get_topic_image(400, 400) %>
+    </div>
+    <div class='resposive-displayed'>
+      <%= image_tag @counseling_room.get_topic_image(224, 224) %>
+    </div>
+  <% end %>
+
+  <h4 class='mt-3'><%= @counseling_room.topic %></h4>
+
   <p><%= @counseling_room.detail %></p>
   
+  <div class='text-right'><%= I18n.t('counseling_rooms.show.creator') + '' + @counseling_room.user.public_name %></div>
+
   <hr>
-  
-  <% if @participations.exists?(user_id: current_user.id) %>
-  
+
+  <% if (current_user == @counseling_room.user) || @participations.exists?(user_id: current_user.id) %>
+
     <div>
       <i class="fa-solid fa-user-group"></i>
-      <div>
-        <% @participations.each do |participation| %>
-          <%= link_to user_path(participation.user_id) do %>
-            <%= image_tag participation.user.get_profile_image(15, 15), class: 'rounded-circle mr-2' %>
-          <% end %>
+      <% @participations.each do |participation| %>
+        <%= link_to user_path(participation.user_id) do %>
+          <%= image_tag participation.user.get_profile_image(40, 40), class: 'rounded-circle m-1' %>
         <% end %>
-      </div>
+      <% end %>
     </div>
-    
+
     <hr>
-    
+
     <!--後ほどここに意見一覧作成予定-->
-    
+
   <% else %>
-  
-    <p class='text-center'>
+
+    <p class='text-center pb-5'>
       <%= I18n.t('counseling_rooms.show.no_viewing_permission') %>
     </p>
-    
+
   <% end %>
-  
+
 </section>

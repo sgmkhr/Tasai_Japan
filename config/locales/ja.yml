@@ -85,7 +85,7 @@ ja:
     validates: 他のユーザーのコメントは削除できません。
   categories:
     title: 相談室カテゴリ一覧
-    destroy: 
+    destroy:
       success: カテゴリを削除しました。
       confirmation: カテゴリ内の相談室も削除されますが、本当に削除してもいいですか？
     create:
@@ -101,14 +101,13 @@ ja:
       title: 新規相談室作成
     edit:
       title: 相談室の情報編集
-    participations:
-      title: 参加申請者リスト
     show:
       title: 相談室詳細
+      creator: 相談室作成者：
       destroy:
         btn: この相談室を削除する
         confirmation: この相談室内の全ての意見履歴も消えますが、本当に削除してもいいですか？
-      no_viewing_permission: 参加していないため、参加者や意見の閲覧権限はありません。 
+      no_viewing_permission: (参加していないため、参加者や意見の閲覧権限はありません。)
     create:
       succeeded: 相談室を作成しました。
       failed: 相談室の作成に失敗しました。
@@ -134,11 +133,13 @@ ja:
     participating: 参加中
     applying: 参加申請中
     edit:
+      title: 参加申請者、参加者リスト
       withdraw: 参加申請を却下する
       leave: 脱退させる
       approve: 参加申請を承認する
-  
-    
+      no_participations: 参加申請者はいません。
+
+
   enums:
     user:
       position:

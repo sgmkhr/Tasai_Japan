@@ -11,9 +11,7 @@ class CounselingRoom < ApplicationRecord
   validates :detail, presence: true, length: { maximum: 2000 }
   
   def get_topic_image(width, height)
-    if topic_image
-      topic_image.variant(resize_to_limit: [width, height]).processed
-    end
+    topic_image.variant(resize_to_limit: [width, height]).processed
   end
 
 end

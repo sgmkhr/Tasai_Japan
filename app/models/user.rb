@@ -66,14 +66,14 @@ class User < ApplicationRecord
 
   # 相談室の参加ステータスを確認するためのメソッド
   def get_participation_status(room)
-    if current_user == room.user
+    if id == room.user_id
       I18n.t('participations.creator')
-    elsif participations.!exists?(counseling_room_id: room.id)
-      I18n.t('participations.not_participating')
-    elsif participations.find_by(counseling_room_id: room.id).status
+    elsif participations.exists?(counseling_room_id: room.id) && participations.find_by(counseling_room_id: room.id).status
       I18n.t('participations.participating')
-    else
+    elsif participations.exists?(counseling_room_id: room.id)
       I18n.t('participations.applying')
+    else
+      I18n.t('participations.not_participating')
     end
   end
 

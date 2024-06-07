@@ -3,41 +3,57 @@
   <%= link_to I18n.t('menu'),             menu_path %>>
   <%= link_to I18n.t('categories.title'), categories_path %>>
   <%= link_to @category.name, category_counseling_rooms_path(@category.id) %>>
+  <%= link_to @counseling_room.topic, category_counseling_room_path(@category.id, @counseling_room.id) %>>
   <%= I18n.t('counseling_rooms.edit.title') %>
 </p>
 
-<div class='section-title'><h2><%= I18n.t('counseling_rooms.participations.title') %></h2></div>
+<div class='section-title'><h2><%= I18n.t('participations.edit.title') %></h2></div>
 
 <section>
   
-  <% @participations.each do |participation| %>
+  <% if @participations.present? %>
   
-    <div class='row d-flex'>
-      
-      <div>
-        <%= participation.user.public_name %>
-        <span class=<%= participation.get_class_associated_with_position %>>
-          <%= participation.user.position %>
-        </span>
-        <p><%= participation.user.introduction %></p>
+    <% @participations.each do |participation| %>
+    
+      <div class='row d-flex'>
+        
+        <div class='col-md-7'>
+          <%= participation.user.public_name %>
+          <span class=<%= participation.user.get_class_associated_with_position %>>
+            <%= participation.user.position_i18n %>
+          </span>
+        </div>
+        
+        <div class='col-md-5 text-right'>
+          <% if participation.status %>
+            <%= link_to I18n.t('participations.edit.leave'),     category_counseling_room_participation_path(@category.id, @counseling_room.id, participation.id),
+                                                                 method: :delete, 'data-confirm' => I18n.t('participations.destroy.confirmation.by_creator') %>
+          <% else %>
+            <%= link_to I18n.t('participations.edit.approve'),   category_counseling_room_participation_path(@category.id, @counseling_room.id, participation.id),
+                                                                 method: :patch %>
+            
+            |<%= link_to I18n.t('participations.edit.withdraw'), category_counseling_room_participation_path(@category.id, @counseling_room.id, participation.id),
+                                                                 method: :delete, 'data-confirm' => I18n.t('participations.destroy.confirmation.by_creator') %>
+          <% end %>
+        </div>
+        
       </div>
       
-      <div>
-        <% if participation.status %>
-          <%= link_to I18n.t('participations.edit.leave'),    category_counseling_room_participation_path(@category.id, @counseling_room.id, participation.id),
-                                                              method: :destroy, 'data-confirm' => I18n.t('participations.destroy.confirmation.by_creator') %>
-        <% else %>
-          <%= link_to I18n.t('participations.edit.approve'),  category_counseling_room_participation_path(@category.id, @counseling_room.id, participation.id),
-                                                              method: :patch %>
-          
-          <%= link_to I18n.t('participations.edit.withdraw'), category_counseling_room_participation_path(@category.id, @counseling_room.id, participation.id),
-                                                              method: :destroy, 'data-confirm' => I18n.t('participations.destroy.confirmation.by_creator') %>
-        <% end %>
-      </div>
-      
-    </div>
+      <p><%= participation.user.introduction %></p>
+        
+      <hr>
+    
+    <% end %>
+    
+  <% else %>
+  
+    <p class='text-center'><%= I18n.t('participations.edit.no_participations') %></p>
   
   <% end %>
+  
+  <div class='d-flex justify-content-center py-3'>
+    <%= paginate @participations, theme: 'bootstrap-5' %>
+  </div>
   
 </section>
 
@@ -45,9 +61,11 @@
 
 <section>
   
-  <%= render 'public/counseling_rooms/_form.html.erb', counseling_room: @counseling_room, btn_name: I18n.t('update') %>
+  <%= render 'layouts/errors', obj: @counseling_room %>
   
-  <p class='text-right'>
+  <%= render 'public/counseling_rooms/form', category: @category, counseling_room: @counseling_room, btn_name: I18n.t('update') %>
+  
+  <p class='text-right pb-5'>
     <%= link_to I18n.t('counseling_rooms.show.destroy.btn'), 
                 category_counseling_room_path(@category.id, @counseling_room.id), method: :delete,
                 'data-confirm' => I18n.t('counseling_rooms.show.destroy.confirmation') %>
