@@ -1,21 +1,21 @@
 <%= form_with model: [category, counseling_room] do |f| %>
 
-  <div class='form-group row no-shadow'>
-    <%= f.label :topic_image %>
+  <div class='form-group row d-flex no-shadow'>
+    <%= f.label :topic_image, class: 'col-md-3' %>
     <%= f.file_field :topic_image, accept: 'image/*' %>
   </div>
 
-  <div class='form-group row'>
-    <%= f.label :topic %>
+  <div class='form-group'>
+    <%= f.label :topic, class: 'required' %>
     <%= f.text_field :topic, class: 'form-control' %>
   </div>
-  
-  <div class='form-group row'>
-    <%= f.label :detail %>
+
+  <div class='form-group'>
+    <%= f.label :detail, class: 'required' %>
     <%= f.text_area :detail, class: 'form-control' %>
   </div>
-  
-  <div class='form-group row'>
+
+  <div class='form-group'>
     <%= f.submit btn_name, class: 'btn btn-sm success-btn' %>
   </div>
 

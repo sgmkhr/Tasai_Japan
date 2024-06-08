@@ -36,7 +36,7 @@ class Public::UsersController < ApplicationController
     if params[:latest]
       @users = User.where(is_active: true).latest.page(params[:page]).per(18)
     elsif params[:old]
-      @posts = User.where(is_active: true).old.page(params[:page]).per(18)
+      @users = User.where(is_active: true).old.page(params[:page]).per(18)
     elsif params[:posts_count]
       users = User.where(is_active: true).sort {|a,b| 
         b.posts.size <=> a.posts.size

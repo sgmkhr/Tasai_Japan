@@ -249,7 +249,7 @@ ja:
       counseling_room:
         topic: お題
         detail: 詳細
-        topic_image: お題にまつわるイメージ画像
+        topic_image: イメージ画像
   date:
     abbr_day_names:
     - 日
