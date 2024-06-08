@@ -23,11 +23,18 @@
     </h5>
     
     <p class='text-right col-md-6'>
+      
       <i class="fa-regular fa-comment"></i>
       <span class='comment-count'><%= @post.comments.count %></span>
+      
       <span id='post_favorite_btn_<%= @post.id %>' class='ml-3'>
         <%= render 'public/post_favorites/btn', a_post: @post %>
       </span>
+      
+      <span id='bookmark_btn_<%= @post.id %>' class='ml-3'>
+        <%= render 'public/bookmarks/btn', a_post: @post %>
+      </span>
+      
     </p>
     
   </div>

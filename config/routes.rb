@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     get 'users/:canonical_name/unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :post_favorites, only: [:create, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy] do
         resource :comment_favorites, only: [:create, :destroy]
       end

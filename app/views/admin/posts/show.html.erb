@@ -23,6 +23,7 @@
     </h5>
     
     <p class='text-right col-md-6'>
+      
       <i class="fa-regular fa-comment"></i>
       <%= @post.comments.count %>
       
@@ -30,6 +31,12 @@
         <i class="fa-regular fa-heart"></i>
         <%= @post.post_favorites.count %>
       </span>
+      
+      <span class='ml-3'>
+        <i class="fa-regular fa-bookmark"></i>
+        <%= @post.bookmarks.count %>
+      </span>
+    
     </p>
     
   </div>
