@@ -157,6 +157,8 @@ ja:
     user_latest: 新参順
     user_old: 古参順
     posts_count: 投稿数順
+    participations_count: 参加人数順
+    opinions_count: 盛り上がり順
 
   enums:
     user:

@@ -23,6 +23,12 @@
       <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
     </div>
   <% end %>
+  
+  <!--ソート切り替えリンク-->
+  <div class='text-center py-2'>
+  <%= link_to I18n.t('sort.latest'), categories_path(latest: true) %>
+  |<%= link_to I18n.t('sort.old'),   categories_path(old: true) %>
+  </div> 
 
   <div class='d-flex flex-wrap justify-content-center'>
     

@@ -25,6 +25,21 @@
     </div>
   <% end %>
   
+  <!--ソート切り替えリンク-->
+  <div class='row d-flex justify-content-center py-2'>
+    <div class='col-md-5 text-md-right p-0'>
+      <%= link_to I18n.t('sort.latest'), category_counseling_rooms_path(@category.id, latest: true) %>
+      |<%= link_to I18n.t('sort.old'),   category_counseling_rooms_path(@category.id, old: true) %>
+    </div>
+    <span class='responsive-disabled'>|</span>
+    <div class='col-md-5 text-md-left p-0'>
+      <%= link_to I18n.t('sort.participations_count'),
+                                         category_counseling_rooms_path(@category.id, participations_count: true) %>
+      |<%= link_to I18n.t('sort.opinions_count'),
+                                         category_counseling_rooms_path(@category.id, opinions_count: true) %>
+    </div>
+  </div> 
+  
   <div class='d-flex flex-wrap justify-content-center'>
     
     <% if @counseling_rooms.present? %>
