@@ -2,7 +2,11 @@ class Admin::CategoriesController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @categories = Category.page(params[:page]).per(30)
+    if params[:content]
+      @categories = Category.search_for(params[:content]).page(params[:page]).per(30)
+    else
+      @categories = Category.page(params[:page]).per(30)
+    end
   end
   
   def destroy

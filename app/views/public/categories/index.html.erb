@@ -15,24 +15,40 @@
       <%= f.submit I18n.t('create'), class: 'btn btn-sm success-btn ml-3' %>
     </div>
   <% end %>
+  
+  <!--検索バー-->
+  <%= form_with url: categories_path, method: :get, local: true do |f| %>
+    <div class='form-group row justify-content-end'>
+      <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
+      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+    </div>
+  <% end %>
 
   <div class='d-flex flex-wrap justify-content-center'>
-    <% @categories.each do |category| %>
-      <%= link_to category_counseling_rooms_path(category.id) do %>
-        <div class='category-item'>
-
-          <p class='overflow-hidden text-nowrap text-truncate'>
-            <%= category.name %>
-          </p>
-          
-          <div class='text-right'>
-            <i class="fa-solid fa-door-open"></i>
-            <%= category.counseling_rooms.count %></br>
+    
+    <% if @categories.present? %>
+    
+      <% @categories.each do |category| %>
+        <%= link_to category_counseling_rooms_path(category.id) do %>
+          <div class='category-item'>
+  
+            <p class='overflow-hidden text-nowrap text-truncate'>
+              <%= category.name %>
+            </p>
+            
+            <div class='text-right'>
+              <i class="fa-solid fa-door-open"></i>
+              <%= category.counseling_rooms.count %></br>
+            </div>
+  
           </div>
-
-        </div>
+        <% end %>
       <% end %>
+      
+    <% else %><!--カテゴリが存在しない場合-->
+      <p class='mt-5 text-center'><%= I18n.t('categories.index.no_exist') %></p>
     <% end %>
+    
   </div>
 
 </section>

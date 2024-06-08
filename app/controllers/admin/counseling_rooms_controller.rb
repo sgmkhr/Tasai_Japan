@@ -3,7 +3,11 @@ class Admin::CounselingRoomsController < ApplicationController
 
   def index
     @category = Category.find(params[:category_id])
-    @counseling_rooms = @category.counseling_rooms.page(params[:page]).per(20)
+    if params[:content]
+      @counseling_rooms = CounselingRoom.search_with_category_for(params[:content], @category).page(params[:page]).per(20)
+    else
+      @counseling_rooms = @category.counseling_rooms.page(params[:page]).per(20)
+    end
   end
 
   def show

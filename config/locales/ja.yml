@@ -92,12 +92,15 @@ ja:
     create:
       succeeded: カテゴリを作成しました。
       failed: カテゴリの作成に失敗しました。
+    index:
+      no_exist: カテゴリが存在しません。
     placeholder: 作成するカテゴリ名を入力
   counseling_rooms:
     title: 相談室を探す
     index:
       title: 相談室一覧
       new: 新しく相談室を作成する
+      no_exist: 相談室が存在しません。
     new:
       title: 新規相談室作成
     edit:

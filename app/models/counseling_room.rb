@@ -14,5 +14,11 @@ class CounselingRoom < ApplicationRecord
   def get_topic_image(width, height)
     topic_image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  def self.search_with_category_for(content, category)
+    counseling_rooms = CounselingRoom.where(category_id: category.id)
+    return counseling_rooms if content == ''
+    counseling_rooms.where(['topic LIKE(?) OR detail LIKE(?)', "%#{content}%", "%#{content}%"])
+  end
 
 end
