@@ -3,9 +3,13 @@ class Post < ApplicationRecord
   has_one_attached :post_image
   
   belongs_to :user
+  
   has_many :comments,       dependent: :destroy
   has_many :post_favorites, dependent: :destroy
   has_many :bookmarks,      dependent: :destroy
+  
+  scope :latest, -> { order(created_at: :desc) }
+  scope :old, -> { order(created_at: :asc) }
 
   enum prefecture: {
     unspecified: 0, hokkaido: 1, aomori: 2, iwate: 3, miyagi: 4, akita: 5, yamagata: 6, fukushima: 7,

@@ -16,6 +16,13 @@
     </div>
   <% end %>
   
+  <!--ソート切り替えリンク-->
+  <div class='text-center py-2'>
+  <%= link_to I18n.t('sort.latest'), posts_path(latest: true) %>
+  |<%= link_to I18n.t('sort.old'), posts_path(old: true) %>
+  |<%= link_to I18n.t('sort.favorites_count'), posts_path(favorites_count: true) %>
+  </div> 
+  
   <!--投稿一覧表示-->
   <%= render 'admin/posts/index', posts: @posts %>
   

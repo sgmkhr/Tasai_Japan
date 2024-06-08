@@ -8,10 +8,19 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    if params[:content]
-      @posts = Post.search_for(params[:content]).page(params[:page]).per(12)
+    if params[:latest]
+      @posts = Post.latest.page(params[:page]).per(12)
+    elsif params[:old]
+      @posts = Post.old.page(params[:page]).per(12)
+    elsif params[:favorites_count]
+      posts = Post.all.page(params[:page]).per(12).sort {|a,b| 
+        b.post_favorites.size <=> a.post_favorites.size
+      }
+      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(12)
+    elsif params[:content]
+      @posts = Post.latest.search_for(params[:content]).page(params[:page]).per(12)
     else
-      @posts = Post.page(params[:page]).per(12)
+      @posts = Post.latest.page(params[:page]).per(12)
     end
   end
 
