@@ -110,6 +110,11 @@ input {
   box-shadow:       5px 5px 5px #808080;
 }
 
+.required::after {
+  content: '  *';
+  color:   #8f2e14;
+}
+
 .no-shadow input { // radio_buttonとfile_fieldの親要素に設定
   box-shadow:       none;
 }
@@ -191,7 +196,8 @@ input {
 }
 
 .index-post-image {
-  width:            100%;
+  min-width:        100%;
+  max-width:        100%;
   max-height:       208px;
   min-height:       208px;
 }
