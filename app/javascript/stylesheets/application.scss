@@ -223,6 +223,11 @@ input {
 #tab-contents .tab {
   width:      100%;
 }
+
+.tab-title {
+  border-top:    1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
                                             // 以下、スマホサイズのレスポンシブ対応
 @media screen and (max-width:768px) {
   section {
