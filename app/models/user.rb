@@ -6,11 +6,16 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  has_many :posts, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :counseling_rooms, dependent: :destroy
-  has_many :participations, dependent: :destroy
-  has_many :opinions, dependent: :destroy
+  with_options dependent: :destroy do
+    has_many :posts
+    has_many :comments
+    has_many :counseling_rooms
+    has_many :participations
+    has_many :opinions
+    has_many :post_favorites
+    has_many :comment_favorites
+    has_many :opinion_favorites
+  end
 
   enum position: { beginner: 0, intermediate: 1, veteran: 2 }
 

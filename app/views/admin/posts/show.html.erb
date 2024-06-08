@@ -16,7 +16,23 @@
     <%= image_tag @post.get_post_image(224, 224) %>
   </div>
 
-  <h5 class='pt-3'><%= @post.title %></h5>
+  <div class='pt-3 d-flex flex-md-row flex-column-reverse'>
+    
+    <h5 class='col-md-6'>
+      <%= @post.title %>
+    </h5>
+    
+    <p class='text-right col-md-6'>
+      <i class="fa-regular fa-comment"></i>
+      <%= @post.comments.count %>
+      
+      <span class='ml-3'>
+        <i class="fa-regular fa-heart"></i>
+        <%= @post.post_favorites.count %>
+      </span>
+    </p>
+    
+  </div>
 
   <p><%= @post.caption %></p>
 
@@ -36,16 +52,10 @@
     </div>
   </div>
   
-  <div class='row pb-3'>
-    <div class='col-8'>
-      <%= link_to admin_user_path(@post.user.canonical_name) do %>
-        by <i class="fa-regular fa-user"></i><%= @post.user.public_name %>
-      <% end %>
-    </div>
-    <div class='col-4 text-right'>
-      <i class="fa-regular fa-comment"></i>
-      <span class='comment-count'><%= @post.comments.count %></span>
-    </div>
+  <div class='pb-3'>
+    <%= link_to admin_user_path(@post.user.canonical_name) do %>
+      by <i class="fa-regular fa-user"></i><%= @post.user.public_name %>
+    <% end %>
   </div>
   
   <hr>

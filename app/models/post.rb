@@ -3,7 +3,8 @@ class Post < ApplicationRecord
   has_one_attached :post_image
   
   belongs_to :user
-  has_many :comments, dependent: :destroy
+  has_many :comments,       dependent: :destroy
+  has_many :post_favorites, dependent: :destroy
 
   enum prefecture: {
     unspecified: 0, hokkaido: 1, aomori: 2, iwate: 3, miyagi: 4, akita: 5, yamagata: 6, fukushima: 7,
@@ -35,6 +36,10 @@ class Post < ApplicationRecord
   def self.search_with_user_for(content, user)
     return Post.where(user_id: user.id) if content == ''
     Post.where(user_id: user.id).where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
+  end
+  
+  def favorited_by?(user)
+    post_favorites.exists?(user_id: user.id)
   end
 
 end
