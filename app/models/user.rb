@@ -16,10 +16,13 @@ class User < ApplicationRecord
     has_many :comment_favorites
     has_many :opinion_favorites
     has_many :bookmarks
+    has_many :post_views
+    has_many :active_profile_views,  class_name: 'ProfileView', foreign_key: 'viewer_id'
+    has_many :passive_profile_views, class_name: 'ProfileView', foreign_key: 'viewed_id'
   end
-  
+
   has_many :bookmarked_posts, through: :bookmarks, source: :post
-  
+
   scope :latest, -> { order(created_at: :desc) }
   scope :old,    -> { order(created_at: :asc) }
 
@@ -83,12 +86,12 @@ class User < ApplicationRecord
       I18n.t('participations.not_participating')
     end
   end
-  
+
   def self.search_for(content)
     return User.all if content == ''
     User.where(['public_name LIKE(?) OR canonical_name LIKE(?) OR introduction LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
-  
+
   def search_with_bookmarks_for(content)
     return self.bookmarked_posts if content == ''
     self.bookmarked_posts.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])

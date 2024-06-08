@@ -11,6 +11,12 @@
 
   <div class='row justify-content-center'>
     <div class='col-md-4'><!--ユーザーの情報-->
+      
+      <p>
+        <i class="fa-solid fa-chart-line"></i>
+        <%= I18n.t('views_count.profile') %>
+        <%= @user.passive_profile_views.count %>
+      </p>
 
       <%= image_tag @user.get_profile_image(60, 60), class: 'rounded-circle' %>
 
@@ -69,13 +75,13 @@
                 <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
               </div>
             <% end %>
-            
+
             <!--ソート切り替えリンク-->
             <div class='text-center py-2'>
             <%= link_to I18n.t('sort.latest'), user_path(@user.canonical_name, latest: true) %>
             |<%= link_to I18n.t('sort.old'), user_path(@user.canonical_name, old: true) %>
             |<%= link_to I18n.t('sort.favorites_count'), user_path(@user.canonical_name, favorites_count: true) %>
-            </div> 
+            </div>
 
             <!--ユーザーの投稿一覧表示-->
             <%= render 'public/posts/index', posts: @posts %>
@@ -123,13 +129,13 @@
             <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
           </div>
         <% end %>
-        
+
         <!--ソート切り替えリンク-->
         <div class='text-center py-2'>
         <%= link_to I18n.t('sort.latest'), user_path(@user.canonical_name, latest: true) %>
         |<%= link_to I18n.t('sort.old'), user_path(@user.canonical_name, old: true) %>
         |<%= link_to I18n.t('sort.favorites_count'), user_path(@user.canonical_name, favorites_count: true) %>
-        </div> 
+        </div>
 
         <!--ユーザーの投稿一覧表示-->
         <%= render 'public/posts/index', posts: @posts %>

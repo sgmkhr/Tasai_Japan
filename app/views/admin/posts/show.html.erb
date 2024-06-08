@@ -24,18 +24,23 @@
     
     <p class='text-right col-md-6'>
       
-      <i class="fa-regular fa-comment"></i>
-      <%= @post.comments.count %>
+      <span class='mr-3'>
+        <i class="fa-regular fa-bookmark"></i>
+        <%= @post.bookmarks.count %>
+      </span>
       
-      <span class='ml-3'>
+      <span class='mr-3'>
         <i class="fa-regular fa-heart"></i>
         <%= @post.post_favorites.count %>
       </span>
       
-      <span class='ml-3'>
-        <i class="fa-regular fa-bookmark"></i>
-        <%= @post.bookmarks.count %>
+      <span class='mr-3'>
+        <i class="fa-regular fa-comment"></i>
+        <%= @post.comments.count %>
       </span>
+      
+      <i class="fa-solid fa-chart-line"></i>
+      <%= @post.post_views.count %>
     
     </p>
     

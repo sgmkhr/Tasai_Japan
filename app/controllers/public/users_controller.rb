@@ -26,6 +26,10 @@ class Public::UsersController < ApplicationController
     else
       @bookmarked_posts = current_user.bookmarked_posts.latest.page(params[:page]).per(12)
     end
+    
+    unless ProfileView.find_by(viewer_id: current_user.id, viewed_id: @user.id)
+      current_user.active_profile_views.create(viewed_id: @user.id)
+    end
   end
 
   def index
