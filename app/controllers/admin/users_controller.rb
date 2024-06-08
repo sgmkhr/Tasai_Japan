@@ -23,7 +23,7 @@ class Admin::UsersController < ApplicationController
     if params[:latest]
       @users = User.latest.page(params[:page]).per(18)
     elsif params[:old]
-      @posts = User.old.page(params[:page]).per(18)
+      @users = User.old.page(params[:page]).per(18)
     elsif params[:posts_count]
       users = User.all.sort {|a,b| 
         b.posts.size <=> a.posts.size
