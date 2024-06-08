@@ -6,15 +6,25 @@ class Public::UsersController < ApplicationController
   
   def show
     @user  = User.find_by(canonical_name: params[:canonical_name])
-    if params[:content]
+    if params[:latest]
+      @posts = @user.posts.latest.page(params[:page]).per(12)
+    elsif params[:old]
+      @posts = @user.posts.old.page(params[:page]).per(12)
+    elsif params[:favorites_count]
+      posts = @user.posts.sort {|a,b| 
+        b.post_favorites.size <=> a.post_favorites.size
+      }
+      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(12)
+    elsif params[:content]
       @posts = Post.search_with_user_for(params[:content], @user).page(params[:page]).per(12)
     else
-      @posts = @user.posts.page(params[:page]).per(12)
+      @posts = @user.posts.latest.page(params[:page]).per(12)
     end
+    
     if params[:content_in_bookmarks]
       @bookmarked_posts = current_user.search_with_bookmarks_for(params[:content_in_bookmarks]).page(params[:page]).per(12)
     else
-      @bookmarked_posts = current_user.bookmarked_posts.page(params[:page]).per(12)
+      @bookmarked_posts = current_user.bookmarked_posts.latest.page(params[:page]).per(12)
     end
   end
 

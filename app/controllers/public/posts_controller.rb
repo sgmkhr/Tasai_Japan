@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
     elsif params[:old]
       @posts = Post.old.page(params[:page]).per(12)
     elsif params[:favorites_count]
-      posts = Post.all.page(params[:page]).per(12).sort {|a,b| 
+      posts = Post.all.sort {|a,b| 
         b.post_favorites.size <=> a.post_favorites.size
       }
       @posts = Kaminari.paginate_array(posts).page(params[:page]).per(12)
