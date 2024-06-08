@@ -12,6 +12,11 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
     end
+    resources :categories, only: [:index, :destroy] do
+      resources :counseling_rooms, only: [:index, :show, :destroy] do
+        resources :opinions, only: [:destroy]
+      end
+    end
   end
 
   devise_for :users, skip: [:passwords], controllers: {
@@ -31,7 +36,19 @@ Rails.application.routes.draw do
     patch 'users/:canonical_name/withdraw', to: 'users#withdraw', as: 'withdraw'
     get 'users/:canonical_name/unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
-      resources :comments, only: [:create, :destroy]
+      resource :post_favorites, only: [:create, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy] do
+        resource :comment_favorites, only: [:create, :destroy]
+      end
+    end
+    resources :categories, only: [:create, :index] do
+      resources :counseling_rooms do
+        resources :participations, only: [:create, :destroy, :update]
+        resources :opinions, only: [:create, :destroy] do
+          resource :opinion_favorites, only: [:create, :destroy]
+        end
+      end
     end
   end
 

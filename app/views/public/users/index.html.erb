@@ -7,7 +7,7 @@
 <div class='section-title'><h2><%= I18n.t('users.index.title') %></h2></div>
 
 <section>
-  
+
   <!--検索バー-->
   <%= form_with url: users_path, method: :get, local: true do |f| %>
     <div class='form-group row justify-content-end'>
@@ -15,42 +15,51 @@
       <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
     </div>
   <% end %>
-  
+
+  <!--ソート切り替えリンク-->
+  <div class='text-center py-2'>
+  <%= link_to I18n.t('sort.user_latest'),  users_path(latest: true) %>
+  |<%= link_to I18n.t('sort.user_old'),    users_path(old: true) %>
+  |<%= link_to I18n.t('sort.posts_count'), users_path(posts_count: true) %>
+  </div>
+
   <!--ユーザー一覧の表示-->
   <div class='d-flex flex-wrap justify-content-center'>
-    
+
     <% if @users.present? %><!--ユーザーが存在する場合-->
-    
+
       <% @users.each do |user| %> <!--各ユーザーの情報表示-->
         <%= link_to user_path(user.canonical_name) do %>
           <div class='index-item'>
-            
+
             <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle' %>
-            
+
             <p>@<%= user.canonical_name %></p><hr>
-            
+
             <p><%= user.public_name %></p>
-            
-            <p class=<%= user.get_class_associated_with_position %>> 
-              <%= user.position_i18n %>
+
+            <p>
+              <span class=<%= user.get_class_associated_with_position %>>
+                <%= user.position_i18n %>
+              </span>
             </p>
-            
+
             <p class='overflow-hidden text-nowrap text-truncate'>
               <%= user.introduction %>
             </p>
-            
+
           </div>
         <% end %>
       <% end %>
-      
+
     <% else %>     <!--ユーザーが存在しない場合-->
       <p class='mt-5'><%= I18n.t('users.index.not_exist') %></p>
     <% end %>
-    
+
   </div>
-  
+
   <div class='d-flex justify-content-center py-3'>
     <%= paginate @users, theme: 'bootstrap-5' %>
   </div>
-  
+
 </section>

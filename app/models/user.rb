@@ -5,9 +5,26 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_image
-  
-  has_many :posts, dependent: :destroy
-  has_many :comments, dependent: :destroy
+
+  with_options dependent: :destroy do
+    has_many :posts
+    has_many :comments
+    has_many :counseling_rooms
+    has_many :participations
+    has_many :opinions
+    has_many :post_favorites
+    has_many :comment_favorites
+    has_many :opinion_favorites
+    has_many :bookmarks
+    has_many :post_views
+    has_many :active_profile_views,  class_name: 'ProfileView', foreign_key: 'viewer_id'
+    has_many :passive_profile_views, class_name: 'ProfileView', foreign_key: 'viewed_id'
+  end
+
+  has_many :bookmarked_posts, through: :bookmarks, source: :post
+
+  scope :latest, -> { order(created_at: :desc) }
+  scope :old,    -> { order(created_at: :asc) }
 
   enum position: { beginner: 0, intermediate: 1, veteran: 2 }
 
@@ -21,7 +38,7 @@ class User < ApplicationRecord
   end
 
   validates :introduction, length: { maximum: 200 }
-  
+
   GUEST_USER_EMAIL = 'guest@example.com'
 
   #プロフィール画像がなければデフォルト画像を表示するメソッド
@@ -39,7 +56,7 @@ class User < ApplicationRecord
     return 'position-intermediate' if position == 'intermediate'
     return 'position-veteran'
   end
-  
+
   #ゲストログイン時のメソッド
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
@@ -51,15 +68,33 @@ class User < ApplicationRecord
       user.position       = 1
     end
   end
-  
+
   # ゲストユーザーか確かめるためのメソッド
   def guest_user?
     email == GUEST_USER_EMAIL
   end
-  
+
+  # 相談室の参加ステータスを確認するためのメソッド
+  def get_participation_status(room)
+    if id == room.user_id
+      I18n.t('participations.creator')
+    elsif participations.exists?(counseling_room_id: room.id) && participations.find_by(counseling_room_id: room.id).status
+      I18n.t('participations.participating')
+    elsif participations.exists?(counseling_room_id: room.id)
+      I18n.t('participations.applying')
+    else
+      I18n.t('participations.not_participating')
+    end
+  end
+
   def self.search_for(content)
     return User.all if content == ''
     User.where(['public_name LIKE(?) OR canonical_name LIKE(?) OR introduction LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
-  
+
+  def search_with_bookmarks_for(content)
+    return self.bookmarked_posts if content == ''
+    self.bookmarked_posts.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
+  end
+
 end

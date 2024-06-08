@@ -1,0 +1,63 @@
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),         root_path %>>
+  <%= link_to I18n.t('menu'),             admin_root_path %>>
+  <%= link_to I18n.t('categories.title'), admin_categories_path %>>
+  <%= I18n.t('counseling_rooms.index.title') %>
+</p>
+
+<div class='section-title'><h2><%= @category.name %></h2></div>
+
+<section>
+  
+  <!--検索バー-->
+  <%= form_with url: admin_category_counseling_rooms_path(@category.id), method: :get, local: true do |f| %>
+    <div class='form-group row justify-content-end'>
+      <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
+      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+    </div>
+  <% end %>
+  
+  <!--ソート切り替えリンク-->
+  <div class='row d-flex justify-content-center py-2'>
+    <div class='col-md-5 text-md-right p-0'>
+      <%= link_to I18n.t('sort.latest'), admin_category_counseling_rooms_path(@category.id, latest: true) %>
+      |<%= link_to I18n.t('sort.old'),   admin_category_counseling_rooms_path(@category.id, old: true) %>
+    </div>
+    <span class='responsive-disabled'>|</span>
+    <div class='col-md-5 text-md-left p-0'>
+      <%= link_to I18n.t('sort.participations_count'),
+                                         admin_category_counseling_rooms_path(@category.id, participations_count: true) %>
+      |<%= link_to I18n.t('sort.opinions_count'),
+                                         admin_category_counseling_rooms_path(@category.id, opinions_count: true) %>
+    </div>
+  </div> 
+
+  <div class='d-flex flex-wrap justify-content-center'>
+    
+    <% if @counseling_rooms.present? %>
+    
+      <% @counseling_rooms.each do |room| %>
+        <%= link_to admin_category_counseling_room_path(@category.id, room.id) do %>
+          <div class='counseling-room-item'>
+  
+            <p class='overflow-hidden text-nowrap text-truncate'>
+              <i class="fa-solid fa-people-roof"></i>
+              <%= room.topic %>
+            </p>
+  
+            <div class='text-right'>
+              <i class="fa-solid fa-user-group"></i>
+              <%= room.participations.where(status: true).count %>
+            </div>
+  
+          </div>
+        <% end %>
+      <% end %>
+    
+    <% else %><!--相談室が存在しない場合-->
+      <p class='mt-5 text-center'><%= I18n.t('counseling_rooms.index.no_exist') %></p>
+    <% end %>
+    
+  </div>
+
+</section>

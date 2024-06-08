@@ -2,7 +2,7 @@
 
   <% if posts.present? %><!--投稿が存在する場合-->
 
-    <% posts.each do |a_post| %> <!--各ユーザーの情報表示-->
+    <% posts.each do |a_post| %> <!--各投稿の情報表示-->
       <%= link_to admin_post_path(a_post.id) do %>
         <div class='post-index-item'>
 
@@ -11,6 +11,22 @@
           </div>
 
           <hr>
+          
+          <p class='text-right'>
+
+            <i class="fa-regular fa-bookmark"></i>
+            <%= a_post.bookmarks.count %>
+
+            <i class="fa-regular fa-heart"></i>
+            <%= a_post.post_favorites.count %>
+            
+            <i class="fa-regular fa-comment"></i>
+            <%= a_post.comments.count %>
+            
+            <i class="fa-solid fa-chart-line"></i>
+            <%= a_post.post_views.count %>
+
+          </p>
 
           <p><%= a_post.title %></p>
 
@@ -22,13 +38,15 @@
             <%= a_post.body %>
           </p>
 
-          <p>
-            <i class="fa-solid fa-user"></i><%= a_post.user.public_name %>
-          </p>
-          
-          <div class='text-right'>
-            <i class="fa-regular fa-comment"></i>
-            <span class='comment-count'><%= a_post.comments.count %></span>
+          <div class='row'>
+            <p class='col-5'>
+              <i class="fa-solid fa-user"></i><%= a_post.user.public_name %>
+            </p>
+
+            <p class='col-7'>
+              <i class="fa-regular fa-clock"></i>
+              <%= a_post.created_at.strftime('%Y/%m/%d %H:%M') %>
+            </p>
           </div>
 
         </div>

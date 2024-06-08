@@ -11,6 +11,12 @@
 
   <div class='row justify-content-center'>
     <div class='col-md-4'><!--ユーザーの情報-->
+      
+      <p>
+        <i class="fa-solid fa-chart-line"></i>
+        <%= I18n.t('views_count.profile') %>
+        <%= @user.passive_profile_views.count %>
+      </p>
 
       <%= image_tag @user.get_profile_image(60, 60), class: 'rounded-circle' %>
 
@@ -35,23 +41,107 @@
 
     <div class='col-md-8'>
 
-      <% if @user == current_user %><!--自分のページでのみ新規作成ボタン表示される-->
+      <!--以下、マイページの場合に表示される内容-->
+      <% if @user == current_user %>
+
         <%= link_to new_post_path do %>
           <%= I18n.t('posts.new.title') %>
           <i class="fa-solid fa-plus"></i>
         <% end %>
-      <% end %>
 
-      <!--検索バー-->
-      <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
-        <div class='form-group row justify-content-end'>
-          <%= f.text_field :content, class: 'form-control col-md-5 col-9 mt-2', placeholder: I18n.t('search_blank') %>
-          <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+        <ul id="tab-menu" class='d-flex justify-content-center mt-3'>
+          <li>
+            <a href="#user_posts_tab" class="active"><i class="fa-solid fa-user"></i></a>
+          </li>
+          <li>
+            <a href="#bookmarked_posts_tab" class=""><i class="fa-solid fa-bookmark"></i></a>
+          </li>
+          <li>
+            <a href="#followusers_posts_tab" class=""><i class="fa-solid fa-users"></i></a>
+          </li>
+        </ul>
+
+        <div id='tab-contents'>
+
+          <!--以下、「ユーザー投稿一覧」タブ選択時の表示-->
+          <div id='user_posts_tab' class='tab'>
+
+            <p class='text-center tab-title'><%= I18n.t('users.show.user_posts_tab') %></p>
+
+            <!--検索バー-->
+            <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
+              <div class='form-group row justify-content-end'>
+                <%= f.text_field :content, class: 'form-control col-md-5 col-9 mt-2', placeholder: I18n.t('search_blank') %>
+                <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+              </div>
+            <% end %>
+
+            <!--ソート切り替えリンク-->
+            <div class='text-center py-2'>
+            <%= link_to I18n.t('sort.latest'), user_path(@user.canonical_name, latest: true) %>
+            |<%= link_to I18n.t('sort.old'), user_path(@user.canonical_name, old: true) %>
+            |<%= link_to I18n.t('sort.favorites_count'), user_path(@user.canonical_name, favorites_count: true) %>
+            </div>
+
+            <!--ユーザーの投稿一覧表示-->
+            <%= render 'public/posts/index', posts: @posts %>
+
+          </div>
+
+          <!--以下、「ブックマーク一覧」タブ選択時の表示-->
+          <div id='bookmarked_posts_tab' class='tab'>
+
+            <p class='text-center tab-title'><%= I18n.t('users.show.bookmarked_posts_tab') %></p>
+
+            <!--ブックマーク検索バー-->
+            <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
+              <div class='form-group row justify-content-end'>
+                <%= f.text_field :content_in_bookmarks, class: 'form-control col-md-5 col-9 mt-2', placeholder: I18n.t('search_blank') %>
+                <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+              </div>
+            <% end %>
+
+            <!--ユーザーのブックマーク一覧表示-->
+            <%= render 'public/posts/index', posts: @bookmarked_posts %>
+
+          </div>
+
+          <!--以下、「フォローユーザー投稿一覧」タブ選択時の表示-->
+          <div id='followusers_posts_tab' class='tab'>
+
+            <p class='text-center tab-title'><%= I18n.t('users.show.followusers_posts_tab') %></p>
+
+            <!--後ほど実装予定-->
+
+          </div>
+
         </div>
+
+        <%= javascript_pack_tag 'mypage_tab' %>
+
+      <!--以下、マイページではない場合に表示される内容-->
+      <% else %>
+
+        <!--検索バー-->
+        <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
+          <div class='form-group row justify-content-end'>
+            <%= f.text_field :content, class: 'form-control col-md-5 col-9 mt-2', placeholder: I18n.t('search_blank') %>
+            <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+          </div>
+        <% end %>
+
+        <!--ソート切り替えリンク-->
+        <div class='text-center py-2'>
+        <%= link_to I18n.t('sort.latest'), user_path(@user.canonical_name, latest: true) %>
+        |<%= link_to I18n.t('sort.old'), user_path(@user.canonical_name, old: true) %>
+        |<%= link_to I18n.t('sort.favorites_count'), user_path(@user.canonical_name, favorites_count: true) %>
+        </div>
+
+        <!--ユーザーの投稿一覧表示-->
+        <%= render 'public/posts/index', posts: @posts %>
+
       <% end %>
 
-      <!--ユーザーの投稿一覧表示-->
-      <%= render 'public/posts/index', posts: @posts %>
     </div>
   </div>
 
