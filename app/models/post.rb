@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   has_many :bookmarks,      dependent: :destroy
   
   scope :latest, -> { order(created_at: :desc) }
-  scope :old, -> { order(created_at: :asc) }
+  scope :old,    -> { order(created_at: :asc) }
 
   enum prefecture: {
     unspecified: 0, hokkaido: 1, aomori: 2, iwate: 3, miyagi: 4, akita: 5, yamagata: 6, fukushima: 7,

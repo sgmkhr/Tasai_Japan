@@ -20,7 +20,16 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-    if params[:content]
+    if params[:latest]
+      @users = User.latest.page(params[:page]).per(18)
+    elsif params[:old]
+      @posts = User.old.page(params[:page]).per(18)
+    elsif params[:posts_count]
+      users = User.all.sort {|a,b| 
+        b.posts.size <=> a.posts.size
+      }
+      @users = Kaminari.paginate_array(users).page(params[:page]).per(18)
+    elsif params[:content]
       @users = User.search_for(params[:content]).page(params[:page]).per(18)
     else
       @users = User.page(params[:page]).per(18) #退会済みも含む全ユーザーを表示

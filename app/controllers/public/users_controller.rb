@@ -29,7 +29,16 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    if params[:content]
+    if params[:latest]
+      @users = User.where(is_active: true).latest.page(params[:page]).per(18)
+    elsif params[:old]
+      @posts = User.where(is_active: true).old.page(params[:page]).per(18)
+    elsif params[:posts_count]
+      users = User.where(is_active: true).sort {|a,b| 
+        b.posts.size <=> a.posts.size
+      }
+      @users = Kaminari.paginate_array(users).page(params[:page]).per(18)
+    elsif params[:content]
       @users = User.search_for(params[:content]).where(is_active: true).page(params[:page]).per(18)
     else
       @users = User.where(is_active: true).page(params[:page]).per(18) #退会済みユーザーは表示しない

@@ -154,6 +154,9 @@ ja:
     latest: 新着順
     old: 古い順
     favorites_count: 人気順
+    user_latest: 新参順
+    user_old: 古参順
+    posts_count: 投稿数順
 
   enums:
     user:

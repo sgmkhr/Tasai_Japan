@@ -19,6 +19,9 @@ class User < ApplicationRecord
   end
   
   has_many :bookmarked_posts, through: :bookmarks, source: :post
+  
+  scope :latest, -> { order(created_at: :desc) }
+  scope :old,    -> { order(created_at: :asc) }
 
   enum position: { beginner: 0, intermediate: 1, veteran: 2 }
 
