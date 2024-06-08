@@ -1,0 +1,15 @@
+<% if comment.favorited_by?(current_user) %>
+
+  <%= link_to post_comment_comment_favorites_path(a_post.id, comment.id), method: :delete, remote: true do %>
+    <i class="fa-solid fa-heart"></i>
+    <%= comment.comment_favorites.count %>
+  <% end %>
+  
+<% else %>
+
+  <%= link_to post_comment_comment_favorites_path(a_post.id, comment.id), method: :post, remote: true do %>
+    <i class="fa-regular fa-heart"></i>
+    <%= comment.comment_favorites.count %>
+  <% end %>
+  
+<% end %>

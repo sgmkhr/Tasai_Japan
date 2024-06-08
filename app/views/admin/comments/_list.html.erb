@@ -20,6 +20,11 @@
     
     <sm><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></sm>
     
+    <span class='ml-2'>
+      <i class="fa-regular fa-heart"></i>
+      <%= comment.comment_favorites.count %>
+    </span>
+    
   </div>
   
 <% end %>

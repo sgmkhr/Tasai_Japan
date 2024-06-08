@@ -26,6 +26,10 @@
     
     <sm><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></sm>
     
+    <span id='comment_favorite_btn_<%= comment.id %>' class='ml-2'>
+      <%= render 'public/comment_favorites/btn', a_post: a_post, comment: comment %>
+    </span>
+    
   </div>
   
 <% end %>

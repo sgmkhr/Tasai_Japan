@@ -1,0 +1,15 @@
+<% if opinion.favorited_by?(current_user) %>
+
+  <%= link_to category_counseling_room_opinion_opinion_favorites_path(category.id, counseling_room.id, opinion.id), method: :delete, remote: true do %>
+    <i class="fa-solid fa-heart"></i>
+    <%= opinion.opinion_favorites.count %>
+  <% end %>
+  
+<% else %>
+
+  <%= link_to category_counseling_room_opinion_opinion_favorites_path(category.id, counseling_room.id, opinion.id), method: :post, remote: true do %>
+    <i class="fa-regular fa-heart"></i>
+    <%= opinion.opinion_favorites.count %>
+  <% end %>
+  
+<% end %>
