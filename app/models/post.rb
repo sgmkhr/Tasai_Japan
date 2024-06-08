@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments,       dependent: :destroy
   has_many :post_favorites, dependent: :destroy
+  has_many :bookmarks,      dependent: :destroy
 
   enum prefecture: {
     unspecified: 0, hokkaido: 1, aomori: 2, iwate: 3, miyagi: 4, akita: 5, yamagata: 6, fukushima: 7,
@@ -40,6 +41,10 @@ class Post < ApplicationRecord
   
   def favorited_by?(user)
     post_favorites.exists?(user_id: user.id)
+  end
+  
+  def bookmarked_by?(user)
+    bookmarks.exists?(user_id: user.id)
   end
 
 end

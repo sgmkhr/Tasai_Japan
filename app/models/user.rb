@@ -15,6 +15,7 @@ class User < ApplicationRecord
     has_many :post_favorites
     has_many :comment_favorites
     has_many :opinion_favorites
+    has_many :bookmarks
   end
 
   enum position: { beginner: 0, intermediate: 1, veteran: 2 }
