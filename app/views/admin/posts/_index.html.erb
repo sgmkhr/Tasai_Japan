@@ -14,15 +14,15 @@
           
           <p class='text-right'>
             
+            <i class="fa-regular fa-comment"></i>
+            <%= a_post.comments.count %>
+
             <i class="fa-regular fa-heart"></i>
             <%= a_post.post_favorites.count %>
             
             <i class="fa-regular fa-bookmark"></i>
             <%= a_post.bookmarks.count %>
-            
-            <i class="fa-regular fa-comment"></i>
-            <%= a_post.comments.count %>
-            
+
           </p>
 
           <p><%= a_post.title %></p>
@@ -35,9 +35,16 @@
             <%= a_post.body %>
           </p>
 
-          <p>
-            <i class="fa-solid fa-user"></i><%= a_post.user.public_name %>
-          </p>
+          <div class='row'>
+            <p class='col-5'>
+              <i class="fa-solid fa-user"></i><%= a_post.user.public_name %>
+            </p>
+
+            <p class='col-7'>
+              <i class="fa-regular fa-clock"></i>
+              <%= a_post.created_at.strftime('%Y/%m/%d %H:%M') %>
+            </p>
+          </div>
 
         </div>
       <% end %>

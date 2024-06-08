@@ -2,7 +2,11 @@ class Admin::CategoriesController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    if params[:content]
+    if params[:latest]
+      @categories = Category.latest.page(params[:page]).per(30)
+    elsif params[:old]
+      @categories = Category.old.page(params[:page]).per(30)
+    elsif params[:content]
       @categories = Category.search_for(params[:content]).page(params[:page]).per(30)
     else
       @categories = Category.page(params[:page]).per(30)

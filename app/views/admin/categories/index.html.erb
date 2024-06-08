@@ -16,6 +16,12 @@
     </div>
   <% end %>
   
+  <!--ソート切り替えリンク-->
+  <div class='text-center py-2'>
+  <%= link_to I18n.t('sort.latest'), admin_categories_path(latest: true) %>
+  |<%= link_to I18n.t('sort.old'),   admin_categories_path(old: true) %>
+  </div> 
+  
   <div class='d-flex flex-wrap justify-content-center'>
     
     <% if @categories.present? %>
