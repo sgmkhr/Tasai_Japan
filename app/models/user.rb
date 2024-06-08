@@ -17,6 +17,8 @@ class User < ApplicationRecord
     has_many :opinion_favorites
     has_many :bookmarks
   end
+  
+  has_many :bookmarked_posts, through: :bookmarks, source: :post
 
   enum position: { beginner: 0, intermediate: 1, veteran: 2 }
 
@@ -66,11 +68,6 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
 
-  def self.search_for(content)
-    return User.all if content == ''
-    User.where(['public_name LIKE(?) OR canonical_name LIKE(?) OR introduction LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
-  end
-
   # 相談室の参加ステータスを確認するためのメソッド
   def get_participation_status(room)
     if id == room.user_id
@@ -82,6 +79,16 @@ class User < ApplicationRecord
     else
       I18n.t('participations.not_participating')
     end
+  end
+  
+  def self.search_for(content)
+    return User.all if content == ''
+    User.where(['public_name LIKE(?) OR canonical_name LIKE(?) OR introduction LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
+  end
+  
+  def search_with_bookmarks_for(content)
+    return self.bookmarked_posts if content == ''
+    self.bookmarked_posts.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
 
 end

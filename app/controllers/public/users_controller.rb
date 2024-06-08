@@ -7,9 +7,14 @@ class Public::UsersController < ApplicationController
   def show
     @user  = User.find_by(canonical_name: params[:canonical_name])
     if params[:content]
-      @posts = @user.posts.search_with_user_for(params[:content], @user).page(params[:page]).per(12)
+      @posts = Post.search_with_user_for(params[:content], @user).page(params[:page]).per(12)
     else
       @posts = @user.posts.page(params[:page]).per(12)
+    end
+    if params[:content_in_bookmarks]
+      @bookmarked_posts = current_user.search_with_bookmarks_for(params[:content_in_bookmarks]).page(params[:page]).per(12)
+    else
+      @bookmarked_posts = current_user.bookmarked_posts.page(params[:page]).per(12)
     end
   end
 

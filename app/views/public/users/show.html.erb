@@ -41,6 +41,8 @@
           <i class="fa-solid fa-plus"></i>
         <% end %>
       <% end %>
+      
+      <!--以下、「ユーザー投稿一覧」タブ選択時の表示-->
 
       <!--検索バー-->
       <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
@@ -52,6 +54,23 @@
 
       <!--ユーザーの投稿一覧表示-->
       <%= render 'public/posts/index', posts: @posts %>
+      
+      <!--以下、「ブックマーク一覧」タブ選択時の表示-->
+      
+      <!--検索バー-->
+      <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
+        <div class='form-group row justify-content-end'>
+          <%= f.text_field :content_in_bookmarks, class: 'form-control col-md-5 col-9 mt-2', placeholder: I18n.t('search_blank') %>
+          <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+        </div>
+      <% end %>
+
+      <!--ユーザーの投稿一覧表示-->
+      <%= render 'public/posts/index', posts: @bookmarked_posts %>
+      
+      <!--以下、「フォローユーザー投稿一覧」タブ選択時の表示-->
+      <!--後ほど実装予定-->
+      
     </div>
   </div>
 
