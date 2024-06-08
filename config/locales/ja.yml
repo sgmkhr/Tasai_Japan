@@ -41,6 +41,9 @@ ja:
     show:
       position_start: 私は、日本生活の
       position_end: です。
+      user_posts_tab: 投稿履歴一覧
+      bookmarked_posts_tab: ブックマーク一覧
+      followusers_posts_tab: フォローユーザーの投稿一覧
     edit:
       title: 登録情報編集
     index:
