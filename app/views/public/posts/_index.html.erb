@@ -18,6 +18,10 @@
               <%= render 'public/post_favorites/btn', a_post: a_post %>
             </span>
             
+            <span id='bookmark_btn_<%= a_post.id %>'>
+              <%= render 'public/bookmarks/btn', a_post: a_post %>
+            </span>
+            
             <i class="fa-regular fa-comment"></i>
             <span class='comment-count'><%= a_post.comments.count %></span>
             
