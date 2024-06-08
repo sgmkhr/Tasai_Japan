@@ -15,6 +15,7 @@ class Public::CategoriesController < ApplicationController
     if @category.save
       redirect_to category_counseling_rooms_path(@category.id), notice: I18n.t('categories.create.succeeded')
     else
+      @categories = Category.page(params[:page]).per(30)
       flash.now[:alert] = I18n.t('categories.create.failed')
       render :index
     end
