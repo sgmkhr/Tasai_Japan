@@ -13,15 +13,18 @@
           <hr>
           
           <p class='text-right'>
-            
-            <i class="fa-regular fa-comment"></i>
-            <%= a_post.comments.count %>
+
+            <i class="fa-regular fa-bookmark"></i>
+            <%= a_post.bookmarks.count %>
 
             <i class="fa-regular fa-heart"></i>
             <%= a_post.post_favorites.count %>
             
-            <i class="fa-regular fa-bookmark"></i>
-            <%= a_post.bookmarks.count %>
+            <i class="fa-regular fa-comment"></i>
+            <%= a_post.comments.count %>
+            
+            <i class="fa-solid fa-chart-line"></i>
+            <%= a_post.post_views.count %>
 
           </p>
 

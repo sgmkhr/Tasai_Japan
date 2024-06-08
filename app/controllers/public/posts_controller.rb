@@ -26,6 +26,9 @@ class Public::PostsController < ApplicationController
 
   def show
     @comment = Comment.new
+    unless PostView.find_by(user_id: current_user.id, post_id: @post.id)
+      current_user.post_views.create(post_id: @post.id)
+    end
   end
 
   def create

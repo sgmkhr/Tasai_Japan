@@ -11,6 +11,12 @@
   <div class='row justify-content-center'>
 
     <div class='col-md-4'><!--ユーザー情報-->
+    
+      <p>
+        <i class="fa-solid fa-chart-line"></i>
+        <%= I18n.t('views_count.profile') %>
+        <%= @user.passive_profile_views.count %>
+      </p>
       
       <div class='my-3 d-flex'>
         <%= image_tag @user.get_profile_image(60, 60), class: 'rounded-circle mr-2' %>
