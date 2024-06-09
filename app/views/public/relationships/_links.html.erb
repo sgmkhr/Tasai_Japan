@@ -1,18 +1,18 @@
-<div class='d-flex justify-content-center'>
-  <%= link_to user_followers_path(user.canonical_name), remote: true do %>
+<div class='d-flex justify-content-around'>
+  <%= link_to user_followers_path(user.canonical_name) do %>
     <div>
       <p class='text-center'>
-        <strong><%= I18n.t('relationships.followers') %></strong>
+        <%= I18n.t('relationships.followers') %>
       </p>
       <p class='text-center'>
         <%= user.followers.count %>
       </p>
     </div>
   <% end %>
-  <%= link_to user_followings_path(user.canonical_name), remote: true do %>
+  <%= link_to user_followings_path(user.canonical_name) do %>
     <div>
       <p class='text-center'>
-        <strong><%= I18n.t('relationships.followings') %></strong>
+        <%= I18n.t('relationships.followings') %>
       </p>
       <p class='text-center'>
         <%= user.followings.count %>

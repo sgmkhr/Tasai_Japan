@@ -2,12 +2,12 @@ class Admin::RelationshipsController < ApplicationController
   before_action :authenticate_admin!
   
   def followings
-    user = User.find_by(canonical_name: params[:canonical_name])
+    user = User.find_by(canonical_name: params[:user_canonical_name])
     @users = user.followings
   end
   
   def followers
-    user = User.find_by(canonical_name: params[:canonical_name])
+    user = User.find_by(canonical_name: params[:user_canonical_name])
     @users = user.followers
   end
   

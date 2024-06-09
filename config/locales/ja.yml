@@ -172,11 +172,11 @@ ja:
     profile: プロフィール閲覧人数：
   relationships:
     follow: フォローする
-    unfollow: フォローを外す
+    unfollow: フォロー中
     followings: フォロー中
     followers: フォロワー
     index:
-      follwings: フォロー 一覧
+      followings: フォロー 一覧
       followers: フォロワー 一覧
 
   enums:

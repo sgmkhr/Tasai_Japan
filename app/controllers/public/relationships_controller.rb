@@ -1,6 +1,6 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_set_approached_user
+  before_action :set_approached_user
   
   def create
     current_user.follow(@user)
@@ -23,7 +23,7 @@ class Public::RelationshipsController < ApplicationController
   private
   
   def set_approached_user
-    @user = User.find_by(canonical_name: params[:canonical_name])
+    @user = User.find_by(canonical_name: params[:user_canonical_name])
   end
   
 end

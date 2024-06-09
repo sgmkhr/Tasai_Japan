@@ -1,5 +1,7 @@
 <% if current_user.following?(user) %>
-  <%= link_to I18n.t('relationships.unfollow'), user_relationships_path(user.canonical_name), method: :delete %>
+  <%= link_to I18n.t('relationships.unfollow'), user_relationships_path(user.canonical_name), method: :delete,
+                                                remote: true, class: 'btn btn-sm success-btn' %>
 <% else %>
-  <%= link_to I18n.t('relationships.follow'),   user_relationships_path(user.canonical_name), method: :post %>
+  <%= link_to I18n.t('relationships.follow'),   user_relationships_path(user.canonical_name), method: :post,
+                                                remote: true, class: 'btn btn-sm success-btn' %>
 <% end %>

@@ -102,7 +102,7 @@ class User < ApplicationRecord
   end
   
   def follow(user)
-    active_ralationships.create(followed_id: user.id)
+    active_relationships.create(followed_id: user.id)
   end
   
   def unfollow(user)
