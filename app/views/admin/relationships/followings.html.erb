@@ -1,0 +1,17 @@
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),         root_path %>>
+  <%= link_to I18n.t('menu'),             admin_root_path %>>
+  <%= link_to I18n.t('menus.users'),      admin_users_path %>>
+  <%= link_to '@' + @user.canonical_name, admin_user_path(@user.canonical_name) %>>
+  <%= I18n.t('relationships.index.followings') %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('relationships.index.followings') %></h2></div>
+
+<section>
+
+  <!--ユーザー一覧の表示-->
+
+  <%= render 'admin/users/index', users: @users %>
+
+</section>

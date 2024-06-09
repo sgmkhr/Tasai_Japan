@@ -43,6 +43,10 @@
       
       <p class='mb-3'><strong><%= @user.public_name %></strong></p>
       
+      <div id='following-count'>
+        <%= render 'admin/relationships/links', user: @user %>
+      </div>
+      
       <p class='mb-3'>
         <%= I18n.t('users.show.position_start') %>
         <span class=<%= @user.get_class_associated_with_position %>><!--positionによって違うcss-->

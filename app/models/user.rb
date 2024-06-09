@@ -17,11 +17,15 @@ class User < ApplicationRecord
     has_many :opinion_favorites
     has_many :bookmarks
     has_many :post_views
-    has_many :active_profile_views,  class_name: 'ProfileView', foreign_key: 'viewer_id'
-    has_many :passive_profile_views, class_name: 'ProfileView', foreign_key: 'viewed_id'
+    has_many :active_profile_views,  class_name: 'ProfileView',  foreign_key: 'viewer_id'
+    has_many :passive_profile_views, class_name: 'ProfileView',  foreign_key: 'viewed_id'
+    has_many :active_relationships,  class_name: 'Relationship', foreign_key: 'follower_id'
+    has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id'
   end
 
-  has_many :bookmarked_posts, through: :bookmarks, source: :post
+  has_many :bookmarked_posts, through: :bookmarks,            source: :post
+  has_many :followings,       through: :active_relationships, source: :followed
+  has_many :followers,        through: :passive_relationships, source: :follower
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old,    -> { order(created_at: :asc) }
@@ -95,6 +99,18 @@ class User < ApplicationRecord
   def search_with_bookmarks_for(content)
     return self.bookmarked_posts if content == ''
     self.bookmarked_posts.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
+  end
+  
+  def follow(user)
+    active_relationships.create(followed_id: user.id)
+  end
+  
+  def unfollow(user)
+    active_relationships.find_by(followed_id: user.id).destroy
+  end
+  
+  def following?(user)
+    followings.include?(user)
   end
 
 end
