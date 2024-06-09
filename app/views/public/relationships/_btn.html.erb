@@ -1,0 +1,5 @@
+<% if current_user.following?(user) %>
+  <%= link_to I18n.t('relationships.unfollow'), user_relationships_path(user.canonical_name), method: :delete %>
+<% else %>
+  <%= link_to I18n.t('relationships.follow'),   user_relationships_path(user.canonical_name), method: :post %>
+<% end %>

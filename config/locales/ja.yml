@@ -170,6 +170,14 @@ ja:
     opinions_count: 盛り上がり順
   views_count:
     profile: プロフィール閲覧人数：
+  relationships:
+    follow: フォローする
+    unfollow: フォローを外す
+    followings: フォロー中
+    followers: フォロワー
+    index:
+      follwings: フォロー 一覧
+      followers: フォロワー 一覧
 
   enums:
     user:
