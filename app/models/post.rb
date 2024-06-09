@@ -1,18 +1,19 @@
 class Post < ApplicationRecord
-  
+
   has_one_attached :post_image
-  
+
   belongs_to :user
-  
+
   with_options dependent: :destroy do
     has_many :comments
     has_many :post_favorites
     has_many :bookmarks
     has_many :post_views
     has_many :related_post_tags
-    has_many :related_room_tags
   end
-  
+
+  has_many :post_tags, through: :related_post_tags
+
   scope :latest, -> { order(created_at: :desc) }
   scope :old,    -> { order(created_at: :asc) }
 
@@ -42,18 +43,34 @@ class Post < ApplicationRecord
     return Post.all if content == ''
     Post.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
-  
+
   def self.search_with_user_for(content, user)
     return Post.where(user_id: user.id) if content == ''
     Post.where(user_id: user.id).where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
-  
+
   def favorited_by?(user)
     post_favorites.exists?(user_id: user.id)
   end
-  
+
   def bookmarked_by?(user)
     bookmarks.exists?(user_id: user.id)
   end
 
+  def save_tags(save_tag_names)
+    current_tag_names = self.post_tags.pluck(:name) unless self.post_tags.nil?
+    old_tag_names = current_tag_names - save_tag_names
+    new_tag_names = save_tag_names - current_tag_names
+
+    old_tag_names.each do |old_tag_name|
+      post_tag = PostTag.find_by(name: old_tag_name)
+      RelatedPostTag.find_by(post_tag_id: post_tag.id).destroy
+    end
+
+    new_tag_names.each do |new_tag_name|
+      post_tag = PostTag.find_or_create_by(name: new_tag_name)
+      self.post_tags << post_tag
+    end
+  end
+  
 end
