@@ -17,8 +17,10 @@ class Public::PostsController < ApplicationController
         b.post_favorites.size <=> a.post_favorites.size
       }
       @posts = Kaminari.paginate_array(posts).page(params[:page]).per(12)
+    elsif params[:tag_name]
+      @posts = Post.search_with_tag_for(params[:tag_name]).page(params[:page]).per(12)
     elsif params[:content]
-      @posts = Post.latest.search_for(params[:content]).page(params[:page]).per(12)
+      @posts = Post.search_for(params[:content]).page(params[:page]).per(12)
     else
       @posts = Post.latest.page(params[:page]).per(12)
     end
