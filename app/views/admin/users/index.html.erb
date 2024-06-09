@@ -24,59 +24,6 @@
   </div>
 
   <!--ユーザー一覧の表示-->
-  <div class='d-flex flex-wrap justify-content-center'>
-
-    <% if @users.present? %><!--ユーザーが存在する場合-->
-
-      <% @users.each do |user| %> <!--各ユーザーの情報表示-->
-        <%= link_to admin_user_path(user.canonical_name) do %>
-          <div class='user-index-item'>
-
-            <div class='d-flex'>
-
-              <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle mr-2' %>
-
-              <% unless user.is_active %>
-                <span class='text-danger'>退会済み</span>
-              <% end %>
-
-            </div>
-
-            <p class='overflow-hidden text-nowrap text-truncate'>
-              @<%= user.canonical_name %>
-            </p><hr>
-
-            <p class='overflow-hidden text-nowrap text-truncate'>
-              <%= user.public_name %>
-            </p>
-
-            <p class=<%= user.get_class_associated_with_position %>>
-              <%= user.position_i18n %>
-            </p>
-
-            <p class='overflow-hidden text-nowrap text-truncate'>
-              <%= user.introduction %>
-            </p>
-
-            <p class='user-index-chart-box d-flex'>
-              <i class="fa-solid fa-ranking-star"></i>
-              <span class='ml-1'><%= user.posts.count %></span>
-
-              <!--後ほど、フォロワー数表示予定-->
-            </p>
-
-          </div>
-        <% end %>
-      <% end %>
-
-    <% else %><!--ユーザーが存在しない場合-->
-      <p class='mt-5'><%= I18n.t('users.index.not_exist') %></p>
-    <% end %>
-
-  </div>
-
-  <div class='d-flex justify-content-center py-3'>
-    <%= paginate @users, theme: 'bootstrap-5' %>
-  </div>
-
+  <%= render 'admin/users/index', users: @users %>
+  
 </section>
