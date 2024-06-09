@@ -54,7 +54,7 @@
   <div>
     <i class="fa-solid fa-user-group"></i>
     <% @participations.each do |participation| %>
-      <%= link_to admin_user_path(participation.user.id) do %>
+      <%= link_to admin_user_path(participation.user.canonical_name) do %>
         <%= image_tag participation.user.get_profile_image(40, 40), class: 'rounded-circle m-1' %>
       <% end %>
     <% end %>

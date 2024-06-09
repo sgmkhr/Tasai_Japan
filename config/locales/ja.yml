@@ -56,11 +56,11 @@ ja:
     login_link: 管理者ログイン
     users:
       destroy:
-        btn: アカウントを削除する
+        btn: アカウント削除
         confirmation: 本当に削除してもいいですか？
         notice: ユーザーを削除しました。
-      cancel: 退会を取り消す
-      withdraw: 退会させる
+      cancel: 退会取り消し
+      withdraw: 退会処理
   posts:
     create:
       notice: 新規投稿しました。
@@ -140,11 +140,16 @@ ja:
     participating: 参加中
     applying: 参加申請中
     edit:
-      title: 参加申請者、参加者リスト
-      withdraw: 参加申請を却下する
+      title:
+        active: 参加者リスト
+        waiting: 参加申請者リスト
+      count: 人
+      withdraw: 却下する
       leave: 脱退させる
-      approve: 参加申請を承認する
-      no_participations: 参加申請者はいません。
+      approve: 承認する
+      no_participations:
+        active: 参加中のユーザーはいません。
+        waiting: 参加申請中のユーザーはいません。
   opinions:
     btn: 意見投稿
     placeholder: 意見を入力
