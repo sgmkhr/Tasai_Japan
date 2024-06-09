@@ -7,7 +7,7 @@
 <div class='section-title'><h2><%= I18n.t('users.index.title') %></h2></div>
 
 <section>
-  
+
   <!--検索バー-->
   <%= form_with url: admin_users_path, method: :get, local: true do |f| %>
     <div class='form-group row justify-content-end'>
@@ -15,14 +15,14 @@
       <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
     </div>
   <% end %>
-  
+
   <!--ソート切り替えリンク-->
   <div class='text-center py-2'>
   <%= link_to I18n.t('sort.user_latest'),  admin_users_path(latest: true) %>
   |<%= link_to I18n.t('sort.user_old'),    admin_users_path(old: true) %>
   |<%= link_to I18n.t('sort.posts_count'), admin_users_path(posts_count: true) %>
-  </div> 
-  
+  </div>
+
   <!--ユーザー一覧の表示-->
   <div class='d-flex flex-wrap justify-content-center'>
 
@@ -30,13 +30,25 @@
 
       <% @users.each do |user| %> <!--各ユーザーの情報表示-->
         <%= link_to admin_user_path(user.canonical_name) do %>
-          <div class='index-item'>
+          <div class='user-index-item'>
 
-            <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle mr-2' %>
+            <div class='d-flex'>
 
-            <p>@<%= user.canonical_name %></p><hr>
+              <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle mr-2' %>
 
-            <p><%= user.public_name %></p>
+              <% unless user.is_active %>
+                <span class='text-danger'>退会済み</span>
+              <% end %>
+
+            </div>
+
+            <p class='overflow-hidden text-nowrap text-truncate'>
+              @<%= user.canonical_name %>
+            </p><hr>
+
+            <p class='overflow-hidden text-nowrap text-truncate'>
+              <%= user.public_name %>
+            </p>
 
             <p class=<%= user.get_class_associated_with_position %>>
               <%= user.position_i18n %>
@@ -46,9 +58,12 @@
               <%= user.introduction %>
             </p>
 
-            <% unless user.is_active %>
-              <p class='text-danger'><strong>退会済み</strong></p>
-            <% end %>
+            <p class='user-index-chart-box d-flex'>
+              <i class="fa-solid fa-ranking-star"></i>
+              <span class='ml-1'><%= user.posts.count %></span>
+
+              <!--後ほど、フォロワー数表示予定-->
+            </p>
 
           </div>
         <% end %>
