@@ -1,6 +1,6 @@
 class Public::CounselingRoomsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category
+  before_action :set_category,        except: [:search]
   before_action :ensure_room_creator, only: [:edit, :update, :destroy]
 
   def index
@@ -33,7 +33,9 @@ class Public::CounselingRoomsController < ApplicationController
     @counseling_room = CounselingRoom.new(counseling_room_params)
     @counseling_room.category_id = @category.id
     @counseling_room.user_id = current_user.id
+    tag_name_list = params[:counseling_room][:tag_name].split('/')
     if @counseling_room.save
+      @counseling_room.save_tags(tag_name_list)
       redirect_to category_counseling_room_path(@category.id, @counseling_room.id), notice: I18n.t('counseling_rooms.create.succeeded')
     else
       flash.now[:alert] = I18n.t('counseling_rooms.create.failed')
@@ -57,7 +59,9 @@ class Public::CounselingRoomsController < ApplicationController
 
   def update
     @counseling_room = CounselingRoom.find(params[:id])
+    tag_name_list = params[:counseling_room][:tag_name].split('/')
     if @counseling_room.update(counseling_room_params)
+      @counseling_room.save_tags(tag_name_list)
       redirect_to category_counseling_room_path(@category.id, @counseling_room.id), notice: I18n.t('counseling_rooms.update.succeeded')
     else
       flash.now[:alert] = I18n.t('counseling_rooms.update.failed')
@@ -69,21 +73,22 @@ class Public::CounselingRoomsController < ApplicationController
     CounselingRoom.find(params[:id]).destroy
     redirect_to category_counseling_rooms_path(@category.id), notice: I18n.t('counseling_rooms.destroy')
   end
+  
+  def search
+    @tag_name = params[:tag_name]
+    room_tag = RoomTag.find_by(name: @tag_name)
+    if room_tag
+      @counseling_rooms = room_tag.counseling_rooms.page(params[:page]).per(20)
+    else
+      @counseling_rooms = nil
+    end
+  end
 
   private
 
   def counseling_room_params
     params.require(:counseling_room).permit(:topic, :detail)
   end
-
-  # def ensure_participated_user
-  #   counseling_room = CounselingRoom.find(params[:id])
-  #   return if  current_user == counseling_room.user #相談室作成者は当アクション処理を抜ける
-  #   participation = counseling_room.participations.where(user_id: current_user.id)
-  #   unless participation.status #参加承認済みのユーザー
-  #     redirect_to category_counseling_rooms_path(params[:category_id]), alert: I18n.t('counseling_rooms.validates.user')
-  #   end
-  # end
 
   def set_category
     @category = Category.find(params[:category_id])

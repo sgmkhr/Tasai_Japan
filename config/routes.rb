@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#menu'
-    resources :users, only: [:show, :index, :destroy], param: :canonical_name
+    resources :users, only: [:show, :index, :destroy], param: :canonical_name do
+      get 'followings' => 'relationships#followings', as: 'followings'
+    	get 'followers'  => 'relationships#followers',  as: 'followers'
+    end
     patch 'users/:canonical_name/cancel', to: 'users#cancel', as: 'cancel'
     patch 'users/:canonical_name/withdraw', to: 'users#withdraw', as: 'withdraw'
     resources :posts, only: [:index, :show, :destroy] do
@@ -17,6 +20,7 @@ Rails.application.routes.draw do
         resources :opinions, only: [:destroy]
       end
     end
+    get 'categories/counseling_rooms/search', to: 'counseling_rooms#search', as: 'search_rooms'
   end
 
   devise_for :users, skip: [:passwords], controllers: {
@@ -32,7 +36,11 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about', to: 'homes#about'
     get 'menu',  to: 'homes#menu'
-    resources :users, only: [:show, :index, :edit, :update], param: :canonical_name
+    resources :users, only: [:show, :index, :edit, :update], param: :canonical_name do
+      resource :relationships, only: [:create, :destroy]
+    	get 'followings' => 'relationships#followings', as: 'followings'
+    	get 'followers'  => 'relationships#followers',  as: 'followers'
+    end
     patch 'users/:canonical_name/withdraw', to: 'users#withdraw', as: 'withdraw'
     get 'users/:canonical_name/unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
@@ -50,6 +58,7 @@ Rails.application.routes.draw do
         end
       end
     end
+    get 'categories/counseling_rooms/search', to: 'counseling_rooms#search', as: 'search_rooms'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

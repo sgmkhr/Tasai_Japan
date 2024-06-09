@@ -14,10 +14,12 @@ ja:
   create: 作成
   send: 送信
   search_blank: 全件表示は空で検索
+  search_tag: タグ検索(完全一致)
   placeholder:
     canonical_name: 20文字以内の半角英数字
     public_name: 公開用のお名前を入力
     comment: こちらにコメントをどうぞ
+    tag_name: ｽﾗｯｼｭ(/)区切りで複数入力
   guestuser:
     signin:
       notice: ゲストユーザーとしてログインしました。
@@ -122,6 +124,8 @@ ja:
       succeeded: 相談室の情報を更新しました。
       failed: 更新に失敗しました。
     destroy: 相談室を削除しました。
+    search:
+      title: タグ検索 投稿一覧
     ensure_creator: 他のユーザーが作成した相談室の情報は編集できません。
   participations:
     destroy:
@@ -166,6 +170,14 @@ ja:
     opinions_count: 盛り上がり順
   views_count:
     profile: プロフィール閲覧人数：
+  relationships:
+    follow: フォローする
+    unfollow: フォロー中
+    followings: フォロー中
+    followers: フォロワー
+    index:
+      followings: フォロー 一覧
+      followers: フォロワー 一覧
 
   enums:
     user:
@@ -251,10 +263,12 @@ ja:
         caption: 見出し
         body: 本文
         prefecture: 都道府県
+        tag_name: タグ
       counseling_room:
         topic: お題
         detail: 詳細
         topic_image: イメージ画像
+        tag_name: タグ
   date:
     abbr_day_names:
     - 日

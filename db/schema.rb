@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_08_094304) do
+ActiveRecord::Schema.define(version: 2024_06_09_091219) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -135,6 +135,12 @@ ActiveRecord::Schema.define(version: 2024_06_08_094304) do
     t.index ["user_id"], name: "index_post_favorites_on_user_id"
   end
 
+  create_table "post_tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "post_views", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "post_id", null: false
@@ -158,6 +164,37 @@ ActiveRecord::Schema.define(version: 2024_06_08_094304) do
   create_table "profile_views", force: :cascade do |t|
     t.integer "viewer_id", null: false
     t.integer "viewed_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "related_post_tags", force: :cascade do |t|
+    t.integer "post_tag_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_related_post_tags_on_post_id"
+    t.index ["post_tag_id"], name: "index_related_post_tags_on_post_tag_id"
+  end
+
+  create_table "related_room_tags", force: :cascade do |t|
+    t.integer "counseling_room_id", null: false
+    t.integer "room_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["counseling_room_id"], name: "index_related_room_tags_on_counseling_room_id"
+    t.index ["room_tag_id"], name: "index_related_room_tags_on_room_tag_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "room_tags", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -202,4 +239,8 @@ ActiveRecord::Schema.define(version: 2024_06_08_094304) do
   add_foreign_key "post_views", "posts"
   add_foreign_key "post_views", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "related_post_tags", "post_tags"
+  add_foreign_key "related_post_tags", "posts"
+  add_foreign_key "related_room_tags", "counseling_rooms"
+  add_foreign_key "related_room_tags", "room_tags"
 end
