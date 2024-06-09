@@ -1,6 +1,6 @@
-<div class='d-flex flex-wrap justify-content-center'>
-    
-  <% if counseling_rooms.present? %>
+<% if counseling_rooms.present? %>
+
+  <div class='d-flex flex-wrap justify-content-center'>
   
     <% counseling_rooms.each do |room| %>
       <%= link_to admin_category_counseling_room_path(room.category.id, room.id) do %>
@@ -19,9 +19,14 @@
         </div>
       <% end %>
     <% end %>
+  </div>
+    
+  <div class='d-flex justify-content-center py-3'>
+    <%= paginate counseling_rooms, theme: 'bootstrap-5' %>
+  </div>
+
+<% else %><!--相談室が存在しない場合-->
   
-  <% else %><!--相談室が存在しない場合-->
-    <p class='mt-5 text-center'><%= I18n.t('counseling_rooms.index.no_exist') %></p>
-  <% end %>
-  
-</div>
+  <p class='mt-5 text-center'><%= I18n.t('counseling_rooms.index.no_exist') %></p>
+
+<% end %>

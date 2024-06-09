@@ -42,9 +42,5 @@ class CounselingRoom < ApplicationRecord
       self.room_tags << room_tag
     end
   end
-  
-  def self.search_with_tag_for(tag_name)
-    RoomTag.find_by(name: tag_name).counseling_rooms
-  end
 
 end

@@ -38,7 +38,12 @@ class Admin::CounselingRoomsController < ApplicationController
   
   def search
     @tag_name = params[:tag_name]
-    @counseling_rooms = CounselingRoom.search_with_tag_for(@tag_name).page(params[:page]).per(20)
+    room_tag = RoomTag.find_by(name: @tag_name)
+    if room_tag
+      @counseling_rooms = room_tag.counseling_rooms.page(params[:page]).per(20)
+    else
+      @counseling_rooms = nil
+    end
   end
 
 end

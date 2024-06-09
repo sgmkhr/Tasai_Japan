@@ -12,7 +12,13 @@ class Admin::PostsController < ApplicationController
       }
       @posts = Kaminari.paginate_array(posts).page(params[:page]).per(12)
     elsif params[:tag_name]
-      @posts = Post.search_with_tag_for(params[:tag_name]).page(params[:page]).per(12)
+      @tag_name = params[:tag_name]
+      post_tag = PostTag.find_by(name: @tag_name)
+      if post_tag
+        @posts = post_tag.posts.page(params[:page]).per(12)
+      else
+        @posts = nil
+      end
     elsif params[:content]
       @posts = Post.search_for(params[:content]).page(params[:page]).per(12)
     else

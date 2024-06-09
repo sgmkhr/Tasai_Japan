@@ -73,8 +73,4 @@ class Post < ApplicationRecord
     end
   end
   
-  def self.search_with_tag_for(tag_name)
-    PostTag.find_by(name: tag_name).posts
-  end
-  
 end

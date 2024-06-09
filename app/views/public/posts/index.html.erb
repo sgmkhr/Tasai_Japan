@@ -4,7 +4,15 @@
   <%= I18n.t('posts.index.title') %>
 </p>
 
-<div class='section-title'><h2><%= I18n.t('posts.index.title') %></h2></div>
+<div class='section-title'>
+  <h2>
+    <% if @tag_name.present? %>
+      #<%= @tag_name %>
+    <% else %>
+      <%= I18n.t('posts.index.title') %>
+    <% end %>
+  </h2>
+</div>
 
 <section>
 
