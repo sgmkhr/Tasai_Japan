@@ -34,7 +34,9 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    tag_name_list = params[:post][:tag_name].split('/')
     if @post.save
+      @post.save_tags(tag_name_list)
       redirect_to post_path(@post.id), notice: I18n.t('posts.create.notice')
     else
       flash.now[:alert] = I18n.t('posts.create.alert')
@@ -46,7 +48,9 @@ class Public::PostsController < ApplicationController
   end
 
   def update
+    tag_name_list = params[:post][:tag_name].split('/')
     if @post.update(post_params)
+      @post.save_tags(tag_name_list)
       redirect_to post_path(@post.id), notice: I18n.t('posts.update.notice')
     else
       flash.now[:alert] = I18n.t('posts.update.alert')

@@ -33,7 +33,9 @@ class Public::CounselingRoomsController < ApplicationController
     @counseling_room = CounselingRoom.new(counseling_room_params)
     @counseling_room.category_id = @category.id
     @counseling_room.user_id = current_user.id
+    tag_name_list = params[:counseling_room][:tag_name].split('/')
     if @counseling_room.save
+      @counseling_room.save_tags(tag_name_list)
       redirect_to category_counseling_room_path(@category.id, @counseling_room.id), notice: I18n.t('counseling_rooms.create.succeeded')
     else
       flash.now[:alert] = I18n.t('counseling_rooms.create.failed')
@@ -57,7 +59,9 @@ class Public::CounselingRoomsController < ApplicationController
 
   def update
     @counseling_room = CounselingRoom.find(params[:id])
+    tag_name_list = params[:counseling_room][:tag_name].split('/')
     if @counseling_room.update(counseling_room_params)
+      @counseling_room.save_tags(tag_name_list)
       redirect_to category_counseling_room_path(@category.id, @counseling_room.id), notice: I18n.t('counseling_rooms.update.succeeded')
     else
       flash.now[:alert] = I18n.t('counseling_rooms.update.failed')
