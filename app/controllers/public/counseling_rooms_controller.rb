@@ -75,7 +75,8 @@ class Public::CounselingRoomsController < ApplicationController
   end
   
   def search
-    @counseling_rooms = CounselingRoom.search_with_tag_for(params[:tag_name]).page(params[:page]).per(20)
+    @tag_name = params[:tag_name]
+    @counseling_rooms = CounselingRoom.search_with_tag_for(@tag_name).page(params[:page]).per(20)
   end
 
   private
