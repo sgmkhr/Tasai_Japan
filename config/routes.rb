@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         resources :opinions, only: [:destroy]
       end
     end
+    get 'categories/counseling_rooms/search', to: 'counseling_rooms#search', as: 'search_rooms'
   end
 
   devise_for :users, skip: [:passwords], controllers: {
@@ -50,6 +51,7 @@ Rails.application.routes.draw do
         end
       end
     end
+    get 'categories/counseling_rooms/search', to: 'counseling_rooms#search', as: 'search_rooms'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

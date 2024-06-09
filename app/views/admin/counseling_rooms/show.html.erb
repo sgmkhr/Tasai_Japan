@@ -29,6 +29,18 @@
     </div>
   <% end %>
   
+  <div class='d-flex flex-wrap mt-3'>
+    <% if @counseling_room.room_tags.present? %>
+      <% @counseling_room.room_tags.each do |room_tag| %>
+        <%= link_to admin_search_rooms_path(tag_name: room_tag.name) do %>
+          <div class='tag-item'>
+            <%= room_tag.name %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  
   <h4 class='mt-5'><%= @counseling_room.topic %></h4>
   
   <p><%= @counseling_room.detail %></p>

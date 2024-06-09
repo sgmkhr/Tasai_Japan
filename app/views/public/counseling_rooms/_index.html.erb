@@ -1,0 +1,33 @@
+<div class='d-flex flex-wrap justify-content-center'>
+    
+  <% if counseling_rooms.present? %>
+  
+    <% counseling_rooms.each do |room| %>
+      <%= link_to category_counseling_room_path(room.category.id, room.id) do %>
+        <div class='counseling-room-item'>
+
+          <p class='overflow-hidden text-nowrap text-truncate'>
+            <i class="fa-solid fa-people-roof"></i>
+            <%= room.topic %>
+          </p>
+          
+          <div class='text-right'>
+            <div>
+              <i class="fa-solid fa-user-group"></i>
+              <%= room.participations.where(status: true).count %>
+            </div>
+            
+            <div class='ml-3 rounded'>
+              <%= current_user.get_participation_status(room) %>
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+    <% end %>
+  
+  <% else %><!--相談室が存在しない場合-->
+    <p class='mt-5 text-center'><%= I18n.t('counseling_rooms.index.no_exist') %></p>
+  <% end %>
+  
+</div>

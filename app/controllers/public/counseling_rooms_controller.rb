@@ -73,21 +73,16 @@ class Public::CounselingRoomsController < ApplicationController
     CounselingRoom.find(params[:id]).destroy
     redirect_to category_counseling_rooms_path(@category.id), notice: I18n.t('counseling_rooms.destroy')
   end
+  
+  def search
+    @counseling_rooms = CounselingRoom.search_with_tag_for(params[:tag_name]).page(params[:page]).per(20)
+  end
 
   private
 
   def counseling_room_params
     params.require(:counseling_room).permit(:topic, :detail)
   end
-
-  # def ensure_participated_user
-  #   counseling_room = CounselingRoom.find(params[:id])
-  #   return if  current_user == counseling_room.user #相談室作成者は当アクション処理を抜ける
-  #   participation = counseling_room.participations.where(user_id: current_user.id)
-  #   unless participation.status #参加承認済みのユーザー
-  #     redirect_to category_counseling_rooms_path(params[:category_id]), alert: I18n.t('counseling_rooms.validates.user')
-  #   end
-  # end
 
   def set_category
     @category = Category.find(params[:category_id])
