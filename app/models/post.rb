@@ -4,10 +4,14 @@ class Post < ApplicationRecord
   
   belongs_to :user
   
-  has_many :comments,       dependent: :destroy
-  has_many :post_favorites, dependent: :destroy
-  has_many :bookmarks,      dependent: :destroy
-  has_many :post_views,     dependent: :destroy
+  with_options dependent: :destroy do
+    has_many :comments
+    has_many :post_favorites
+    has_many :bookmarks
+    has_many :post_views
+    has_many :related_post_tags
+    has_many :related_room_tags
+  end
   
   scope :latest, -> { order(created_at: :desc) }
   scope :old,    -> { order(created_at: :asc) }
