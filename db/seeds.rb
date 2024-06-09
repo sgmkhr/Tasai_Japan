@@ -239,7 +239,7 @@ end
 
 
 # 以下、投稿データ
-Post.find_or_create_by!(title: '糸島の芥屋') do |po|
+post_drive = Post.find_or_create_by!(title: '糸島の芥屋') do |po|
   po.caption = '福岡のドライブスポットといえば！'
   po.body = 'この前はドライブではなく、遊覧船に乗って鍾乳洞を覗きにいけるアクティビティに参加してきました。'
   po.prefecture = 7
@@ -247,7 +247,7 @@ Post.find_or_create_by!(title: '糸島の芥屋') do |po|
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
 end
 
-Post.find_or_create_by!(title: '明太子のお重') do |po|
+post_mentai = Post.find_or_create_by!(title: '明太子のお重') do |po|
   po.caption = '博多に来たら必ず行ってほしい'
   po.body = '明太子好きにはたまらない！重厚な雰囲気だけどカジュアルにランチで楽しめる。'
   po.prefecture = 7
@@ -255,7 +255,7 @@ Post.find_or_create_by!(title: '明太子のお重') do |po|
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
 end
 
-Post.find_or_create_by!(title: '柳川') do |po|
+post_unagi = Post.find_or_create_by!(title: '柳川') do |po|
   po.caption = 'うなぎも有名な場所'
   po.body = '福岡市からは少し離れていますが、美味しい鰻重と穏やかな川下りが楽しめますよ。'
   po.prefecture = 7
@@ -263,7 +263,7 @@ Post.find_or_create_by!(title: '柳川') do |po|
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
 end
 
-Post.find_or_create_by!(title: '竜王スキー場') do |po|
+post_winter = Post.find_or_create_by!(title: '竜王スキー場') do |po|
   po.caption = '関東のスキー場といえばここ！'
   po.body = '関東に住まいの方に人気のスキー場。上の方に登ると、素敵な景色と共にビールも飲めちゃいます！'
   po.prefecture = 20
@@ -271,7 +271,7 @@ Post.find_or_create_by!(title: '竜王スキー場') do |po|
   po.user = dan # 東京に馴染み深いサンプルユーザー
 end
 
-Post.find_or_create_by!(title: '秩父') do |po|
+post_kanto = Post.find_or_create_by!(title: '秩父') do |po|
   po.caption = '東京から日帰りドライブにおすすめ'
   po.body = '秩父では荒川のライン下りが楽しいですよ！ランチはここがお気に入り。新鮮なジビエを岩の上で焼いて、きのこもたっぷり、自然の中で味わえる贅沢ランチです！'
   po.prefecture = 11
@@ -492,5 +492,42 @@ topic_job_hunting.participations.find_or_create_by!(user_id: ritsu.id)
 topic_job_hunting.participations.find_or_create_by!(user_id: juana.id)
 topic_job_hunting.participations.find_or_create_by!(user_id: james.id)
 topic_job_hunting.participations.find_or_create_by!(user_id: jacobo.id)
+
+# 以下、タグのデータ
+post_tag_kanto   = PostTag.find_or_create_by!(name: '関東')
+post_tag_local   = PostTag.find_or_create_by!(name: '地方')
+post_tag_gourmet = PostTag.find_or_create_by!(name: 'B級グルメ')
+post_tag_drive   = PostTag.find_or_create_by!(name: 'ドライブ')
+post_tag_winter  = PostTag.find_or_create_by!(name: '冬')
+
+room_tag_tokyo     = RoomTag.find_or_create_by!(name: '東京')
+room_tag_friend_ja = RoomTag.find_or_create_by!(name: '友達作り')
+room_tag_friend_en = RoomTag.find_or_create_by!(name: 'to make friends')
+room_tag_trip_ja   = RoomTag.find_or_create_by!(name: '旅行者')
+room_tag_trip_en   = RoomTag.find_or_create_by!(name: 'travelers')
+room_tag_migrant   = RoomTag.find_or_create_by!(name: '日本移住')
+
+# 以下、投稿タグの紐付けデータ
+post_kanto.related_post_tags.find_or_create_by!(post_tag_id: post_tag_kanto.id)
+
+post_mentai.related_post_tags.find_or_create_by!(post_tag_id: post_tag_local.id)
+post_mentai.related_post_tags.find_or_create_by!(post_tag_id: post_tag_gourmet.id)
+
+post_unagi.related_post_tags.find_or_create_by!(post_tag_id: post_tag_local.id)
+
+post_winter.related_post_tags.find_or_create_by!(post_tag_id: post_tag_local.id)
+post_winter.related_post_tags.find_or_create_by!(post_tag_id: post_tag_winter.id)
+
+post_drive.related_post_tags.find_or_create_by!(post_tag_id: post_tag_drive.id)
+
+# 以下、相談室タグの紐付けデータ
+topic_music_fes.related_room_tags.find_or_create_by!(room_tag_id: room_tag_tokyo.id)
+topic_music_fes.related_room_tags.find_or_create_by!(room_tag_id: room_tag_friend_ja.id)
+topic_music_fes.related_room_tags.find_or_create_by!(room_tag_id: room_tag_friend_en.id)
+
+topic_dishes.related_room_tags.find_or_create_by!(room_tag_id: room_tag_trip_ja.id)
+topic_dishes.related_room_tags.find_or_create_by!(room_tag_id: room_tag_trip_en.id)
+
+topic_residence.related_room_tags.find_or_create_by!(room_tag_id: room_tag_migrant.id)
 
 puts 'seedの実行が完了しました'

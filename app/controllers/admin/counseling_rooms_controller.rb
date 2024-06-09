@@ -35,5 +35,15 @@ class Admin::CounselingRoomsController < ApplicationController
     CounselingRoom.find(params[:id]).destroy
     redirect_to admin_category_counseling_rooms_path(params[:category_id]), notice: I18n.t('counseling_rooms.destroy')
   end
+  
+  def search
+    @tag_name = params[:tag_name]
+    room_tag = RoomTag.find_by(name: @tag_name)
+    if room_tag
+      @counseling_rooms = room_tag.counseling_rooms.page(params[:page]).per(20)
+    else
+      @counseling_rooms = nil
+    end
+  end
 
 end

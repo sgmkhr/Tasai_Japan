@@ -17,8 +17,16 @@ class Public::PostsController < ApplicationController
         b.post_favorites.size <=> a.post_favorites.size
       }
       @posts = Kaminari.paginate_array(posts).page(params[:page]).per(12)
+    elsif params[:tag_name]
+      @tag_name = params[:tag_name]
+      post_tag = PostTag.find_by(name: @tag_name)
+      if post_tag
+        @posts = post_tag.posts.page(params[:page]).per(12)
+      else
+        @posts = nil
+      end
     elsif params[:content]
-      @posts = Post.latest.search_for(params[:content]).page(params[:page]).per(12)
+      @posts = Post.search_for(params[:content]).page(params[:page]).per(12)
     else
       @posts = Post.latest.page(params[:page]).per(12)
     end
@@ -34,7 +42,9 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    tag_name_list = params[:post][:tag_name].split('/')
     if @post.save
+      @post.save_tags(tag_name_list)
       redirect_to post_path(@post.id), notice: I18n.t('posts.create.notice')
     else
       flash.now[:alert] = I18n.t('posts.create.alert')
@@ -46,7 +56,9 @@ class Public::PostsController < ApplicationController
   end
 
   def update
+    tag_name_list = params[:post][:tag_name].split('/')
     if @post.update(post_params)
+      @post.save_tags(tag_name_list)
       redirect_to post_path(@post.id), notice: I18n.t('posts.update.notice')
     else
       flash.now[:alert] = I18n.t('posts.update.alert')

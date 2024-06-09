@@ -1,6 +1,6 @@
-<div class='d-flex flex-wrap justify-content-center'>
+<% if posts.present? %><!--投稿が存在する場合-->
 
-  <% if posts.present? %><!--投稿が存在する場合-->
+  <div class='d-flex flex-wrap justify-content-center'>
 
     <% posts.each do |a_post| %> <!--各投稿の情報表示-->
       <%= link_to admin_post_path(a_post.id) do %>
@@ -55,13 +55,14 @@
         </div>
       <% end %>
     <% end %>
+  </div>
+    
+  <div class='d-flex justify-content-center py-3'>
+    <%= paginate posts, theme: 'bootstrap-5' %>
+  </div>
 
-  <% else %><!--投稿が存在しない場合-->
-    <p class='mt-5'><%= I18n.t('posts.index.not_exist') %></p>
-  <% end %>
+<% else %><!--投稿が存在しない場合-->
 
-</div>
+  <p class='mt-5 text-center'><%= I18n.t('posts.index.not_exist') %></p>
 
-<div class='d-flex justify-content-center py-3'>
-  <%= paginate posts, theme: 'bootstrap-5' %>
-</div>
+<% end %>

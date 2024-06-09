@@ -25,6 +25,11 @@
     <%= f.select :prefecture, Post.prefectures.keys.map {|k| [I18n.t("enums.post.prefecture.#{k}"), k]}, class: 'form-control col-md-9 col-11' %>
   </div>
   
+  <div class='form-group row d-flex'>
+    <%= f.label :tag_name, class: 'col-md-3' %>
+    <%= f.text_field :tag_name, placeholder: I18n.t('placeholder.tag_name'),class: 'form-control col-md-9 col-11' %>
+  </div>
+  
   <div class='actions text-right'>
     <%= f.submit btn_name, class: 'btn btn-sm success-btn mb-2' %>
   </div>
