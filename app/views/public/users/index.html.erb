@@ -30,13 +30,17 @@
 
       <% @users.each do |user| %> <!--各ユーザーの情報表示-->
         <%= link_to user_path(user.canonical_name) do %>
-          <div class='index-item'>
+          <div class='user-index-item'>
 
             <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle' %>
 
-            <p>@<%= user.canonical_name %></p><hr>
+            <p class='overflow-hidden text-nowrap text-truncate'>
+              @<%= user.canonical_name %>
+            </p><hr>
 
-            <p><%= user.public_name %></p>
+            <p class='overflow-hidden text-nowrap text-truncate'>
+              <%= user.public_name %>
+            </p>
 
             <p>
               <span class=<%= user.get_class_associated_with_position %>>
@@ -46,6 +50,13 @@
 
             <p class='overflow-hidden text-nowrap text-truncate'>
               <%= user.introduction %>
+            </p>
+
+            <p class='user-index-chart-box d-flex'>
+              <i class="fa-solid fa-ranking-star"></i>
+              <span class='ml-1'><%= user.posts.count %></span>
+
+              <!--後ほど、フォロワー数表示予定-->
             </p>
 
           </div>
