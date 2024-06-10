@@ -38,8 +38,9 @@ Rails.application.routes.draw do
     get 'menu',  to: 'homes#menu'
     resources :users, only: [:show, :index, :edit, :update], param: :canonical_name do
       resource :relationships, only: [:create, :destroy]
-    	get 'followings' => 'relationships#followings', as: 'followings'
-    	get 'followers'  => 'relationships#followers',  as: 'followers'
+    	get 'followings', to: 'relationships#followings'
+    	get 'followers',  to: 'relationships#followers'
+    	get 'chat_rooms', to: 'chats#index'
     end
     patch 'users/:canonical_name/withdraw', to: 'users#withdraw', as: 'withdraw'
     get 'users/:canonical_name/unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
@@ -59,6 +60,7 @@ Rails.application.routes.draw do
       end
     end
     get 'categories/counseling_rooms/search', to: 'counseling_rooms#search', as: 'search_rooms'
+    resources :chats, only: [:show, :create, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

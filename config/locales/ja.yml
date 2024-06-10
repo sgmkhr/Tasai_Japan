@@ -185,6 +185,14 @@ ja:
     index:
       followings: フォロー 一覧
       followers: フォロワー 一覧
+  chats:
+    validates:
+      non_related: やり取りするには相互フォローが必要です。
+      non_permitted: 他のユーザーのチャットルーム一覧は閲覧できません。
+    index:
+      title: チャットルーム一覧
+      unread_exists: 未読あり
+      zero_chat_history: ＜＜チャット履歴：０＞＞
 
   enums:
     user:

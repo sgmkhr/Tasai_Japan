@@ -1,0 +1,43 @@
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'), root_path %>>
+  <%= link_to I18n.t('menu'),     menu_path %>>
+  <%= link_to I18n.t('mypage'),   user_path(current_user.canonical_name) %>>
+  <%= I18n.t('chats.index.title') %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('chats.index.title') %></h2></div>
+
+<section>
+
+  <% @entries.each do |entry| %>
+
+    <div class='row'>
+      <%= link_to chat_path(entry.chat_room_id) %>
+        <p class='col-md-6'>
+          <%= entry.get_partner.public_name %>
+          <% if entry.is_there_unread?(entry.get_partner) %>
+            <span class='font-sm text-danger'><%= I18n.t('chats.index.unread_exists') %></span>
+          <% end %>
+        </p>
+      <% end %>
+
+      <div class='col-md-6'>
+        <% if entry.get_last_chat %>
+          <p class='overflow-hidden text-nowrap text-truncate'>
+            <%= entry.get_last_chat.content %>
+          </p>
+          <p class='font-sm text-right'>
+            <%= entry.get_last_chat.created_at.strftime('%Y/%m/%d %H:%M') %>
+          </p>
+        <% else %>
+          <p><%= I18n.t('chats.index.zero_chat_history') %></p>
+        <% end %>
+      </div>
+
+    </div>
+
+    <hr>
+
+  <% end %>
+
+</section>
