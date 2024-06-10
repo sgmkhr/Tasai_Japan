@@ -1,0 +1,3 @@
+$('.chat-history').append("<div class='chat-box ml-auto'><p><%= @chat.content %></p></div><p class='font-sm text-right'><%= I18n.t('chats.sent_now') %></p>");
+$('textarea').val('');
+$('.no-chat-wording').hide();

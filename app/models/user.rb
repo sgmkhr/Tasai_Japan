@@ -21,11 +21,14 @@ class User < ApplicationRecord
     has_many :passive_profile_views, class_name: 'ProfileView',  foreign_key: 'viewed_id'
     has_many :active_relationships,  class_name: 'Relationship', foreign_key: 'follower_id'
     has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id'
+    has_many :entries
+    has_many :chats
   end
 
-  has_many :bookmarked_posts, through: :bookmarks,            source: :post
-  has_many :followings,       through: :active_relationships, source: :followed
+  has_many :bookmarked_posts, through: :bookmarks,             source: :post
+  has_many :followings,       through: :active_relationships,  source: :followed
   has_many :followers,        through: :passive_relationships, source: :follower
+  has_many :chat_rooms,       through: :entries
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old,    -> { order(created_at: :asc) }
