@@ -33,6 +33,8 @@ class Public::ChatsController < ApplicationController
   
   def destroy
     Chat.find(params[:id]).destroy
+    @room = ChatRoom.find(params[:chat_room_id])
+    @chats = @room.chats
     # 非同期通信のため、chats/destroy.js.erbを呼び出す
   end
   

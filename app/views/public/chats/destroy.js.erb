@@ -1,1 +1,1 @@
-$('.chat-history').html('<%= j(render 'public/chats/list', chats: @chats) %>');
+$('.chat-history').html('<%= j(render 'public/chats/list', chats: @chats, room: @room) %>');

@@ -11,14 +11,14 @@
 <section>
   
   <div class='chat-history pb-5'>
-    <%= render 'public/chats/list', chats: @chats %>
+    <%= render 'public/chats/list', chats: @chats, room: @room %>
   </div>
   
   <div class='chat-form'>
     <div class='errors'>
       <%= render 'layouts/errors', obj: @chat %>
     </div>
-    <%= render 'public/chats/form', chat: @chat, room: @room, chats: @chats %>
+    <%= render 'public/chats/form', chat: @chat, room: @room %>
   </div>
   
 </section>  

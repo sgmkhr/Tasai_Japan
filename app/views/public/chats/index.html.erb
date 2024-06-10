@@ -12,21 +12,23 @@
   <% @entries.each do |entry| %>
 
     <div class='row'>
-      <%= link_to chat_path(entry.get_partner.id) %>
-        <p class='col-md-6'>
-          <%= entry.get_partner.public_name %>
-          <% if entry.is_there_unread?(entry.get_partner) %>
-            <span class='font-sm text-danger'><%= I18n.t('chats.index.unread_exists') %></span>
-          <% end %>
-        </p>
-      <% end %>
-
       <div class='col-md-6'>
+        <%= link_to chat_path(entry.get_partner(current_user).id) do %>
+          <p>
+            <%= entry.get_partner(current_user).public_name %>
+            <% if entry.is_there_unread?(entry.get_partner(current_user)) %>
+              <span class='font-sm text-danger'><%= I18n.t('chats.index.unread_exists') %></span>
+            <% end %>
+          </p>
+        <% end %>
+      </div>
+
+      <div class='col-md-6 d-flex'>
         <% if entry.get_last_chat %>
-          <p class='overflow-hidden text-nowrap text-truncate'>
+          <p class='overflow-hidden text-nowrap text-truncate col-md-6'>
             <%= entry.get_last_chat.content %>
           </p>
-          <p class='font-sm text-right'>
+          <p class='font-sm text-right col-md-6'>
             <%= entry.get_last_chat.created_at.strftime('%Y/%m/%d %H:%M') %>
           </p>
         <% else %>
