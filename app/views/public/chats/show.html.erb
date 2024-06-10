@@ -1,8 +1,8 @@
 <p class='guide-links'>
-  <%= link_to I18n.t('top_page'),             root_path %>>
-  <%= link_to I18n.t('menu'),                 menu_path %>>
-  <%= link_to I18n.t('mypage'),               user_path(current_user.canonical_name) %>>
-  <%= link_to I18n.t('chats.index.title') %>, user_chat_rooms_path(current_user.canonical_name) %>>
+  <%= link_to I18n.t('top_page'),          root_path %>>
+  <%= link_to I18n.t('menu'),              menu_path %>>
+  <%= link_to I18n.t('mypage'),            user_path(current_user.canonical_name) %>>
+  <%= link_to I18n.t('chats.index.title'), user_chat_rooms_path(current_user.canonical_name) %>>
   <%= @user.public_name + I18n.t('chats.show.title') %>
 </p>
 
@@ -18,7 +18,7 @@
     <div class='errors'>
       <%= render 'layouts/errors', obj: @chat %>
     </div>
-    <%= render 'public/chats/form', chat: @chat, room: @room %>
+    <%= render 'public/chats/form', chat: @chat, room: @room, chats: @chats %>
   </div>
   
 </section>  

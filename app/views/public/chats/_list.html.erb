@@ -1,27 +1,33 @@
-<% chats.each do |chat| %>
+<% if chats.present? %>
 
-  <% if chat.user_id == current_user.id %>
+  <% chats.each do |chat| %>
   
-    <div class='chat-box ml-auto'>
-      <p>
-        <%= chat.content %>
-        <%= link_to chat_path(chat.id), method: :delete, remote: true, data: {"turbolinks" => false}, 
-                                        'data-confirm' => I18n.t('chats.destroy.confirmation') do %>
-          <i class="fa-solid fa-circle-xmark"></i>
-        <% end %>
-      </p>
-    </div>
+    <% if chat.user_id == current_user.id %>
     
-    <p class='font-sm text-right'><%= chat.get_sent_time_and_read %></p>
-  
-  <% else %>
-  
-    <div class='chat-box mr-auto'>
-      <p><%= chat.content %></p>
-    </div>
+      <div class='chat-box ml-auto'>
+        <p>
+          <%= chat.content %>
+          <%= link_to chat_path(chat.id), method: :delete, remote: true, data: {"turbolinks" => false}, 
+                                          'data-confirm' => I18n.t('chats.destroy.confirmation') do %>
+            <i class="fa-solid fa-circle-xmark"></i>
+          <% end %>
+        </p>
+      </div>
+      
+      <p class='font-sm text-right'><%= chat.get_sent_time_and_read %></p>
     
-    <p class='font-sm text-left'><%= chat.get_sent_time_and_read %></p>
+    <% else %>
+    
+      <div class='chat-box mr-auto'>
+        <p><%= chat.content %></p>
+      </div>
+      
+      <p class='font-sm text-left'><%= chat.get_sent_time_and_read %></p>
+    
+    <% end %>
   
   <% end %>
-
+  
+<% else %>
+  <p class='text-center no-chat-wording'><%= I18n.t('chats.show.no_chat_history') %></p>
 <% end %>

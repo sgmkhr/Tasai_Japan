@@ -12,7 +12,7 @@ class Public::ChatsController < ApplicationController
     @user = User.find(params[:id])
     room_ids = current_user.entries.pluck(:chat_room_id)
     entry = Entry.find_by(user_id: @user.id, chat_room_id: room_ids)
-    unless entries.nil?
+    unless entry.nil?
       @room = entry.chat_room
     else
       @room = ChatRoom.new

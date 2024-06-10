@@ -267,9 +267,8 @@ input {
                                             // 以下、チャット画面のレイアウト
 .chat-form {
   position:         fixed;
-  bottom:           0px;
-  width:            100%;
-  background-color: rgb(212, 211, 202);
+  bottom:           20px;
+  width:            70%;
 }
 .chat-box {
   width:            70%;
@@ -277,6 +276,9 @@ input {
   margin-top:       10px;
   border-radius:    10px;
   backgroung-color: rgb(212, 211, 202);
+}
+.chat-history {
+  padding-bottom:   120px;
 }
                                             // 以下、スマホサイズのレスポンシブ対応
 @media screen and (max-width:768px) {
