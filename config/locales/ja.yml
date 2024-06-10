@@ -103,6 +103,10 @@ ja:
     index:
       no_exist: カテゴリが存在しません。
     placeholder: 作成するカテゴリ名を入力
+    bars:
+      create: カテゴリ作成
+      keyword: キーワード検索
+      tag: 関連タグ検索
   counseling_rooms:
     title: 相談室を探す
     index:
