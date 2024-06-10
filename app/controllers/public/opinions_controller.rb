@@ -1,5 +1,6 @@
 class Public::OpinionsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_guest_user
   before_action :set_category_and_room
   
   def create
@@ -20,6 +21,12 @@ class Public::OpinionsController < ApplicationController
   
   def opinion_params
     params.require(:opinion).permit(:content)
+  end
+  
+  def ensure_guest_user
+    if current_user.guest_user?
+      redirect_to request.referer, alert: I18n.t('guestuser.validates')
+    end
   end
   
   def set_category_and_room
