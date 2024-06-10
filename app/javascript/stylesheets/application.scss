@@ -264,6 +264,20 @@ input {
   border-top:      1px solid #fff;
   border-bottom:   1px solid #fff;
 }
+                                            // 以下、チャット画面のレイアウト
+.chat-form {
+  position:         fixed;
+  bottom:           0px;
+  width:            100%;
+  background-color: rgb(212, 211, 202);
+}
+.chat-box {
+  width:            70%;
+  padding:          10px;
+  margin-bottom:    10px;
+  border-radius:    10px;
+  backgroung-color: rgb(212, 211, 202);
+}
                                             // 以下、スマホサイズのレスポンシブ対応
 @media screen and (max-width:768px) {
   .sm-font {

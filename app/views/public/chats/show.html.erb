@@ -1,2 +1,21 @@
-<h1>Public::Chats#show</h1>
-<p>Find me in app/views/public/chats/show.html.erb</p>
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),             root_path %>>
+  <%= link_to I18n.t('menu'),                 menu_path %>>
+  <%= link_to I18n.t('mypage'),               user_path(current_user.canonical_name) %>>
+  <%= link_to I18n.t('chats.index.title') %>, user_chat_rooms_path(current_user.canonical_name) %>>
+  <%= @user.public_name + I18n.t('chats.show.title') %>
+</p>
+
+<div class='section-title'><h2><%= @user.public_name + I18n.t('chats.show.title') %></h2></div>
+
+<section>
+  
+  <div class='pb-5'>
+    <%= render 'public/chats/list', chats: @chats %>
+  </div>
+  
+  <div class='chat-form'>
+    <%= render 'public/chats/form', chat: @chat, room: @room %>
+  </div>
+  
+</section>  

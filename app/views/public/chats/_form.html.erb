@@ -1,0 +1,11 @@
+<%= form_with model: chat, local: false do |f| %>
+
+  <div class='form-group  d-flex'>
+    <%= f.text_area :content, class: 'form-control' %>
+    <%= f.hidden_field :chat_room_id, value: room.id %>
+    <%= f.submit, class: 'ml-3' do %>
+      <i class="fa-regular fa-paper-plane"></i>
+    <% end %>
+  </div>
+
+<% end %>

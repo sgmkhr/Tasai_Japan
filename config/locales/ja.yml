@@ -193,6 +193,8 @@ ja:
       title: チャットルーム一覧
       unread_exists: 未読あり
       zero_chat_history: ＜＜チャット履歴：０＞＞
+    show:
+      title: とのチャットルーム
 
   enums:
     user:
