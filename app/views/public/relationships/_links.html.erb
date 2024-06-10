@@ -1,7 +1,7 @@
 <div class='d-flex justify-content-around'>
   <%= link_to user_followers_path(user.canonical_name) do %>
     <div>
-      <p class='text-center'>
+      <p class='text-center mb-0'>
         <%= I18n.t('relationships.followers') %>
       </p>
       <p class='text-center'>
@@ -11,7 +11,7 @@
   <% end %>
   <%= link_to user_followings_path(user.canonical_name) do %>
     <div>
-      <p class='text-center'>
+      <p class='text-center mb-0'>
         <%= I18n.t('relationships.followings') %>
       </p>
       <p class='text-center'>

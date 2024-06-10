@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_guest_user,  only: [:new, :create]
   before_action :set_selected_post,  except: [:new, :index, :create]
   before_action :ensure_post_author, only: [:edit, :update, :destroy]
 
@@ -75,6 +76,12 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :caption, :body, :prefecture, :post_image)
+  end
+  
+  def ensure_guest_user
+    if current_user.guest_user?
+      redirect_to request.referer, alert: I18n.t('guestuser.validates')
+    end
   end
 
   def set_selected_post

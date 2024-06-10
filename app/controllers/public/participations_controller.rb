@@ -1,5 +1,6 @@
 class Public::ParticipationsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_guest_user
   before_action :set_category_and_room, only: [:create, :destroy]
   before_action :ensure_room_creator,   only: [:update]
   
@@ -28,6 +29,12 @@ class Public::ParticipationsController < ApplicationController
   end
   
   private
+  
+  def ensure_guest_user
+    if current_user.guest_user?
+      redirect_to request.referer, alert: I18n.t('guestuser.validates')
+    end
+  end
   
   def set_category_and_room
     @category = Category.find(params[:category_id])

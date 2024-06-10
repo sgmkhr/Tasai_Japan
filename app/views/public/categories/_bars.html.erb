@@ -1,0 +1,52 @@
+<div class='row d-flex justify-content-end'>
+  <ul id='tab-menu' class='d-flex col-md-6 mb-0'>
+    <li>
+      <a href='#category_create_tab' class='btn-active'><i class="fa-solid fa-circle"></i></a>
+      <label class='sm-font'><%= I18n.t('categories.bars.create') %></label>
+    </li>
+    <li>
+      <a href='#category_keyword_tab' class=''><i class="fa-regular fa-circle"></i></a>
+      <label class='sm-font'><%= I18n.t('categories.bars.keyword') %></label>
+    </li>
+    <li>
+      <a href='#category_tag_tab' class=''><i class="fa-regular fa-circle"></i></a>
+      <label class='sm-font'><%= I18n.t('categories.bars.tag') %></label>
+    </li>
+  </ul>
+</div>
+
+<div id='tab-contents'>
+
+  <!--新規カテゴリ作成バー-->
+  <div id='category_create_tab' class='tab'>
+    <%= form_with model: category do |f| %>
+      <div class='form-group row justify-content-end'>
+        <%= f.text_field :name, class: 'form-control col-md-5 col-9', placeholder: I18n.t('categories.placeholder') %>
+        <%= f.submit I18n.t('create'), class: 'btn btn-sm success-btn ml-3' %>
+      </div>
+    <% end %>
+  </div>
+
+  <!--キーワード検索バー-->
+  <div id='category_keyword_tab' class='tab'>
+    <%= form_with url: categories_path, method: :get, local: true do |f| %>
+      <div class='form-group row justify-content-end'>
+        <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
+        <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+      </div>
+    <% end %>
+  </div>
+
+  <!--タグ検索バー-->
+  <div id='category_tag_tab' class='tab'>
+    <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
+      <div class='form-group row justify-content-end'>
+        <%= f.text_field :tag_name, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_tag') %>
+        <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+<%= javascript_pack_tag 'category_bars_tab' %>

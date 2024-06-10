@@ -1,5 +1,6 @@
 class Public::CounselingRoomsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_guest_user,   only: [:new, :create]
   before_action :set_category,        except: [:search]
   before_action :ensure_room_creator, only: [:edit, :update, :destroy]
 
@@ -88,6 +89,12 @@ class Public::CounselingRoomsController < ApplicationController
 
   def counseling_room_params
     params.require(:counseling_room).permit(:topic, :detail)
+  end
+  
+  def ensure_guest_user
+    if current_user.guest_user?
+      redirect_to request.referer, alert: I18n.t('guestuser.validates')
+    end
   end
 
   def set_category
