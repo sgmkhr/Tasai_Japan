@@ -169,6 +169,13 @@ input {
   width:          70%;
   margin:         0 auto;
 }
+
+.user-data-display {
+  width:            100%;
+  padding:          5px;
+  border-radius:    5px;
+  background-color: rgb(245, 243, 242);
+}
                                             // 以下、posts,categories,counseling_roomsのindexレイアウト
 .post-index-item,
 .category-item,
@@ -242,7 +249,7 @@ input {
 }
 
 #tab-menu li .active {
-  color: rgb(117, 93, 90);
+  color: rgb(160, 138, 35);
 }
 
 #tab-contents .tab {

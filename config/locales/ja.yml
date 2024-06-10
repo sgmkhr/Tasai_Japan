@@ -46,6 +46,9 @@ ja:
       user_posts_tab: 投稿履歴一覧
       bookmarked_posts_tab: ブックマーク一覧
       followusers_posts_tab: フォローユーザーの投稿一覧
+      posts_count: 投稿数
+      counseling_rooms_count: 作成相談室数
+      participations_count: 参加相談室数
     edit:
       title: 登録情報編集
     index:
