@@ -22,6 +22,7 @@ class Public::ChatsController < ApplicationController
     end
     @chats = @room.chats
     @chat = Chat.new
+    @room.read_chats(@user)
   end
   
   def create

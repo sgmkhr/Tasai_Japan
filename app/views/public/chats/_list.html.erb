@@ -3,14 +3,24 @@
   <% if chat.user_id == current_user.id %>
   
     <div class='chat-box ml-auto'>
-      <p><%= chat.content %></p>
+      <p>
+        <%= chat.content %>
+        <%= link_to chat_path(chat.id), method: :delete, remote: true, data: {"turbolinks" => false}, 
+                                        'data-confirm' => I18n.t('chats.destroy.confirmation') do %>
+          <i class="fa-solid fa-circle-xmark"></i>
+        <% end %>
+      </p>
     </div>
+    
+    <p class='font-sm text-right'><%= chat.get_sent_time_and_read %></p>
   
   <% else %>
   
     <div class='chat-box mr-auto'>
       <p><%= chat.content %></p>
     </div>
+    
+    <p class='font-sm text-left'><%= chat.get_sent_time_and_read %></p>
   
   <% end %>
 

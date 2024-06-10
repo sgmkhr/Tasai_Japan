@@ -26,11 +26,17 @@
           <i class="fa-solid fa-gear"></i>
         <% end %>
 
-      <% else %><!--自分のページでない場合、フォローボタン表示-->
+      <% else %><!--自分のページでない場合-->
 
         <span id='follow-btn' class='ml-5'>
           <%= render 'public/relationships/btn', user: @user %>
         </span>
+        
+        <% if current_user.following?(@user) && @user.following?(current_user) %>
+          <%= link_to chat_path(@user.id) do %>
+            <i class="fa-regular fa-paper-plane"></i>
+          <% end %>
+        <% end %>
 
       <% end %>
 

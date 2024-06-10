@@ -195,6 +195,11 @@ ja:
       zero_chat_history: ＜＜チャット履歴：０＞＞
     show:
       title: とのチャットルーム
+    destroy:
+      confirmation: 完全に履歴から削除していいですか？
+    sent_now: 今
+    sent_today: 
+    sent_yesterday: 昨日
 
   enums:
     user:
