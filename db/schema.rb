@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_09_091219) do
+ActiveRecord::Schema.define(version: 2024_06_10_043009) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,6 +67,22 @@ ActiveRecord::Schema.define(version: 2024_06_09_091219) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "chat_rooms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "chat_room_id", null: false
+    t.text "content", null: false
+    t.boolean "read", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chat_room_id"], name: "index_chats_on_chat_room_id"
+    t.index ["user_id"], name: "index_chats_on_user_id"
+  end
+
   create_table "comment_favorites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "comment_id", null: false
@@ -95,6 +111,15 @@ ActiveRecord::Schema.define(version: 2024_06_09_091219) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_counseling_rooms_on_category_id"
     t.index ["user_id"], name: "index_counseling_rooms_on_user_id"
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "chat_room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chat_room_id"], name: "index_entries_on_chat_room_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
   create_table "opinion_favorites", force: :cascade do |t|
@@ -222,12 +247,16 @@ ActiveRecord::Schema.define(version: 2024_06_09_091219) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "posts"
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "chats", "chat_rooms"
+  add_foreign_key "chats", "users"
   add_foreign_key "comment_favorites", "comments"
   add_foreign_key "comment_favorites", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "counseling_rooms", "categories"
   add_foreign_key "counseling_rooms", "users"
+  add_foreign_key "entries", "chat_rooms"
+  add_foreign_key "entries", "users"
   add_foreign_key "opinion_favorites", "opinions"
   add_foreign_key "opinion_favorites", "users"
   add_foreign_key "opinions", "counseling_rooms"

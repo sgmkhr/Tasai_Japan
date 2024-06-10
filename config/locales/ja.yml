@@ -23,7 +23,7 @@ ja:
   guestuser:
     signin:
       notice: ゲストユーザーとしてログインしました。
-    validates: ゲストユーザーは情報編集に関わる画面へは遷移できません。
+    validates: ゲストユーザーは制限されている操作です。ログインまたは新規登録してください。
 
   top:
     caption: 日本生活の初心者とベテランが繋がるためのサイトです。
@@ -46,6 +46,9 @@ ja:
       user_posts_tab: 投稿履歴一覧
       bookmarked_posts_tab: ブックマーク一覧
       followusers_posts_tab: フォローユーザーの投稿一覧
+      posts_count: 投稿数
+      counseling_rooms_count: 作成相談室数
+      participations_count: 参加相談室数
     edit:
       title: 登録情報編集
     index:
@@ -100,6 +103,10 @@ ja:
     index:
       no_exist: カテゴリが存在しません。
     placeholder: 作成するカテゴリ名を入力
+    bars:
+      create: カテゴリ作成
+      keyword: キーワード検索
+      tag: 関連タグ検索
   counseling_rooms:
     title: 相談室を探す
     index:
@@ -178,6 +185,23 @@ ja:
     index:
       followings: フォロー 一覧
       followers: フォロワー 一覧
+  chats:
+    validates:
+      non_related: やり取りするには相互フォローが必要です。
+      non_permitted: 他のユーザーのチャットルーム一覧は閲覧できません。
+    index:
+      title: チャットルーム一覧
+      unread_exists: 未読あり
+      zero_chat_history: ＜＜チャット履歴：０＞＞
+    show:
+      title: とのチャットルーム
+      no_chat_history: チャットの履歴がありません。
+    destroy:
+      confirmation: 完全に履歴から削除していいですか？
+    sent_now: 今
+    sent_today: 今日
+    sent_yesterday: 昨日
+    send: 送信
 
   enums:
     user:

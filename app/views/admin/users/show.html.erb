@@ -31,7 +31,7 @@
 
     <div class='col-md-4'><!--ユーザー情報-->
     
-      <p>
+      <p class='text-center'>
         <i class="fa-solid fa-chart-line"></i>
         <%= I18n.t('views_count.profile') %>
         <%= @user.passive_profile_views.count %>
@@ -43,8 +43,14 @@
       
       <p class='mb-3'><strong><%= @user.public_name %></strong></p>
       
-      <div id='following-count'>
-        <%= render 'admin/relationships/links', user: @user %>
+      <div class='user-data-display mb-3'>
+        
+        <div id='following-count'>
+          <%= render 'admin/relationships/links', user: @user %>
+        </div>
+        
+        <%= render 'public/users/count', user: @user %>
+        
       </div>
       
       <p class='mb-3'>
@@ -65,8 +71,8 @@
     
       <!--検索バー-->
       <%= form_with url: admin_user_path(@user.canonical_name), method: :get, local: true do |f| %>
-        <div class='form-group row justify-content-end'>
-          <%= f.text_field :content, class: 'form-control col-md-5 col-9 mt-2', placeholder: I18n.t('search_blank') %>
+        <div class='form-group row justify-content-end mt-2'>
+          <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
           <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
         </div>
       <% end %>

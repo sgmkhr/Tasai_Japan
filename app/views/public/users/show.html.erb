@@ -11,8 +11,8 @@
 
   <div class='row justify-content-center'>
     <div class='col-md-4'><!--ユーザーの情報-->
-      
-      <p>
+
+      <p class='text-center'>
         <i class="fa-solid fa-chart-line"></i>
         <%= I18n.t('views_count.profile') %>
         <%= @user.passive_profile_views.count %>
@@ -20,24 +20,38 @@
 
       <%= image_tag @user.get_profile_image(60, 60), class: 'rounded-circle' %>
 
-      <% if @user == current_user %><!--自分のページでのみ編集ボタン表示される-->
-      
+      <% if @user == current_user %><!--自分のページでのみ表示される-->
+
         <%= link_to edit_user_path(current_user.canonical_name) do %>
           <i class="fa-solid fa-gear"></i>
         <% end %>
         
-      <% else %><!--自分のページでない場合、フォローボタン表示-->
-        
+        <%= link_to I18n.t('chats.index.title') , user_chat_rooms_path(current_user.canonical_name), class: 'btn btn-sm success-btn ml-2 mt-2' %>
+
+      <% else %><!--自分のページでない場合-->
+
         <span id='follow-btn' class='ml-5'>
           <%= render 'public/relationships/btn', user: @user %>
         </span>
         
+        <% if current_user.following?(@user) && @user.following?(current_user) %>
+          <%= link_to chat_path(@user.id) do %>
+            <i class="fa-regular fa-paper-plane"></i>
+          <% end %>
+        <% end %>
+
       <% end %>
 
       <p class='my-3'><strong><%= @user.public_name %></strong></p>
       
-      <div id='following-count'>
-        <%= render 'public/relationships/links', user: @user %>
+      <div class='user-data-display mb-3'>
+        
+        <div id='following-count'>
+          <%= render 'public/relationships/links', user: @user %>
+        </div>
+  
+        <%= render 'public/users/count', user: @user %>
+        
       </div>
 
       <p class='mb-3'> <!--positionによってcss表示カラー変わる-->
@@ -82,8 +96,8 @@
 
             <!--検索バー-->
             <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
-              <div class='form-group row justify-content-end'>
-                <%= f.text_field :content, class: 'form-control col-md-5 col-9 mt-2', placeholder: I18n.t('search_blank') %>
+              <div class='form-group row justify-content-end mt-2'>
+                <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
                 <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
               </div>
             <% end %>
@@ -107,8 +121,8 @@
 
             <!--ブックマーク検索バー-->
             <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
-              <div class='form-group row justify-content-end'>
-                <%= f.text_field :content_in_bookmarks, class: 'form-control col-md-5 col-9 mt-2', placeholder: I18n.t('search_blank') %>
+              <div class='form-group row justify-content-end mt-2'>
+                <%= f.text_field :content_in_bookmarks, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
                 <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
               </div>
             <% end %>
@@ -136,8 +150,8 @@
 
         <!--検索バー-->
         <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
-          <div class='form-group row justify-content-end'>
-            <%= f.text_field :content, class: 'form-control col-md-5 col-9 mt-2', placeholder: I18n.t('search_blank') %>
+          <div class='form-group row justify-content-end mt-2'>
+            <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
             <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
           </div>
         <% end %>

@@ -28,8 +28,12 @@ p, h2, h4, sm {
   color:               rgb(81, 78, 77);
 }
 
+.sm-font {
+  font-size:           10px;
+}
+
 nav > h4 { //トップ画面とメニュー画面で適用
-  writing-mode:    vertical-rl;
+  writing-mode:        vertical-rl;
 }
                                             // 以下、リンクのレイアウト
 a:link, a:visited {
@@ -169,6 +173,13 @@ input {
   width:          70%;
   margin:         0 auto;
 }
+
+.user-data-display {
+  width:            100%;
+  padding:          5px;
+  border-radius:    5px;
+  background-color: rgb(245, 243, 242);
+}
                                             // 以下、posts,categories,counseling_roomsのindexレイアウト
 .post-index-item,
 .category-item,
@@ -234,7 +245,7 @@ input {
   border: 1px solid rgb(169, 175, 29);
   color:  rgb(169, 175, 29);
 }
-                                            // 以下、マイページ内のタブ切り替えに関わるcss
+                                            // 以下、タブ切り替えに関わるcss
 #tab-menu li {
   list-style-type: none;
   width:           30%;
@@ -242,19 +253,39 @@ input {
 }
 
 #tab-menu li .active {
-  color: rgb(117, 93, 90);
+  color:           rgb(160, 138, 35);
 }
 
 #tab-contents .tab {
-  width:      100%;
+  width:           100%;
 }
 
 .tab-title {
-  border-top:    1px solid #fff;
-  border-bottom: 1px solid #fff;
+  border-top:      1px solid #fff;
+  border-bottom:   1px solid #fff;
+}
+                                            // 以下、チャット画面のレイアウト
+.chat-form {
+  position:         fixed;
+  bottom:           20px;
+  width:            70%;
+}
+.chat-box {
+  width:            70%;
+  padding:          10px;
+  margin-top:       10px;
+  border-radius:    10px;
+  background-color: rgb(245, 243, 242);
+}
+.chat-history {
+  padding-bottom:   120px;
 }
                                             // 以下、スマホサイズのレスポンシブ対応
 @media screen and (max-width:768px) {
+  .sm-font {
+    font-size:    8px;
+  }
+
   section {
     margin:       40px auto;
   }

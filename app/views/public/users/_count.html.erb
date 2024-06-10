@@ -1,0 +1,48 @@
+<div class='d-flex justify-content-around'>
+  
+  <div>
+    
+    <p class='text-center mb-0 responsive-disabled'>
+      <%= I18n.t('users.show.posts_count') %>
+    </p>
+    <p class='text-center mb-0 resposive-displayed'>
+      <i class="fa-regular fa-image"></i>
+    </p>
+    
+    <p class='text-center'>
+      <%= user.posts.count %>
+    </p>
+    
+  </div>
+  
+  <div>
+    
+    <p class='text-center mb-0 responsive-disabled'>
+      <%= I18n.t('users.show.counseling_rooms_count') %>
+    </p>
+    <p class='text-center mb-0 resposive-displayed'>
+      <i class="fa-solid fa-users-gear"></i>
+    </p>
+    
+    <p class='text-center'>
+      <%= user.counseling_rooms.count %>
+    </p>
+    
+  </div>
+  
+  <div>
+    
+    <p class='text-center mb-0 responsive-disabled'>
+      <%= I18n.t('users.show.participations_count') %>
+    </p>
+    <p class='text-center mb-0 resposive-displayed'>
+      <i class="fa-solid fa-people-roof"></i>
+    </p>
+    
+    <p class='text-center'>
+      <%= user.participations.count %>
+    </p>
+    
+  </div>
+  
+</div>

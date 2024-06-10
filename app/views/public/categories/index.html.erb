@@ -8,29 +8,7 @@
 
 <section>
 
-  <!--新規カテゴリ作成バー-->
-  <%= form_with model: @category do |f| %>
-    <div class='form-group row justify-content-end'>
-      <%= f.text_field :name, class: 'form-control col-md-5 col-9', placeholder: I18n.t('categories.placeholder') %>
-      <%= f.submit I18n.t('create'), class: 'btn btn-sm success-btn ml-3' %>
-    </div>
-  <% end %>
-  
-  <!--キーワード検索バー-->
-  <%= form_with url: categories_path, method: :get, local: true do |f| %>
-    <div class='form-group row justify-content-end'>
-      <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
-      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
-    </div>
-  <% end %>
-  
-  <!--タグ検索バー-->
-  <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
-    <div class='form-group row justify-content-end'>
-      <%= f.text_field :tag_name, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_tag') %>
-      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
-    </div>
-  <% end %>
+  <%= render 'public/categories/bars', category: @category %>
   
   <!--ソート切り替えリンク-->
   <div class='text-center py-2'>
@@ -38,7 +16,7 @@
   |<%= link_to I18n.t('sort.old'),   categories_path(old: true) %>
   </div> 
 
-  <div class='d-flex flex-wrap justify-content-center'>
+  <div class='d-flex flex-wrap justify-content-center pb-5'>
     
     <% if @categories.present? %>
     
