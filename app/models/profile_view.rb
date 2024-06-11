@@ -23,7 +23,7 @@ class ProfileView < ApplicationRecord
   end
   
   def notification_path
-    user_path(viewed.id)
+    user_path(viewed.canonical_name)
   end
 
 end

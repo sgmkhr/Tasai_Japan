@@ -11,7 +11,7 @@ class Participation < ApplicationRecord
   end
   
   def notification_message
-    I18n.t('notifications.messages.participation')
+    '「' + counseling_room.topic + '」' + I18n.t('notifications.messages.participation')
   end
   
   def notification_path

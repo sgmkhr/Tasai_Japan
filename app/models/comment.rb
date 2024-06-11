@@ -15,7 +15,7 @@ class Comment < ApplicationRecord
   end
   
   def notification_message
-    I18n.t('notifications.messages.comment')
+    '「' + post.title + '」' + I18n.t('notifications.messages.comment')
   end
   
   def notification_path

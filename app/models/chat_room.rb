@@ -17,7 +17,7 @@ class ChatRoom < ApplicationRecord
   def notification_message
     entries.each do |entry|
       partner = entry.user unless entry.user_id == current_user.id
-      return I18n.t('notifications.messages.chat_room')
+      return partner.public_name + I18n.t('notifications.messages.chat_room')
     end
   end
   

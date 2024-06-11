@@ -22,7 +22,7 @@ class Opinion < ApplicationRecord
   
   def notification_message
     if current_user.id == counseling_room.user_id
-      I18n.t('notifications.messages.opinion.for_room_creator')
+      user.public_name + I18n.t('notifications.messages.opinion.for_room_creator')
     else
       I18n.t('notifications.messages.opinion.for_participations')
     end

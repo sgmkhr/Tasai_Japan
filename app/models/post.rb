@@ -46,7 +46,7 @@ class Post < ApplicationRecord
   end
   
   def notification_message
-    I18n.t('notifications.messages.post')
+    user.public_name + I18n.t('notifications.messages.post')
   end
   
   def notification_path

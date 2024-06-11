@@ -13,7 +13,7 @@ class CommentFavorite < ApplicationRecord
   end
   
   def notification_message
-    I18n.t('notifications.messages.comment_favorite')
+    user.public_name + I18n.t('notifications.messages.comment_favorite')
   end
   
   def notification_path

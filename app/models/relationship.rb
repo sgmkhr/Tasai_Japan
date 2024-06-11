@@ -11,11 +11,11 @@ class Relationship < ApplicationRecord
   end
   
   def notification_message
-    I18n.t('notifications.messages.relationship')
+    follower.canonical_name + I18n.t('notifications.messages.relationship')
   end
   
   def notification_path
-    user_path(follower.id)
+    user_path(follower.canonical_name)
   end
   
 end
