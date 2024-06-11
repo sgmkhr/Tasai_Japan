@@ -8,8 +8,8 @@
       <% end %>
     </li>
     
-    <li class='dropdown mb-4'>
-      <span class='dropdown-toggle position-relative' id='dropdownMenuButton' data-toggle='dropdown'>
+    <div class='dropdown dropleft mb-4'>
+      <span class='dropdown-toggle position-relative notification-icon' id='dropdownMenuButton' data-toggle='dropdown'>
         <i class="fa-solid fa-bell"></i>
         <% if current_user.is_there_unread_notification %>
           <span class='position-absolute top-0 start-0 text-danger'>・</span>
@@ -28,7 +28,7 @@
         <% end %>
       </div>
       
-    </li>
+    </div>
     
     <li class='mb-4'>
       <%= link_to user_path(current_user.canonical_name) do %>
