@@ -46,7 +46,7 @@ ja:
       user_posts_tab: 投稿履歴一覧
       bookmarked_posts_tab: ブックマーク一覧
       followusers_posts_tab: フォローユーザーの投稿一覧
-      posts_count: 投稿数
+      posts_count: 記事投稿数
       counseling_rooms_count: 作成相談室数
       participations_count: 参加相談室数
     edit:
@@ -193,6 +193,7 @@ ja:
       title: チャットルーム一覧
       unread_exists: 未読あり
       zero_chat_history: ＜＜チャット履歴：０＞＞
+      zero_chat_room: チャットルームはありません。
     show:
       title: とのチャットルーム
       no_chat_history: チャットの履歴がありません。

@@ -9,37 +9,45 @@
 
 <section>
 
-  <% @entries.each do |entry| %>
+  <% if @entries.exists? %>
+    <% @entries.each do |entry| %>
 
-    <div class='row'>
-      <div class='col-md-6'>
-        <%= link_to chat_path(entry.get_partner(current_user).id) do %>
-          <p>
-            <%= entry.get_partner(current_user).public_name %>
+      <%= link_to chat_path(entry.get_partner(current_user).id) do %>
+        <div class='row'>
+          
+          <div class='col-md-2 col-3'>
+            <%= image_tag entry.get_partner(current_user).get_profile_image(45, 45), class: 'rounded-circle position-relative' %>
             <% if entry.is_there_unread?(entry.get_partner(current_user)) %>
-              <span class='font-sm text-danger'><%= I18n.t('chats.index.unread_exists') %></span>
+              <span class='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger'>
+                <%= I18n.t('chats.index.unread_exists') %>
+              </span>
             <% end %>
-          </p>
-        <% end %>
-      </div>
+          </div>
 
-      <div class='col-md-6 d-flex'>
-        <% if entry.get_last_chat %>
-          <p class='overflow-hidden text-nowrap text-truncate col-md-6'>
-            <%= entry.get_last_chat.content %>
-          </p>
-          <p class='font-sm text-right col-md-6'>
-            <%= entry.get_last_chat.created_at.strftime('%Y/%m/%d %H:%M') %>
-          </p>
-        <% else %>
-          <p><%= I18n.t('chats.index.zero_chat_history') %></p>
-        <% end %>
-      </div>
+          <div class='col-md-10 col-9'>
+            <p class='mb-0'><%= entry.get_partner(current_user).public_name %></p>
+            <div class='d-flex'>
+              <% if entry.get_last_chat %>
+                <p class='sm-font overflow-hidden text-nowrap text-truncate px-0 mb-0 col-8'>
+                  <%= entry.get_last_chat.content %>
+                </p>
+                <p class='sm-font text-right px-0 mb-0 col-4 pt-2'>
+                  <%= entry.get_last_chat.get_sent_time %>
+                </p>
+              <% else %>
+                <p class='sm-font mb-0'><%= I18n.t('chats.index.zero_chat_history') %></p>
+              <% end %>
+            </div>
+          </div>
 
-    </div>
+        </div>
+      <% end %>
 
-    <hr>
+      <hr>
 
+    <% end %>
+  <% else %>
+    <p class='text-center mt-5 pb-5'><%= I18n.t('chats.index.zero_chat_room') %></p>
   <% end %>
 
 </section>
