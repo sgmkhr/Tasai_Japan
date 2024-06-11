@@ -1,12 +1,12 @@
 <% if obj.errors.any? %>
 
-  <h4 class='text-danger'>
+  <p class='text-danger'>
     <%= obj.errors.count.to_s + I18n.t('errors.count') %>
-  </h4>
+  </p>
   
-  <ul class='text-danger'>
+  <ul>
     <% obj.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+      <li class='list-unstyled'><p class='text-danger'>・<%= message %></p></li>
     <% end %>
   </ul>
   

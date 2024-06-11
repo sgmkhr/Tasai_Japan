@@ -281,6 +281,12 @@ ja:
       post: 投稿
       user: ユーザー
       counseling_room: 相談室
+      category: 相談室カテゴリー
+      chat: チャット
+      comment: コメント
+      opinion: 意見
+      post_tag: 投稿タグ
+      room_tag: 相談室タグ
     attributes:
       post:
         post_image: 投稿画像
@@ -294,6 +300,18 @@ ja:
         detail: 詳細
         topic_image: イメージ画像
         tag_name: タグ
+      category: 
+        name: 名前
+      chat:
+        content: 内容
+      comment:
+        content: 内容
+      opinion:
+        content: 内容
+      post_tag:
+        name: 名前
+      room_tag:
+        name: 名前
   date:
     abbr_day_names:
     - 日
