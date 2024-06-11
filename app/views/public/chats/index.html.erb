@@ -9,23 +9,25 @@
 
 <section>
 
-  <% if @entries.exists? %>
+  <% unless @entries.nil? %>
     <% @entries.each do |entry| %>
 
       <%= link_to chat_path(entry.get_partner(current_user).id) do %>
         <div class='row'>
-          
+
           <div class='col-md-2 col-3'>
-            <%= image_tag entry.get_partner(current_user).get_profile_image(45, 45), class: 'rounded-circle position-relative' %>
-            <% if entry.is_there_unread?(entry.get_partner(current_user)) %>
-              <span class='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger'>
-                <%= I18n.t('chats.index.unread_exists') %>
-              </span>
-            <% end %>
+            <%= image_tag entry.get_partner(current_user).get_profile_image(45, 45), class: 'rounded-circle' %>
           </div>
 
           <div class='col-md-10 col-9'>
-            <p class='mb-0'><%= entry.get_partner(current_user).public_name %></p>
+            <p class='mb-0'>
+              <%= entry.get_partner(current_user).public_name %>
+              <% if entry.is_there_unread?(entry.get_partner(current_user)) %>
+                <span class='badge rounded-pill bg-danger sm-font'>
+                  <%= I18n.t('chats.index.unread_exists') %>
+                </span>
+              <% end %>
+            </p>
             <div class='d-flex'>
               <% if entry.get_last_chat %>
                 <p class='sm-font overflow-hidden text-nowrap text-truncate px-0 mb-0 col-8'>
@@ -42,10 +44,10 @@
 
         </div>
       <% end %>
-
       <hr>
 
     <% end %>
+    
   <% else %>
     <p class='text-center mt-5 pb-5'><%= I18n.t('chats.index.zero_chat_room') %></p>
   <% end %>

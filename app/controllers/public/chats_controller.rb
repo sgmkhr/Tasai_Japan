@@ -6,6 +6,11 @@ class Public::ChatsController < ApplicationController
   
   def index
     @entries = current_user.entries
+    unless @entries.nil?
+      @entries = Entry.where(user_id: current_user.id).sort {|a,b| 
+        b.get_last_chat.created_at <=> a.get_last_chat.created_at
+      }
+    end
   end
 
   def show
