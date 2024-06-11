@@ -6,8 +6,8 @@ class Public::OpinionsController < ApplicationController
   def create
     @opinion = current_user.opinions.new(opinion_params)
     @opinion.counseling_room_id = @counseling_room.id
-    @opinion.save
     @opinions = Opinion.all
+    render :validator unless @opinion.save
     # 非同期通信のため、opinions/create.js.erbを呼び出す
   end
   

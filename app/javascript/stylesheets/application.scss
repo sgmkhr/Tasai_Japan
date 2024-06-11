@@ -232,18 +232,27 @@ input {
 }
                                             // 以下、user.positionを表示する際のレイアウト
 .position-beginner {
-  border: 1px solid rgb(84, 195, 241);
-  color:  rgb(84, 195, 241);
+  background-color: rgb(84, 195, 241);
+  color:            rgb(245, 243, 242);
+  padding:          0 10px;
+  border-radius:    10px;
+  text-align:       center;
 }
 
 .position-intermediate {
-  border: 1px solid rgb(220, 188, 0);
-  color:  rgb(220, 188, 0)
+  background-color: rgb(220, 188, 0);
+  color:            rgb(245, 243, 242);
+  padding:          0 10px;
+  border-radius:    10px;
+  text-align:       center;
 }
 
 .position-veteran {
-  border: 1px solid rgb(169, 175, 29);
-  color:  rgb(169, 175, 29);
+  background-color: rgb(169, 175, 29);
+  color:            rgb(245, 243, 242);
+  padding:          0 10px;
+  border-radius:    10px;
+  text-align:       center;
 }
                                             // 以下、タブ切り替えに関わるcss
 #tab-menu li {

@@ -7,7 +7,7 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
-    @comment.save
+    render :validator unless @comment.save
     # 非同期通信のためcomments/create.jsを呼び出す
   end
 

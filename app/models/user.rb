@@ -103,15 +103,15 @@ class User < ApplicationRecord
     return self.bookmarked_posts if content == ''
     self.bookmarked_posts.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
-  
+
   def follow(user)
     active_relationships.create(followed_id: user.id)
   end
-  
+
   def unfollow(user)
     active_relationships.find_by(followed_id: user.id).destroy
   end
-  
+
   def following?(user)
     followings.include?(user)
   end
