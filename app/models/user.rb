@@ -23,6 +23,7 @@ class User < ApplicationRecord
     has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id'
     has_many :entries
     has_many :chats
+    has_many :notifications
   end
 
   has_many :bookmarked_posts, through: :bookmarks,             source: :post

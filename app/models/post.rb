@@ -13,6 +13,8 @@ class Post < ApplicationRecord
   end
 
   has_many :post_tags, through: :related_post_tags
+  
+  has_many :notifications, as: :notifiable, dependent: :destroy
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old,    -> { order(created_at: :asc) }
@@ -34,6 +36,12 @@ class Post < ApplicationRecord
 
   validates :caption, length: { maximum: 100 }
   validates :body,    length: { maximum: 2000 }
+  
+  after_create do
+    user.followers.each do |follower|
+      notifications.create(user_id: follower.id)
+    end
+  end
 
   def get_post_image(width, height)
     post_image.variant(resize_to_limit: [width, height]).processed

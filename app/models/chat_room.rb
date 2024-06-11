@@ -2,6 +2,16 @@ class ChatRoom < ApplicationRecord
 
   has_many :entries, dependent: :destroy
   has_many :chats,   dependent: :destroy
+  
+  has_one :notification, as: :notifiable, dependent: :destroy
+  
+  after_create do
+    entries.each do |entry|
+      unless entry.user_id == current_user.id
+        create_notification(user_id: entry.user_id)
+      end
+    end
+  end
 
   def read_chats(user)
     return unless self.chats.exists?
