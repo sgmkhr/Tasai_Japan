@@ -59,6 +59,7 @@ gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 gem 'enum_help'
 gem 'devise'
 gem 'activerecord-import'
+gem 'rails-i18n'
 
 gem 'dotenv-rails'
 

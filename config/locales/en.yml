@@ -31,3 +31,339 @@
 
 en:
   hello: "Hello world"
+
+  languages:
+    japanese: "Japanese"
+    english: "English"
+  site_name: "Tasai Japan"
+  top_page: "Top page"
+  login: "Log in"
+  signin: "Sign in"
+  guest_login: "Login as a guest"
+  signout: "Log out"
+  menu: "Menu page"
+  mypage: "My page"
+  about: "About this website"
+  update: "Update"
+  search: "Search"
+  destroy: "Destroy"
+  create: "Create"
+  send: "Send"
+  search_blank: "With blank to display all"
+  search_tag: "Search with a tag name"
+  placeholder:
+    canonical_name: "less than 20 alphanumeric characters"
+    public_name: "Anyone can see this name"
+    comment: "Comment here"
+    tag_name: "Separate each with a slash(/) if multiple words"
+  guestuser:
+    signin:
+      notice: "You logged in as a guest user."
+    validates: "A guest user cannot operate this function. You need to log in or sign up."
+
+  top:
+    caption: "This website makes connections between beginners and veterans of life in Japan."
+  menus:
+    users: Find awesome people
+    posts: Find out good places
+    rooms: Share your opinions
+  users:
+    reject_inactive_user: 退会済みのアカウントです。再度新規登録をしてご利用ください。
+    incorrect_user:
+      validates: 他のユーザーの情報編集に関わる画面へは遷移できません。
+    update:
+      notice: ユーザー情報を更新しました。
+      alert: 不備があり更新できませんでした。
+    withdraw:
+      notice: 退会処理が完了しました。
+    show:
+      position_start: 私は、日本生活の
+      position_end: です。
+      user_posts_tab: 投稿履歴一覧
+      bookmarked_posts_tab: ブックマーク一覧
+      followusers_posts_tab: フォローユーザーの投稿一覧
+      posts_count: 記事投稿数
+      counseling_rooms_count: 作成相談室数
+      participations_count: 参加相談室数
+    edit:
+      title: 登録情報編集
+    index:
+      title: ユーザー 一覧
+      not_exist: 対象のユーザーが存在しません。
+    unsubscribe: 退会する
+    unsubscribe_confirmation: 本当に退会処理に進んでよろしいですか？
+    unsubscribe_cancel: 退会しない
+  admin:
+    login_link: 管理者ログイン
+    users:
+      destroy:
+        btn: アカウント削除
+        confirmation: 本当に削除してもいいですか？
+        notice: ユーザーを削除しました。
+      cancel: 退会取り消し
+      withdraw: 退会処理
+  posts:
+    create:
+      notice: 新規投稿しました。
+      alert: 投稿に失敗しました。
+    update:
+      notice: 編集内容を更新しました。
+      alert: 更新に失敗しました。
+    index:
+      title: 投稿一覧
+      not_exist: 投稿が存在しません。
+    show:
+      title: 投稿詳細
+      edit_btn: 編集
+      comment: コメント
+    new:
+      title: 新規投稿
+      create_btn: 投稿
+    edit:
+      title: 投稿内容編集
+      destroy_btn: 投稿を削除する
+    destroy:
+      confirmation: 本当に削除してもいいですか？
+      success: 投稿を削除しました。
+    validates: 他のユーザーの投稿編集画面には遷移できません。
+  comments:
+    validates: 他のユーザーのコメントは削除できません。
+  categories:
+    title: 相談室カテゴリ一覧
+    destroy:
+      success: カテゴリを削除しました。
+      confirmation: カテゴリ内の相談室も削除されますが、本当に削除してもいいですか？
+    create:
+      succeeded: カテゴリを作成しました。
+      failed: カテゴリの作成に失敗しました。
+    index:
+      no_exist: カテゴリが存在しません。
+    placeholder: 作成するカテゴリ名を入力
+    bars:
+      create: カテゴリ作成
+      keyword: キーワード検索
+      tag: 関連タグ検索
+  counseling_rooms:
+    title: 相談室を探す
+    index:
+      title: 相談室一覧
+      new: 新しく相談室を作成する
+      no_exist: 相談室が存在しません。
+    new:
+      title: 新規相談室作成
+    edit:
+      title: 相談室の情報編集
+    show:
+      title: 相談室詳細
+      creator: 相談室作成者：
+      destroy:
+        btn: この相談室を削除する
+        confirmation: この相談室内の全ての意見履歴も消えますが、本当に削除してもいいですか？
+      no_viewing_permission: (参加していないため、参加者や意見の閲覧権限はありません。)
+    create:
+      succeeded: 相談室を作成しました。
+      failed: 相談室の作成に失敗しました。
+    update:
+      succeeded: 相談室の情報を更新しました。
+      failed: 更新に失敗しました。
+    destroy: 相談室を削除しました。
+    search:
+      title: タグ検索 投稿一覧
+    ensure_creator: 他のユーザーが作成した相談室の情報は編集できません。
+  participations:
+    destroy:
+      by_participation: 相談室から脱退しました。
+      by_creator: 参加申請を却下しました。
+      confirmation:
+        by_participation: 本当にこの相談室から脱退していいですか？
+        by_creator: 本当にこのユーザーの参加を取り下げていいですか？
+        as_withdraw: 本当に参加申請を取り下げていいですか？
+    leave: 脱退する
+    withdraw: 参加申請を取り下げる
+    apply: 参加申請する
+    update: 参加を承認しました。
+    creator: オーナー
+    not_participating: 未参加
+    participating: 参加中
+    applying: 参加申請中
+    edit:
+      title:
+        active: 参加者リスト
+        waiting: 参加申請者リスト
+      count: 人
+      withdraw: 却下する
+      leave: 脱退させる
+      approve: 承認する
+      no_participations:
+        active: 参加中のユーザーはいません。
+        waiting: 参加申請中のユーザーはいません。
+  opinions:
+    btn: 意見投稿
+    placeholder: 意見を入力
+    destroy:
+      confirmation: 本当に削除していいですか？
+  sort:
+    latest: 新着順
+    old: 古い順
+    favorites_count: 人気順
+    user_latest: 新参順
+    user_old: 古参順
+    posts_count: 投稿数順
+    participations_count: 参加人数順
+    opinions_count: 盛り上がり順
+  views_count:
+    profile: プロフィール閲覧人数：
+  relationships:
+    follow: フォローする
+    unfollow: フォロー中
+    followings: フォロー中
+    followers: フォロワー
+    index:
+      followings: フォロー 一覧
+      followers: フォロワー 一覧
+  chats:
+    validates:
+      non_related: やり取りするには相互フォローが必要です。
+      non_permitted: 他のユーザーのチャットルーム一覧は閲覧できません。
+    index:
+      title: チャットルーム一覧
+      unread_exists: 未読あり
+      zero_chat_history: ＜＜チャット履歴：０＞＞
+      zero_chat_room: チャットルームはありません。
+    show:
+      title: とのチャットルーム
+      no_chat_history: チャットの履歴がありません。
+    destroy:
+      confirmation: 完全に履歴から削除していいですか？
+    sent_now: 今
+    sent_today: 今日
+    sent_yesterday: 昨日
+    send: 送信
+  notifications:
+    messages:
+      chat_room: さんがチャットルームを作成しました
+      comment: にコメントが届きました
+      comment_favorite: さんがあなたのコメントにいいねしました
+      opinion:
+        for_room_creator: さんがあなたの作成した相談室で意見をくれました
+        participations: 参加している相談室で新しい意見が挙がりました
+      opinion_favorite: さんがあなたの意見にいいねしました
+      participation: に新しく参加申請が届きました
+      post: さんが新しいおすすめ記事を投稿しました
+      post_favorite: さんがあなたの投稿にいいねしました
+      profile_view:
+        hundred: あなたのプロフィールに100人以上のユーザーが訪れました
+        thousand: あなたのプロフィールに1,000人以上のユーザーが訪れました
+        ten_thousand: あなたのプロフィールに10,000人以上のユーザーが訪れました
+      relationship: にフォローされました
+    non_exist: 未読の通知はありません
+    limited_by: 直近10件の未読通知を表示しています
+
+  enums:
+    user:
+      position:
+        beginner: 初心者
+        intermediate: 中級者
+        veteran: ベテラン
+    post:
+      prefecture:
+        hokkaido: 北海道
+        aomori: 青森県
+        iwate: 岩手県
+        miyagi: 宮城県
+        akita: 秋田県
+        yamagata: 山形県
+        fukushima: 福島県
+        ibaraki: 茨城県
+        tochigi: 栃木県
+        gunma: 群馬県
+        saitama: 埼玉県
+        chiba: 千葉県
+        tokyo: 東京都
+        kanagawa: 神奈川県
+        niigata: 新潟県
+        toyama: 富山県
+        ishikawa: 石川県
+        fukui: 福井県
+        yamanashi: 山梨県
+        nagano: 長野県
+        gifu: 岐阜県
+        shizuoka: 静岡県
+        aichi: 愛知県
+        mie: 三重県
+        shiga: 滋賀県
+        kyoto: 京都府
+        osaka: 大阪府
+        hyogo: 兵庫県
+        nara: 奈良県
+        wakayama: 和歌山県
+        tottori: 鳥取県
+        shimane: 島根県
+        okayama: 岡山県
+        hiroshima: 広島県
+        yamaguchi: 山口県
+        tokushima: 徳島県
+        kagawa: 香川県
+        ehime: 愛媛県
+        kouchi: 高知県
+        fukuoka: 福岡県
+        saga: 佐賀県
+        nagasaki: 長崎県
+        kumamoto: 熊本県
+        oita: 大分県
+        miyazaki: 宮崎県
+        kagoshima: 鹿児島県
+        okinawa: 沖縄県
+        others: その他
+        unspecified: 指定なし
+
+  views:
+    pagination:
+      first: 最初
+      last: 最後
+      previous: 前
+      next: 次
+      truncate: ...
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      post: 投稿
+      user: ユーザー
+      counseling_room: 相談室
+      category: 相談室カテゴリー
+      chat: チャット
+      comment: コメント
+      opinion: 意見
+      post_tag: 投稿タグ
+      room_tag: 相談室タグ
+    attributes:
+      post:
+        post_image: 投稿画像
+        title: タイトル
+        caption: 見出し
+        body: 本文
+        prefecture: 都道府県
+        tag_name: タグ
+      counseling_room:
+        topic: お題
+        detail: 詳細
+        topic_image: イメージ画像
+        tag_name: タグ
+      category: 
+        name: 名前
+      chat:
+        content: 内容
+      comment:
+        content: 内容
+      opinion:
+        content: 内容
+      post_tag:
+        name: 名前
+      room_tag:
+        name: 名前

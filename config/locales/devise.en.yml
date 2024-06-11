@@ -1,6 +1,20 @@
 # Additional translations at https://github.com/heartcombo/devise/wiki/I18n
 
 en:
+  min-letters: " letters or more"
+  activerecord:
+    models:
+      user: "user"
+      admin: "admin"
+    attributes:
+      user:
+        last_name: "Last name"
+        first_name: "First name"
+        canonical_name: "User ID"
+        public_name: "Public name"
+        position: "Position"
+        profile_image: "Profile image"
+        introduction: "Introduction"
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
