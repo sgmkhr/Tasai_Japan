@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     end
     get 'categories/counseling_rooms/search', to: 'counseling_rooms#search', as: 'search_rooms'
     resources :chats, only: [:show, :create, :destroy]
+    resources :notifications, only: [:update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

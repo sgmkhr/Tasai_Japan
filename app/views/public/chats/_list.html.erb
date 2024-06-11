@@ -17,9 +17,14 @@
       <p class='font-sm text-right'><%= chat.get_sent_time %></p>
     
     <% else %>
-    
-      <div class='chat-box mr-auto'>
-        <p class='mb-0'><%= chat.content %></p>
+      
+      <div class='d-flex'>
+        <%= link_to user_path(chat.user.canonical_name) do %>
+          <%= image_tag chat.user.get_profile_image(45, 45), class: 'rounded-circle mr-2' %>
+        <% end %>
+        <div class='chat-box mr-auto'>
+          <p class='mb-0'><%= chat.content %></p>
+        </div>
       </div>
       
       <p class='font-sm text-left'><%= chat.get_sent_time %></p>

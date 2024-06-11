@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  include Notifiable
 
   has_one_attached :post_image
 
@@ -13,6 +14,8 @@ class Post < ApplicationRecord
   end
 
   has_many :post_tags, through: :related_post_tags
+  
+  has_many :notifications, as: :notifiable, dependent: :destroy
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old,    -> { order(created_at: :asc) }
@@ -34,6 +37,21 @@ class Post < ApplicationRecord
 
   validates :caption, length: { maximum: 100 }
   validates :body,    length: { maximum: 2000 }
+  
+  after_create do
+    records = user.followers.map do |follower|
+      notifications.new(user_id: follower.id)
+    end
+    Notification.import records
+  end
+  
+  def notification_message
+    user.public_name + I18n.t('notifications.messages.post')
+  end
+  
+  def notification_path
+    post_path(self.id)
+  end
 
   def get_post_image(width, height)
     post_image.variant(resize_to_limit: [width, height]).processed
