@@ -8,6 +8,28 @@
       <% end %>
     </li>
     
+    <li class='dropdown mb-4'>
+      <span class='dropdown-toggle position-relative' id='dropdownMenuButton' data-toggle='dropdown'>
+        <i class="fa-solid fa-bell"></i>
+        <% if current_user.is_there_unread_notification %>
+          <span class='position-absolute top-0 start-0 text-danger'>・</span>
+        <% end %>
+      </span>
+      <div class='dropdown-menu'>
+        <% if current_user.is_there_unread_notification %>
+          <p class='dropdown-item disabled sm-font'><%= I18n.t('notifications.limited_by') %></p>
+          <% current_user.notifications.limit(10).order(created_at: :desc).each do |notification| %>
+            <p>
+              ・<%= link_to notification.message, notification_path, method: :patch, class: 'dropdown-item' %>
+            </p>
+          <% end %>
+        <% else %>
+          <p class='dropdown-item disabled text-center'><%= I18n.t('notifications.non_exist') %></p>
+        <% end %>
+      </div>
+      
+    </li>
+    
     <li class='mb-4'>
       <%= link_to user_path(current_user.canonical_name) do %>
         <span class='responsive-disabled'><%= I18n.t('mypage') %></span>

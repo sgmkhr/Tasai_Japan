@@ -116,5 +116,11 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  
+  def is_there_unread_notification
+    if notifications.any?
+      notifications.where(read: false)
+    end
+  end
 
 end

@@ -220,6 +220,8 @@ ja:
         thousand: "あなたのプロフィールに1,000人以上のユーザーが訪れました"
         ten_thousand: "あなたのプロフィールに10,000人以上のユーザーが訪れました"
       relationship: "#{follower.canonical_name}にフォローされました"
+    non_exist: 未読の通知がありません
+    limited_by: 直近10件の未読通知を表示しています
 
   enums:
     user:
