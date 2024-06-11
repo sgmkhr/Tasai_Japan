@@ -1,4 +1,5 @@
 class ChatRoom < ApplicationRecord
+  include Notifiable
 
   has_many :entries, dependent: :destroy
   has_many :chats,   dependent: :destroy
@@ -10,6 +11,20 @@ class ChatRoom < ApplicationRecord
       unless entry.user_id == current_user.id
         create_notification(user_id: entry.user_id)
       end
+    end
+  end
+  
+  def notification_message
+    entries.each do |entry|
+      partner = entry.user unless entry.user_id == current_user.id
+      return I18n.t('notifications.messages.chat_room')
+    end
+  end
+  
+  def notification_path
+    entries.each do |entry|
+      partner = entry.user unless entry.user_id == current_user.id
+      return chat_path(partner.id)
     end
   end
 

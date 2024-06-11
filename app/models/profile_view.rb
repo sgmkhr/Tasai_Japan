@@ -1,4 +1,5 @@
 class ProfileView < ApplicationRecord
+  include Notifiable
 
   belongs_to :viewer, class_name: 'User'
   belongs_to :viewed, class_name: 'User'
@@ -7,8 +8,22 @@ class ProfileView < ApplicationRecord
   
   after_create do
     if viewed.profile_wiews.count == ( 100 || 1000 || 10000 )
-      create_notification(user_id: viewed_id)
+      create_notification(user_id: viewed_id) #current_user.idが引数でも良いかも
     end
+  end
+  
+  def notification_message
+    if self.count < 1000
+      I18n.t('notifications.messages.profile_view.hundred')
+    elsif self.count < 10000
+      I18n.t('notifications.messages.profile_view.thousand')
+    else
+      I18n.t('notifications.messages.profile_view.ten_thousand')
+    end
+  end
+  
+  def notification_path
+    user_path(viewed.id)
   end
 
 end

@@ -203,6 +203,23 @@ ja:
     sent_today: 今日
     sent_yesterday: 昨日
     send: 送信
+  notifications:
+    messages:
+      chat_room: "#{partner.public_name}さんがチャットルームを作成しました"
+      comment: "#{user.public_name}さんが#{post.title}にコメントしました"
+      comment_favorite: "あなたのコメントが#{user.public_name}さんにいいねされました"
+      opinion:
+        for_room_creator: "あなたが作成した相談室で#{user.public_name}さんが意見をくれました"
+        participations: "参加している相談室で新しい意見が挙がりました"
+      opinion_favorite: "あなたの意見が#{user.public_name}さんにいいねされました"
+      participation: "あなたの作成した相談室「#{counseling_room.topic}」に新しく参加申請が届きました"
+      post: "フォローしている#{user.public_name}さんが新しいおすすめ記事を投稿しました"
+      post_favorite: "あなたの投稿が#{user.public_name}さんにいいねされました"
+      profile_view:
+        hundred: "あなたのプロフィールに100人以上のユーザーが訪れました"
+        thousand: "あなたのプロフィールに1,000人以上のユーザーが訪れました"
+        ten_thousand: "あなたのプロフィールに10,000人以上のユーザーが訪れました"
+      relationship: "#{follower.canonical_name}にフォローされました"
 
   enums:
     user:

@@ -1,4 +1,6 @@
 class Opinion < ApplicationRecord
+  include Notifiable
+  
   belongs_to :user
   belongs_to :counseling_room
 
@@ -16,6 +18,18 @@ class Opinion < ApplicationRecord
     end
     Notification.import records
     create_notification(user_id: counseling_room.user_id)
+  end
+  
+  def notification_message
+    if current_user.id == counseling_room.user_id
+      I18n.t('notifications.messages.opinion.for_room_creator')
+    else
+      I18n.t('notifications.messages.opinion.for_participations')
+    end
+  end
+  
+  def notification_path
+    category_counseling_room_path(counseling_room.category.id, counseling_room.id)
   end
 
   def favorited_by?(user)

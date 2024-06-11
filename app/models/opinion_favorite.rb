@@ -1,4 +1,5 @@
 class OpinionFavorite < ApplicationRecord
+  include Notifiable
   
   belongs_to :user
   belongs_to :opinion
@@ -9,6 +10,14 @@ class OpinionFavorite < ApplicationRecord
   
   after_create do
     create_notification(user_id: opinion.user_id)
+  end
+  
+  def notification_message
+    I18n.t('notifications.messages.opinion_favorite')
+  end
+  
+  def notification_path
+    category_counseling_room_path(opinion.counseling_room.category.id, opinion.counseling_room.id)
   end
   
 end

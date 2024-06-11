@@ -1,4 +1,6 @@
 class Comment < ApplicationRecord
+  include Notifiable
+  
   belongs_to :user
   belongs_to :post
   
@@ -10,6 +12,14 @@ class Comment < ApplicationRecord
   
   after_create do
     create_notification(user_id: post.user_id)
+  end
+  
+  def notification_message
+    I18n.t('notifications.messages.comment')
+  end
+  
+  def notification_path
+    post_path(post_id)
   end
   
   def favorited_by?(user)

@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  include Notifiable
 
   has_one_attached :post_image
 
@@ -42,6 +43,14 @@ class Post < ApplicationRecord
       notifications.new(user_id: follower.id)
     end
     Notification.import records
+  end
+  
+  def notification_message
+    I18n.t('notifications.messages.post')
+  end
+  
+  def notification_path
+    post_path(self.id)
   end
 
   def get_post_image(width, height)

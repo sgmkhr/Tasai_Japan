@@ -1,4 +1,5 @@
 class PostFavorite < ApplicationRecord
+  include Notifiable
   
   belongs_to :user
   belongs_to :post
@@ -9,6 +10,14 @@ class PostFavorite < ApplicationRecord
   
   after_create do
     create_notification(user_id: post.user_id)
+  end
+  
+  def notification_message
+    I18n.t('notifications.messages.post_favorite')
+  end
+  
+  def notification_path
+    post_path(post.id)
   end
   
 end
