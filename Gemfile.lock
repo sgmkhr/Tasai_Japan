@@ -47,6 +47,8 @@ GEM
     activerecord (6.1.7.7)
       activemodel (= 6.1.7.7)
       activesupport (= 6.1.7.7)
+    activerecord-import (1.6.0)
+      activerecord (>= 4.2)
     activestorage (6.1.7.7)
       actionpack (= 6.1.7.7)
       activejob (= 6.1.7.7)
@@ -263,6 +265,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activerecord-import
   bootsnap (>= 1.4.4)
   bootstrap5-kaminari-views (~> 0.0.1)
   byebug

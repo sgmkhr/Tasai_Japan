@@ -9,11 +9,12 @@ class Opinion < ApplicationRecord
   validates :content, presence: true, length: { maximum: 100 }
   
   after_create do
-    opinion.counseling_room.participations.each do |participation|
+    records = counseling_room.participations.map do |participation|
       if (participation.user_id != current_user.id) && (participation.status == true)
-        notifications.create(user_id: participation.user_id)
+        notifications.new(user_id: participation.user_id)
       end
     end
+    Notification.import records
     create_notification(user_id: counseling_room.user_id)
   end
 

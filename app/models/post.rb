@@ -38,9 +38,10 @@ class Post < ApplicationRecord
   validates :body,    length: { maximum: 2000 }
   
   after_create do
-    user.followers.each do |follower|
-      notifications.create(user_id: follower.id)
+    records = user.followers.map do |follower|
+      notifications.new(user_id: follower.id)
     end
+    Notification.import records
   end
 
   def get_post_image(width, height)
