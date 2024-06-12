@@ -7,6 +7,7 @@ class Chat < ApplicationRecord
   
   scope :latest, -> { order(created_at: :desc) }
   
+  # チャット送信時間の表記を変えるためのメソッド
   def get_sent_time
     if created_at.day == Time.current.day
       I18n.t('chats.sent_today') + self.created_at.strftime('%H:%M')

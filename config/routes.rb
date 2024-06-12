@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  scope "(:locale)" do 
+  scope "(:locale)" do #言語切り替えに必要
 
     devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       sessions: 'admin/sessions'
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         get 'followings' => 'relationships#followings', as: 'followings'
       	get 'followers'  => 'relationships#followers',  as: 'followers'
       end
-      patch 'users/:canonical_name/cancel', to: 'users#cancel', as: 'cancel'
+      patch 'users/:canonical_name/cancel',   to: 'users#cancel',   as: 'cancel'
       patch 'users/:canonical_name/withdraw', to: 'users#withdraw', as: 'withdraw'
       resources :posts, only: [:index, :show, :destroy] do
         resources :comments, only: [:destroy]

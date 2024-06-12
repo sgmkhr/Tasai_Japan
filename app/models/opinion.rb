@@ -10,6 +10,7 @@ class Opinion < ApplicationRecord
 
   validates :content, presence: true, length: { maximum: 100 }
   
+  # データが作成されると直後に通知データも作成される
   after_create do
     records = counseling_room.participations.map do |participation|
       if (participation.user_id != current_user.id) && (participation.status == true)
@@ -20,6 +21,7 @@ class Opinion < ApplicationRecord
     create_notification(user_id: counseling_room.user_id)
   end
   
+  # 表示する通知メッセージを取得するメソッド
   def notification_message
     if current_user.id == counseling_room.user_id
       user.public_name + I18n.t('notifications.messages.opinion.for_room_creator')
@@ -28,10 +30,12 @@ class Opinion < ApplicationRecord
     end
   end
   
+  # 通知クリック時のパス先指定のメソッド
   def notification_path
     category_counseling_room_path(counseling_room.category.id, counseling_room.id)
   end
-
+  
+  # 対象の意見へ既にいいねしているか確認するメソッド
   def favorited_by?(user)
     opinion_favorites.exists?(user_id: user.id)
   end

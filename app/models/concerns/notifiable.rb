@@ -1,6 +1,6 @@
 require 'active_support'
 
-module Notifiable
+module Notifiable 
   
   extend ActiveSupport::Concern
   include Rails.application.routes.url_helpers
