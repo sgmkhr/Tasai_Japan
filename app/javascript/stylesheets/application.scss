@@ -54,7 +54,7 @@ a:active {
 #locale-select-button {
   width:    100%;
 }
-                                            // 以下、ヘッダーのレイアウト
+                                            // 以下、ヘッダー、通知のレイアウト
 header {
   position:     absolute;
   top:          20px;
@@ -90,6 +90,7 @@ header li {
   top:              50px;
   right:            50px;
   width:            250px;
+  max-height:       300px;
   padding:          20px;
   background-color: rgb(245, 243, 242);
   border-radius:    20px;
