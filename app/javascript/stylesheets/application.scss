@@ -108,6 +108,10 @@ footer {
 .resposive-displayed {
   display:      none;
 }
+                                            // 以下、トップページのレイアウト
+#toppage-box {
+  opacity: 0;
+}
                                             // 以下、各ページ共通レイアウト
 section {
   width:          70%;
