@@ -3,37 +3,39 @@ class Admin::UsersController < ApplicationController
   before_action :set_selected_user, except: [:index]
   
   def show
-    if params[:latest]
-      @posts = @user.posts.latest.page(params[:page]).per(12)
-    elsif params[:old]
-      @posts = @user.posts.old.page(params[:page]).per(12)
-    elsif params[:favorites_count]
+    if params[:latest]                #ソート切り替え(作成新着順)
+      @posts = @user.posts.latest
+    elsif params[:old]                #ソート切り替え(作成古い順)
+      @posts = @user.posts.old
+    elsif params[:favorites_count]    #ソート切り替え(いいね多い順)
       posts = @user.posts.sort {|a,b| 
         b.post_favorites.size <=> a.post_favorites.size
       }
-      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(12)
-    elsif params[:content]
-      @posts = Post.search_with_user_for(params[:content], @user).page(params[:page]).per(12)
+      @posts = Kaminari.paginate_array(posts)
+    elsif params[:content]            #キーワード検索
+      @posts = Post.search_with_user_for(params[:content], @user)
     else
-      @posts = @user.posts.page(params[:page]).per(12)
+      @posts = @user.posts
     end
+    @posts = @posts.page(params[:page]).per(12)
   end
 
-  def index
-    if params[:latest]
-      @users = User.latest.page(params[:page]).per(18)
-    elsif params[:old]
-      @users = User.old.page(params[:page]).per(18)
-    elsif params[:posts_count]
+  def index #退会済みユーザーも含め表示
+    if params[:latest]                #ソート切り替え(新参順)
+      @users = User.latest
+    elsif params[:old]                #ソート切り替え(古参順)
+      @users = User.old
+    elsif params[:posts_count]        #ソート切り替え(投稿数順)
       users = User.all.sort {|a,b| 
         b.posts.size <=> a.posts.size
       }
-      @users = Kaminari.paginate_array(users).page(params[:page]).per(18)
-    elsif params[:content]
-      @users = User.search_for(params[:content]).page(params[:page]).per(18)
+      @users = Kaminari.paginate_array(users)
+    elsif params[:content]            #キーワード検索順
+      @users = User.search_for(params[:content])
     else
-      @users = User.page(params[:page]).per(18) #退会済みも含む全ユーザーを表示
+      @users = User.all
     end
+    @users = @users.page(params[:page]).per(18)
   end
   
   def cancel
