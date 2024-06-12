@@ -60,7 +60,7 @@ class Public::UsersController < ApplicationController
     else
       @users = User.where(is_active: true) 
     end
-    @users = @users..page(params[:page]).per(18)
+    @users = @users.page(params[:page]).per(18)
   end
 
   def edit

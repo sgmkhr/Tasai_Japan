@@ -116,5 +116,16 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  
+  def has_unread_chat?
+    self.chat_rooms.each do |chat_room|
+      chat_room.entries.each do |entry|
+        if entry.user_id != self.id
+          return true if entry.is_there_unread?(entry.user)
+        end
+      end
+    end
+    false
+  end
 
 end

@@ -17,9 +17,9 @@ class Public::ChatsController < ApplicationController
     @user = User.find(params[:id])
     room_ids = current_user.entries.pluck(:chat_room_id)
     entry = Entry.find_by(user_id: @user.id, chat_room_id: room_ids)
-    if entry.present?　#相手とのチャットルームがすでに存在する場合
+    if entry      #相手とのチャットルームがすでに存在する場合
       @room = entry.chat_room
-    else               #相手とのチャットルームがまだ存在しない場合
+    else          #相手とのチャットルームがまだ存在しない場合
       @room = ChatRoom.new
       @room.save
       Entry.create(user_id: current_user.id, chat_room_id: @room.id)
