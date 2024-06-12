@@ -1,3 +1,4 @@
+/*global $*/
 $('#tab-contents .tab[id != "category_create_tab"]').hide();
 
 $('#tab-menu a').on('click', function(event) {
