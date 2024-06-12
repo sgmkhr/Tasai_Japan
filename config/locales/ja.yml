@@ -52,6 +52,7 @@ ja:
       posts_count: 記事投稿数
       counseling_rooms_count: 作成相談室数
       participations_count: 参加相談室数
+      joined_date: アカウント作成日
     edit:
       title: 登録情報編集
     index:
