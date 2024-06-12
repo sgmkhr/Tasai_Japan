@@ -41,8 +41,7 @@ class Public::SessionsController < Devise::SessionsController
   
   private
   
-  # 退会済みのアカウントをログインさせないための処理
-  def reject_inactive_user
+  def reject_inactive_user # 退会済みのアカウントをログインさせないための処理
     @user = User.find_by(email: params[:user][:email])
     return unless @user
     if @user.valid_password?(params[:user][:password]) && !@user.is_active

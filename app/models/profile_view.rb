@@ -7,7 +7,7 @@ class ProfileView < ApplicationRecord
   has_one :notification, as: :notifiable, dependent: :destroy
   
   after_create do
-    if viewed.profile_wiews.count == ( 100 || 1000 || 10000 )
+    if viewed.passive_profile_views.count == ( 100 || 1000 || 10000 )
       create_notification(user_id: viewed_id) #current_user.idが引数でも良いかも
     end
   end

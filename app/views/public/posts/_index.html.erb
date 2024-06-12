@@ -1,4 +1,4 @@
-<% if posts.exists? %><!--投稿が存在する場合-->
+<% if posts.present? %><!--投稿が存在する場合-->
   <div class='d-flex flex-wrap justify-content-center'>
 
     <% posts.each do |a_post| %> <!--各投稿の情報表示-->

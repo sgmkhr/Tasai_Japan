@@ -22,9 +22,11 @@ class Public::ParticipationsController < ApplicationController
     participation = Participation.find(params[:id])
     participation.destroy
     if participation.user == current_user   #参加者による脱退の場合
-      redirect_to category_counseling_room_path(@category.id, @counseling_room.id), notice: I18n.t('participations.destroy.by_participation')
+      flash[:notice] = I18n.t('participations.destroy.by_participation')
+      redirect_to category_counseling_room_path(@category.id, @counseling_room.id)
     else                                    #作成者による参加却下の場合
-      redirect_to edit_category_counseling_room_path(@category.id, @counseling_room.id), notice: I18n.t('participations.destroy.by_creator')
+      flash[:notice] = I18n.t('participations.destroy.by_creator')
+      redirect_to edit_category_counseling_room_path(@category.id, @counseling_room.id)
     end
   end
   
