@@ -33,8 +33,15 @@
         <%= link_to edit_user_path(current_user.canonical_name) do %>
           <i class="fa-solid fa-gear"></i>
         <% end %>
-
-        <%= link_to I18n.t('chats.index.title') , user_chat_rooms_path(current_user.canonical_name), class: 'btn btn-sm success-btn ml-2 mt-2' %>
+        
+        <%= link_to user_chat_rooms_path(current_user.canonical_name), class: 'btn btn-sm success-btn ml-2 mt-2' do %>
+          <%= I18n.t('chats.index.title') %>
+          <% if current_user.has_unread_chat? %>
+            <span class='ml-2 text-danger'>
+              <i class="fa-solid fa-exclamation"></i>
+            </span>
+          <% end %>
+        <% end %>
 
       <% else %><!--自分のページでない場合-->
 

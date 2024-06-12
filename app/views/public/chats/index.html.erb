@@ -9,7 +9,7 @@
 
 <section>
 
-  <% unless @entries.nil? %>
+  <% if @entries.present? %>
     <% @entries.each do |entry| %>
 
       <%= link_to chat_path(entry.get_partner(current_user).id) do %>

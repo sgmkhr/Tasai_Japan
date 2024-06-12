@@ -14,24 +14,12 @@
       <% end %>
       <i class="fa-solid fa-bell"></i>
     </li>
-    <div id='notifications-box'>
-      <p class='text-right'>
-        <span id='close-notification-box'>
-            <i class="fa-solid fa-xmark"></i>
-        </span>
-      </p>
-      </span>
-      <% if current_user.notifications.where(read: false).any? %>
-        <p class='disabled sm-font'><%= I18n.t('notifications.limited_by') %></p>
-        <% current_user.notifications.where(read: false).limit(10).order(created_at: :desc).each do |notification| %>
-          <p>・<%= link_to notification.message, notification, method: :patch %></p>
-        <% end %>
-      <% else %>
-        <p class='disabled text-center'><%= I18n.t('notifications.non_exist') %></p>
-      <% end %>
-    </div>
+    <%= render 'public/notifications/dropdown' %>
     
     <li class='mb-4'>
+      <% if current_user.has_unread_chat? %>
+        <span class='text-danger'>.</span>
+      <% end %>
       <%= link_to user_chat_rooms_path(current_user.canonical_name) do %>
         <i class="fa-solid fa-envelope"></i>
       <% end %>

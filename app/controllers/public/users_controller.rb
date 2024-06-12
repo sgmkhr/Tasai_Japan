@@ -6,58 +6,61 @@ class Public::UsersController < ApplicationController
 
   def show
     @user  = User.find_by(canonical_name: params[:canonical_name])
-
-    if params[:latest]
-      @posts = @user.posts.latest.page(params[:page]).per(12)
-    elsif params[:old]
-      @posts = @user.posts.old.page(params[:page]).per(12)
-    elsif params[:favorites_count]
+    #以下、投稿データの取得
+    if params[:latest]              #ソート切り替え(作成新しい順)
+      @posts = @user.posts.latest
+    elsif params[:old]              #ソート切り替え(作成古い順)
+      @posts = @user.posts.old
+    elsif params[:favorites_count]  #ソート切り替え(いいね多い順)
       posts = @user.posts.sort {|a,b|
         b.post_favorites.size <=> a.post_favorites.size
       }
-      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(12)
-    elsif params[:content]
-      @posts = Post.search_with_user_for(params[:content], @user).page(params[:page]).per(12)
+      @posts = Kaminari.paginate_array(posts)
+    elsif params[:content]          #キーワード検索
+      @posts = Post.search_with_user_for(params[:content], @user)
     else
-      @posts = @user.posts.latest.page(params[:page]).per(12)
+      @posts = @user.posts.latest
     end
-
-    if params[:content_in_bookmarks]
-      @bookmarked_posts = current_user.search_with_bookmarks_for(params[:content_in_bookmarks]).page(params[:page]).per(12)
+    @posts = @posts.page(params[:page]).per(12)
+    #以下、マイページ内のみ表示のブックマーク投稿データ取得
+    if params[:content_in_bookmarks]  #ブックマーク内キーワード検索
+      @bookmarked_posts = current_user.search_with_bookmarks_for(params[:content_in_bookmarks])
     else
-      @bookmarked_posts = current_user.bookmarked_posts.latest.page(params[:page]).per(12)
+      @bookmarked_posts = current_user.bookmarked_posts.latest
     end
-
+    @bookmarked_posts = @bookmarked_posts.page(params[:page]).per(12)
+    #以下、マイページ内のみ表示のフォローユーザー投稿データ取得
     friends = current_user.followings
-    unless friends.nil?
+    if friends.present?
       @friends_posts = Post.where(user_id: friends.ids)
-      unless @friends_posts.nil?
+      if @friends_posts.present?
         @friends_posts = @friends_posts.latest.page(params[:page]).per(12)
       end
     else
       @friends_posts = nil
     end
-
+    #以下、閲覧カウント
     unless ProfileView.find_by(viewer_id: current_user.id, viewed_id: @user.id)
       current_user.active_profile_views.create(viewed_id: @user.id)
     end
   end
 
-  def index
-    if params[:latest]
-      @users = User.where(is_active: true).latest.page(params[:page]).per(18)
-    elsif params[:old]
-      @users = User.where(is_active: true).old.page(params[:page]).per(18)
-    elsif params[:posts_count]
+  def index #退会済みユーザーは表示しない
+    if params[:latest]            #ソート切り替え(新参順)
+      @users = User.where(is_active: true).latest
+    elsif params[:old]            #ソート切り替え(古参順)
+      @users = User.where(is_active: true).old
+    elsif params[:posts_count]    #ソート切り替え(投稿数順)
       users = User.where(is_active: true).sort {|a,b|
         b.posts.size <=> a.posts.size
       }
-      @users = Kaminari.paginate_array(users).page(params[:page]).per(18)
-    elsif params[:content]
-      @users = User.search_for(params[:content]).where(is_active: true).page(params[:page]).per(18)
+      @users = Kaminari.paginate_array(users)
+    elsif params[:content]        #キーワード検索
+      @users = User.search_for(params[:content]).where(is_active: true)
     else
-      @users = User.where(is_active: true).page(params[:page]).per(18) #退会済みユーザーは表示しない
+      @users = User.where(is_active: true) 
     end
+    @users = @users.page(params[:page]).per(18)
   end
 
   def edit

@@ -10,7 +10,7 @@
 
 <section>
   
-  <div class='chat-history'>
+  <div class='chat-history overflow-auto' id='area'>
     <%= render 'public/chats/list', chats: @chats, room: @room %>
   </div>
   
@@ -22,3 +22,5 @@
   </div>
   
 </section>  
+
+<%= javascript_pack_tag 'chats_scroll' %>

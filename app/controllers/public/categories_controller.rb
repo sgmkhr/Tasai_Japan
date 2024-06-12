@@ -3,15 +3,16 @@ class Public::CategoriesController < ApplicationController
   before_action :ensure_guest_user, only: [:create]
   
   def index
-    if params[:latest]
-      @categories = Category.latest.page(params[:page]).per(30)
-    elsif params[:old]
-      @categories = Category.old.page(params[:page]).per(30)
-    elsif params[:content]
-      @categories = Category.search_for(params[:content]).page(params[:page]).per(30)
+    if params[:latest]      #ソート切り替え(作成新しい順)
+      @categories = Category.latest
+    elsif params[:old]      #ソート切り替え(作成古い順)
+      @categories = Category.old
+    elsif params[:content]  #キーワード検索
+      @categories = Category.search_for(params[:content])
     else
-      @categories = Category.page(params[:page]).per(30)
+      @categories = Category.all
     end
+    @categories = @categories.page(params[:page]).per(30)
     @category = Category.new
   end
   

@@ -6,10 +6,11 @@
   
   <p id='toppage-caption'><%= I18n.t('top.caption') %></p>
   
-  <nav class='mt-5 d-flex justify-content-center'>
+  <nav class='mt-5 d-flex justify-content-center menus'>
     <h4 class='mx-md-5 mx-4'><%=link_to I18n.t('guest_login'), users_guest_sign_in_path, method: :post %></h4>
     <h4 class='mx-md-5 mx-4'><%=link_to I18n.t('login'),       new_user_session_path %></h4>
     <h4 class='mx-md-5 mx-4'><%=link_to I18n.t('signin'),      new_user_registration_path %></h4>
   </nav>
   
 </section>
+<%= javascript_pack_tag 'top' %>
