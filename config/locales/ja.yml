@@ -1,4 +1,7 @@
 ja:
+  languages:
+    japanese: 日本語
+    english: 英語
   site_name: 多彩な日本
   top_page: トップページ
   login: ログイン

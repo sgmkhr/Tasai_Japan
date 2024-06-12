@@ -50,6 +50,10 @@ a:hover {
 a:active {
   color:           rgb(245, 243, 242);
 }
+                                            // 以下、言語切り替えボタンのレイアウト
+#locale-select-button {
+  width:    100%;
+}
                                             // 以下、ヘッダーのレイアウト
 header {
   position:     absolute;
