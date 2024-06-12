@@ -5,7 +5,15 @@
   @<%= @user.canonical_name %>
 </p>
 
-<div class='section-title'><h2>@<%= @user.canonical_name %></h2></div>
+<div class='section-title'>
+  <h2>
+    <% if @user == current_user %>
+      <%= I18n.t('mypage') %>
+    <% else %>
+      @<%= @user.canonical_name %>
+    <% end %>
+  </h2>
+</div>
 
 <section>
 
@@ -26,14 +34,21 @@
           <i class="fa-solid fa-gear"></i>
         <% end %>
         
-        <%= link_to I18n.t('chats.index.title') , user_chat_rooms_path(current_user.canonical_name), class: 'btn btn-sm success-btn ml-2 mt-2' %>
+        <%= link_to user_chat_rooms_path(current_user.canonical_name), class: 'btn btn-sm success-btn ml-2 mt-2' do %>
+          <%= I18n.t('chats.index.title') %>
+          <% if current_user.has_unread_chat? %>
+            <span class='ml-2 text-danger'>
+              <i class="fa-solid fa-exclamation"></i>
+            </span>
+          <% end %>
+        <% end %>
 
       <% else %><!--自分のページでない場合-->
 
         <span id='follow-btn' class='ml-5'>
           <%= render 'public/relationships/btn', user: @user %>
         </span>
-        
+
         <% if current_user.following?(@user) && @user.following?(current_user) %>
           <%= link_to chat_path(@user.id) do %>
             <i class="fa-regular fa-paper-plane"></i>
@@ -43,15 +58,15 @@
       <% end %>
 
       <p class='my-3'><strong><%= @user.public_name %></strong></p>
-      
+
       <div class='user-data-display mb-3'>
-        
+
         <div id='following-count'>
           <%= render 'public/relationships/links', user: @user %>
         </div>
-  
+
         <%= render 'public/users/count', user: @user %>
-        
+
       </div>
 
       <p class='mb-3'> <!--positionによってcss表示カラー変わる-->
@@ -136,8 +151,9 @@
           <div id='followusers_posts_tab' class='tab'>
 
             <p class='text-center tab-title'><%= I18n.t('users.show.followusers_posts_tab') %></p>
-
-            <!--後ほど実装予定-->
+            
+            <!--フォローユーザー投稿一覧表示-->
+            <%= render 'public/posts/index', posts: @friends_posts %>
 
           </div>
 

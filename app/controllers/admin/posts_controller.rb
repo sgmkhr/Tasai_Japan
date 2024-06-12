@@ -2,28 +2,29 @@ class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    if params[:latest]
-      @posts = Post.latest.page(params[:page]).per(12)
-    elsif params[:old]
-      @posts = Post.old.page(params[:page]).per(12)
-    elsif params[:favorites_count]
+    if params[:latest]              #ソート切り替え(新着順)
+      @posts = Post.latest
+    elsif params[:old]              #ソート切り替え(古い順)
+      @posts = Post.old
+    elsif params[:favorites_count]  #ソート切り替え(いいね多い順)
       posts = Post.all.sort {|a,b| 
         b.post_favorites.size <=> a.post_favorites.size
       }
-      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(12)
-    elsif params[:tag_name]
+      @posts = Kaminari.paginate_array(posts)
+    elsif params[:tag_name]         #タグ検索
       @tag_name = params[:tag_name]
       post_tag = PostTag.find_by(name: @tag_name)
       if post_tag
-        @posts = post_tag.posts.page(params[:page]).per(12)
+        @posts = post_tag.posts
       else
-        @posts = nil
+        return @posts = nil
       end
-    elsif params[:content]
-      @posts = Post.search_for(params[:content]).page(params[:page]).per(12)
+    elsif params[:content]          #キーワード検索
+      @posts = Post.search_for(params[:content])
     else
-      @posts = Post.latest.page(params[:page]).per(12)
+      @posts = Post.latest
     end
+    @posts = @posts.page(params[:page]).per(12)
   end
 
   def show

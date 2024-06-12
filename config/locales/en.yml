@@ -30,4 +30,327 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: Hello world
+
+  languages:
+    japanese: Japanese
+    english: English
+  site_name: Tasai Japan
+  top_page: Top page
+  login: Log in
+  signin: Sign up
+  guest_login: Login as a guest
+  signout: Log out
+  menu: Menu page
+  mypage: My page
+  about: About this website
+  update: Update
+  search: Search
+  destroy: Destroy
+  create: Create
+  send: Send
+  search_blank: With blank to display all
+  search_tag: Search with a tag name
+  placeholder:
+    canonical_name: less than 20 alphanumeric characters
+    public_name: Anyone can see this name
+    comment: Comment here
+    tag_name: Separate each with a slash(/) if multiple words
+  guestuser:
+    signin:
+      notice: You logged in as a guest user.
+    validates: A guest user cannot operate this function. You need to log in or sign up.
+
+  top:
+    caption: This website makes connections between beginners and veterans of life in Japan.
+  menus:
+    users: Find awesome people
+    posts: Find out good places
+    rooms: Share your opinions
+  users:
+    reject_inactive_user: This account has already unsubscribed. Please sign up as a new account.
+    incorrect_user:
+      validates: You cannot navigate to pages that involve editing other users' information.
+    update:
+      notice: Your account information has successfully updated.
+      alert: There was a problem and your account information cound not be updated.
+    withdraw:
+      notice: The withdrawal process has been completed.
+    show:
+      position_start: I am
+      position_end: in life in Japan.
+      user_posts_tab: Your posts
+      bookmarked_posts_tab: Bookmarked posts
+      followusers_posts_tab: Friends' posts
+      posts_count: posts
+      counseling_rooms_count: created rooms
+      participations_count: joined rooms
+      joined_date: The account was created at
+    edit:
+      title: Edit your information
+    index:
+      title: User list
+      not_exist: No user exists.
+    unsubscribe: Unsubscribe
+    unsubscribe_confirmation: Are you sure you want to proceed to the cancellation process?
+    unsubscribe_cancel: Cancel unsubscribing
+  admin:
+    login_link: Log in as an administrator
+    users:
+      destroy:
+        btn: Delete this account
+        confirmation: Are you sure you want to delete the account?
+        notice: The deletion process has successfully completed.
+      cancel: Cancel the withdrawal
+      withdraw: Withdraw this account
+  posts:
+    create:
+      notice: You has created a new post successfully.
+      alert: The creation failed.
+    update:
+      notice: It has successfully updated.
+      alert: Updating failed.
+    index:
+      title: Posts
+      not_exist: No post exists.
+    show:
+      title: Post detail
+      edit_btn: Edit
+      comment: Comment
+    new:
+      title: Create a new post
+      create_btn: Create
+    edit:
+      title: Edit post's information
+      destroy_btn: Delete this post
+    destroy:
+      confirmation: Are you sure you want to delete the post?
+      success: The post has successfully been deleted.
+    validates: You cannot navigate to pages of editing other users' information.
+  comments:
+    validates: You cannot delete other users' comments.
+  categories:
+    title: Categories of counseling rooms
+    destroy:
+      success: The category has successfully been deleted.
+      confirmation: Are you sure you want to delete the category and all counseling rooms in it will also be deleted ?
+    create:
+      succeeded: The new category has created.
+      failed: The creation failed.
+    index:
+      no_exist: No category exists.
+    placeholder: Type here to carete a new category
+    bars:
+      create: Create a new category
+      keyword: Search with a keyword
+      tag: Search with a tag name
+  counseling_rooms:
+    title: Find a counseling room
+    index:
+      title: counseling room list
+      new: Create a new counseling room
+      no_exist: No counseling room exists.
+    new:
+      title: Create a new counseling room
+    edit:
+      title: Edit a counseling room's information
+    show:
+      title: The counseling room's datail
+      creator: Creator：
+      destroy:
+        btn: Delete this  room
+        confirmation: Are you sure you want to delete this room and also all the opinions in it?
+      no_viewing_permission: (You are not have permission to view the all in this page because you are not participating.)
+    create:
+      succeeded: The new counseling room has successfully been created.
+      failed: The creation failed.
+    update:
+      succeeded: It has successfully updated.
+      failed: Updating failed.
+    destroy: The counseling room has been deleted.
+    search:
+      title: Posts with a tag name
+    ensure_creator: You cannot view the edit page of a room other users created.
+  participations:
+    destroy:
+      by_participation: You have left the counseling room.
+      by_creator: The application to participate has been withdrawed.
+      confirmation:
+        by_participation: Are you sure you want to leave from this counseling room?
+        by_creator: Are you sure you want to withdraw this participation?
+        as_withdraw: Are you sure you want to withdraw this application?
+    leave: Leave
+    withdraw: Withdraw the application
+    apply: Apply to participate
+    update: The participation has been accepted.
+    creator: Owner
+    not_participating: Not participating
+    participating: Participating
+    applying: Applying to participate
+    edit:
+      title:
+        active: Participating users
+        waiting: Applying users
+      count: people
+      withdraw: Withdraw
+      leave: Withdraw
+      approve: Approve
+      no_participations:
+        active: No user is participating.
+        waiting: No user is applying to participate.
+  opinions:
+    btn: Share
+    placeholder: Type here to share your opinion.
+    destroy:
+      confirmation: Are you sure you want to delete this opinion?
+  sort:
+    latest: Newest
+    old: Oldest
+    favorites_count: Popular
+    user_latest: Joined recently
+    user_old: Joined earlier
+    posts_count: Numbers of posts
+    participations_count: Number of members
+    opinions_count: Number of opinions
+  views_count:
+    profile: Number of viewers：
+  relationships:
+    follow: Follow
+    unfollow: Following
+    followings: Following
+    followers: Followers
+    index:
+      followings: Following
+      followers: Followers
+  chats:
+    validates:
+      non_related: You need to follow each other to start chating.
+      non_permitted: You cannot view chat rooms' index pages of other users.
+    index:
+      title: Your chat rooms
+      unread_exists: unread
+      zero_chat_history: ＜＜No chat history＞＞
+      zero_chat_room: There is not any chat room.
+    show:
+      title: "'s chats"
+      no_chat_history: No chat history yet.
+    destroy:
+      confirmation: Are you sure you want to delete it completely from the chat history?
+    sent_now: Now
+    sent_today: Today
+    sent_yesterday: Yesterday
+    send: Send
+  notifications:
+    messages:
+      chat_room: creaed a new chat room with you.
+      comment: received a new comment.
+      comment_favorite: liked your comment.
+      opinion:
+        for_room_creator: shared a new opinion in your counseling room.
+        participations: A new opinion has been shared in a counseling room you are participating.
+      opinion_favorite: liked your opinion.
+      participation: received a new application to participate.
+      post: posted a new good place.
+      post_favorite: liked your post.
+      profile_view:
+        hundred: More than 100 people visited your profile page.
+        thousand: More than 1,000 people visited your profile page.
+        ten_thousand: More than 10,000 people visited your profile page.
+      relationship: started following you.
+    non_exist: No unread notification exists.
+    limited_by: Only the last 10 unread notifications are being displayed.
+
+  enums:
+    user:
+      position:
+        beginner: beginner
+        intermediate: intermediate
+        veteran: veteran
+    post:
+      prefecture:
+        hokkaido: Hokkaido
+        aomori: Aomori
+        iwate: Iwate
+        miyagi: Miyagi
+        akita: Akita
+        yamagata: Yamagata
+        fukushima: Fukushima
+        ibaraki: Ibaraki
+        tochigi: Tochigi
+        gunma: Gunma
+        saitama: Saitama
+        chiba: Chiba
+        tokyo: Tokyo
+        kanagawa: Kanagawa
+        niigata: Niigata
+        toyama: Toyama
+        ishikawa: Ishikawa
+        fukui: Fukui
+        yamanashi: Yamanashi
+        nagano: Nagano
+        gifu: Gifu
+        shizuoka: Shizuoka
+        aichi: Aichi
+        mie: Mie
+        shiga: Shiga
+        kyoto: Kyoto
+        osaka: Osaka
+        hyogo: Hyogo
+        nara: Nara
+        wakayama: Wakayama
+        tottori: Tottori
+        shimane: Shimane
+        okayama: Okayama
+        hiroshima: Hiroshima
+        yamaguchi: Yamaguchi
+        tokushima: Tokushima
+        kagawa: Kagawa
+        ehime: Ehime
+        kouchi: Kochi
+        fukuoka: Fukuoka
+        saga: Saga
+        nagasaki: Nagasaki
+        kumamoto: Kumamoto
+        oita: Oita
+        miyazaki: Miyazaki
+        kagoshima: Kagoshima
+        okinawa: Okinawa
+        others: Others
+        unspecified: Unspecified
+
+  activerecord:
+    models:
+      post: post
+      user: user
+      counseling_room: counseling room
+      category: category of counseling rooms
+      chat: chat
+      comment: comment
+      opinion: opinion
+      post_tag: post tag
+      room_tag: room tag
+    attributes:
+      post:
+        post_image: post image
+        title: title
+        caption: caption
+        body: content
+        prefecture: prefecture
+        tag_name: tag name
+      counseling_room:
+        topic: topic
+        detail: detail
+        topic_image: topic image
+        tag_name: tag name
+      category:
+        name: name
+      chat:
+        content: content
+      comment:
+        content: content
+      opinion:
+        content: content
+      post_tag:
+        name: name
+      room_tag:
+        name: name

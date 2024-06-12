@@ -6,7 +6,8 @@ class Category < ApplicationRecord
   scope :old,    -> { order(created_at: :asc) }
 
   validates :name, presence: true, uniqueness: true
-
+  
+  # キーワード検索のメソッド
   def self.search_for(content)
     return Category.all if content == ''
     Category.where('name LIKE ?', "%#{content}%")

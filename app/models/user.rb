@@ -23,6 +23,7 @@ class User < ApplicationRecord
     has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id'
     has_many :entries
     has_many :chats
+    has_many :notifications
   end
 
   has_many :bookmarked_posts, through: :bookmarks,             source: :post
@@ -48,7 +49,7 @@ class User < ApplicationRecord
 
   GUEST_USER_EMAIL = 'guest@example.com'
 
-  #プロフィール画像がなければデフォルト画像を表示するメソッド
+  # プロフィール画像を指定サイズへ圧縮してからデータ表示するメソッド(画像の登録がなければデフォルト画像を表示)
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -93,27 +94,44 @@ class User < ApplicationRecord
       I18n.t('participations.not_participating')
     end
   end
-
+  
+  # キーワード検索メソッド
   def self.search_for(content)
     return User.all if content == ''
     User.where(['public_name LIKE(?) OR canonical_name LIKE(?) OR introduction LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
-
+  
+  # マイページでのブックマーク投稿のキーワード検索メソッド
   def search_with_bookmarks_for(content)
     return self.bookmarked_posts if content == ''
     self.bookmarked_posts.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
   
+  # フォローするメソッド
   def follow(user)
     active_relationships.create(followed_id: user.id)
   end
   
+  # フォローを外すメソッド
   def unfollow(user)
     active_relationships.find_by(followed_id: user.id).destroy
   end
   
+  # フォローしてるか確かめるメソッド
   def following?(user)
     followings.include?(user)
+  end
+  
+  # 未読のチャットがあるか確かめるメソッド
+  def has_unread_chat?
+    self.chat_rooms.each do |chat_room|
+      chat_room.entries.each do |entry|
+        if entry.user_id != self.id
+          return true if entry.is_there_unread?(entry.user)
+        end
+      end
+    end
+    false
   end
 
 end

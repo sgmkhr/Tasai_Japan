@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  include Notifiable
 
   has_one_attached :post_image
 
@@ -13,6 +14,8 @@ class Post < ApplicationRecord
   end
 
   has_many :post_tags, through: :related_post_tags
+  
+  has_many :notifications, as: :notifiable, dependent: :destroy
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old,    -> { order(created_at: :asc) }
@@ -34,39 +37,61 @@ class Post < ApplicationRecord
 
   validates :caption, length: { maximum: 100 }
   validates :body,    length: { maximum: 2000 }
-
+  
+  # データが作成されると直後に通知データも作成される
+  after_create do
+    records = user.followers.map do |follower|
+      notifications.new(user_id: follower.id)
+    end
+    Notification.import records
+  end
+  
+  # 表示する通知メッセージを取得するメソッド
+  def notification_message
+    user.public_name + I18n.t('notifications.messages.post')
+  end
+  
+  # 通知クリック時のパス先指定のメソッド
+  def notification_path
+    post_path(self.id)
+  end
+  
+  # 投稿画像を指定サイズへ圧縮してからデータ表示するメソッド
   def get_post_image(width, height)
     post_image.variant(resize_to_limit: [width, height]).processed
   end
-
+  
+  # キーワード検索メソッド
   def self.search_for(content)
     return Post.all if content == ''
     Post.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
-
+  
+  # 各ユーザー詳細内でのキーワード検索メソッド
   def self.search_with_user_for(content, user)
     return Post.where(user_id: user.id) if content == ''
     Post.where(user_id: user.id).where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
-
+  
+  # 対象の投稿が既にいいねされているか確かめるメソッド
   def favorited_by?(user)
     post_favorites.exists?(user_id: user.id)
   end
-
+  
+  # 対象の投稿が既にブックマークされているか確かめるメソッド
   def bookmarked_by?(user)
     bookmarks.exists?(user_id: user.id)
   end
-
+  
+  # 投稿タグを保存するためのメソッド
   def save_tags(save_tag_names)
     current_tag_names = self.post_tags.pluck(:name) unless self.post_tags.nil?
     old_tag_names = current_tag_names - save_tag_names
     new_tag_names = save_tag_names - current_tag_names
-
     old_tag_names.each do |old_tag_name|
       post_tag = PostTag.find_by(name: old_tag_name)
       RelatedPostTag.find_by(post_tag_id: post_tag.id).destroy
     end
-
     new_tag_names.each do |new_tag_name|
       post_tag = PostTag.find_or_create_by(name: new_tag_name)
       self.post_tags << post_tag

@@ -8,6 +8,24 @@
       <% end %>
     </li>
     
+    <li id='notification-icon' class='mb-4'>
+      <% if current_user.notifications.where(read: false).any? %>
+        <span class='text-danger'>.</span>
+      <% end %>
+      <i class="fa-solid fa-bell"></i>
+    </li>
+    <%= render 'public/notifications/dropdown' %>
+    
+    <li class='mb-4'>
+      <% if current_user.has_unread_chat? %>
+        <span class='text-danger'>.</span>
+      <% end %>
+      <%= link_to user_chat_rooms_path(current_user.canonical_name) do %>
+        <i class="fa-solid fa-envelope"></i>
+      <% end %>
+      
+    </li>
+    
     <li class='mb-4'>
       <%= link_to user_path(current_user.canonical_name) do %>
         <span class='responsive-disabled'><%= I18n.t('mypage') %></span>

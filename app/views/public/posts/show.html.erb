@@ -87,6 +87,9 @@
   </div>
 
   <div class='comment-form py-5'>
+    <div class='errors'>
+      <%= render 'layouts/errors', obj: @comment %>
+    </div>
     <%= render 'public/comments/form', a_post: @post, comment: @comment %>
   </div>
 

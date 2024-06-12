@@ -81,6 +81,9 @@
     </div>
     
     <div class='opinion-form pb-5'>
+      <div class='errors'>
+        <%= render 'layouts/errors', obj: @opinion %>
+      </div>
       <%= render 'public/opinions/form', opinion: @opinion, category: @category, counseling_room: @counseling_room %>
     </div>
 

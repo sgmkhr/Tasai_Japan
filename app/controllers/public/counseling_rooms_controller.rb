@@ -5,25 +5,26 @@ class Public::CounselingRoomsController < ApplicationController
   before_action :ensure_room_creator, only: [:edit, :update, :destroy]
 
   def index
-    if params[:latest]
-      @counseling_rooms = @category.counseling_rooms.latest.page(params[:page]).per(20)
-    elsif params[:old]
-      @counseling_rooms = @category.counseling_rooms.old.page(params[:page]).per(20)
-    elsif params[:participations_count]
+    if params[:latest]                    #ソート切り替え(作成新しい順)
+      @counseling_rooms = @category.counseling_rooms.latest
+    elsif params[:old]                    #ソート切り替え(作成古い順)
+      @counseling_rooms = @category.counseling_rooms.old
+    elsif params[:participations_count]   #ソート切り替え(参加者多い数)
       counseling_rooms = @category.counseling_rooms.sort {|a,b|
         b.participations.where(status: true).size <=> a.participations.where(status: true).size
       }
-      @counseling_rooms = Kaminari.paginate_array(counseling_rooms).page(params[:page]).per(20)
-    elsif params[:opinions_count]
+      @counseling_rooms = Kaminari.paginate_array(counseling_rooms)
+    elsif params[:opinions_count]         #ソート切り替え(意見多い順)
       counseling_rooms = @category.counseling_rooms.sort {|a,b|
         b.opinions.size <=> a.opinions.size
       }
-      @counseling_rooms = Kaminari.paginate_array(counseling_rooms).page(params[:page]).per(20)
-    elsif params[:content]
-      @counseling_rooms = CounselingRoom.search_with_category_for(params[:content], @category).page(params[:page]).per(20)
+      @counseling_rooms = Kaminari.paginate_array(counseling_rooms)
+    elsif params[:content]                #キーワード検索
+      @counseling_rooms = CounselingRoom.search_with_category_for(params[:content], @category)
     else
-      @counseling_rooms = @category.counseling_rooms.page(params[:page]).per(20)
+      @counseling_rooms = @category.counseling_rooms
     end
+    @counseling_rooms = @counseling_rooms.page(params[:page]).per(20)
   end
 
   def new

@@ -7,52 +7,51 @@
 
 <div class='section-title'><h2>@<%= @user.canonical_name %></h2></div>
 
-<div class='admin-users-show-box py-3'>
-  
+<div class='admin-users-show-box py-3'><!--管理者ページにのみ表示の内容-->
+
+  <p><%= @user.last_name + ' ' + @user.first_name %></p>
+  <p><%= I18n.t('users.show.joined_date') + ' ' + @user.created_at.strftime('%Y/%m/%d') %></p>
+
   <% if @user.is_active %>
-  
     <p class='text-success'>有効ユーザー</p>
     <%= link_to I18n.t('admin.users.withdraw'),  admin_withdraw_path(@user.canonical_name), method: :patch %>
-    
   <% else %>
-  
     <p class='text-danger'>退会済みユーザー</p>
     <%= link_to I18n.t('admin.users.cancel'),    admin_cancel_path(@user.canonical_name),   method: :patch %>
-    
   <% end %>
-  
+
   <%= link_to I18n.t('admin.users.destroy.btn'), admin_user_path(@user.canonical_name),     method: :delete, class: 'ml-2', 'data-confirm' => I18n.t('admin.users.destroy.confirmation') %>
-  
+
 </div>
 
 <section>
-  
+
   <div class='row justify-content-center'>
 
     <div class='col-md-4'><!--ユーザー情報-->
-    
+
       <p class='text-center'>
         <i class="fa-solid fa-chart-line"></i>
         <%= I18n.t('views_count.profile') %>
         <%= @user.passive_profile_views.count %>
       </p>
-      
+
       <div class='my-3 d-flex'>
         <%= image_tag @user.get_profile_image(60, 60), class: 'rounded-circle mr-2' %>
       </div>
-      
+
       <p class='mb-3'><strong><%= @user.public_name %></strong></p>
-      
+
       <div class='user-data-display mb-3'>
-        
+
         <div id='following-count'>
           <%= render 'admin/relationships/links', user: @user %>
         </div>
-        
+
         <%= render 'public/users/count', user: @user %>
-        
+
       </div>
-      
+
       <p class='mb-3'>
         <%= I18n.t('users.show.position_start') %>
         <span class=<%= @user.get_class_associated_with_position %>><!--positionによって違うcss-->
@@ -60,15 +59,15 @@
         </span>
         <%= I18n.t('users.show.position_end') %>
       </p>
-      
+
       <p class='mb-5'><%= @user.introduction %></p>
-      
+
       <hr>
-    
+
     </div>
 
     <div class='col-md-8'>
-    
+
       <!--検索バー-->
       <%= form_with url: admin_user_path(@user.canonical_name), method: :get, local: true do |f| %>
         <div class='form-group row justify-content-end mt-2'>
@@ -76,17 +75,17 @@
           <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
         </div>
       <% end %>
-      
+
       <!--ソート切り替えリンク-->
       <div class='text-center py-2'>
       <%= link_to I18n.t('sort.latest'), admin_user_path(@user.canonical_name, latest: true) %>
       |<%= link_to I18n.t('sort.old'), admin_user_path(@user.canonical_name, old: true) %>
       |<%= link_to I18n.t('sort.favorites_count'), admin_user_path(@user.canonical_name, favorites_count: true) %>
-      </div> 
-      
+      </div>
+
       <!--ユーザーの投稿一覧表示-->
       <%= render 'admin/posts/index', posts: @posts %>
-      
+
     </div>
 
   </div>

@@ -50,7 +50,11 @@ a:hover {
 a:active {
   color:           rgb(245, 243, 242);
 }
-                                            // 以下、ヘッダーのレイアウト
+                                            // 以下、言語切り替えボタンのレイアウト
+#locale-select-button {
+  width:    100%;
+}
+                                            // 以下、ヘッダー、通知のレイアウト
 header {
   position:     absolute;
   top:          20px;
@@ -61,6 +65,36 @@ header {
 header li {
   writing-mode: vertical-rl;
   list-style:   none;
+}
+
+#notification-icon,
+#close-notification-box {
+  color:        rgb(81, 78, 77);
+  text-shadow:  2px 2px 3px #808080;
+}
+
+#notification-icon:hover,
+#close-notification-box:hover {
+  color:        rgb(245, 243, 242);
+  text-shadow:  2px 2px 3px #808080;
+}
+
+#notification-icon:active,
+#close-notification-box:active {
+  color:        rgb(245, 243, 242);
+}
+
+#notifications-box {
+  display:          none;
+  position:         fixed;
+  top:              50px;
+  right:            50px;
+  width:            250px;
+  max-height:       300px;
+  padding:          20px;
+  background-color: rgb(245, 243, 242);
+  border-radius:    20px;
+  z-index:          9;
 }
                                             // 以下、フッターのレイアウト
 footer {
@@ -74,6 +108,10 @@ footer {
 
 .resposive-displayed {
   display:      none;
+}
+                                            // 以下、トップページのレイアウト
+#toppage-box {
+  opacity: 0;
 }
                                             // 以下、各ページ共通レイアウト
 section {
@@ -232,18 +270,27 @@ input {
 }
                                             // 以下、user.positionを表示する際のレイアウト
 .position-beginner {
-  border: 1px solid rgb(84, 195, 241);
-  color:  rgb(84, 195, 241);
+  background-color: rgb(84, 195, 241);
+  color:            rgb(245, 243, 242);
+  padding:          0 10px;
+  border-radius:    10px;
+  text-align:       center;
 }
 
 .position-intermediate {
-  border: 1px solid rgb(220, 188, 0);
-  color:  rgb(220, 188, 0)
+  background-color: rgb(220, 188, 0);
+  color:            rgb(245, 243, 242);
+  padding:          0 10px;
+  border-radius:    10px;
+  text-align:       center;
 }
 
 .position-veteran {
-  border: 1px solid rgb(169, 175, 29);
-  color:  rgb(169, 175, 29);
+  background-color: rgb(169, 175, 29);
+  color:            rgb(245, 243, 242);
+  padding:          0 10px;
+  border-radius:    10px;
+  text-align:       center;
 }
                                             // 以下、タブ切り替えに関わるcss
 #tab-menu li {
@@ -279,6 +326,8 @@ input {
 }
 .chat-history {
   padding-bottom:   120px;
+  width:            100%;
+  height:           300px;
 }
                                             // 以下、スマホサイズのレスポンシブ対応
 @media screen and (max-width:768px) {
