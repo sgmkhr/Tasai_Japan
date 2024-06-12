@@ -209,7 +209,7 @@ en:
     user_latest: Joined recently
     user_old: Joined earlier
     posts_count: Numbers of posts
-    participations_count: Number of perticipations
+    participations_count: Number of members
     opinions_count: Number of opinions
   views_count:
     profile: Number of viewers：
@@ -231,7 +231,7 @@ en:
       zero_chat_history: ＜＜No chat history＞＞
       zero_chat_room: There is not any chat room.
     show:
-      title: 's chats
+      title: "'s chats"
       no_chat_history: No chat history yet.
     destroy:
       confirmation: Are you sure you want to delete it completely from the chat history?
@@ -316,3 +316,40 @@ en:
         okinawa: Okinawa
         others: Others
         unspecified: Unspecified
+
+  activerecord:
+    models:
+      post: post
+      user: user
+      counseling_room: counseling room
+      category: category of counseling rooms
+      chat: chat
+      comment: comment
+      opinion: opinion
+      post_tag: post tag
+      room_tag: room tag
+    attributes:
+      post:
+        post_image: post image
+        title: title
+        caption: caption
+        body: content
+        prefecture: prefecture
+        tag_name: tag name
+      counseling_room:
+        topic: topic
+        detail: detail
+        topic_image: topic image
+        tag_name: tag name
+      category:
+        name: name
+      chat:
+        content: content
+      comment:
+        content: content
+      opinion:
+        content: content
+      post_tag:
+        name: name
+      room_tag:
+        name: name
