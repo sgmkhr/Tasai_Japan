@@ -10,18 +10,24 @@
     
     <li id='notification-icon' class='mb-4'>
       <% if current_user.notifications.where(read: false).any? %>
-        <span class='text-danger'>.</span>
+        <span class='text-danger'>
+          <i class="fa-solid fa-bell"></i>
+        </span>
+      <% else %>
+        <i class="fa-solid fa-bell"></i>
       <% end %>
-      <i class="fa-solid fa-bell"></i>
     </li>
     <%= render 'public/notifications/dropdown' %>
     
     <li class='mb-4'>
-      <% if current_user.has_unread_chat? %>
-        <span class='text-danger'>.</span>
-      <% end %>
       <%= link_to user_chat_rooms_path(current_user.canonical_name) do %>
-        <i class="fa-solid fa-envelope"></i>
+        <% if current_user.has_unread_chat? %>
+          <span class='text-danger'>
+            <i class="fa-solid fa-envelope"></i>
+          </span>
+        <% else %>
+          <i class="fa-solid fa-envelope"></i>
+        <% end %>
       <% end %>
       
     </li>
