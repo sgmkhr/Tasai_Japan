@@ -1,5 +1,5 @@
 <div class='row d-flex justify-content-end'>
-  <ul id='tab-menu' class='d-flex col-md-6 mb-0'>
+  <ul id='tab-menu' class='d-flex col-md-6 mb-0 pr-0'>
     <li>
       <a href='#category_create_tab' class='btn-active'><i class="fa-solid fa-circle"></i></a>
       <label class='sm-font'><%= I18n.t('categories.bars.create') %></label>
@@ -22,7 +22,7 @@
     <%= form_with model: category do |f| %>
       <div class='form-group row justify-content-end'>
         <%= f.text_field :name, class: 'form-control col-md-5 col-9', placeholder: I18n.t('categories.placeholder') %>
-        <%= f.submit I18n.t('create'), class: 'btn btn-sm success-btn ml-3' %>
+        <%= f.submit I18n.t('create'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
       </div>
     <% end %>
   </div>
@@ -32,7 +32,7 @@
     <%= form_with url: categories_path, method: :get, local: true do |f| %>
       <div class='form-group row justify-content-end'>
         <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
-        <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+        <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
       </div>
     <% end %>
   </div>
@@ -42,7 +42,7 @@
     <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
       <div class='form-group row justify-content-end'>
         <%= f.text_field :tag_name, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_tag') %>
-        <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+        <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
       </div>
     <% end %>
   </div>

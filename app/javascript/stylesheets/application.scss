@@ -28,11 +28,15 @@ p, h2, h4, sm {
   color:               rgb(81, 78, 77);
 }
 
+.md-font {
+  font-size:           14px;
+}
+
 .sm-font {
   font-size:           10px;
 }
 
-nav > h4 { //トップ画面とメニュー画面で適用
+.text-vertical { //トップ画面とメニュー画面で使用
   writing-mode:        vertical-rl;
 }
                                             // 以下、リンクのレイアウト
@@ -96,6 +100,15 @@ header li {
   border-radius:    20px;
   z-index:          9;
 }
+
+.ringing {
+  color:           #8f2e14;
+}
+
+.ringing:hover,
+.ringing:active {
+  color:           rgb(245, 243, 242);
+}
                                             // 以下、フッターのレイアウト
 footer {
   position:     absolute;
@@ -105,24 +118,17 @@ footer {
   writing-mode: vertical-rl;
   color:        rgb(81, 78, 77);
 }
-
-.resposive-displayed {
-  display:      none;
-}
-                                            // 以下、トップページのレイアウト
-#toppage-box {
-  opacity: 0;
-}
                                             // 以下、各ページ共通レイアウト
 section {
   width:          70%;
-  margin:         70px auto;
+  margin:         70px auto 0;
+  padding-bottom: 110px;
 }
 
 .section-title {
   width:          40%;
   text-align:     right;
-  padding-right:  40px;
+  padding-right:  20px;
   margin-top:     50px;
   padding-bottom: 10px;
   border-bottom:  1px solid rgb(81, 78, 77);
@@ -134,7 +140,7 @@ section {
 
 .guide-links {
   font-size:      14px;
-  margin-left:    20px;
+  width:          85%;
 }
 
 .back_to_pagetop {
@@ -163,15 +169,17 @@ input {
                                             // 以下、homes/topのレイアウト
 #toppage-box {
   width:        80%;
+  height:       245px;
   margin:       30px auto 10px;
   box-shadow:   5px 5px 5px #808080;
+  opacity:      0;
+  position:     relative;
 }
 
 #toppage-title {
-  text-align:   center;
-  padding:      10px;
-  writing-mode: vertical-rl;
-  margin-left:  10px;
+  position:     absolute;
+  left:         10px;
+  bottom:       10px;
 }
 
 #toppage-caption {
@@ -182,13 +190,14 @@ input {
                                             // 以下、users/indexの共通レイアウト
 .user-index-item {
   width:            150px;
-  height:           250px;
+  height:           230px;
   padding:          10px;
   margin:           5px;
   background-color: rgb(245, 243, 242);
   border:           1px solid rgb(81, 78, 77);
   border-radius:    5px;
   box-shadow:       5px 5px 5px #808080;
+  text-shadow:      none;
   position:         relative;
 }
 
@@ -218,27 +227,31 @@ input {
   border-radius:    5px;
   background-color: rgb(245, 243, 242);
 }
-                                            // 以下、posts,categories,counseling_roomsのindexレイアウト
+                                            // 以下、posts,categories,counseling_rooms,chatsのindexレイアウト
 .post-index-item,
 .category-item,
-.counseling-room-item {
+.counseling-room-item,
+.chat-rooms-item {
   padding:          10px;
   margin:           10px;
   background-color: rgb(245, 243, 242);
   border:           1px solid rgb(81, 78, 77);
   border-radius:    5px;
   box-shadow:       5px 5px 5px #808080;
+  text-shadow:      none;
 }
 
 .post-index-item:hover,
 .category-item:hover,
-.counseling-room-item:hover {
+.counseling-room-item:hover,
+.chat-rooms-item:hover {
   background-color: rgb(245, 243, 250);
 }
 
 .post-index-item:active,
 .category-item:active,
-.counseling-room-item:active {
+.counseling-room-item:active,
+.chat-rooms-item:active {
   box-shadow:       none;
 }
 
@@ -255,6 +268,10 @@ input {
 .counseling-room-item {
   width:            200px;
   height:           120px;
+}
+
+.chat-rooms-item {
+  height:           80px;
 }
 
 .index-post-image {
@@ -311,7 +328,7 @@ input {
   border-top:      1px solid #fff;
   border-bottom:   1px solid #fff;
 }
-                                            // 以下、チャット画面のレイアウト
+                                            // 以下、chat_rooms/showのレイアウト
 .chat-form {
   position:         fixed;
   bottom:           20px;
@@ -336,7 +353,7 @@ input {
   }
 
   section {
-    margin:       40px auto;
+    width:        95%;
   }
 
   .section-title { //各ページの見出しサイズを少し小さくしてる
@@ -363,14 +380,6 @@ input {
     bottom:       10px;
     left:         5px;
     width:        25px;
-  }
-
-  .resposive-displayed { //レスポンシブ時にのみ表示する要素
-    display:      block;
-  }
-
-  .responsive-disabled { //レスポンシブ時には表示しない要素
-    display:      none;
   }
 
   .copy-right { //コピーライトの表示変更

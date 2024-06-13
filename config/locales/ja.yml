@@ -212,9 +212,7 @@ ja:
       chat_room: さんがチャットルームを作成しました
       comment: にコメントが届きました
       comment_favorite: さんがあなたのコメントにいいねしました
-      opinion:
-        for_room_creator: さんがあなたの作成した相談室で意見をくれました
-        participations: 参加している相談室で新しい意見が挙がりました
+      opinion: 相談室で新しい意見が挙がりました
       opinion_favorite: さんがあなたの意見にいいねしました
       participation: に新しく参加申請が届きました
       post: さんが新しいおすすめ記事を投稿しました

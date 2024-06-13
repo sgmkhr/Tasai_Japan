@@ -20,7 +20,7 @@
   <%= form_with url: admin_posts_path, method: :get, local: true do |f| %>
     <div class='form-group row justify-content-end'>
       <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
-      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
     </div>
   <% end %>
   
@@ -28,7 +28,7 @@
   <%= form_with url: admin_posts_path, method: :get, local: true do |f| %>
     <div class='form-group row justify-content-end'>
       <%= f.text_field :tag_name, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_tag') %>
-      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
     </div>
   <% end %>
 

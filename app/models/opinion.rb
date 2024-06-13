@@ -18,16 +18,12 @@ class Opinion < ApplicationRecord
       end
     end
     Notification.import records
-    create_notification(user_id: counseling_room.user_id)
+    notifications.create(user_id: counseling_room.user_id)
   end
   
   # 表示する通知メッセージを取得するメソッド
   def notification_message
-    if current_user.id == counseling_room.user_id
-      user.public_name + I18n.t('notifications.messages.opinion.for_room_creator')
-    else
-      I18n.t('notifications.messages.opinion.for_participations')
-    end
+    I18n.t('notifications.messages.opinion')
   end
   
   # 通知クリック時のパス先指定のメソッド
