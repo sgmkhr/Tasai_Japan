@@ -113,7 +113,7 @@
             <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
               <div class='form-group row justify-content-end mt-2'>
                 <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
-                <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+                <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
               </div>
             <% end %>
 
@@ -138,7 +138,7 @@
             <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
               <div class='form-group row justify-content-end mt-2'>
                 <%= f.text_field :content_in_bookmarks, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
-                <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+                <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
               </div>
             <% end %>
 
@@ -168,7 +168,7 @@
         <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
           <div class='form-group row justify-content-end mt-2'>
             <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
-            <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+            <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
           </div>
         <% end %>
 

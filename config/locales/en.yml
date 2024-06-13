@@ -141,7 +141,7 @@ en:
       no_exist: No category exists.
     placeholder: Type here to carete a new category
     bars:
-      create: Create a new category
+      create: Create another category
       keyword: Search with a keyword
       tag: Search with a tag name
   counseling_rooms:
