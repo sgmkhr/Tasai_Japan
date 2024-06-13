@@ -33,7 +33,7 @@
         <%= link_to edit_user_path(current_user.canonical_name) do %>
           <i class="fa-solid fa-gear"></i>
         <% end %>
-        
+
         <%= link_to user_chat_rooms_path(current_user.canonical_name), class: 'btn btn-sm success-btn ml-2 mt-2' do %>
           <%= I18n.t('chats.index.title') %>
           <% if current_user.has_unread_chat? %>
@@ -45,12 +45,12 @@
 
       <% else %><!--自分のページでない場合-->
 
-        <span id='follow-btn' class='ml-5'>
+        <span id='follow-btn' class='ml-1'>
           <%= render 'public/relationships/btn', user: @user %>
         </span>
 
         <% if current_user.following?(@user) && @user.following?(current_user) %>
-          <%= link_to chat_path(@user.id) do %>
+          <%= link_to chat_path(@user.id), class: 'btn btn-sm success-btn ml-1' do %>
             <i class="fa-regular fa-paper-plane"></i>
           <% end %>
         <% end %>
@@ -151,7 +151,7 @@
           <div id='followusers_posts_tab' class='tab'>
 
             <p class='text-center tab-title'><%= I18n.t('users.show.followusers_posts_tab') %></p>
-            
+
             <!--フォローユーザー投稿一覧表示-->
             <%= render 'public/posts/index', posts: @friends_posts %>
 
