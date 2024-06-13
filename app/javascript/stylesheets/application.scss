@@ -129,7 +129,8 @@ footer {
                                             // 以下、各ページ共通レイアウト
 section {
   width:          70%;
-  margin:         70px auto;
+  margin:         70px auto 0;
+  padding-bottom: 110px;
 }
 
 .section-title {
@@ -147,7 +148,7 @@ section {
 
 .guide-links {
   font-size:      14px;
-  margin-left:    20px;
+  width:          85%;
 }
 
 .back_to_pagetop {
@@ -358,7 +359,7 @@ input {
   }
 
   section {
-    margin:       40px auto;
+    width:        95%;
   }
 
   .section-title { //各ページの見出しサイズを少し小さくしてる

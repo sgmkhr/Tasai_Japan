@@ -80,7 +80,7 @@
       <%= render 'public/opinions/list', opinions: @opinions, category: @category, counseling_room: @counseling_room %>
     </div>
     
-    <div class='opinion-form pb-5'>
+    <div class='opinion-form'>
       <div class='errors'>
         <%= render 'layouts/errors', obj: @opinion %>
       </div>
@@ -89,7 +89,7 @@
 
   <% else %>
 
-    <p class='text-center pb-5'>
+    <p class='text-center'>
       <%= I18n.t('counseling_rooms.show.no_viewing_permission') %>
     </p>
 
