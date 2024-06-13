@@ -82,9 +82,9 @@ en:
       user_posts_tab: Your posts
       bookmarked_posts_tab: Bookmarked posts
       followusers_posts_tab: Friends' posts
-      posts_count: posts
-      counseling_rooms_count: created rooms
-      participations_count: joined rooms
+      posts_count: Posts
+      counseling_rooms_count: Managing Rooms
+      participations_count: Participating
       joined_date: The account was created at
     edit:
       title: Edit your information
