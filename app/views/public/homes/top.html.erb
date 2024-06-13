@@ -1,16 +1,59 @@
 <section>
-  
+
   <div id='toppage-box'>
-    <h1 id='toppage-title'><%= I18n.t('site_name') %></h1>
+    <% if I18n.locale.to_s == 'ja' %>
+      <h1 id='toppage-title' class='text-vertical'><%= I18n.t('site_name') %></h1>
+    <% else %>
+      <h1 id='toppage-title'><%= I18n.t('site_name') %></h1>
+    <% end %>
   </div>
-  
+
   <p id='toppage-caption'><%= I18n.t('top.caption') %></p>
-  
-  <nav class='mt-5 d-flex justify-content-center menus'>
-    <h4 class='mx-md-5 mx-4'><%=link_to I18n.t('guest_login'), users_guest_sign_in_path, method: :post %></h4>
-    <h4 class='mx-md-5 mx-4'><%=link_to I18n.t('login'),       new_user_session_path %></h4>
-    <h4 class='mx-md-5 mx-4'><%=link_to I18n.t('signin'),      new_user_registration_path %></h4>
+
+    <!--日本語の時-->
+    <% if I18n.locale.to_s == 'ja' %>
+      <% if user_signed_in? %>
+        <nav class='d-flex justify-content-center mt-5'>
+          <h4 class='text-vertical'>
+            <%= link_to I18n.t('signout'), destroy_user_session_path, method: :delete %>
+          </h4>
+        </nav>
+      <% elsif admin_signed_in? %>
+        <nav class='d-flex justify-content-center mt-5'>
+          <h4 class='text-vertical'>
+            <%= link_to I18n.t('signout'), destroy_admin_session_path, method: :delete %>
+          </h4>
+        </nav>
+      <% else %>
+        <nav class='d-flex justify-content-around mt-5'>
+          <h4 class='text-vertical'><%=link_to I18n.t('guest_login'), users_guest_sign_in_path, method: :post %></h4>
+          <h4 class='text-vertical'><%=link_to I18n.t('login'),       new_user_session_path %></h4>
+          <h4 class='text-vertical'><%=link_to I18n.t('signin'),      new_user_registration_path %></h4>
+        </nav>
+      <% end %>
+
+    <!--英語の時-->
+    <% else %>
+      <% if user_signed_in? %>
+        <nav class='d-flex justify-content-center mt-5'>
+          <h4><%= link_to I18n.t('signout'), destroy_user_session_path, method: :delete %></h4>
+        </nav>
+      <% elsif admin_signed_in? %>
+        <nav class='d-flex justify-content-center mt-5'>
+          <h4><%= link_to I18n.t('signout'), destroy_admin_session_path, method: :delete %></h4>
+        </nav>
+      <% else %>
+        <nav class='d-flex justify-content-center mt-5'>
+          <div>
+            <h4             ><%= link_to I18n.t('login'),       new_user_session_path %></h4>
+            <h4 class='mt-5'><%= link_to I18n.t('signin'),      new_user_registration_path %></h4>
+            <h4 class='mt-5'><%= link_to I18n.t('guest_login'), users_guest_sign_in_path, method: :post %></h4>
+          </div>
+        </nav>
+      <% end %>
+    <% end %>
+
   </nav>
-  
+
 </section>
 <%= javascript_pack_tag 'top' %>

@@ -2,18 +2,23 @@
 
 <section>
 
-  <nav class='py-5 d-flex justify-content-center'>
-    <h4 class='mx-md-5 mx-4'>
-      <%= link_to I18n.t('counseling_rooms.title'), admin_categories_path %>
-    </h4>
+  <!--日本語の時-->
+  <% if I18n.locale.to_s == 'ja' %>
+    <nav class='d-flex justify-content-around mt-5'>
+      <h4 class='text-vertical'><%= link_to I18n.t('menus.rooms'), admin_categories_path %></h4>
+      <h4 class='text-vertical'><%= link_to I18n.t('menus.posts'), admin_posts_path %></h4>
+      <h4 class='text-vertical'><%= link_to I18n.t('menus.users'), admin_users_path %></h4>
+    </nav>
   
-    <h4 class='mx-md-5 mx-4'>
-      <%= link_to I18n.t('menus.posts'),            admin_posts_path %>
-    </h4>
-  
-    <h4 class='mx-md-5 mx-4'>
-      <%= link_to I18n.t('menus.users'),            admin_users_path %>
-    </h4>
-  </nav>
+  <!--英語の時-->
+  <% else %>
+    <nav class='mt-5 d-flex justify-content-center'>
+      <div>
+        <h4             ><%= link_to I18n.t('menus.rooms'), admin_categories_path %></h4>
+        <h4 class='mt-5'><%= link_to I18n.t('menus.posts'), admin_posts_path %></h4>
+        <h4 class='mt-5'><%= link_to I18n.t('menus.users'), admin_users_path %></h4>
+      </div>
+    </nav>
+  <% end %>
 
 </section>

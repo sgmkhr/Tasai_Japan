@@ -1,23 +1,26 @@
 <div class='section-title mt-5'><h2><%= I18n.t('menu') %></h2></div>
 
 <section>
-
-  <nav class='py-5 d-flex justify-content-center'>
-    <h4 class='mx-md-5 mx-4'>
-      <%= link_to I18n.t('counseling_rooms.title'), categories_path %>
-    </h4>
-
-    <h4 class='mx-md-5 mx-4'>
-      <%= link_to I18n.t('menus.posts'), posts_path %>
-    </h4>
-
-    <h4 class='mx-md-5 mx-4'>
-      <%= link_to I18n.t('menus.users'), users_path %>
-    </h4>
-
-    <h4 class='mx-md-5 mx-4'>
-      <%= link_to I18n.t('about'), about_path %>
-    </h4>
-  </nav>
+  
+  <!--日本語の時-->
+  <% if I18n.locale.to_s == 'ja' %>
+    <nav class='d-flex justify-content-around mt-5'>
+      <h4 class='text-vertical'><%= link_to I18n.t('menus.rooms'), categories_path %></h4>
+      <h4 class='text-vertical'><%= link_to I18n.t('menus.posts'), posts_path %></h4>
+      <h4 class='text-vertical'><%= link_to I18n.t('menus.users'), users_path %></h4>
+      <h4 class='text-vertical'><%= link_to I18n.t('about'),       about_path %></h4>
+    </nav>
+  
+  <!--英語の時-->
+  <% else %>
+    <nav class='mt-5 d-flex justify-content-center'>
+      <div>
+        <h4             ><%= link_to I18n.t('menus.rooms'), categories_path %></h4>
+        <h4 class='mt-5'><%= link_to I18n.t('menus.posts'), posts_path %></h4>
+        <h4 class='mt-5'><%= link_to I18n.t('menus.users'), users_path %></h4>
+        <h4 class='mt-5'><%= link_to I18n.t('about'),       about_path %></h4>
+      </div>
+    </nav>
+  <% end %>
 
 </section>
