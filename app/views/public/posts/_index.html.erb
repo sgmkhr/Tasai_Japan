@@ -22,14 +22,12 @@
                 <%= render 'public/post_favorites/btn', a_post: a_post %>
               </span>
             </object>
-            <object>
+            <span>
               <i class="fa-regular fa-comment"></i>
               <span class='comment-count'><%= a_post.comments.count %></span>
-            </object>
-            <object>
               <i class="fa-solid fa-chart-line"></i>
               <%= a_post.post_views.count %>
-            </object>
+            </span>
           </p>
 
           <p><%= a_post.title %></p>
