@@ -18,7 +18,7 @@ class Opinion < ApplicationRecord
       end
     end
     Notification.import records
-    create_notification(user_id: counseling_room.user_id)
+    notifications.create(user_id: counseling_room.user_id)
   end
   
   # 表示する通知メッセージを取得するメソッド
