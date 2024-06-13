@@ -57,16 +57,22 @@
 
       <% end %>
 
+      <!--基本情報-->
       <p class='my-3'><strong><%= @user.public_name %></strong></p>
 
       <div class='user-data-display mb-3'>
-
         <div id='following-count'>
           <%= render 'public/relationships/links', user: @user %>
         </div>
-
         <%= render 'public/users/count', user: @user %>
 
+        <% if @user.id == current_user.id %>
+          <p class='text-right mb-0'>
+            <%= link_to user_insite_path(current_user.canonical_name) do %>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <% end %>
+          </p>
+        <% end %>
       </div>
 
       <p class='mb-3'> <!--positionによってcss表示カラー変わる-->

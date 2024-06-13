@@ -8,6 +8,9 @@
   <h2>
     <% if @tag_name.present? %>
       #<%= @tag_name %>
+    <% elsif @keyword.present? || @prefecture.present? %>
+      <%= I18n.t('posts.index.prefecture') + I18n.t('enums.post.prefecture.' + @prefecture) %>
+      </br><%= '「' + @keyword + '」' %>
     <% else %>
       <%= I18n.t('posts.index.title') %>
     <% end %>
@@ -17,35 +20,21 @@
 <section>
 
   <!--新規投稿リンク-->
-  <p class='mb-3 text-right pr-1'>
+  <p class='mb-3 text-right pr-5'>
     <%= link_to new_post_path do %>
       <%= I18n.t('posts.new.title') %>
       <i class="fa-solid fa-plus"></i>
     <% end %>
   </p>
 
-  <!--キーワード検索バー-->
-  <%= form_with url: posts_path, method: :get, local: true do |f| %>
-    <div class='form-group row justify-content-end'>
-      <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
-      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
-    </div>
-  <% end %>
-  
-  <!--タグ検索バー-->
-  <%= form_with url: posts_path, method: :get, local: true do |f| %>
-    <div class='form-group row justify-content-end'>
-      <%= f.text_field :tag_name, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_tag') %>
-      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
-    </div>
-  <% end %>
-  
+  <%= render 'public/posts/bars' %>
+
   <!--ソート切り替えリンク-->
   <div class='text-center py-2'>
   <%= link_to I18n.t('sort.latest'), posts_path(latest: true) %>
   |<%= link_to I18n.t('sort.old'), posts_path(old: true) %>
   |<%= link_to I18n.t('sort.favorites_count'), posts_path(favorites_count: true) %>
-  </div> 
+  </div>
 
   <!--投稿一覧表示-->
   <%= render 'public/posts/index', posts: @posts %>

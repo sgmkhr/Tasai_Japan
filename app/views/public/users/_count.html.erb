@@ -8,7 +8,7 @@
       <i class="fa-regular fa-image"></i>
     </p>
 
-    <p class='text-center'>
+    <p class='text-center mb-0'>
       <%= user.posts.count %>
     </p>
 
@@ -23,7 +23,7 @@
       <i class="fa-solid fa-users-gear"></i>
     </p>
 
-    <p class='text-center'>
+    <p class='text-center mb-0'>
       <%= user.counseling_rooms.count %>
     </p>
 
@@ -38,7 +38,7 @@
       <i class="fa-solid fa-people-roof"></i>
     </p>
 
-    <p class='text-center'>
+    <p class='text-center mb-0'>
       <%= user.participations.where(status: true).count %>
     </p>
 

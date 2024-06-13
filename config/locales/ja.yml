@@ -17,7 +17,7 @@ ja:
   create: 作成
   send: 送信
   search_blank: 全件表示は空で検索
-  search_tag: タグ検索(完全一致)
+  search_tag: タグ検索(完全一致のみ)
   placeholder:
     canonical_name: 20文字以内の半角英数字
     public_name: 公開用のお名前を入力
@@ -58,6 +58,12 @@ ja:
     index:
       title: ユーザー 一覧
       not_exist: 対象のユーザーが存在しません。
+    insite:
+      title: インサイト
+      main_tab: 総合インサイト
+      managing_rooms_tab: あなたの相談室
+      participating_rooms_tab: 参加中相談室
+      applying_rooms_tab: 参加申請中
     unsubscribe: 退会する
     unsubscribe_confirmation: 本当に退会処理に進んでよろしいですか？
     unsubscribe_cancel: 退会しない
@@ -80,6 +86,7 @@ ja:
     index:
       title: 投稿一覧
       not_exist: 投稿が存在しません。
+      prefecture: "都道府県:"
     show:
       title: 投稿詳細
       edit_btn: 編集
@@ -321,7 +328,7 @@ ja:
         detail: 詳細
         topic_image: イメージ画像
         tag_name: タグ
-      category: 
+      category:
         name: 名前
       chat:
         content: 内容
