@@ -245,9 +245,7 @@ en:
       chat_room: creaed a new chat room with you.
       comment: received a new comment.
       comment_favorite: liked your comment.
-      opinion:
-        for_room_creator: shared a new opinion in your counseling room.
-        participations: A new opinion has been shared in a counseling room you are participating.
+      opinion: A new opinion has been shared in a counseling room.
       opinion_favorite: liked your opinion.
       participation: received a new application to participate.
       post: posted a new good place.

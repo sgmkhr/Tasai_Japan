@@ -6,14 +6,14 @@ class Public::OpinionsController < ApplicationController
   def create
     @opinion = current_user.opinions.new(opinion_params)
     @opinion.counseling_room_id = @counseling_room.id
-    @opinions = Opinion.all
+    @opinions = @counseling_room.opinions
     render :validator unless @opinion.save
     # 非同期通信のため、opinions/create.js.erbを呼び出す
   end
   
   def destroy
     Opinion.find(params[:id]).destroy
-    @opinions = Opinion.all
+    @opinions = @counseling_room.opinions
     # 非同期通信のため、opinions/destroy.js.erbを呼び出す
   end
   
