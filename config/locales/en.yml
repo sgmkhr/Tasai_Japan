@@ -113,6 +113,7 @@ en:
     index:
       title: Posts
       not_exist: No post exists.
+      prefecture: "prefecture:"
     show:
       title: Post detail
       edit_btn: Edit

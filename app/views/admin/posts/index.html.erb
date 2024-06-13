@@ -8,6 +8,9 @@
   <h2>
     <% if @tag_name.present? %>
       #<%= @tag_name %>
+    <% elsif @keyword.present? || @prefecture.present? %>
+      <%= I18n.t('posts.index.prefecture') + I18n.t('enums.post.prefecture.' + @prefecture) %>
+      </br><%= '「' + @keyword + '」' %>
     <% else %>
       <%= I18n.t('posts.index.title') %>
     <% end %>

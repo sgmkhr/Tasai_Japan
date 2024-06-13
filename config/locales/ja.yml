@@ -80,6 +80,7 @@ ja:
     index:
       title: 投稿一覧
       not_exist: 投稿が存在しません。
+      prefecture: "都道府県:"
     show:
       title: 投稿詳細
       edit_btn: 編集
@@ -321,7 +322,7 @@ ja:
         detail: 詳細
         topic_image: イメージ画像
         tag_name: タグ
-      category: 
+      category:
         name: 名前
       chat:
         content: 内容
