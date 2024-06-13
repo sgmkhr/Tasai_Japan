@@ -96,6 +96,15 @@ header li {
   border-radius:    20px;
   z-index:          9;
 }
+
+.ringing {
+  color:           #8f2e14;
+}
+
+.ringing:hover,
+.ringing:active {
+  color:           rgb(245, 243, 242);
+}
                                             // 以下、フッターのレイアウト
 footer {
   position:     absolute;
