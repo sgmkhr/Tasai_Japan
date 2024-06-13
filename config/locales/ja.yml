@@ -58,6 +58,12 @@ ja:
     index:
       title: ユーザー 一覧
       not_exist: 対象のユーザーが存在しません。
+    insite:
+      title: インサイト
+      main_tab: 総合インサイト
+      managing_rooms_tab: あなたの相談室
+      participating_rooms_tab: 参加中相談室
+      applying_rooms_tab: 参加申請中
     unsubscribe: 退会する
     unsubscribe_confirmation: 本当に退会処理に進んでよろしいですか？
     unsubscribe_cancel: 退会しない

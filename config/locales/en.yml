@@ -91,6 +91,12 @@ en:
     index:
       title: User list
       not_exist: No user exists.
+    insite:
+      title: Insite
+      main_tab: General
+      managing_rooms_tab: Your rooms
+      participating_rooms_tab: Participating
+      applying_rooms_tab: Applying
     unsubscribe: Unsubscribe
     unsubscribe_confirmation: Are you sure you want to proceed to the cancellation process?
     unsubscribe_cancel: Cancel unsubscribing
