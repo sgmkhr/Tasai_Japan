@@ -21,6 +21,9 @@ class Admin::PostsController < ApplicationController
       end
     elsif params[:content]          #キーワード検索
       @posts = Post.search_for(params[:content])
+      if @posts && (params[:prefecture] != 'unspecified')
+        @posts = @posts.where(prefecture: params[:prefecture])
+      end
     else
       @posts = Post.latest
     end
