@@ -21,10 +21,10 @@
   </p>
   
   <% if @counseling_room.topic_image.present? %>
-    <div class='responsive-disabled'>
+    <div class='d-md-block d-none'>
       <%= image_tag @counseling_room.get_topic_image(400, 400) %>
     </div>
-    <div class='resposive-displayed'>
+    <div class='d-md-none'>
       <%= image_tag @counseling_room.get_topic_image(224, 224) %>
     </div>
   <% end %>

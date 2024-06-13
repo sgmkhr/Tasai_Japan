@@ -17,13 +17,19 @@
   <% end %>
 
   <!--ソート切り替えリンク-->
-  <div class='text-center py-2'>
-  <%= link_to I18n.t('sort.user_latest'),  admin_users_path(latest: true) %>
-  |<%= link_to I18n.t('sort.user_old'),    admin_users_path(old: true) %>
-  |<%= link_to I18n.t('sort.posts_count'), admin_users_path(posts_count: true) %>
+  <div class='d-flex justify-content-center py-2'>
+    <div class='d-md-flex'>
+      <p class='mb-0'>
+        <%= link_to I18n.t('sort.user_latest'),  admin_users_path(latest: true) %>
+        |<%= link_to I18n.t('sort.user_old'),    admin_users_path(old: true) %>
+      </p>
+      <p class='mb-0'><span class='d-md-inline d-none pl-1'>|</span>
+        <%= link_to I18n.t('sort.posts_count'), admin_users_path(posts_count: true) %>
+      </p>
+    </div>
   </div>
 
   <!--ユーザー一覧の表示-->
   <%= render 'admin/users/index', users: @users %>
-  
+
 </section>
