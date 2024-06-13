@@ -254,7 +254,9 @@ en:
       comment_favorite: liked your comment.
       opinion: A new opinion has been shared in a counseling room.
       opinion_favorite: liked your opinion.
-      participation: received a new application to participate.
+      participation:
+        for_creator: received a new application to participate.
+        for_paticipation: accepted your application to participate.
       post: posted a new good place.
       post_favorite: liked your post.
       profile_view:
