@@ -28,6 +28,10 @@ p, h2, h4, sm {
   color:               rgb(81, 78, 77);
 }
 
+.md-font {
+  font-size:           14px;
+}
+
 .sm-font {
   font-size:           10px;
 }
@@ -228,10 +232,11 @@ input {
   border-radius:    5px;
   background-color: rgb(245, 243, 242);
 }
-                                            // 以下、posts,categories,counseling_roomsのindexレイアウト
+                                            // 以下、posts,categories,counseling_rooms,chatsのindexレイアウト
 .post-index-item,
 .category-item,
-.counseling-room-item {
+.counseling-room-item,
+.chat-rooms-item {
   padding:          10px;
   margin:           10px;
   background-color: rgb(245, 243, 242);
@@ -243,13 +248,15 @@ input {
 
 .post-index-item:hover,
 .category-item:hover,
-.counseling-room-item:hover {
+.counseling-room-item:hover,
+.chat-rooms-item:hover {
   background-color: rgb(245, 243, 250);
 }
 
 .post-index-item:active,
 .category-item:active,
-.counseling-room-item:active {
+.counseling-room-item:active,
+.chat-rooms-item:active {
   box-shadow:       none;
 }
 
@@ -266,6 +273,10 @@ input {
 .counseling-room-item {
   width:            200px;
   height:           120px;
+}
+
+.chat-rooms-item {
+  height:           80px;
 }
 
 .index-post-image {
@@ -322,7 +333,7 @@ input {
   border-top:      1px solid #fff;
   border-bottom:   1px solid #fff;
 }
-                                            // 以下、チャット画面のレイアウト
+                                            // 以下、chat_rooms/showのレイアウト
 .chat-form {
   position:         fixed;
   bottom:           20px;
