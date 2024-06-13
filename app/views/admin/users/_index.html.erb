@@ -8,7 +8,7 @@
 
           <div class='d-flex'>
 
-            <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle mr-2' %>
+            <%= image_tag user.get_profile_image(40, 40), class: 'rounded-circle mr-2' %>
 
             <% unless user.is_active %>
               <span class='text-danger'>退会済み</span>
@@ -16,16 +16,18 @@
 
           </div>
 
-          <p class='overflow-hidden text-nowrap text-truncate'>
+          <p class='overflow-hidden text-nowrap text-truncate mb-0'>
             @<%= user.canonical_name %>
           </p><hr>
 
-          <p class='overflow-hidden text-nowrap text-truncate'>
+          <p class='overflow-hidden text-nowrap text-truncate mb-0'>
             <%= user.public_name %>
           </p>
 
-          <p class=<%= user.get_class_associated_with_position %>>
-            <%= user.position_i18n %>
+          <p class='mb-0'>
+            <span class=<%= user.get_class_associated_with_position %>>
+              <%= user.position_i18n %>
+            </span>
           </p>
 
           <p class='overflow-hidden text-nowrap text-truncate'>

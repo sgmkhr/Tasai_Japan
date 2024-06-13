@@ -6,17 +6,17 @@
         <%= link_to user_path(user.canonical_name) do %>
           <div class='user-index-item'>
 
-            <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle' %>
+            <%= image_tag user.get_profile_image(40, 40), class: 'rounded-circle' %>
 
-            <p class='overflow-hidden text-nowrap text-truncate'>
+            <p class='overflow-hidden text-nowrap text-truncate mb-0'>
               @<%= user.canonical_name %>
             </p><hr>
 
-            <p class='overflow-hidden text-nowrap text-truncate'>
+            <p class='overflow-hidden text-nowrap text-truncate mb-0'>
               <%= user.public_name %>
             </p>
 
-            <p>
+            <p class='mb-0'>
               <span class=<%= user.get_class_associated_with_position %>>
                 <%= user.position_i18n %>
               </span>
