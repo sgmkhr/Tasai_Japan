@@ -186,7 +186,7 @@ en:
     creator: Owner
     not_participating: Not participating
     participating: Participating
-    applying: Applying to participate
+    applying: Applying
     edit:
       title:
         active: Participating users

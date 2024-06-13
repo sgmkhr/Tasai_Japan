@@ -17,9 +17,9 @@
               <%= room.participations.where(status: true).count %>
             </div>
 
-            <div class='ml-3 rounded'>
+            <p>
               <%= current_user.get_participation_status(room) %>
-            </div>
+            </p>
           </div>
 
         </div>
