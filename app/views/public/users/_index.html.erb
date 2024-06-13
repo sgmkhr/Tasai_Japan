@@ -1,43 +1,44 @@
 <% if users.present? %><!--ユーザーが存在する場合-->
 
   <div class='d-flex flex-wrap justify-content-center'>
-
     <% users.each do |user| %> <!--各ユーザーの情報表示-->
-      <%= link_to user_path(user.canonical_name) do %>
-        <div class='user-index-item'>
+      <% unless user.guest_user? %><!--ゲストユーザーは表示しない-->
+        <%= link_to user_path(user.canonical_name) do %>
+          <div class='user-index-item'>
 
-          <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle' %>
+            <%= image_tag user.get_profile_image(25, 25), class: 'rounded-circle' %>
 
-          <p class='overflow-hidden text-nowrap text-truncate'>
-            @<%= user.canonical_name %>
-          </p><hr>
+            <p class='overflow-hidden text-nowrap text-truncate'>
+              @<%= user.canonical_name %>
+            </p><hr>
 
-          <p class='overflow-hidden text-nowrap text-truncate'>
-            <%= user.public_name %>
-          </p>
+            <p class='overflow-hidden text-nowrap text-truncate'>
+              <%= user.public_name %>
+            </p>
 
-          <p>
-            <span class=<%= user.get_class_associated_with_position %>>
-              <%= user.position_i18n %>
-            </span>
-          </p>
+            <p>
+              <span class=<%= user.get_class_associated_with_position %>>
+                <%= user.position_i18n %>
+              </span>
+            </p>
 
-          <p class='overflow-hidden text-nowrap text-truncate'>
-            <%= user.introduction %>
-          </p>
+            <p class='overflow-hidden text-nowrap text-truncate'>
+              <%= user.introduction %>
+            </p>
 
-          <p class='user-index-chart-box d-flex'>
-            <span class='mr-2'>
-              <i class="fa-regular fa-image"></i>
-              <%= user.posts.count %>
-            </span>
-            <span>
-              <i class="fa-solid fa-handshake-angle"></i>
-              <%= user.followers.count %>
-            </span>
-          </p>
+            <p class='user-index-chart-box d-flex'>
+              <span class='mr-2'>
+                <i class="fa-regular fa-image"></i>
+                <%= user.posts.count %>
+              </span>
+              <span>
+                <i class="fa-solid fa-handshake-angle"></i>
+                <%= user.followers.count %>
+              </span>
+            </p>
 
-        </div>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
 

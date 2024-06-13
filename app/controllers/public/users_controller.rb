@@ -58,7 +58,7 @@ class Public::UsersController < ApplicationController
     elsif params[:content]        #キーワード検索
       @users = User.search_for(params[:content]).where(is_active: true)
     else
-      @users = User.where(is_active: true) 
+      @users = User.where(is_active: true)
     end
     @users = @users.page(params[:page]).per(18)
   end
