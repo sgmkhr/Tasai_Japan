@@ -53,6 +53,10 @@ ja:
       counseling_rooms_count: 作成相談室数
       participations_count: 参加相談室数
       joined_date: アカウント作成日
+      following:
+        each_other: 相互フォロー中
+        passive: あなたをフォローしているユーザーです
+        active: フォローしているユーザーです
     edit:
       title: 登録情報編集
     index:
