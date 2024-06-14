@@ -57,8 +57,10 @@
     <span class='opinions-count mr-2'>
       <%= @opinions.count %>
     </span>
-
-    <%= I18n.t('counseling_rooms.show.creator') + '' + @counseling_room.user.public_name %>
+    
+    <%= link_to user_path(@counseling_room.user.canonical_name) do %>
+      <%= I18n.t('counseling_rooms.show.creator') + '' + @counseling_room.user.public_name %>
+    <% end %>
 
   </p>
 

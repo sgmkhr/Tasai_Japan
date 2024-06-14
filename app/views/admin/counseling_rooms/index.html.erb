@@ -11,9 +11,13 @@
   
   <!--検索バー-->
   <%= form_with url: admin_category_counseling_rooms_path(@category.id), method: :get, local: true do |f| %>
-    <div class='form-group row justify-content-end mb-1'>
-      <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
-      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
+    <div class='row justify-content-md-end justify-content-center'>
+      <div class='form-group col-md-5 col-9'>
+        <%= f.text_field :content, class: 'form-control', placeholder: I18n.t('search_blank') %>
+      </div>
+      <div class='form-group mt-1'>
+        <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn' %>
+      </div>
     </div>
   <% end %>
   
