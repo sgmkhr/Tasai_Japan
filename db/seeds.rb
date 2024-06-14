@@ -274,7 +274,7 @@ mio = User.find_or_create_by!(email: 'mio@example.com') do |user|
   user.public_name = 'mio'
   user.position = 2
   user.password = '242424'
-  user.introduction = 'いろんな人と交流したいです'
+  user.introduction = 'いろんな人と交流したいです！'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w5.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
@@ -357,6 +357,13 @@ post_drive = Post.find_or_create_by!(title: '糸島の芥屋') do |po|
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
 end
 
+post_drive.post_favorites.find_or_create_by(user_id: hana.id)
+post_drive.post_favorites.find_or_create_by(user_id: yuko.id)
+post_drive.post_favorites.find_or_create_by(user_id: james.id)
+
+post_drive.bookmarks.find_or_create_by(user_id: hana.id)
+post_drive.bookmarks.find_or_create_by(user_id: yuko.id)
+
 post_mentai = Post.find_or_create_by!(title: '明太子のお重') do |po|
   po.caption = '博多に来たら必ず行ってほしい'
   po.body = '明太子好きにはたまらない！重厚な雰囲気だけどカジュアルにランチで楽しめる。'
@@ -364,6 +371,15 @@ post_mentai = Post.find_or_create_by!(title: '明太子のお重') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/fukuoka_mentaizyu.jpeg"),filename: 'fukuoka_mentaizyu.jpeg')
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
 end
+
+post_mentai.post_favorites.find_or_create_by(user_id: henry.id)
+post_mentai.post_favorites.find_or_create_by(user_id: abramo.id)
+post_mentai.post_favorites.find_or_create_by(user_id: brunello.id)
+post_mentai.post_favorites.find_or_create_by(user_id: hana.id)
+
+post_mentai.bookmarks.find_or_create_by(user_id: james.id)
+post_mentai.bookmarks.find_or_create_by(user_id: henry.id)
+post_mentai.bookmarks.find_or_create_by(user_id: abramo.id)
 
 post_unagi = Post.find_or_create_by!(title: '柳川') do |po|
   po.caption = 'うなぎも有名な場所'
@@ -373,6 +389,13 @@ post_unagi = Post.find_or_create_by!(title: '柳川') do |po|
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
 end
 
+post_unagi.post_favorites.find_or_create_by(user_id: ambre.id)
+post_unagi.post_favorites.find_or_create_by(user_id: char.id)
+post_unagi.post_favorites.find_or_create_by(user_id: amado.id)
+
+post_unagi.bookmarks.find_or_create_by(user_id: brunello.id)
+post_unagi.bookmarks.find_or_create_by(user_id: ambre.id)
+
 post_winter = Post.find_or_create_by!(title: '竜王スキー場') do |po|
   po.caption = '関東のスキー場といえばここ！'
   po.body = '関東に住まいの方に人気のスキー場。上の方に登ると、素敵な景色と共にビールも飲めちゃいます！'
@@ -380,6 +403,15 @@ post_winter = Post.find_or_create_by!(title: '竜王スキー場') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/nagano_ryuo.jpeg"),filename: 'nagano_ryuo.jpeg')
   po.user = dan # 東京に馴染み深いサンプルユーザー
 end
+
+post_winter.post_favorites.find_or_create_by(user_id: jacobo.id)
+post_winter.post_favorites.find_or_create_by(user_id: juana.id)
+post_winter.post_favorites.find_or_create_by(user_id: faina.id)
+post_winter.post_favorites.find_or_create_by(user_id: ritsu.id)
+post_winter.post_favorites.find_or_create_by(user_id: celina.id)
+
+post_winter.bookmarks.find_or_create_by(user_id: char.id)
+post_winter.bookmarks.find_or_create_by(user_id: amado.id)
 
 post_kanto = Post.find_or_create_by!(title: '秩父') do |po|
   po.caption = '東京から日帰りドライブにおすすめ'
@@ -389,7 +421,16 @@ post_kanto = Post.find_or_create_by!(title: '秩父') do |po|
   po.user = dan # 東京に馴染み深いサンプルユーザー
 end
 
-Post.find_or_create_by!(title: '浅草寺') do |po|
+post_kanto.post_favorites.find_or_create_by(user_id: filipp.id)
+post_kanto.post_favorites.find_or_create_by(user_id: celina.id)
+post_kanto.post_favorites.find_or_create_by(user_id: bolek.id)
+post_kanto.post_favorites.find_or_create_by(user_id: aoi.id)
+
+post_kanto.bookmarks.find_or_create_by(user_id: jacobo.id)
+post_kanto.bookmarks.find_or_create_by(user_id: juana.id)
+post_kanto.bookmarks.find_or_create_by(user_id: faina.id)
+
+post_asakusa = Post.find_or_create_by!(title: '浅草寺') do |po|
   po.caption = '日本の象徴的な観光スポット'
   po.body = '浅草寺の雷門が有名ですが、奥に進んだ場所から見えるこの眺めもおすすめです。夜は空いているので写真も撮りやすいですよ。'
   po.prefecture = 13
@@ -397,7 +438,14 @@ Post.find_or_create_by!(title: '浅草寺') do |po|
   po.user = dan # 東京に馴染み深いサンプルユーザー
 end
 
-Post.find_or_create_by!(title: '渋谷スカイ') do |po|
+post_asakusa.post_favorites.find_or_create_by(user_id: aoi.id)
+post_asakusa.post_favorites.find_or_create_by(user_id: ritsu.id)
+post_asakusa.post_favorites.find_or_create_by(user_id: yuma.id)
+
+post_asakusa.bookmarks.find_or_create_by(user_id: filipp.id)
+post_asakusa.bookmarks.find_or_create_by(user_id: celina.id)
+
+post_shibuya = Post.find_or_create_by!(title: '渋谷スカイ') do |po|
   po.caption = '渋谷にできた高層商業施設の屋上！'
   po.body = '入場料は少しお高めですが、ここからの展望は本当に最高！芝生があるのでゆっくりできますよ。'
   po.prefecture = 13
@@ -405,7 +453,12 @@ Post.find_or_create_by!(title: '渋谷スカイ') do |po|
   po.user = dan # 東京に馴染み深いサンプルユーザー
 end
 
-Post.find_or_create_by!(title: '青川') do |po|
+post_shibuya.post_favorites.find_or_create_by(user_id: yuma.id)
+
+post_shibuya.bookmarks.find_or_create_by(user_id: bolek.id)
+post_shibuya.bookmarks.find_or_create_by(user_id: aoi.id)
+
+post_aogawa = Post.find_or_create_by!(title: '青川') do |po|
   po.caption = '付知川の清流'
   po.body = '本当に今まで見た川の中で一番エメラルド色！心も癒されるので、自然が好きな人にはぜひ訪れていただきたい！'
   po.prefecture = 21
@@ -413,7 +466,19 @@ Post.find_or_create_by!(title: '青川') do |po|
   po.user = ritsu # 岐阜に馴染み深いサンプルユーザー
 end
 
-Post.find_or_create_by!(title: '白川郷') do |po|
+post_aogawa.post_favorites.find_or_create_by(user_id: yuma.id)
+post_aogawa.post_favorites.find_or_create_by(user_id: yuka.id)
+post_aogawa.post_favorites.find_or_create_by(user_id: koharu.id)
+post_aogawa.post_favorites.find_or_create_by(user_id: emi.id)
+post_aogawa.post_favorites.find_or_create_by(user_id: sana.id)
+post_aogawa.post_favorites.find_or_create_by(user_id: mio.id)
+
+post_aogawa.bookmarks.find_or_create_by(user_id: dan.id)
+post_aogawa.bookmarks.find_or_create_by(user_id: yuma.id)
+post_aogawa.bookmarks.find_or_create_by(user_id: koharu.id)
+post_aogawa.bookmarks.find_or_create_by(user_id: emi.id)
+
+post_sirakawago = Post.find_or_create_by!(title: '白川郷') do |po|
   po.caption = 'ここでしか見れない景色'
   po.body = '観光地として日本人にとっては馴染み深いですが、海外から来た人はあまり知らないかも。感動すること間違いなし！'
   po.prefecture = 21
@@ -421,7 +486,14 @@ Post.find_or_create_by!(title: '白川郷') do |po|
   po.user = ritsu # 岐阜に馴染み深いサンプルユーザー
 end
 
-Post.find_or_create_by!(title: '神戸') do |po|
+post_sirakawago.post_favorites.find_or_create_by(user_id: mio.id)
+post_sirakawago.post_favorites.find_or_create_by(user_id: brunello.id)
+
+post_sirakawago.bookmarks.find_or_create_by(user_id: mio.id)
+post_sirakawago.bookmarks.find_or_create_by(user_id: aoi.id)
+post_sirakawago.bookmarks.find_or_create_by(user_id: bolek.id)
+
+post_kobe = Post.find_or_create_by!(title: '神戸') do |po|
   po.caption = '県名よりもよく知られている場所'
   po.body = '程よく品もあるエリア。遊ぶスポットもたくさんある、栄えた場所です。住む場所としても人気があります！'
   po.prefecture = 28
@@ -429,7 +501,12 @@ Post.find_or_create_by!(title: '神戸') do |po|
   po.user = yuma # 旅行好きのサンプルユーザー
 end
 
-Post.find_or_create_by!(title: '江ノ電') do |po|
+post_kobe.post_favorites.find_or_create_by(user_id: brunello.id)
+
+post_kobe.bookmarks.find_or_create_by(user_id: celina.id)
+post_kobe.bookmarks.find_or_create_by(user_id: aoi.id)
+
+post_enoden = Post.find_or_create_by!(title: '江ノ電') do |po|
   po.caption = 'ドライブも良し、電車旅も良し'
   po.body = '関東エリアに住まいの人々は定期的に足を運ぶような場所。気軽に海を眺めに行けます。'
   po.prefecture = 14
@@ -437,7 +514,13 @@ Post.find_or_create_by!(title: '江ノ電') do |po|
   po.user = yuma # 旅行好きのサンプルユーザー
 end
 
-Post.find_or_create_by!(title: '鴨川') do |po|
+post_enoden.post_favorites.find_or_create_by(user_id: brunello.id)
+post_enoden.post_favorites.find_or_create_by(user_id: filipp.id)
+
+post_enoden.bookmarks.find_or_create_by(user_id: dan.id)
+post_enoden.bookmarks.find_or_create_by(user_id: ritsu.id)
+
+post_kamogawa = Post.find_or_create_by!(title: '鴨川') do |po|
   po.caption = '京都の代表的な景色'
   po.body = '5月から夏にかけては川沿いに川床が出されることでも有名。ランクの高い飲食店も多く、鴨川を眺めながら贅沢な食事の時間を過ごせます。'
   po.prefecture = 26
@@ -445,7 +528,14 @@ Post.find_or_create_by!(title: '鴨川') do |po|
   po.user = yuma # 旅行好きのサンプルユーザー
 end
 
-Post.find_or_create_by!(title: '京都で日本酒') do |po|
+post_kamogawa.post_favorites.find_or_create_by(user_id: char.id)
+post_kamogawa.post_favorites.find_or_create_by(user_id: bolek.id)
+post_kamogawa.post_favorites.find_or_create_by(user_id: jacobo.id)
+
+post_kamogawa.bookmarks.find_or_create_by(user_id: koharu.id)
+post_kamogawa.bookmarks.find_or_create_by(user_id: yuka.id)
+
+post_nihonsyu = Post.find_or_create_by!(title: '京都で日本酒') do |po|
   po.caption = 'お酒好きにはたまりません！'
   po.body = '日本酒の飲み比べに加えて、京都では、おちょこも選べちゃうお店が多い！'
   po.prefecture = 26
@@ -453,7 +543,12 @@ Post.find_or_create_by!(title: '京都で日本酒') do |po|
   po.user = yuma # 旅行好きのサンプルユーザー
 end
 
-Post.find_or_create_by!(title: '東京ドイツ村') do |po|
+post_nihonsyu.post_favorites.find_or_create_by(user_id: char.id)
+post_nihonsyu.post_favorites.find_or_create_by(user_id: juana.id)
+
+post_nihonsyu.bookmarks.find_or_create_by(user_id: emi.id)
+
+post_doitsumura = Post.find_or_create_by!(title: '東京ドイツ村') do |po|
   po.caption = '名前は東京だけど千葉にあるよ！'
   po.body = '年中平和な雰囲気が漂っているテーマパーク！でも、冬のイルミネーションの時期は一味違います！！規模が桁違いの、すばらしい景色が観れるので、ぜひこの冬訪れてみてください！'
   po.prefecture = 12
@@ -461,7 +556,15 @@ Post.find_or_create_by!(title: '東京ドイツ村') do |po|
   po.user = yuka # 千葉に馴染みの深いユーザー
 end
 
-Post.find_or_create_by!(title: 'いすみ市') do |po|
+post_doitsumura.post_favorites.find_or_create_by(user_id: juana.id)
+post_doitsumura.post_favorites.find_or_create_by(user_id: amado.id)
+post_doitsumura.post_favorites.find_or_create_by(user_id: dan.id)
+post_doitsumura.post_favorites.find_or_create_by(user_id: koharu.id)
+
+post_doitsumura.bookmarks.find_or_create_by(user_id: sana.id)
+post_doitsumura.bookmarks.find_or_create_by(user_id: mio.id)
+
+post_isumi = Post.find_or_create_by!(title: 'いすみ市') do |po|
   po.caption = '星を見るならここ'
   po.body = '田舎町ではありますが、グランピング施設が多く点在しており、喧騒から離れて自然の中で癒されたい時におすすめのスポットです。'
   po.prefecture = 12
@@ -469,7 +572,12 @@ Post.find_or_create_by!(title: 'いすみ市') do |po|
   po.user = yuka # 千葉に馴染みの深いユーザー
 end
 
-Post.find_or_create_by!(title: 'Tokyo Tower') do |po|
+post_isumi.post_favorites.find_or_create_by(user_id: koharu.id)
+post_isumi.post_favorites.find_or_create_by(user_id: celina.id)
+
+post_isumi.bookmarks.find_or_create_by(user_id: sana.id)
+
+post_tokyotower = Post.find_or_create_by!(title: 'Tokyo Tower') do |po|
   po.caption = 'A beautiful tower'
   po.body = 'The color change on each day. You can see the tower in mostly red but sometimes other colors.'
   po.prefecture = 13
@@ -477,13 +585,25 @@ Post.find_or_create_by!(title: 'Tokyo Tower') do |po|
   po.user = henry # 日本生活中級者のユーザー
 end
 
-Post.find_or_create_by!(title: 'Kamosui') do |po|
+post_tokyotower.post_favorites.find_or_create_by(user_id: celina.id)
+post_tokyotower.post_favorites.find_or_create_by(user_id: abramo.id)
+post_tokyotower.post_favorites.find_or_create_by(user_id: henry.id)
+
+post_tokyotower.bookmarks.find_or_create_by(user_id: sana.id)
+post_tokyotower.bookmarks.find_or_create_by(user_id: hana.id)
+
+post_kamosui = Post.find_or_create_by!(title: 'Kamosui') do |po|
   po.caption = 'Aquarium'
   po.body = 'I visited Yamagata and found this beautiful aquarium. It was amazing.'
   po.prefecture = 6
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/yamagata_kamosui.jpeg"),filename: 'yamagata_kamosui.jpeg')
   po.user = henry # 日本生活中級者のユーザー
 end
+
+post_kamosui.post_favorites.find_or_create_by(user_id: abramo.id)
+post_kamosui.post_favorites.find_or_create_by(user_id: yuma.id)
+
+post_kamosui.bookmarks.find_or_create_by(user_id: yuko.id)
 
 # 以下、相談室カテゴリデータ
 Category.find_or_create_by!(name: 'マナー')
