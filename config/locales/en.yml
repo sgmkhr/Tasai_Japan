@@ -260,7 +260,6 @@ en:
       opinion_favorite: liked your opinion.
       participation:
         for_creator: received a new application to participate.
-        for_paticipation: accepted your application to participate.
       post: posted a new good place.
       post_favorite: liked your post.
       profile_view:
@@ -270,7 +269,7 @@ en:
       relationship: started following you.
     non_exist: No unread notification exists.
     limited_by: Only the last 10 unread notifications are being displayed.
-    clear_all: Clear all the notification
+    clear_all: Clear all the notifications
 
   enums:
     user:
