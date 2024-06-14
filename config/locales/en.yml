@@ -270,6 +270,7 @@ en:
       relationship: started following you.
     non_exist: No unread notification exists.
     limited_by: Only the last 10 unread notifications are being displayed.
+    clear_all: Clear all the notification
 
   enums:
     user:

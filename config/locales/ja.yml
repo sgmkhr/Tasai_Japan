@@ -241,6 +241,7 @@ ja:
       relationship: にフォローされました
     non_exist: 未読の通知はありません
     limited_by: 直近10件の未読通知を表示しています
+    clear_all: 全ての通知を既読にする
 
   enums:
     user:
