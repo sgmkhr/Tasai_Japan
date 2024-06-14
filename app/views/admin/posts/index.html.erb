@@ -7,7 +7,10 @@
 <div class='section-title'>
   <h2>
     <% if @tag_name.present? %>
-      #<%= @tag_name %>
+      #<%= @tag_name　%>
+      <% if @posts.present? %>
+        <%= ' ' + @posts.count.to_s + I18n.t('posts.index.count') %>
+      <% end %>
     <% elsif @keyword.present? || @prefecture.present? %>
       <%= I18n.t('posts.index.prefecture') + I18n.t('enums.post.prefecture.' + @prefecture) %>
       </br><%= '「' + @keyword + '」' %>

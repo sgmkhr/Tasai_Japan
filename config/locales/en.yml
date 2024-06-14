@@ -120,6 +120,7 @@ en:
       title: Posts
       not_exist: No post exists.
       prefecture: "prefecture:"
+      count: posts
     show:
       title: Post detail
       edit_btn: Edit
@@ -177,6 +178,7 @@ en:
     destroy: The counseling room has been deleted.
     search:
       title: Posts with a tag name
+      count: rooms
     ensure_creator: You cannot view the edit page of a room other users created.
   participations:
     destroy:

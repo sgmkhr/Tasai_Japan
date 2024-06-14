@@ -91,6 +91,7 @@ ja:
       title: 投稿一覧
       not_exist: 投稿が存在しません。
       prefecture: "都道府県:"
+      count: 件
     show:
       title: 投稿詳細
       edit_btn: 編集
@@ -148,6 +149,7 @@ ja:
     destroy: 相談室を削除しました。
     search:
       title: タグ検索 投稿一覧
+      count: 部屋
     ensure_creator: 他のユーザーが作成した相談室の情報は編集できません。
   participations:
     destroy:
