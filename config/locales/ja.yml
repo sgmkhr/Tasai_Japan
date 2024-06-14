@@ -208,6 +208,8 @@ ja:
     show:
       title: とのチャットルーム
       no_chat_history: チャットの履歴がありません。
+      read: 既読
+      unread: 未読
     destroy:
       confirmation: 完全に履歴から削除していいですか？
     sent_now: 今

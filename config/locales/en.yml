@@ -241,6 +241,8 @@ en:
     show:
       title: "'s chats"
       no_chat_history: No chat history yet.
+      read: read
+      
     destroy:
       confirmation: Are you sure you want to delete it completely from the chat history?
     sent_now: Now
