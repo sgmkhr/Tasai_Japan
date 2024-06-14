@@ -364,6 +364,10 @@ post_drive.post_favorites.find_or_create_by(user_id: james.id)
 post_drive.bookmarks.find_or_create_by(user_id: hana.id)
 post_drive.bookmarks.find_or_create_by(user_id: yuko.id)
 
+post_drive.comments.find_or_create_by(user_id: hana.id) do |comment|
+  comment.content = '今度福岡に行くので参加してみようと思います！素敵な情報ありがとうございます。'
+end
+
 post_mentai = Post.find_or_create_by!(title: '明太子のお重') do |po|
   po.caption = '博多に来たら必ず行ってほしい'
   po.body = '明太子好きにはたまらない！重厚な雰囲気だけどカジュアルにランチで楽しめる。'
@@ -380,6 +384,10 @@ post_mentai.post_favorites.find_or_create_by(user_id: hana.id)
 post_mentai.bookmarks.find_or_create_by(user_id: james.id)
 post_mentai.bookmarks.find_or_create_by(user_id: henry.id)
 post_mentai.bookmarks.find_or_create_by(user_id: abramo.id)
+
+post_mentai.comments.find_or_create_by(user_id: henry.id) do |comment|
+  comment.content = 'Looks good! まだ食べたことないですが、福岡行ったら試したい。'
+end
 
 post_unagi = Post.find_or_create_by!(title: '柳川') do |po|
   po.caption = 'うなぎも有名な場所'
@@ -458,6 +466,10 @@ post_shibuya.post_favorites.find_or_create_by(user_id: yuma.id)
 post_shibuya.bookmarks.find_or_create_by(user_id: bolek.id)
 post_shibuya.bookmarks.find_or_create_by(user_id: aoi.id)
 
+post_shibuya.comments.find_or_create_by(user_id: bolek.id) do |comment|
+  comment.content = "It sounds like a relaxing place."
+end
+
 post_aogawa = Post.find_or_create_by!(title: '青川') do |po|
   po.caption = '付知川の清流'
   po.body = '本当に今まで見た川の中で一番エメラルド色！心も癒されるので、自然が好きな人にはぜひ訪れていただきたい！'
@@ -477,6 +489,10 @@ post_aogawa.bookmarks.find_or_create_by(user_id: dan.id)
 post_aogawa.bookmarks.find_or_create_by(user_id: yuma.id)
 post_aogawa.bookmarks.find_or_create_by(user_id: koharu.id)
 post_aogawa.bookmarks.find_or_create_by(user_id: emi.id)
+
+post_aogawa.comments.find_or_create_by(user_id: emi.id) do |comment|
+  comment.content = 'こんな素敵な場所があるんですね！'
+end
 
 post_sirakawago = Post.find_or_create_by!(title: '白川郷') do |po|
   po.caption = 'ここでしか見れない景色'
@@ -519,6 +535,10 @@ post_enoden.post_favorites.find_or_create_by(user_id: filipp.id)
 
 post_enoden.bookmarks.find_or_create_by(user_id: dan.id)
 post_enoden.bookmarks.find_or_create_by(user_id: ritsu.id)
+
+post_enoden.comments.find_or_create_by(user_id: dan.id) do |comment|
+  comment.content = '何度も言ってますが飽きませんよね！また行きます！！'
+end
 
 post_kamogawa = Post.find_or_create_by!(title: '鴨川') do |po|
   po.caption = '京都の代表的な景色'
