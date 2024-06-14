@@ -13,7 +13,7 @@
       <% end %>
     <% elsif @keyword.present? || @prefecture.present? %>
       <%= I18n.t('posts.index.prefecture') + I18n.t('enums.post.prefecture.' + @prefecture) %>
-      </br><%= '「' + @keyword + '」' %>
+      </br><i class="fa-solid fa-magnifying-glass"></i><%= '「' + @keyword + '」' %>
     <% else %>
       <%= I18n.t('posts.index.title') %>
     <% end %>
