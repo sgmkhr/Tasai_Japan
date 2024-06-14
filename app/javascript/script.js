@@ -1,5 +1,5 @@
 /*global $*/
-$(function() {
+document.addEventListener("turbolinks:load", function() {
   
   // ページトップへスクロールするボタンを押した時
   $('.back_to_pagetop').on('click', function(event) {
@@ -12,9 +12,11 @@ $(function() {
   // ヘッダーの通知アイコンを押した時
   $('#notification-icon').on('click', function(event) {
     $('#notifications-box').show();
+    event.preventDefault();
   });
   $('#close-notification-box').on('click', function(event) {
     $('#notifications-box').hide();
+    event.preventDefault();
   });
   
 });

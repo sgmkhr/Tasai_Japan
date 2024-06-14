@@ -29,7 +29,7 @@ class Admin::CounselingRoomsController < ApplicationController
     @category = Category.find(params[:category_id])
     @counseling_room = CounselingRoom.find(params[:id])
     @participations = @counseling_room.participations.where(status: true) #参加承認を受けているユーザーのみ表示
-    @opinions = Opinion.all
+    @opinions = @counseling_room.opinions
   end
 
   def destroy

@@ -1,0 +1,14 @@
+<% if current_user.following?(user) && user.following?(current_user) %>
+
+  <%= link_to chat_path(user.id), class: 'btn btn-sm success-btn ml-1' do %>
+    <i class="fa-regular fa-paper-plane"></i>
+  <% end %>
+
+  <p class='md-font text-center'><%= I18n.t('users.show.following.each_other') %></p>
+
+<% elsif @user.following?(current_user) %>
+  <p class='md-font text-center'><%= I18n.t('users.show.following.passive') %></p>
+
+<% elsif current_user.following?(@user) %>
+  <p class='md-font text-center'><%= I18n.t('users.show.following.active') %></p>
+<% end %>

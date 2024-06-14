@@ -9,10 +9,10 @@
 
 <section>
 
-  <div class='responsive-disabled'>
+  <div class='d-md-block d-none'>
     <%= image_tag @post.get_post_image(400, 400) %>
   </div>
-  <div class='resposive-displayed'>
+  <div class='d-md-none'>
     <%= image_tag @post.get_post_image(224, 224) %>
   </div>
 
@@ -86,7 +86,7 @@
     <%= render 'public/comments/list', a_post: @post %>
   </div>
 
-  <div class='comment-form py-5'>
+  <div class='comment-form mt-5'>
     <div class='errors'>
       <%= render 'layouts/errors', obj: @comment %>
     </div>

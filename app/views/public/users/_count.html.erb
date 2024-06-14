@@ -1,48 +1,47 @@
 <div class='d-flex justify-content-around'>
-  
   <div>
-    
-    <p class='sm-font text-center mb-0 responsive-disabled'>
+
+    <p class='sm-font text-center mb-0 d-md-block d-none'>
       <%= I18n.t('users.show.posts_count') %>
     </p>
-    <p class='text-center mb-0 resposive-displayed'>
+    <p class='text-center mb-0 d-md-none' title='<%= I18n.t('users.show.posts_count') %>'>
       <i class="fa-regular fa-image"></i>
     </p>
-    
-    <p class='text-center'>
+
+    <p class='text-center mb-0'>
       <%= user.posts.count %>
     </p>
-    
+
   </div>
-  
+
   <div>
-    
-    <p class='sm-font text-center mb-0 responsive-disabled'>
+
+    <p class='sm-font text-center mb-0 d-md-block d-none'>
       <%= I18n.t('users.show.counseling_rooms_count') %>
     </p>
-    <p class='text-center mb-0 resposive-displayed'>
+    <p class='text-center mb-0 d-md-none' title='<%= I18n.t('users.show.counseling_rooms_count') %>'>
       <i class="fa-solid fa-users-gear"></i>
     </p>
-    
-    <p class='text-center'>
+
+    <p class='text-center mb-0'>
       <%= user.counseling_rooms.count %>
     </p>
-    
+
   </div>
-  
+
   <div>
-    
-    <p class='sm-font text-center mb-0 responsive-disabled'>
+
+    <p class='sm-font text-center mb-0 d-md-block d-none'>
       <%= I18n.t('users.show.participations_count') %>
     </p>
-    <p class='text-center mb-0 resposive-displayed'>
+    <p class='text-center mb-0 d-md-none' title='<%= I18n.t('users.show.participations_count') %>'>
       <i class="fa-solid fa-people-roof"></i>
     </p>
-    
-    <p class='text-center'>
-      <%= user.participations.count %>
+
+    <p class='text-center mb-0'>
+      <%= user.participations.where(status: true).count %>
     </p>
-    
+
   </div>
-  
+
 </div>

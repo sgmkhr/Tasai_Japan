@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user,   except: [:show, :index]
-  before_action :ensure_correct_user, only: [:edit, :withdraw, :unsubscribe]
+  before_action :ensure_correct_user, only: [:edit, :insite, :withdraw, :unsubscribe]
   before_action :set_current_user,    except: [:show, :index]
 
   def show
@@ -58,7 +58,7 @@ class Public::UsersController < ApplicationController
     elsif params[:content]        #キーワード検索
       @users = User.search_for(params[:content]).where(is_active: true)
     else
-      @users = User.where(is_active: true) 
+      @users = User.where(is_active: true)
     end
     @users = @users.page(params[:page]).per(18)
   end
@@ -73,6 +73,26 @@ class Public::UsersController < ApplicationController
       flash.now[:alert] = I18n.t('users.update.alert')
       render :edit
     end
+  end
+
+  def insite
+    @rooms_managing = @user.counseling_rooms.page(params[:page]).per(20)
+    @rooms_participated_in = []
+    @rooms_applying_for = []
+    true_participations = Participation.where(user_id: @user.id, status: true)
+    if true_participations
+      true_participations.each do |participation|
+        @rooms_participated_in << participation.counseling_room
+      end
+    end
+    @rooms_participated_in = Kaminari.paginate_array(@rooms_participated_in).page(params[:page]).per(20)
+    false_participations = Participation.where(user_id: @user.id, status: false)
+    if false_participations
+      false_participations.each do |participation|
+        @rooms_applying_for << participation.counseling_room
+      end
+    end
+    @rooms_applying_for = Kaminari.paginate_array(@rooms_applying_for).page(params[:page]).per(20)
   end
 
   def withdraw
@@ -97,7 +117,11 @@ class Public::UsersController < ApplicationController
   end
 
   def ensure_correct_user
-    user = User.find_by(canonical_name: params[:canonical_name])
+    if params[:canonical_name]
+      user = User.find_by(canonical_name: params[:canonical_name])
+    else
+      user = User.find_by(canonical_name: params[:user_canonical_name])
+    end
     unless user == current_user
       redirect_to users_path, alert: I18n.t('users.incorrect_user.validates')
     end

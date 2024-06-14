@@ -9,21 +9,19 @@
 
 <section>
 
-  <div class='responsive-disabled'>
+  <div class='d-md-block d-none'>
     <%= image_tag @post.get_post_image(400, 400) %>
   </div>
-  <div class='resposive-displayed'>
+  <div class='d-md-none'>
     <%= image_tag @post.get_post_image(224, 224) %>
   </div>
 
   <div class='pt-3 d-flex flex-md-row flex-column-reverse'>
-    
     <h5 class='col-md-6'>
       <%= @post.title %>
     </h5>
     
     <p class='text-right col-md-6'>
-      
       <span class='mr-3'>
         <i class="fa-regular fa-bookmark"></i>
         <%= @post.bookmarks.count %>
@@ -41,9 +39,7 @@
       
       <i class="fa-solid fa-chart-line"></i>
       <%= @post.post_views.count %>
-    
     </p>
-    
   </div>
 
   <p><%= @post.caption %></p>
@@ -84,7 +80,7 @@
   
   <hr>
   
-  <div class='comments pb-5'>
+  <div class='comments'>
     <%= render 'admin/comments/list', a_post: @post %>
   </div>
 

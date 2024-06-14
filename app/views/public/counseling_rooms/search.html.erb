@@ -5,7 +5,14 @@
   <%= I18n.t('counseling_rooms.search.title') %>
 </p>
 
-<div class='section-title'><h2>#<%= @tag_name %></h2></div>
+<div class='section-title'>
+  <h2>
+    #<%= @tag_name %>
+    <% if @counseling_rooms.present? %>
+      <%= ' ' + @counseling_rooms.count.to_s + I18n.t('counseling_rooms.search.count') %>
+    <% end %>
+  </h2>
+</div>
 
 <section>
   
@@ -13,7 +20,7 @@
   <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
     <div class='form-group row justify-content-end'>
       <%= f.text_field :tag_name, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_tag') %>
-      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-1' %>
     </div>
   <% end %>
   

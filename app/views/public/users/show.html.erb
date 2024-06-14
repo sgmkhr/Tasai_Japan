@@ -33,7 +33,7 @@
         <%= link_to edit_user_path(current_user.canonical_name) do %>
           <i class="fa-solid fa-gear"></i>
         <% end %>
-        
+
         <%= link_to user_chat_rooms_path(current_user.canonical_name), class: 'btn btn-sm success-btn ml-2 mt-2' do %>
           <%= I18n.t('chats.index.title') %>
           <% if current_user.has_unread_chat? %>
@@ -45,28 +45,32 @@
 
       <% else %><!--自分のページでない場合-->
 
-        <span id='follow-btn' class='ml-5'>
+        <span id='follow-btn' class='ml-1'>
           <%= render 'public/relationships/btn', user: @user %>
         </span>
-
-        <% if current_user.following?(@user) && @user.following?(current_user) %>
-          <%= link_to chat_path(@user.id) do %>
-            <i class="fa-regular fa-paper-plane"></i>
-          <% end %>
-        <% end %>
+        
+        <span id='relationship-statu'>
+          <%= render 'public/relationships/relationship', user: @user %>
+        </span>
 
       <% end %>
 
+      <!--基本情報-->
       <p class='my-3'><strong><%= @user.public_name %></strong></p>
 
       <div class='user-data-display mb-3'>
-
         <div id='following-count'>
           <%= render 'public/relationships/links', user: @user %>
         </div>
-
         <%= render 'public/users/count', user: @user %>
 
+        <% if @user.id == current_user.id %>
+          <p class='text-right mb-0'>
+            <%= link_to user_insite_path(current_user.canonical_name) do %>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <% end %>
+          </p>
+        <% end %>
       </div>
 
       <p class='mb-3'> <!--positionによってcss表示カラー変わる-->
@@ -113,7 +117,7 @@
             <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
               <div class='form-group row justify-content-end mt-2'>
                 <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
-                <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+                <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
               </div>
             <% end %>
 
@@ -138,7 +142,7 @@
             <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
               <div class='form-group row justify-content-end mt-2'>
                 <%= f.text_field :content_in_bookmarks, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
-                <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+                <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
               </div>
             <% end %>
 
@@ -151,7 +155,7 @@
           <div id='followusers_posts_tab' class='tab'>
 
             <p class='text-center tab-title'><%= I18n.t('users.show.followusers_posts_tab') %></p>
-            
+
             <!--フォローユーザー投稿一覧表示-->
             <%= render 'public/posts/index', posts: @friends_posts %>
 
@@ -168,7 +172,7 @@
         <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
           <div class='form-group row justify-content-end mt-2'>
             <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
-            <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+            <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
           </div>
         <% end %>
 

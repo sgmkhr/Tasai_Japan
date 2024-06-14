@@ -17,7 +17,7 @@ ja:
   create: 作成
   send: 送信
   search_blank: 全件表示は空で検索
-  search_tag: タグ検索(完全一致)
+  search_tag: タグ検索(完全一致のみ)
   placeholder:
     canonical_name: 20文字以内の半角英数字
     public_name: 公開用のお名前を入力
@@ -53,11 +53,21 @@ ja:
       counseling_rooms_count: 作成相談室数
       participations_count: 参加相談室数
       joined_date: アカウント作成日
+      following:
+        each_other: 相互フォロー中
+        passive: あなたをフォローしているユーザーです
+        active: フォローしているユーザーです
     edit:
       title: 登録情報編集
     index:
       title: ユーザー 一覧
       not_exist: 対象のユーザーが存在しません。
+    insite:
+      title: インサイト
+      main_tab: 総合インサイト
+      managing_rooms_tab: あなたの相談室
+      participating_rooms_tab: 参加中相談室
+      applying_rooms_tab: 参加申請中
     unsubscribe: 退会する
     unsubscribe_confirmation: 本当に退会処理に進んでよろしいですか？
     unsubscribe_cancel: 退会しない
@@ -80,6 +90,8 @@ ja:
     index:
       title: 投稿一覧
       not_exist: 投稿が存在しません。
+      prefecture: "都道府県:"
+      count: 件
     show:
       title: 投稿詳細
       edit_btn: 編集
@@ -137,6 +149,7 @@ ja:
     destroy: 相談室を削除しました。
     search:
       title: タグ検索 投稿一覧
+      count: 部屋
     ensure_creator: 他のユーザーが作成した相談室の情報は編集できません。
   participations:
     destroy:
@@ -201,6 +214,8 @@ ja:
     show:
       title: とのチャットルーム
       no_chat_history: チャットの履歴がありません。
+      read: 既読
+      unread: 未読
     destroy:
       confirmation: 完全に履歴から削除していいですか？
     sent_now: 今
@@ -212,11 +227,11 @@ ja:
       chat_room: さんがチャットルームを作成しました
       comment: にコメントが届きました
       comment_favorite: さんがあなたのコメントにいいねしました
-      opinion:
-        for_room_creator: さんがあなたの作成した相談室で意見をくれました
-        participations: 参加している相談室で新しい意見が挙がりました
+      opinion: 相談室で新しい意見が挙がりました
       opinion_favorite: さんがあなたの意見にいいねしました
-      participation: に新しく参加申請が届きました
+      participation:
+        for_creator: に新しく参加申請が届きました
+        for_paticipation: で参加申請が承認されました
       post: さんが新しいおすすめ記事を投稿しました
       post_favorite: さんがあなたの投稿にいいねしました
       profile_view:
@@ -323,7 +338,7 @@ ja:
         detail: 詳細
         topic_image: イメージ画像
         tag_name: タグ
-      category: 
+      category:
         name: 名前
       chat:
         content: 内容

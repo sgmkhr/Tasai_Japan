@@ -1,90 +1,98 @@
 <ul>
-  
+
   <% if user_signed_in? %>
-  
+
     <li class='mb-4'>
       <%= link_to menu_path do %>
         <i class="fa-solid fa-house"></i>
       <% end %>
     </li>
-    
+
     <li id='notification-icon' class='mb-4'>
-      <% if current_user.notifications.where(read: false).any? %>
-        <span class='text-danger'>.</span>
+      <%= link_to '#' do %>
+        <% if current_user.notifications.where(read: false).any? %>
+          <span class='ringing'>
+            <i class="fa-solid fa-bell"></i>
+          </span>
+        <% else %>
+          <i class="fa-solid fa-bell"></i>
+        <% end %>
       <% end %>
-      <i class="fa-solid fa-bell"></i>
     </li>
     <%= render 'public/notifications/dropdown' %>
-    
+
     <li class='mb-4'>
-      <% if current_user.has_unread_chat? %>
-        <span class='text-danger'>.</span>
-      <% end %>
       <%= link_to user_chat_rooms_path(current_user.canonical_name) do %>
-        <i class="fa-solid fa-envelope"></i>
+        <% if current_user.has_unread_chat? %>
+          <span class='ringing'>
+            <i class="fa-solid fa-envelope"></i>
+          </span>
+        <% else %>
+          <i class="fa-solid fa-envelope"></i>
+        <% end %>
       <% end %>
-      
+
     </li>
-    
+
     <li class='mb-4'>
       <%= link_to user_path(current_user.canonical_name) do %>
-        <span class='responsive-disabled'><%= I18n.t('mypage') %></span>
-        <span class='resposive-displayed'><i class="fa-solid fa-user-check"></i></span>
+        <span class='d-lg-inline d-none'><%= I18n.t('mypage') %></span>
+        <span class='d-lg-none'><i class="fa-solid fa-user-check"></i></span>
       <% end %>
     </li>
-    
+
     <li class='mb-4'>
       <%= link_to destroy_user_session_path, method: :delete do %>
-        <span class='responsive-disabled'><%= I18n.t('signout') %></span>
-        <span class='resposive-displayed'><i class="fa-solid fa-right-from-bracket"></i></span>
+        <span class='d-lg-inline d-none'><%= I18n.t('signout') %></span>
+        <span class='d-lg-none'><i class="fa-solid fa-right-from-bracket"></i></span>
       <% end %>
     </li>
-      
-    <li class='responsive-disabled'>
+
+    <li class='d-lg-inline d-none'>
       <%= link_to I18n.t('about'), about_path %>
     </li>
-    
+
   <% elsif admin_signed_in? %>
-  
+
     <li class='mb-4'>
       <%= link_to admin_root_path do %>
         <i class="fa-solid fa-house"></i>
       <% end %>
     </li>
-    
+
     <li>
       <%= link_to destroy_admin_session_path, method: :delete do %>
-        <span class='responsive-disabled'><%= I18n.t('signout') %></span>
-        <span class='resposive-displayed'><i class="fa-solid fa-right-from-bracket"></i></span>
+        <span class='d-lg-inline d-none'><%= I18n.t('signout') %></span>
+        <span class='d-lg-none'><i class="fa-solid fa-right-from-bracket"></i></span>
       <% end %>
     </li>
-    
+
   <% else %>
-  
+
     <li class='mb-4'>
       <%= link_to root_path do %>
         <i class="fa-solid fa-house"></i>
       <% end %>
     </li>
-    
+
     <li class='mb-4'>
       <%= link_to new_user_registration_path do %>
-        <span class='responsive-disabled'><%= I18n.t('signin') %></span>
-        <span class='resposive-displayed'><i class="fa-solid fa-user-plus"></i></span>
+        <span class='d-lg-inline d-none'><%= I18n.t('signin') %></span>
+        <span class='d-lg-none'><i class="fa-solid fa-user-plus"></i></span>
       <% end %>
     </li>
-    
+
     <li class='mb-4'>
       <%= link_to new_user_session_path do %>
-        <span class='responsive-disabled'><%= I18n.t('login') %></span>
-        <span class='resposive-displayed'><i class="fa-solid fa-right-to-bracket"></i></span>
+        <span class='d-lg-inline d-none'><%= I18n.t('login') %></span>
+        <span class='d-lg-none'><i class="fa-solid fa-right-to-bracket"></i></span>
       <% end %>
     </li>
-    
-    <li class='responsive-disabled'>
+
+    <li class='d-lg-inline d-none'>
       <%= link_to I18n.t('about'), about_path %>
     </li>
-    
+
   <% end %>
-  
+
 </ul>

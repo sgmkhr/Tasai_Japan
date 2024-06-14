@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       get 'menu',  to: 'homes#menu'
       resources :users, only: [:show, :index, :edit, :update], param: :canonical_name do
         resource :relationships, only: [:create, :destroy]
+        get 'insite',     to: 'users#insite'
       	get 'followings', to: 'relationships#followings'
       	get 'followers',  to: 'relationships#followers'
       	get 'chat_rooms', to: 'chats#index'

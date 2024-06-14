@@ -237,75 +237,6 @@ mio = User.find_or_create_by!(email: 'mio@example.com') do |user|
   user.password = '242424'
 end
 
-# 以下、フォローデータ
-hana.active_relationships.find_or_create_by(followed_id: yuko.id)#相互フォロー
-hana.active_relationships.find_or_create_by(followed_id: james.id)
-hana.active_relationships.find_or_create_by(followed_id: henry.id)
-hana.active_relationships.find_or_create_by(followed_id: dan.id)
-yuko.active_relationships.find_or_create_by(followed_id: abramo.id)
-yuko.active_relationships.find_or_create_by(followed_id: hana.id)#相互フォロー
-yuko.active_relationships.find_or_create_by(followed_id: brunello.id)
-yuko.active_relationships.find_or_create_by(followed_id: dan.id)
-james.active_relationships.find_or_create_by(followed_id: ambre.id)
-james.active_relationships.find_or_create_by(followed_id: jacobo.id)
-james.active_relationships.find_or_create_by(followed_id: koharu.id)#相互フォロー
-james.active_relationships.find_or_create_by(followed_id: emi.id)#相互フォロー
-henry.active_relationships.find_or_create_by(followed_id: juana.id)
-henry.active_relationships.find_or_create_by(followed_id: emi.id)#相互フォロー
-abramo.active_relationships.find_or_create_by(followed_id: amado.id)
-brunello.active_relationships.find_or_create_by(followed_id: char.id)
-ambre.active_relationships.find_or_create_by(followed_id: faina.id)
-char.active_relationships.find_or_create_by(followed_id: filipp.id)
-char.active_relationships.find_or_create_by(followed_id: yuka.id)
-amado.active_relationships.find_or_create_by(followed_id: aoi.id)
-amado.active_relationships.find_or_create_by(followed_id: hana.id)
-amado.active_relationships.find_or_create_by(followed_id: koharu.id)#相互フォロー
-jacobo.active_relationships.find_or_create_by(followed_id: aoi.id)
-jacobo.active_relationships.find_or_create_by(followed_id: mio.id)#相互フォロー
-jacobo.active_relationships.find_or_create_by(followed_id: ritsu.id)
-jacobo.active_relationships.find_or_create_by(followed_id: bolek.id)
-jacobo.active_relationships.find_or_create_by(followed_id: yuka.id)#相互フォロー
-juana.active_relationships.find_or_create_by(followed_id: aoi.id)
-juana.active_relationships.find_or_create_by(followed_id: faina.id)
-faina.active_relationships.find_or_create_by(followed_id: hana.id)
-faina.active_relationships.find_or_create_by(followed_id: sana.id)
-filipp.active_relationships.find_or_create_by(followed_id: juana.id)
-filipp.active_relationships.find_or_create_by(followed_id: yuka.id)
-filipp.active_relationships.find_or_create_by(followed_id: koharu.id)#相互フォロー
-celina.active_relationships.find_or_create_by(followed_id: abramo.id)
-celina.active_relationships.find_or_create_by(followed_id: brunello.id)
-celina.active_relationships.find_or_create_by(followed_id: ritsu.id)
-celina.active_relationships.find_or_create_by(followed_id: yuma.id)
-bolek.active_relationships.find_or_create_by(followed_id: celina.id)
-bolek.active_relationships.find_or_create_by(followed_id: yuka.id)
-bolek.active_relationships.find_or_create_by(followed_id: mio.id)#相互フォロー
-bolek.active_relationships.find_or_create_by(followed_id: emi.id)
-aoi.active_relationships.find_or_create_by(followed_id: filipp.id)
-aoi.active_relationships.find_or_create_by(followed_id: hana.id)
-aoi.active_relationships.find_or_create_by(followed_id: dan.id)
-aoi.active_relationships.find_or_create_by(followed_id: yuko.id)
-dan.active_relationships.find_or_create_by(followed_id: henry.id)
-dan.active_relationships.find_or_create_by(followed_id: juana.id)
-dan.active_relationships.find_or_create_by(followed_id: sana.id)
-ritsu.active_relationships.find_or_create_by(followed_id: brunello.id)
-ritsu.active_relationships.find_or_create_by(followed_id: ambre.id)
-ritsu.active_relationships.find_or_create_by(followed_id: mio.id)#相互フォロー
-yuma.active_relationships.find_or_create_by(followed_id: james.id)
-yuma.active_relationships.find_or_create_by(followed_id: char.id)
-yuka.active_relationships.find_or_create_by(followed_id: jacobo.id)#相互フォロー
-koharu.active_relationships.find_or_create_by(followed_id: amado.id)#相互フォロー
-koharu.active_relationships.find_or_create_by(followed_id: james.id)#相互フォロー
-koharu.active_relationships.find_or_create_by(followed_id: filipp.id)#相互フォロー
-emi.active_relationships.find_or_create_by(followed_id: celina.id)
-emi.active_relationships.find_or_create_by(followed_id: ritsu.id)
-emi.active_relationships.find_or_create_by(followed_id: henry.id)#相互フォロー
-emi.active_relationships.find_or_create_by(followed_id: james.id)#相互フォロー
-sana.active_relationships.find_or_create_by(followed_id: ambre.id)
-sana.active_relationships.find_or_create_by(followed_id: yuma.id)
-mio.active_relationships.find_or_create_by(followed_id: jacobo.id)#相互フォロー
-mio.active_relationships.find_or_create_by(followed_id: henry.id)
-mio.active_relationships.find_or_create_by(followed_id: bolek.id)#相互フォロー
-mio.active_relationships.find_or_create_by(followed_id: ritsu.id)#相互フォロー
 
 # 以下、投稿データ
 post_drive = Post.find_or_create_by!(title: '糸島の芥屋') do |po|
@@ -506,61 +437,153 @@ topic_job_hunting = Category.find_by(name: '仕事').counseling_rooms.find_or_cr
 end
 
 # 以下、相談室の参加者データ
-topic_manner.participations.find_or_create_by!(user_id: yuma.id)
-topic_manner.participations.find_or_create_by!(user_id: henry.id)
-topic_manner.participations.find_or_create_by!(user_id: ritsu.id)
-topic_manner.participations.find_or_create_by!(user_id: amado.id)
+topic_manner.participations.find_or_create_by!(user_id: yuma.id) do |participation|
+  participation.status = true
+end
+topic_manner.participations.find_or_create_by!(user_id: henry.id) do |participation|
+  participation.status = true
+end
+topic_manner.participations.find_or_create_by!(user_id: ritsu.id) do |participation|
+  participation.status = true
+end
+topic_manner.participations.find_or_create_by!(user_id: amado.id) do |participation|
+  participation.status = false
+end
 
-topic_music_fes.participations.find_or_create_by!(user_id: jacobo.id)
-topic_music_fes.participations.find_or_create_by!(user_id: hana.id)
-topic_music_fes.participations.find_or_create_by!(user_id: abramo.id)
-topic_music_fes.participations.find_or_create_by!(user_id: ambre.id)
-topic_music_fes.participations.find_or_create_by!(user_id: ritsu.id)
+topic_music_fes.participations.find_or_create_by!(user_id: jacobo.id) do |participation|
+  participation.status = true
+end
+topic_music_fes.participations.find_or_create_by!(user_id: hana.id) do |participation|
+  participation.status = true
+end
+topic_music_fes.participations.find_or_create_by!(user_id: abramo.id) do |participation|
+  participation.status = true
+end
+topic_music_fes.participations.find_or_create_by!(user_id: ambre.id) do |participation|
+  participation.status = false
+end
+topic_music_fes.participations.find_or_create_by!(user_id: ritsu.id) do |participation|
+  participation.status = false
+end
 
-topic_transportation.participations.find_or_create_by!(user_id: ambre.id)
-topic_transportation.participations.find_or_create_by!(user_id: henry.id)
-topic_transportation.participations.find_or_create_by!(user_id: ritsu.id)
-topic_transportation.participations.find_or_create_by!(user_id: jacobo.id)
+topic_transportation.participations.find_or_create_by!(user_id: ambre.id) do |participation|
+  participation.status = true
+end
+topic_transportation.participations.find_or_create_by!(user_id: henry.id) do |participation|
+  participation.status = true
+end
+topic_transportation.participations.find_or_create_by!(user_id: ritsu.id) do |participation|
+  participation.status = false
+end
+topic_transportation.participations.find_or_create_by!(user_id: jacobo.id) do |participation|
+  participation.status = false
+end
 
-topic_moral.participations.find_or_create_by!(user_id: brunello.id)
-topic_moral.participations.find_or_create_by!(user_id: henry.id)
-topic_moral.participations.find_or_create_by!(user_id: emi.id)
-topic_moral.participations.find_or_create_by!(user_id: amado.id)
-topic_moral.participations.find_or_create_by!(user_id: james.id)
+topic_moral.participations.find_or_create_by!(user_id: brunello.id) do |participation|
+  participation.status = true
+end
+topic_moral.participations.find_or_create_by!(user_id: henry.id) do |participation|
+  participation.status = true
+end
+topic_moral.participations.find_or_create_by!(user_id: emi.id) do |participation|
+  participation.status = true
+end
+topic_moral.participations.find_or_create_by!(user_id: amado.id) do |participation|
+  participation.status = false
+end
+topic_moral.participations.find_or_create_by!(user_id: james.id) do |participation|
+  participation.status = false
+end
 
-topic_dishes.participations.find_or_create_by!(user_id: james.id)
-topic_dishes.participations.find_or_create_by!(user_id: mio.id)
-topic_dishes.participations.find_or_create_by!(user_id: hana.id)
-topic_dishes.participations.find_or_create_by!(user_id: brunello.id)
-topic_dishes.participations.find_or_create_by!(user_id: celina.id)
-topic_dishes.participations.find_or_create_by!(user_id: ambre.id)
+topic_dishes.participations.find_or_create_by!(user_id: james.id) do |participation|
+  participation.status = true
+end
+topic_dishes.participations.find_or_create_by!(user_id: mio.id) do |participation|
+  participation.status = true
+end
+topic_dishes.participations.find_or_create_by!(user_id: hana.id) do |participation|
+  participation.status = true
+end
+topic_dishes.participations.find_or_create_by!(user_id: brunello.id) do |participation|
+  participation.status = true
+end
+topic_dishes.participations.find_or_create_by!(user_id: celina.id) do |participation|
+  participation.status = false
+end
+topic_dishes.participations.find_or_create_by!(user_id: ambre.id) do |participation|
+  participation.status = false
+end
 
-topic_table_manner.participations.find_or_create_by!(user_id: amado.id)
-topic_table_manner.participations.find_or_create_by!(user_id: brunello.id)
-topic_table_manner.participations.find_or_create_by!(user_id: faina.id)
-topic_table_manner.participations.find_or_create_by!(user_id: celina.id)
-topic_table_manner.participations.find_or_create_by!(user_id: ritsu.id)
+topic_table_manner.participations.find_or_create_by!(user_id: amado.id) do |participation|
+  participation.status = true
+end
+topic_table_manner.participations.find_or_create_by!(user_id: brunello.id) do |participation|
+  participation.status = true
+end
+topic_table_manner.participations.find_or_create_by!(user_id: faina.id) do |participation|
+  participation.status = true
+end
+topic_table_manner.participations.find_or_create_by!(user_id: celina.id) do |participation|
+  participation.status = false
+end
+topic_table_manner.participations.find_or_create_by!(user_id: ritsu.id) do |participation|
+  participation.status = false
+end
 
-topic_residence.participations.find_or_create_by!(user_id: faina.id)
-topic_residence.participations.find_or_create_by!(user_id: emi.id)
-topic_residence.participations.find_or_create_by!(user_id: celina.id)
+topic_residence.participations.find_or_create_by!(user_id: faina.id) do |participation|
+  participation.status = true
+end
+topic_residence.participations.find_or_create_by!(user_id: emi.id) do |participation|
+  participation.status = true
+end
+topic_residence.participations.find_or_create_by!(user_id: celina.id) do |participation|
+  participation.status = false
+end
 
-topic_job_search.participations.find_or_create_by!(user_id: henry.id)
-topic_job_search.participations.find_or_create_by!(user_id: amado.id)
-topic_job_search.participations.find_or_create_by!(user_id: brunello.id)
-topic_job_search.participations.find_or_create_by!(user_id: juana.id)
-topic_job_search.participations.find_or_create_by!(user_id: celina.id)
+topic_job_search.participations.find_or_create_by!(user_id: henry.id) do |participation|
+  participation.status = true
+end
+topic_job_search.participations.find_or_create_by!(user_id: amado.id) do |participation|
+  participation.status = true
+end
+topic_job_search.participations.find_or_create_by!(user_id: brunello.id) do |participation|
+  participation.status = true
+end
+topic_job_search.participations.find_or_create_by!(user_id: juana.id) do |participation|
+  participation.status = false
+end
+topic_job_search.participations.find_or_create_by!(user_id: celina.id) do |participation|
+  participation.status = false
+end
 
-topic_job_offer.participations.find_or_create_by!(user_id: emi.id)
-topic_job_offer.participations.find_or_create_by!(user_id: abramo.id)
-topic_job_offer.participations.find_or_create_by!(user_id: brunello.id)
-topic_job_offer.participations.find_or_create_by!(user_id: henry.id)
-topic_job_offer.participations.find_or_create_by!(user_id: ambre.id)
+topic_job_offer.participations.find_or_create_by!(user_id: emi.id) do |participation|
+  participation.status = true
+end
+topic_job_offer.participations.find_or_create_by!(user_id: abramo.id) do |participation|
+  participation.status = true
+end
+topic_job_offer.participations.find_or_create_by!(user_id: brunello.id) do |participation|
+  participation.status = true
+end
+topic_job_offer.participations.find_or_create_by!(user_id: henry.id) do |participation|
+  participation.status = false
+end
+topic_job_offer.participations.find_or_create_by!(user_id: ambre.id) do |participation|
+  participation.status = false
+end
 
-topic_job_hunting.participations.find_or_create_by!(user_id: ritsu.id)
-topic_job_hunting.participations.find_or_create_by!(user_id: juana.id)
-topic_job_hunting.participations.find_or_create_by!(user_id: james.id)
-topic_job_hunting.participations.find_or_create_by!(user_id: jacobo.id)
+topic_job_hunting.participations.find_or_create_by!(user_id: ritsu.id) do |participation|
+  participation.status = true
+end
+topic_job_hunting.participations.find_or_create_by!(user_id: juana.id) do |participation|
+  participation.status = true
+end
+topic_job_hunting.participations.find_or_create_by!(user_id: james.id) do |participation|
+  participation.status = true
+end
+topic_job_hunting.participations.find_or_create_by!(user_id: jacobo.id) do |participation|
+  participation.status = false
+end
 
 # 以下、タグのデータ
 post_tag_kanto   = PostTag.find_or_create_by!(name: '関東')

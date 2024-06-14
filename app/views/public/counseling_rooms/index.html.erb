@@ -19,24 +19,27 @@
   
   <!--検索バー-->
   <%= form_with url: category_counseling_rooms_path(@category.id), method: :get, local: true do |f| %>
-    <div class='form-group row justify-content-end'>
+    <div class='form-group row justify-content-end mb-1'>
       <%= f.text_field :content, class: 'form-control col-md-5 col-9', placeholder: I18n.t('search_blank') %>
-      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-3' %>
+      <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn ml-md-3 ml-1' %>
     </div>
   <% end %>
   
   <!--ソート切り替えリンク-->
-  <div class='row d-flex justify-content-center py-2'>
-    <div class='col-md-5 text-md-right p-0'>
-      <%= link_to I18n.t('sort.latest'), category_counseling_rooms_path(@category.id, latest: true) %>
-      |<%= link_to I18n.t('sort.old'),   category_counseling_rooms_path(@category.id, old: true) %>
-    </div>
-    <span class='responsive-disabled'>|</span>
-    <div class='col-md-5 text-md-left p-0'>
-      <%= link_to I18n.t('sort.participations_count'),
-                                         category_counseling_rooms_path(@category.id, participations_count: true) %>
-      |<%= link_to I18n.t('sort.opinions_count'),
-                                         category_counseling_rooms_path(@category.id, opinions_count: true) %>
+  <div class='d-flex justify-content-center py-2'>
+    <div class='d-md-flex'>
+      <p class='mb-0'>
+        <%= link_to I18n.t('sort.latest'), category_counseling_rooms_path(@category.id, latest: true) %>
+        |<%= link_to I18n.t('sort.old'),   category_counseling_rooms_path(@category.id, old: true) %>
+      </p>
+      <p class='mb-0'><span class='d-md-inline d-none pl-1'>|</span>
+        <%= link_to I18n.t('sort.participations_count'),
+                                           category_counseling_rooms_path(@category.id, participations_count: true) %>
+      </p>
+      <p class='mb-0'><span class='d-md-inline d-none pl-1'>|</span>
+        <%= link_to I18n.t('sort.opinions_count'),
+                                           category_counseling_rooms_path(@category.id, opinions_count: true) %>
+      </p>
     </div>
   </div> 
   
