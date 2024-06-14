@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  
+
   scope "(:locale)" do #言語切り替えに必要
 
     devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       sessions: 'admin/sessions'
     }
-  
+
     namespace :admin do
       root to: 'homes#menu'
       resources :users, only: [:show, :index, :destroy], param: :canonical_name do
@@ -24,16 +24,16 @@ Rails.application.routes.draw do
       end
       get 'categories/counseling_rooms/search', to: 'counseling_rooms#search', as: 'search_rooms'
     end
-  
+
     devise_for :users, skip: [:passwords], controllers: {
       registrations: 'public/registrations',
       sessions:      'public/sessions'
     }
-  
+
     devise_scope :user do
       post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
     end
-  
+
     scope module: :public do
       root to: 'homes#top'
       get 'about', to: 'homes#about'
@@ -65,8 +65,9 @@ Rails.application.routes.draw do
       get 'categories/counseling_rooms/search', to: 'counseling_rooms#search', as: 'search_rooms'
       resources :chats, only: [:show, :create, :destroy]
       resources :notifications, only: [:update]
+      patch 'clear_all_notifications', to: 'notifications#clear_all', as: 'clear_all_notifications'
     end
-    
+
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

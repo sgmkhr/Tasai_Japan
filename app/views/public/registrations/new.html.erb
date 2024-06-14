@@ -3,64 +3,66 @@
 <section>
 
   <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user' do |f| %>
+    <div class='row justify-content-center'>
 
-    <%= render 'public/shared/error_messages', resource: resource %>
-
-    <div class='form-group row d-flex'>
-      <%= f.label :last_name, class: 'col-md-3' %>
-      <%= f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control col-md-9 col-11' %>
-    </div>
-
-    <div class='form-group row d-flex'>
-      <%= f.label :first_name, class: 'col-md-3' %>
-      <%= f.text_field :first_name, autocomplete: 'first_name', class: 'form-control col-md-9 col-11' %>
-    </div>
-
-    <div class='form-group row d-flex'>
-      <%= f.label :canonical_name, class: 'col-md-3' %>
-      <%= f.text_field :canonical_name, autocomplete: 'canonical_name', placeholder: I18n.t('placeholder.canonical_name') , class: 'form-control col-md-9 col-11' %>
-    </div>
-
-    <div class='form-group row d-flex'>
-      <%= f.label :public_name, class: 'col-md-3' %>
-      <%= f.text_field :public_name, autocomplete: 'public_name', placeholder: I18n.t('placeholder.public_name') , class: 'form-control col-md-9 col-11' %>
-    </div>
-
-    <div class='form-group row d-flex'>
-      <%= f.label :position, class: 'col-md-3' %>
-      <div class='col-md-9 col-11 d-flex no-shadow'>
-        <%= f.radio_button :position, 'beginner' %>
-        <%= f.label :position, I18n.t('enums.user.position.beginner'),     { value: 0 } %>
-        <%= f.radio_button :position, 'intermediate', class: 'ml-2' %>
-        <%= f.label :position, I18n.t('enums.user.position.intermediate'), { value: 1 } %>
-        <%= f.radio_button :position, 'veteran', class: 'ml-2' %>
-        <%= f.label :position, I18n.t('enums.user.position.veteran'),      { value: 2 } %>
+      <%= render 'public/shared/error_messages', resource: resource %>
+  
+      <div class='form-group col-11 row'>
+        <%= f.label :last_name, class: 'col-md-3' %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control col-md-9' %>
       </div>
-    </div>
-
-    <div class='form-group row d-flex'>
-      <%= f.label :email, class: 'col-md-3' %>
-      <%= f.email_field :email, autocomplete: 'email', placeholder: 'xxxx@xxx' , class: 'form-control col-md-9 col-11' %>
-    </div>
-
-    <div class='form-group row d-flex'>
-      <div class='col-md-3'>
-        <%= f.label :password, class: 'mb-0' %>
+  
+      <div class='form-group col-11 row'>
+        <%= f.label :first_name, class: 'col-md-3' %>
+        <%= f.text_field :first_name, autocomplete: 'first_name', class: 'form-control col-md-9' %>
       </div>
-      <%= f.password_field :password, autocomplete: 'new-password',
-                                      placeholder: @minimum_password_length.to_s + I18n.t('min-letters'),
-                                      class: 'form-control col-md-9 col-11' %>
-    </div>
-
-    <div class='form-group row d-flex'>
-      <%= f.label :password_confirmation, class: 'col-md-3' %>
-      <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control col-md-9 col-11' %>
-    </div>
-
-    <div class='actions text-right pb-5 pr-3'>
-      <%= f.submit I18n.t('signin'), class: 'btn btn-sm success-btn mb-2' %></br>
-      <%= render 'public/shared/links' %>
-    </div>
-  <% end %>
-
+  
+      <div class='form-group col-11 row'>
+        <%= f.label :canonical_name, class: 'col-md-3' %>
+        <%= f.text_field :canonical_name, autocomplete: 'canonical_name', placeholder: I18n.t('placeholder.canonical_name') , class: 'form-control col-md-9' %>
+      </div>
+  
+      <div class='form-group col-11 row'>
+        <%= f.label :public_name, class: 'col-md-3' %>
+        <%= f.text_field :public_name, autocomplete: 'public_name', placeholder: I18n.t('placeholder.public_name') , class: 'form-control col-md-9' %>
+      </div>
+  
+      <div class='form-group col-11 row'>
+        <%= f.label :position, class: 'col-md-3' %>
+        <div class='col-md-9 d-flex no-shadow'>
+          <%= f.radio_button :position, 'beginner' %>
+          <%= f.label :position, I18n.t('enums.user.position.beginner'),     { value: 0 } %>
+          <%= f.radio_button :position, 'intermediate', class: 'ml-2' %>
+          <%= f.label :position, I18n.t('enums.user.position.intermediate'), { value: 1 } %>
+          <%= f.radio_button :position, 'veteran', class: 'ml-2' %>
+          <%= f.label :position, I18n.t('enums.user.position.veteran'),      { value: 2 } %>
+        </div>
+      </div>
+  
+      <div class='form-group col-11 row'>
+        <%= f.label :email, class: 'col-md-3' %>
+        <%= f.email_field :email, autocomplete: 'email', placeholder: 'xxxx@xxx' , class: 'form-control col-md-9' %>
+      </div>
+  
+      <div class='form-group col-11 row'>
+        <div class='col-md-3'>
+          <%= f.label :password, class: 'mb-0' %>
+        </div>
+        <%= f.password_field :password, autocomplete: 'new-password',
+                                        placeholder: @minimum_password_length.to_s + I18n.t('min-letters'),
+                                        class: 'form-control col-md-9' %>
+      </div>
+  
+      <div class='form-group col-11 row'>
+        <%= f.label :password_confirmation, class: 'col-md-3' %>
+        <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control col-md-9' %>
+      </div>
+  
+      <div class='actions col-11 text-right'>
+        <%= f.submit I18n.t('signin'), class: 'btn btn-sm success-btn mb-2' %></br>
+        <%= render 'public/shared/links' %>
+      </div>
+    <% end %>
+  
+  </div>
 </section>

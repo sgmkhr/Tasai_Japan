@@ -11,18 +11,9 @@ class Participation < ApplicationRecord
     create_notification(user_id: counseling_room.user_id)
   end
 
-   # データが更新されると直後に通知データも作成される(参加が承認された場合のみ)
-  after_update do
-    create_notification(user_id: user_id)
-  end
-
   # 表示する通知メッセージを取得するメソッド
   def notification_message
-    if status == false
-      '「' + counseling_room.topic + '」' + I18n.t('notifications.messages.participation.for_creator')
-    else
-      '「' + counseling_room.topic + '」' + I18n.t('notifications.messages.participation.for_paticipation')
-    end
+    '「' + counseling_room.topic + '」' + I18n.t('notifications.messages.participation.for_creator')
   end
 
   # 通知クリック時のパス先指定のメソッド

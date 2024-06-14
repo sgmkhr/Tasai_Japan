@@ -231,7 +231,6 @@ ja:
       opinion_favorite: さんがあなたの意見にいいねしました
       participation:
         for_creator: に新しく参加申請が届きました
-        for_paticipation: で参加申請が承認されました
       post: さんが新しいおすすめ記事を投稿しました
       post_favorite: さんがあなたの投稿にいいねしました
       profile_view:
@@ -241,6 +240,7 @@ ja:
       relationship: にフォローされました
     non_exist: 未読の通知はありません
     limited_by: 直近10件の未読通知を表示しています
+    clear_all: 全ての通知を既読にする
 
   enums:
     user:
