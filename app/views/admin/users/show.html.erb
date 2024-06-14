@@ -8,7 +8,6 @@
 <div class='section-title'><h2>@<%= @user.canonical_name %></h2></div>
 
 <div class='admin-users-show-box py-3'><!--管理者ページにのみ表示の内容-->
-
   <p><%= @user.last_name + ' ' + @user.first_name %></p>
   <p><%= I18n.t('users.show.joined_date') + ' ' + @user.created_at.strftime('%Y/%m/%d') %></p>
 
@@ -21,15 +20,12 @@
   <% end %>
 
   <%= link_to I18n.t('admin.users.destroy.btn'), admin_user_path(@user.canonical_name),     method: :delete, class: 'ml-2', 'data-confirm' => I18n.t('admin.users.destroy.confirmation') %>
-
 </div>
 
 <section>
-
   <div class='row justify-content-center'>
 
     <div class='col-md-4'><!--ユーザー情報-->
-
       <p class='text-center'>
         <i class="fa-solid fa-chart-line"></i>
         <%= I18n.t('views_count.profile') %>
@@ -43,13 +39,10 @@
       <p class='mb-3'><strong><%= @user.public_name %></strong></p>
 
       <div class='user-data-display mb-3'>
-
         <div id='following-count'>
           <%= render 'admin/relationships/links', user: @user %>
         </div>
-
         <%= render 'public/users/count', user: @user %>
-
       </div>
 
       <p class='mb-3'>
@@ -61,13 +54,10 @@
       </p>
 
       <p class='mb-5'><%= @user.introduction %></p>
-
       <hr>
-
     </div>
 
     <div class='col-md-8'>
-
       <!--検索バー-->
       <%= form_with url: admin_user_path(@user.canonical_name), method: :get, local: true do |f| %>
         <div class='form-group row justify-content-end mt-2'>
@@ -85,7 +75,6 @@
 
       <!--ユーザーの投稿一覧表示-->
       <%= render 'admin/posts/index', posts: @posts %>
-
     </div>
 
   </div>

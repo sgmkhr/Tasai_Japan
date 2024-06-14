@@ -1,9 +1,8 @@
 <% if chats.present? %>
 
   <% chats.each do |chat| %>
-
     <% if chat.user_id == current_user.id %>
-
+    
       <div class='chat-box ml-auto'>
         <p class='mb-0'>
           <%= chat.content %>
@@ -24,7 +23,7 @@
       </p>
 
     <% else %>
-
+    
       <div class='d-flex'>
         <%= link_to user_path(chat.user.canonical_name) do %>
           <%= image_tag chat.user.get_profile_image(45, 45), class: 'rounded-circle mr-2' %>
@@ -35,9 +34,8 @@
       </div>
 
       <p class='font-sm text-left'><%= chat.get_sent_time %></p>
-
+      
     <% end %>
-
   <% end %>
 
 <% else %>

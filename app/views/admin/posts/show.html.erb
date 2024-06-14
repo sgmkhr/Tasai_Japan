@@ -17,13 +17,11 @@
   </div>
 
   <div class='pt-3 d-flex flex-md-row flex-column-reverse'>
-    
     <h5 class='col-md-6'>
       <%= @post.title %>
     </h5>
     
     <p class='text-right col-md-6'>
-      
       <span class='mr-3'>
         <i class="fa-regular fa-bookmark"></i>
         <%= @post.bookmarks.count %>
@@ -41,9 +39,7 @@
       
       <i class="fa-solid fa-chart-line"></i>
       <%= @post.post_views.count %>
-    
     </p>
-    
   </div>
 
   <p><%= @post.caption %></p>

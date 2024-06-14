@@ -10,10 +10,10 @@
 <section>
 
   <% if @entries.present? %>
+  
     <% @entries.each do |entry| %>
       <%= link_to chat_path(entry.get_partner(current_user).id) do %>
         <div class='d-flex chat-rooms-item'>
-
           <div>
             <%= image_tag entry.get_partner(current_user).get_profile_image(40, 40), class: 'rounded-circle mt-2 mr-1' %>
           </div>
@@ -39,11 +39,10 @@
               <p class='md-font mb-0'><%= I18n.t('chats.index.zero_chat_history') %></p>
             <% end %>
           </div>
-
         </div>
       <% end %>
     <% end %>
-
+    
   <% else %>
     <p class='text-center mt-5'><%= I18n.t('chats.index.zero_chat_room') %></p>
   <% end %>
