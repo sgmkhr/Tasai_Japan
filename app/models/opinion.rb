@@ -13,7 +13,7 @@ class Opinion < ApplicationRecord
   # データが作成されると直後に通知データも作成される
   after_create do
     records = counseling_room.participations.map do |participation|
-      if (participation.user_id != current_user.id) && (participation.status == true)
+      if (participation.user_id != counseling_room.user_id) && (participation.status == true)
         notifications.new(user_id: participation.user_id)
       end
     end
