@@ -2,7 +2,7 @@
   <%= link_to I18n.t('top_page'),    root_path %>>
   <%= link_to I18n.t('menu'),        menu_path %>>
   <%= link_to I18n.t('menus.users'), users_path %>>
-  @<%= @user.canonical_name %>>
+  @<%= link_to @user.canonical_name, user_path(@user.canonical_name) %>>
   <%= I18n.t('users.insite.title') %>
 </p>
 
