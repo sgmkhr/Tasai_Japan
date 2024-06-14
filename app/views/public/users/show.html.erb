@@ -48,12 +48,10 @@
         <span id='follow-btn' class='ml-1'>
           <%= render 'public/relationships/btn', user: @user %>
         </span>
-
-        <% if current_user.following?(@user) && @user.following?(current_user) %>
-          <%= link_to chat_path(@user.id), class: 'btn btn-sm success-btn ml-1' do %>
-            <i class="fa-regular fa-paper-plane"></i>
-          <% end %>
-        <% end %>
+        
+        <span id='relationship-statu'>
+          <%= render 'public/relationships/relationship', user: @user %>
+        </span>
 
       <% end %>
 

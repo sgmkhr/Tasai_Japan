@@ -53,6 +53,10 @@ ja:
       counseling_rooms_count: 作成相談室数
       participations_count: 参加相談室数
       joined_date: アカウント作成日
+      following:
+        each_other: 相互フォロー中
+        passive: あなたをフォローしているユーザーです
+        active: フォローしているユーザーです
     edit:
       title: 登録情報編集
     index:
@@ -87,6 +91,7 @@ ja:
       title: 投稿一覧
       not_exist: 投稿が存在しません。
       prefecture: "都道府県:"
+      count: 件
     show:
       title: 投稿詳細
       edit_btn: 編集
@@ -144,6 +149,7 @@ ja:
     destroy: 相談室を削除しました。
     search:
       title: タグ検索 投稿一覧
+      count: 部屋
     ensure_creator: 他のユーザーが作成した相談室の情報は編集できません。
   participations:
     destroy:
@@ -208,6 +214,8 @@ ja:
     show:
       title: とのチャットルーム
       no_chat_history: チャットの履歴がありません。
+      read: 既読
+      unread: 未読
     destroy:
       confirmation: 完全に履歴から削除していいですか？
     sent_now: 今
@@ -221,7 +229,9 @@ ja:
       comment_favorite: さんがあなたのコメントにいいねしました
       opinion: 相談室で新しい意見が挙がりました
       opinion_favorite: さんがあなたの意見にいいねしました
-      participation: に新しく参加申請が届きました
+      participation:
+        for_creator: に新しく参加申請が届きました
+        for_paticipation: で参加申請が承認されました
       post: さんが新しいおすすめ記事を投稿しました
       post_favorite: さんがあなたの投稿にいいねしました
       profile_view:

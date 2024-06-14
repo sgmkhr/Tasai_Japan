@@ -1,2 +1,2 @@
-$('.comments').html('<%= escape_javascript(render partial: 'admin/comments/list', locals: {a_post: @post}) %>');
+$('.comments').html('<%= j(render 'admin/comments/list', a_post: @post) %>');
 $('.comment-count').html('<%= @post.comments.count %>');

@@ -9,42 +9,40 @@
 <section>
 
   <%= render 'public/categories/bars', category: @category %>
-  
+
   <!--ソート切り替えリンク-->
   <div class='text-center py-2'>
   <%= link_to I18n.t('sort.latest'), categories_path(latest: true) %>
   |<%= link_to I18n.t('sort.old'),   categories_path(old: true) %>
-  </div> 
+  </div>
 
   <div class='d-flex flex-wrap justify-content-center'>
-    
     <% if @categories.exists? %>
-    
+
       <% @categories.each do |category| %>
         <%= link_to category_counseling_rooms_path(category.id) do %>
           <div class='category-item'>
-  
+
             <p class='overflow-hidden text-nowrap text-truncate'>
               <%= category.name %>
             </p>
-            
+
             <div class='text-right'>
               <i class="fa-solid fa-door-open"></i>
               <%= category.counseling_rooms.count %></br>
             </div>
-  
+
           </div>
         <% end %>
       <% end %>
-      
+
     <div class='d-flex justify-content-center mt-3'>
       <%= paginate @categories, theme: 'bootstrap-5' %>
     </div>
-      
+
     <% else %><!--カテゴリが存在しない場合-->
       <p class='mt-5 text-center'><%= I18n.t('categories.index.no_exist') %></p>
     <% end %>
-    
   </div>
 
 </section>
