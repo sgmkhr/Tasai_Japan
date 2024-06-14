@@ -8,7 +8,7 @@ class Opinion < ApplicationRecord
   
   has_many :notifications, as: :notifiable, dependent: :destroy
 
-  validates :content, presence: true, length: { maximum: 100 }
+  validates :content, presence: true, length: { maximum: 1000 }
   
   # データが作成されると直後に通知データも作成される
   after_create do
