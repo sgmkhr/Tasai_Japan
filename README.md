@@ -47,5 +47,5 @@
 - IDE：Cloud9
 ​
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、サービス名とURLを明記の予定。
-
+- アイコンデフォルト画像([illustAC](https://www.ac-illust.com/))
+- サンプルデータの各アイコン画像([illustAC](https://www.ac-illust.com/))

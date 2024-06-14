@@ -21,6 +21,8 @@ hana = User.find_or_create_by!(email: 'hanako@example.com') do |user|
   user.public_name = 'はな'
   user.position = 2
   user.password = '111111'
+  user.introduction = '北海道生まれ、現在東京住まいです。'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w1.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 yuko = User.find_or_create_by!(email: 'yuko@example.com') do |user|
@@ -31,6 +33,7 @@ yuko = User.find_or_create_by!(email: 'yuko@example.com') do |user|
   user.position = 2
   user.password = '222222'
   user.introduction = 'どうぞよろしくお願いします！'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w2.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 james = User.find_or_create_by!(email: 'james@example.com') do |user|
@@ -41,6 +44,7 @@ james = User.find_or_create_by!(email: 'james@example.com') do |user|
   user.position = 0
   user.password = '333333'
   user.introduction = '日本来たばかりです！'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m1.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 henry = User.find_or_create_by!(email: 'henry@example.com') do |user|
@@ -50,6 +54,8 @@ henry = User.find_or_create_by!(email: 'henry@example.com') do |user|
   user.public_name = 'hen'
   user.position = 1
   user.password = '444444'
+  user.introduction = '日本に住み始めて8年ほど。日本語大丈夫です。'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m2.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 abramo = User.find_or_create_by!(email: 'abramo@example.com') do |user|
@@ -59,6 +65,8 @@ abramo = User.find_or_create_by!(email: 'abramo@example.com') do |user|
   user.public_name = 'ramo'
   user.position = 1
   user.password = '555555'
+  user.introduction = '2年前から日本。Please teach me Japanese manners.'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m3.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 brunello = User.find_or_create_by!(email: 'brunello@example.com') do |user|
@@ -68,6 +76,8 @@ brunello = User.find_or_create_by!(email: 'brunello@example.com') do |user|
   user.public_name = 'Brunello'
   user.position = 1
   user.password = '666666'
+  user.introduction = '日本のこともっと知りたい！'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m4.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 ambre = User.find_or_create_by!(email: 'abmre@example.com') do |user|
@@ -77,6 +87,8 @@ ambre = User.find_or_create_by!(email: 'abmre@example.com') do |user|
   user.public_name = 'ambre'
   user.position = 0
   user.password = '777777'
+  user.introduction = 'Nice to meet all you guys. I love Japan!!'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m5.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 char = User.find_or_create_by!(email: 'char@example.com') do |user|
@@ -86,6 +98,8 @@ char = User.find_or_create_by!(email: 'char@example.com') do |user|
   user.public_name = 'chacha'
   user.position = 1
   user.password = '888888'
+  user.introduction = '初めまして。日本に来たばかりです。'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w4.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 amado = User.find_or_create_by!(email: 'amado@example.com') do |user|
@@ -95,6 +109,8 @@ amado = User.find_or_create_by!(email: 'amado@example.com') do |user|
   user.public_name = 'ama'
   user.position = 0
   user.password = '999999'
+  user.introduction = 'Hi, feel free to contact me.'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m6.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 jacobo = User.find_or_create_by!(email: 'jacob@example.com') do |user|
@@ -104,6 +120,8 @@ jacobo = User.find_or_create_by!(email: 'jacob@example.com') do |user|
   user.public_name = 'Jacob'
   user.position = 1
   user.password = '101010'
+  user.introduction = '日本のこと勉強してます！いろいろ相談に乗ってくれると嬉しいです。'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m1.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 juana = User.find_or_create_by!(email: 'juana@example.com') do |user|
@@ -113,6 +131,8 @@ juana = User.find_or_create_by!(email: 'juana@example.com') do |user|
   user.public_name = 'Juana'
   user.position = 0
   user.password = '111111'
+  user.introduction = "Hello. I'm planning to visit Japan in this year."
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w2.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 faina = User.find_or_create_by!(email: 'fiana@example.com') do |user|
@@ -122,6 +142,8 @@ faina = User.find_or_create_by!(email: 'fiana@example.com') do |user|
   user.public_name = 'Fiana'
   user.position = 0
   user.password = '121212'
+  user.introduction = "I'm a English teacher in Japan, who learning Japanese."  
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w3.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 filipp = User.find_or_create_by!(email: 'filipp@example.com') do |user|
@@ -131,6 +153,8 @@ filipp = User.find_or_create_by!(email: 'filipp@example.com') do |user|
   user.public_name = 'filipp'
   user.position = 1
   user.password = '131313'
+  user.introduction = '日本で友達たくさん作りたいです！！'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m2.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 celina = User.find_or_create_by!(email: 'celina@example.com') do |user|
@@ -140,6 +164,8 @@ celina = User.find_or_create_by!(email: 'celina@example.com') do |user|
   user.public_name = 'Celina'
   user.position = 0
   user.password = '141414'
+  user.introduction = "Just arrived and enjoying in Japan. "
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w5.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 bolek = User.find_or_create_by!(email: 'bolek@example.com') do |user|
@@ -149,6 +175,8 @@ bolek = User.find_or_create_by!(email: 'bolek@example.com') do |user|
   user.public_name = 'Bolek'
   user.position = 0
   user.password = '151515'
+  user.introduction = 'I like traveling and exploring new places'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m3.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 aoi = User.find_or_create_by!(email: 'aoi@example.com') do |user|
@@ -158,7 +186,8 @@ aoi = User.find_or_create_by!(email: 'aoi@example.com') do |user|
   user.public_name = 'aoi'
   user.position = 2
   user.password = '161616'
-  user.introduction = '福岡生まれ福岡育ちです！福岡の魅力を伝えたいです！'
+  user.introduction = '福岡生まれ福岡育ちです！福岡の魅力を伝えたいです！海外留学経験あります！英語もOKです！'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m4.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 dan = User.find_or_create_by!(email: 'dan@example.com') do |user|
@@ -166,9 +195,10 @@ dan = User.find_or_create_by!(email: 'dan@example.com') do |user|
   user.first_name = '暖'
   user.canonical_name = 'dan17'
   user.public_name = 'dan'
-  user.position = 0
+  user.position = 2
   user.password = '171717'
   user.introduction = '東京に長く住んでいます。東京のおすすめを発信します。'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m5.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 ritsu = User.find_or_create_by!(email: 'ritsu@example.com') do |user|
@@ -176,9 +206,10 @@ ritsu = User.find_or_create_by!(email: 'ritsu@example.com') do |user|
   user.first_name = '律'
   user.canonical_name = 'ritsu18'
   user.public_name = 'ritsu'
-  user.position = 0
+  user.position = 2
   user.password = '181818'
   user.introduction = '岐阜生まれです。岐阜のおすすめスポットを投稿します。'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m6.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 yuma = User.find_or_create_by!(email: 'yuma@example.com') do |user|
@@ -186,9 +217,10 @@ yuma = User.find_or_create_by!(email: 'yuma@example.com') do |user|
   user.first_name = '悠馬'
   user.canonical_name = 'yuma19'
   user.public_name = 'ゆうま'
-  user.position = 0
+  user.position = 2
   user.password = '191919'
   user.introduction = '旅行が趣味です。日本国内で行って良かったところをお伝えしていきたいです！'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m6.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 yuka = User.find_or_create_by!(email: 'yuka@example.com') do |user|
@@ -196,9 +228,10 @@ yuka = User.find_or_create_by!(email: 'yuka@example.com') do |user|
   user.first_name = '優香'
   user.canonical_name = 'yuka20'
   user.public_name = 'ゆい'
-  user.position = 0
+  user.position = 2
   user.password = '202020'
   user.introduction = '千葉県在住です。千葉にもいろんなおすすめスポットあるので、紹介していきたいと思います。'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w1.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 koharu = User.find_or_create_by!(email: 'koharu@example.com') do |user|
@@ -206,8 +239,10 @@ koharu = User.find_or_create_by!(email: 'koharu@example.com') do |user|
   user.first_name = '小春'
   user.canonical_name = 'koharu21'
   user.public_name = '小春'
-  user.position = 0
+  user.position = 2
   user.password = '212121'
+  user.introduction = '海外へ行ったことはないですが、海外から来た人たちとも仲良くなりたい！'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w2.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 emi = User.find_or_create_by!(email: 'ema@example.com') do |user|
@@ -215,8 +250,10 @@ emi = User.find_or_create_by!(email: 'ema@example.com') do |user|
   user.first_name = '笑美'
   user.canonical_name = 'ema22'
   user.public_name = 'ema'
-  user.position = 0
+  user.position = 2
   user.password = '222222'
+  user.introduction = 'ぜひ気軽にフォローしてください。よろしくお願いします！'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w3.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 sana = User.find_or_create_by!(email: 'sana@example.com') do |user|
@@ -224,8 +261,10 @@ sana = User.find_or_create_by!(email: 'sana@example.com') do |user|
   user.first_name = '紗奈'
   user.canonical_name = 'sana23'
   user.public_name = 'さな'
-  user.position = 0
+  user.position = 2
   user.password = '232323'
+  user.introduction = '日本の楽しい場所をもっと知りたいので登録しました。'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w4.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 mio = User.find_or_create_by!(email: 'mio@example.com') do |user|
@@ -233,8 +272,10 @@ mio = User.find_or_create_by!(email: 'mio@example.com') do |user|
   user.first_name = '美桜'
   user.canonical_name = 'mIo24'
   user.public_name = 'mio'
-  user.position = 0
+  user.position = 2
   user.password = '242424'
+  user.introduction = 'いろんな人と交流したいです'
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w5.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
 # 以下、フォローデータ
