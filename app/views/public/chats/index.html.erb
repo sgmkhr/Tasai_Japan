@@ -28,16 +28,12 @@
               <% end %>
             </p>
 
-            <% if entry.get_last_chat %>
-              <p class='md-font overflow-hidden text-nowrap text-truncate px-0 mb-0'>
-                <%= entry.get_last_chat.content %>
-              </p>
-              <p class='sm-font px-0 mb-0 text-right'>
-                <%= entry.get_last_chat.get_sent_time %>
-              </p>
-            <% else %>
-              <p class='md-font mb-0'><%= I18n.t('chats.index.zero_chat_history') %></p>
-            <% end %>
+            <p class='md-font overflow-hidden text-nowrap text-truncate px-0 mb-0'>
+              <%= entry.get_last_chat(current_user).content %>
+            </p>
+            <p class='sm-font px-0 mb-0 text-right'>
+              <%= entry.get_last_chat(current_user).get_sent_time %>
+            </p>
           </div>
         </div>
       <% end %>
