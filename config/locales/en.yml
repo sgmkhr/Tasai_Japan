@@ -177,7 +177,7 @@ en:
       failed: Updating failed.
     destroy: The counseling room has been deleted.
     search:
-      title: Posts with a tag name
+      title: Counseling rooms with a tag name
       count: rooms
     ensure_creator: You cannot view the edit page of a room other users created.
   participations:
