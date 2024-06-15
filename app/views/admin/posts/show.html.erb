@@ -17,26 +17,29 @@
   </div>
 
   <div class='pt-3 d-flex flex-md-row flex-column-reverse'>
-    <h5 class='col-md-6'>
-      <%= @post.title %>
-    </h5>
-    
+    <div class='col-md-6'>
+      <p class='md-font mb-0'><%= @post.prefecture_i18n %></p>
+      <h5>
+        <%= @post.title %>
+      </h5>
+    </div>
+
     <p class='text-right col-md-6'>
       <span class='mr-3'>
         <i class="fa-regular fa-bookmark"></i>
         <%= @post.bookmarks.count %>
       </span>
-      
+
       <span class='mr-3'>
         <i class="fa-regular fa-heart"></i>
         <%= @post.post_favorites.count %>
       </span>
-      
+
       <span class='mr-3'>
         <i class="fa-regular fa-comment"></i>
         <%= @post.comments.count %>
       </span>
-      
+
       <i class="fa-solid fa-chart-line"></i>
       <%= @post.post_views.count %>
     </p>
@@ -47,7 +50,7 @@
   <hr>
 
   <p><%= @post.body %></p>
-  
+
   <div class='d-flex flex-wrap'>
     <% if @post.post_tags.present? %>
       <% @post.post_tags.each do |post_tag| %>
@@ -66,7 +69,7 @@
     <i class="fa-regular fa-clock"></i>
     <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
   </p>
-  
+
   <div class='row'>
     <p class='col-md-9'>
       <%= link_to admin_user_path(@post.user.canonical_name) do %>
@@ -77,9 +80,9 @@
       <%= link_to I18n.t('posts.edit.destroy_btn'), admin_post_path(@post.id), method: :delete, 'data-confirm' => I18n.t('posts.destroy.confirmation') %>
     </div>
   </div>
-  
+
   <hr>
-  
+
   <div class='comments'>
     <%= render 'admin/comments/list', a_post: @post %>
   </div>

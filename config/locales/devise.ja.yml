@@ -1,6 +1,9 @@
 ja:
   min-letters: 文字以上
   activerecord:
+    models:
+      user: ユーザー
+      admin: 管理者
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -37,9 +40,6 @@ ja:
         email: Eメール
         password: パスワード
         remember_me: ログインを記憶する
-    models:
-      user: ユーザー
-      admin: 管理者
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
