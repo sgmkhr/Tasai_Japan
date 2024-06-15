@@ -8,6 +8,10 @@ en:
       admin: "admin"
     attributes:
       user:
+        email: "E-mail"
+        password: "Password"
+        password_confirmation: "Password(confirmation)"
+        remember_me: "Remember me"
         last_name: "Last name"
         first_name: "First name"
         canonical_name: "User ID"
@@ -15,6 +19,10 @@ en:
         position: "Position"
         profile_image: "Profile image"
         introduction: "Introduction"
+      admin:
+        email: "E-mail"
+        password: "Password"
+        remember_me: "Remember me"
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."

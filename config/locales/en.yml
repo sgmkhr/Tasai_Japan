@@ -85,12 +85,19 @@ en:
       posts_count: Posts
       counseling_rooms_count: Managing Rooms
       participations_count: Participating
-      joined_date: The account was created at
+      joined_date: The account was created on
+      following:
+        each_other: Following each other
+        passive: One of your followers
+        active: One of users you are following
+      active: An active user
+      inactive: An inactive user
     edit:
       title: Edit your information
     index:
       title: User list
       not_exist: No user exists.
+      inactive: Inactive
     insite:
       title: Insite
       main_tab: General
@@ -107,8 +114,8 @@ en:
         btn: Delete this account
         confirmation: Are you sure you want to delete the account?
         notice: The deletion process has successfully completed.
-      cancel: Cancel the withdrawal
-      withdraw: Withdraw this account
+      cancel: Activate this account
+      withdraw: Deactivate this account
   posts:
     create:
       notice: You has created a new post successfully.

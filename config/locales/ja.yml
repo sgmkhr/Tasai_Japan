@@ -57,11 +57,14 @@ ja:
         each_other: 相互フォロー中
         passive: あなたをフォローしているユーザーです
         active: フォローしているユーザーです
+      active: 有効ユーザー
+      inactive: 退会済み
     edit:
       title: 登録情報編集
     index:
       title: ユーザー 一覧
       not_exist: 対象のユーザーが存在しません。
+      inactive: 退会済み
     insite:
       title: インサイト
       main_tab: 総合インサイト
