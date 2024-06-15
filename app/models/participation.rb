@@ -18,7 +18,7 @@ class Participation < ApplicationRecord
 
   # 通知クリック時のパス先指定のメソッド
   def notification_path
-    category_counseling_room_path(counseling_room.category.id, counseling_room.id)
+    edit_category_counseling_room_path(counseling_room.category.id, counseling_room.id)
   end
 
 end

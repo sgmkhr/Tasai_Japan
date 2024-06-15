@@ -17,29 +17,32 @@
   </div>
 
   <div class='pt-3 d-flex flex-md-row flex-column-reverse'>
-    
-    <h5 class='col-md-6'>
-      <%= @post.title %>
-    </h5>
-    
+
+    <div class='col-md-6'>
+      <p class='md-font mb-0'><%= @post.prefecture_i18n %></p>
+      <h5>
+        <%= @post.title %>
+      </h5>
+    </div>
+
     <p class='text-right col-md-6'>
-      
+
       <span id='bookmark_btn_<%= @post.id %>' class='mr-3'>
         <%= render 'public/bookmarks/btn', a_post: @post %>
       </span>
-      
+
       <span id='post_favorite_btn_<%= @post.id %>' class='mr-3'>
         <%= render 'public/post_favorites/btn', a_post: @post %>
       </span>
-      
+
       <i class="fa-regular fa-comment"></i>
       <span class='comment-count mr-3'><%= @post.comments.count %></span>
-      
+
       <i class="fa-solid fa-chart-line"></i>
       <%= @post.post_views.count %>
-      
+
     </p>
-    
+
   </div>
 
   <p><%= @post.caption %></p>
@@ -47,7 +50,7 @@
   <hr>
 
   <p><%= @post.body %></p>
-  
+
   <div class='d-flex flex-wrap'>
     <% if @post.post_tags.present? %>
       <% @post.post_tags.each do |post_tag| %>

@@ -11,7 +11,7 @@
             <%= image_tag user.get_profile_image(40, 40), class: 'rounded-circle mr-2' %>
 
             <% unless user.is_active %>
-              <span class='text-danger'>退会済み</span>
+              <span class='text-danger'><%= I18n.t('users.index.inactive') %></span>
             <% end %>
 
           </div>
