@@ -54,8 +54,10 @@
               <i class="fa-solid fa-door-open"></i>
               <%= category.counseling_rooms.count %>
               
-              <%= link_to I18n.t('destroy'), admin_category_path(category.id), method: :delete, 
-                                             'data-confirm' => I18n.t('categories.destroy.confirmation') %>
+              <object>
+                <%= link_to I18n.t('destroy'), admin_category_path(category.id), method: :delete, 
+                                               'data-confirm' => I18n.t('categories.destroy.confirmation') %>
+              </object>
             </div>
   
           </div>
@@ -66,7 +68,7 @@
       <%= paginate @categories, theme: 'bootstrap-5' %>
     </div>
     
-    <% else %><!--カテゴリが存在しない場合
+    <% else %><!--カテゴリが存在しない場合-->
       <p class='mt-5 text-center'><%= I18n.t('categories.index.no_exist') %></p>
     <% end %>
     
