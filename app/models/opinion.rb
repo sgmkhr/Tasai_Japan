@@ -15,7 +15,7 @@ class Opinion < ApplicationRecord
     participations = counseling_room.participations.where(status: true)
     if participations.count >= 2 #意見投稿者以外にも参加者がいる場合のみ実行
       records = counseling_room.participations.map do |participation|
-        next if (user_id != participation.user_id) && (participation.status == true)
+        next if (user_id == participation.user_id) || (participation.status == false)
         notifications.new(user_id: participation.user_id)
       end.compact
       Notification.import records
