@@ -12,12 +12,12 @@ class Opinion < ApplicationRecord
 
   # データが作成されると直後に通知データも作成される
   after_create do
-    if counseling_room.participations.count >= 2 #意見投稿者以外にも参加者がいる場合のみ実行
+    participations = counseling_room.participations.where(status: true)
+    if participations.count >= 2 #意見投稿者以外にも参加者がいる場合のみ実行
       records = counseling_room.participations.map do |participation|
-        if (user_id != participation.user_id) && (participation.status == true)
-          notifications.new(user_id: participation.user_id)
-        end
-      end
+        next if (user_id != participation.user_id) && (participation.status == true)
+        notifications.new(user_id: participation.user_id)
+      end.compact
       Notification.import records
     end
     notifications.create(user_id: counseling_room.user_id)
