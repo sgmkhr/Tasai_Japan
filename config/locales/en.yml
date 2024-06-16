@@ -33,8 +33,8 @@ en:
   hello: Hello world
 
   languages:
-    japanese: Japanese
-    english: English
+    japanese: 日本語
+    english: 英語
   site_name: Tasai Japan
   top_page: Top page
   login: Log in
