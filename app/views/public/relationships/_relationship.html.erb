@@ -1,6 +1,6 @@
 <% if current_user.following?(user) && user.following?(current_user) %>
 
-  <%= link_to chat_path(user.id), class: 'btn btn-sm success-btn ml-1' do %>
+  <%= link_to chat_path(user.id), data: { turbolinks: false }, class: 'btn btn-sm success-btn ml-1' do %>
     <i class="fa-regular fa-paper-plane"></i>
   <% end %>
 

@@ -17,11 +17,11 @@
     <p id='locale-select-button' class='text-center'>
       <span><%= I18n.t('languages.japanese') %></span>
       <% if I18n.locale.to_s == 'en' %>
-        <%= link_to :locale => 'ja' do %>
+        <%= link_to :locale => 'ja', data: { turbolinks: false } do %>
           <i class="fa-solid fa-toggle-on"></i>
         <% end %>
       <% else %>
-        <%= link_to :locale => 'en' do %>
+        <%= link_to :locale => 'en', data: { turbolinks: false } do %>
           <i class="fa-solid fa-toggle-off"></i>
         <% end %>
       <% end %>
