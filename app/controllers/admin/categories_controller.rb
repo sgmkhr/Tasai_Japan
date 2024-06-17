@@ -2,15 +2,12 @@ class Admin::CategoriesController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    if params[:latest]     #ソート切り替え(作成新しい順)
-      @categories = Category.latest
-    elsif params[:old]     #ソート切り替え(作成古い順)
-      @categories = Category.old
-    elsif params[:content] #キーワード検索
-      @categories = Category.search_for(params[:content])
-    else
-      @categories = Category.all
-    end
+    @categories = Category.all
+    @keyword    = params[:keyword]
+    @sort       = params[:sort]
+    @categories = @categories.search_for(@keyword) if @keyword.present?
+    @categories = @categories.latest if @sort == 'latest'
+    @categories = @categories.old    if @sort == 'old'
     @categories = @categories.page(params[:page]).per(30)
   end
   

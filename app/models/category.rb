@@ -9,7 +9,6 @@ class Category < ApplicationRecord
   
   # キーワード検索のメソッド
   def self.search_for(content)
-    return Category.all if content == ''
     Category.where('name LIKE ?', "%#{content}%")
   end
 

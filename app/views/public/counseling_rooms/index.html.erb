@@ -20,8 +20,13 @@
   <!--キーワード検索バー-->
   <%= form_with url: category_counseling_rooms_path(@category.id), method: :get, local: true do |f| %>
     <div class='row justify-content-md-end justify-content-center'>
+      <div class='form-group col-md-5 col-10 mb-1'>
+        <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old'],[I18n.t('sort.participations_count'), 'participations_count'],[I18n.t('sort.opinions_count'), 'opinions_count']], class: 'form-control' %>
+      </div>
+    </div>
+    <div class='row justify-content-md-end justify-content-center'>
       <div class='form-group col-md-5 col-9'>
-        <%= f.text_field :content, class: 'form-control', placeholder: I18n.t('search_blank') %>
+        <%= f.text_field :keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
       </div>
       <div class='form-group mt-1'>
         <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn' %>
@@ -30,19 +35,20 @@
   <% end %>
   
   <!--ソート切り替えリンク-->
-  <div class='d-flex justify-content-center py-2'>
+  <p class='md-font text-center mb-0'><%= I18n.t('sort.with_display_all') %></p>
+  <div class='d-flex justify-content-center pb-2'>
     <div class='d-md-flex'>
       <p class='mb-0'>
-        <%= link_to I18n.t('sort.latest'), category_counseling_rooms_path(@category.id, latest: true) %>
-        |<%= link_to I18n.t('sort.old'),   category_counseling_rooms_path(@category.id, old: true) %>
+        <%= link_to I18n.t('sort.latest'), category_counseling_rooms_path(@category.id, sort: 'latest') %>
+        |<%= link_to I18n.t('sort.old'),   category_counseling_rooms_path(@category.id, sort: 'old') %>
       </p>
       <p class='mb-0'><span class='d-md-inline d-none pl-1'>|</span>
         <%= link_to I18n.t('sort.participations_count'),
-                                           category_counseling_rooms_path(@category.id, participations_count: true) %>
+                                           category_counseling_rooms_path(@category.id, sort: 'participations_count') %>
       </p>
       <p class='mb-0'><span class='d-md-inline d-none pl-1'>|</span>
         <%= link_to I18n.t('sort.opinions_count'),
-                                           category_counseling_rooms_path(@category.id, opinions_count: true) %>
+                                           category_counseling_rooms_path(@category.id, sort: 'opinions_count') %>
       </p>
     </div>
   </div> 

@@ -8,7 +8,7 @@
 <div class='section-title'>
   <h2>
     #<%= @tag_name %>
-    <% if @counseling_rooms.present? %>
+    <% if @counseling_rooms.a? %>
       <%= ' ' + @counseling_rooms.count.to_s + I18n.t('counseling_rooms.search.count') %>
     <% end %>
   </h2>
