@@ -89,7 +89,7 @@ class Public::CounselingRoomsController < ApplicationController
   private
 
   def counseling_room_params
-    params.require(:counseling_room).permit(:topic, :detail)
+    params.require(:counseling_room).permit(:topic, :detail, :topic_image)
   end
   
   def ensure_guest_user

@@ -13,7 +13,7 @@ class Participation < ApplicationRecord
 
   # 表示する通知メッセージを取得するメソッド
   def notification_message
-    '「' + counseling_room.topic + '」' + I18n.t('notifications.messages.participation.for_creator')
+    I18n.t('notifications.messages.participation', public_name: user.public_name, topic: counseling_room.topic)
   end
 
   # 通知クリック時のパス先指定のメソッド

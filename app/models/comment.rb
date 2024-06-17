@@ -17,7 +17,7 @@ class Comment < ApplicationRecord
   
   # 表示する通知メッセージを取得するメソッド
   def notification_message
-    '「' + post.title + '」' + I18n.t('notifications.messages.comment')
+    I18n.t('notifications.messages.comment', title: post.title, public_name: user.public_name )
   end
   
   # 通知クリック時のパス先指定のメソッド

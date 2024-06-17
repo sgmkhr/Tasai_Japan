@@ -48,7 +48,7 @@ class Post < ApplicationRecord
   
   # 表示する通知メッセージを取得するメソッド
   def notification_message
-    user.public_name + I18n.t('notifications.messages.post')
+    I18n.t('notifications.messages.post', public_name: user.public_name, title: title)
   end
   
   # 通知クリック時のパス先指定のメソッド

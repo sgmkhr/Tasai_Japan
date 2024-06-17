@@ -51,11 +51,15 @@ en:
   send: Send
   search_blank: With blank to display all
   search_tag: Search with a tag name
+  file_form:
+    label: Choose image
+    unselected: Not selected yet
   placeholder:
     canonical_name: less than 20 alphanumeric characters
     public_name: Anyone can see this name
     comment: Comment here
     tag_name: Separate each with a slash(/) if multiple words
+    introduction: "Up to 200 characters"
   guestuser:
     signin:
       notice: You logged in as a guest user.
@@ -260,20 +264,18 @@ en:
     send: Send
   notifications:
     messages:
-      chat_room: creaed a new chat room with you.
-      comment: received a new comment.
-      comment_favorite: liked your comment.
-      opinion: A new opinion has been shared in a counseling room.
-      opinion_favorite: liked your opinion.
-      participation:
-        for_creator: received a new application to participate.
-      post: posted a new good place.
-      post_favorite: liked your post.
+      comment: "Your post \"%{title}\" received a new comment from %{public_name}."
+      comment_favorite: "%{public_name} liked your comment."
+      opinion: "A new opinion has been shared in a counseling room \"%{topic}\"."
+      opinion_favorite: "%{public_name} liked your opinion."
+      participation: "Your room \"%{topic}\" received a new application to participate from %{public_name}."
+      post: "%{public_name} posted \"%{title}\"."
+      post_favorite: "%{public_name} liked your post \"%{title}\"."
       profile_view:
         hundred: More than 100 people visited your profile page.
         thousand: More than 1,000 people visited your profile page.
         ten_thousand: More than 10,000 people visited your profile page.
-      relationship: started following you.
+      relationship: "%{canonical_name} started following you."
     non_exist: No unread notification exists.
     limited_by: Only the last 10 unread notifications are being displayed.
     clear_all: Clear all the notifications
@@ -372,3 +374,5 @@ en:
         name: name
       room_tag:
         name: name
+  errors:
+    count: " errors have occurred."

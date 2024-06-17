@@ -3,7 +3,10 @@
     
     <div class='form-group col-11 row no-shadow'>
       <%= f.label :post_image, class: 'col-md-3 required' %>
-      <%= f.file_field :post_image, accept: 'image/*' %>
+      <label class='file-form'>
+        <span><%= I18n.t('file_form.label') %></span> 
+        <%= f.file_field :post_image, accept: 'image/*', class: 'hidden ml-3' %>
+      </label>
     </div>
   
     <div class='form-group col-11 row'>
