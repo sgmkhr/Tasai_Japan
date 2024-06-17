@@ -116,8 +116,14 @@
             <!--検索バー-->
             <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
               <div class='row justify-content-md-end justify-content-center'>
+                <div class='form-group col-md-5 col-10 mb-1'>
+                  <%= f.select :prefecture, Post.prefectures.keys.map {|k| [I18n.t("enums.post.prefecture.#{k}"), k]}, class: 'form-control' %>
+                  <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old'],[I18n.t('sort.favorites_count'), 'favorites_count']], class: 'form-control ml-1' %>
+                </div>
+              </div>
+              <div class='row justify-content-md-end justify-content-center'>
                 <div class='form-group col-md-5 col-9'>
-                  <%= f.text_field :content, class: 'form-control', placeholder: I18n.t('search_blank') %>
+                  <%= f.text_field :keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
                 </div>
                 <div class='form-group mt-1'>
                   <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn' %>
@@ -126,10 +132,11 @@
             <% end %>
 
             <!--ソート切り替えリンク-->
-            <div class='text-center py-2'>
-            <%= link_to I18n.t('sort.latest'), user_path(@user.canonical_name, latest: true) %>
-            |<%= link_to I18n.t('sort.old'), user_path(@user.canonical_name, old: true) %>
-            |<%= link_to I18n.t('sort.favorites_count'), user_path(@user.canonical_name, favorites_count: true) %>
+            <p class='md-font text-center mb-0'><%= I18n.t('sort.with_display_all') %></p>
+            <div class='text-center pb-2'>
+            <%= link_to I18n.t('sort.latest'), user_path(@user.canonical_name, sort: 'latest') %>
+            |<%= link_to I18n.t('sort.old'), user_path(@user.canonical_name, sort: 'old') %>
+            |<%= link_to I18n.t('sort.favorites_count'), user_path(@user.canonical_name, sort: 'favorites_count') %>
             </div>
 
             <!--ユーザーの投稿一覧表示-->
@@ -146,7 +153,7 @@
             <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
               <div class='row justify-content-md-end justify-content-center'>
                 <div class='form-group col-md-5 col-9'>
-                  <%= f.text_field :content_in_bookmarks, class: 'form-control', placeholder: I18n.t('search_blank') %>
+                  <%= f.text_field :keyword_in_bookmarks, class: 'form-control', placeholder: I18n.t('search_blank') %>
                 </div>
                 <div class='form-group mt-1'>
                   <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn' %>
@@ -179,8 +186,14 @@
         <!--検索バー-->
         <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
           <div class='row justify-content-md-end justify-content-center'>
+            <div class='form-group col-md-5 col-10 mb-1'>
+              <%= f.select :prefecture, Post.prefectures.keys.map {|k| [I18n.t("enums.post.prefecture.#{k}"), k]}, class: 'form-control' %>
+              <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old'],[I18n.t('sort.favorites_count'), 'favorites_count']], class: 'form-control ml-1' %>
+            </div>
+          </div>
+          <div class='row justify-content-md-end justify-content-center'>
             <div class='form-group col-md-5 col-9'>
-              <%= f.text_field :content, class: 'form-control', placeholder: I18n.t('search_blank') %>
+              <%= f.text_field :keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
             </div>
             <div class='form-group mt-1'>
               <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn' %>
@@ -189,10 +202,11 @@
         <% end %>
 
         <!--ソート切り替えリンク-->
-        <div class='text-center py-2'>
-        <%= link_to I18n.t('sort.latest'), user_path(@user.canonical_name, latest: true) %>
-        |<%= link_to I18n.t('sort.old'), user_path(@user.canonical_name, old: true) %>
-        |<%= link_to I18n.t('sort.favorites_count'), user_path(@user.canonical_name, favorites_count: true) %>
+        <p class='md-font text-center mb-0'><%= I18n.t('sort.with_display_all') %></p>
+        <div class='text-center pb-2'>
+        <%= link_to I18n.t('sort.latest'), user_path(@user.canonical_name, sort: 'latest') %>
+        |<%= link_to I18n.t('sort.old'), user_path(@user.canonical_name, sort: 'old') %>
+        |<%= link_to I18n.t('sort.favorites_count'), user_path(@user.canonical_name, sort: 'favorites_count') %>
         </div>
 
         <!--ユーザーの投稿一覧表示-->

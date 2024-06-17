@@ -6,38 +6,27 @@ class Public::UsersController < ApplicationController
 
   def show
     @user  = User.find_by(canonical_name: params[:canonical_name])
-    #以下、投稿データの取得
-    if params[:latest]              #ソート切り替え(作成新しい順)
-      @posts = @user.posts.latest
-    elsif params[:old]              #ソート切り替え(作成古い順)
-      @posts = @user.posts.old
-    elsif params[:favorites_count]  #ソート切り替え(いいね多い順)
-      posts = @user.posts.sort {|a,b|
-        b.post_favorites.size <=> a.post_favorites.size
-      }
-      @posts = Kaminari.paginate_array(posts)
-    elsif params[:content]          #キーワード検索
-      @posts = Post.search_with_user_for(params[:content], @user)
-    else
-      @posts = @user.posts.latest
-    end
-    @posts = @posts.page(params[:page]).per(12)
-    #以下、マイページ内のみ表示のブックマーク投稿データ取得
-    if params[:content_in_bookmarks]  #ブックマーク内キーワード検索
-      @bookmarked_posts = current_user.search_with_bookmarks_for(params[:content_in_bookmarks])
-    else
-      @bookmarked_posts = current_user.bookmarked_posts.latest
-    end
-    @bookmarked_posts = @bookmarked_posts.page(params[:page]).per(12)
+    @posts      = @user.posts&.includes(:post_tags)
+    @keyword    = params[:keyword]
+    @prefecture = params[:prefecture]
+    @sort       = params[:sort]
+    @keyword_in_bookmarks = params[:keyword_in_bookmarks]
+    @bookmarked_posts = current_user.bookmarked_posts.latest
+
+    @posts = @posts&.latest if (@sort == 'latest') || (@sort.nil?)
+    @posts = @posts&.old    if @sort == 'old'
+    @posts = @posts&.where(prefecture: @prefecture) if @prefecture.present? && (@prefecture != 'unspecified')
+    @posts = @posts&.search_with_user_for(@keyword, @user) if @keyword.present?
+    @posts = @posts&.includes(:post_favorites).sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
+    @bookmarked_posts = current_user.search_with_bookmarks_for(@keyword_in_bookmarks) if @keyword_in_bookmarks.present?
+    
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
+    @bookmarked_posts = Kaminari.paginate_array(@bookmarked_posts).page(params[:page]).per(12)
     #以下、マイページ内のみ表示のフォローユーザー投稿データ取得
-    friends = current_user.followings
-    if friends.present?
-      @friends_posts = Post.where(user_id: friends.ids)
-      if @friends_posts.present?
-        @friends_posts = @friends_posts.latest.page(params[:page]).per(12)
-      end
+    if current_user.followings
+      @friends_posts = Post.where(user_id: current_user.followings.ids)&.latest.page(params[:page]).per(12)
     else
-      @friends_posts = nil
+      @friends_posts = []
     end
     #以下、閲覧カウント
     unless ProfileView.find_by(viewer_id: current_user.id, viewed_id: @user.id)

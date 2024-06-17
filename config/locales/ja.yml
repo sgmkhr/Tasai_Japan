@@ -199,6 +199,7 @@ ja:
     posts_count: 投稿数順
     participations_count: 参加人数順
     opinions_count: 盛り上がり順
+    with_display_all: 全件表示ソート切替え
   views_count:
     profile: プロフィール閲覧人数：
   relationships:
