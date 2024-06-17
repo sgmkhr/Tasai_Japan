@@ -9,7 +9,7 @@
 
 <section>
 
-  <% if @entries.present? %>
+  <% if @entries.any? %>
   
     <% @entries.each do |entry| %>
       <%= link_to chat_path(entry.get_partner(current_user).id), data: { turbolinks: false } do %>

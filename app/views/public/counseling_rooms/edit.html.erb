@@ -8,108 +8,23 @@
 </p>
 
 <div class='section-title'><h2><%= I18n.t('participations.edit.title.active') %></h2></div>
-
 <section class='pb-5'>
-
-  <% if @active_participations.present? %>
-
-    <% @active_participations.each do |participation| %>
-
-      <div class='row d-flex'>
-
-        <div class='col-md-7'>
-          <span class=<%= participation.user.get_class_associated_with_position %>>
-            <%= participation.user.position_i18n %>
-          </span>
-          <span class='overflow-hidden text-nowrap text-truncate ml-1'>
-            <%= participation.user.public_name %>
-          </span>
-        </div>
-
-        <div class='col-md-5 text-right'>
-          <%= link_to I18n.t('participations.edit.leave'), category_counseling_room_participation_path(@category.id, @counseling_room.id, participation.id),
-                                                           method: :delete, 'data-confirm' => I18n.t('participations.destroy.confirmation.by_creator') %>
-        </div>
-
-      </div>
-
-      <p><%= participation.user.introduction %></p>
-
-      <hr>
-
-    <% end %>
-
-    <div class='d-flex justify-content-center mt-3'>
-      <%= paginate @active_participations, theme: 'bootstrap-5' %>
-    </div>
-
-  <% else %>
-
-    <p class='text-center'><%= I18n.t('participations.edit.no_participations.active') %></p>
-
-  <% end %>
-
+  <%= render 'public/counseling_rooms/edit_active_participations', category: @category, counseling_room: @counseling_room, active_participations: @active_participations %>
 </section>
 
 <div class='section-title'><h2><%= I18n.t('participations.edit.title.waiting') %></h2></div>
-
 <section class='mt-5 pb-5'>
-
-  <% if @waiting_participations.present? %>
-
-    <% @waiting_participations.each do |participation| %>
-
-      <div class='row d-flex'>
-
-        <div class='col-md-7'>
-          <span class=<%= participation.user.get_class_associated_with_position %>>
-            <%= participation.user.position_i18n %>
-          </span>
-          <span class='overflow-hidden text-nowrap text-truncate ml-1'>
-            <%= participation.user.public_name %>
-          </span>
-        </div>
-
-        <div class='col-md-5 text-right'>
-          <%= link_to I18n.t('participations.edit.approve'),   category_counseling_room_participation_path(@category.id, @counseling_room.id, participation.id),
-                                                               method: :patch %>
-
-          |<%= link_to I18n.t('participations.edit.withdraw'), category_counseling_room_participation_path(@category.id, @counseling_room.id, participation.id),
-                                                               method: :delete, 'data-confirm' => I18n.t('participations.destroy.confirmation.by_creator') %>
-        </div>
-
-      </div>
-
-      <p><%= participation.user.introduction %></p>
-
-      <hr>
-
-    <% end %>
-
-    <div class='d-flex justify-content-center mt-3'>
-      <%= paginate @waiting_participations, theme: 'bootstrap-5' %>
-    </div>
-
-  <% else %>
-
-    <p class='text-center'><%= I18n.t('participations.edit.no_participations.waiting') %></p>
-
-  <% end %>
-
+  <%= render 'public/counseling_rooms/edit_waiting_participations', category: @category, counseling_room: @counseling_room, waiting_participations: @waiting_participations %>
 </section>
 
 <div class='section-title'><h2><%= I18n.t('counseling_rooms.edit.title') %></h2></div>
 
 <section class='mt-5'>
-
   <%= render 'layouts/errors', obj: @counseling_room %>
-
   <%= render 'public/counseling_rooms/form', category: @category, counseling_room: @counseling_room, btn_name: I18n.t('update') %>
-
   <p class='text-right'>
     <%= link_to I18n.t('counseling_rooms.show.destroy.btn'),
                 category_counseling_room_path(@category.id, @counseling_room.id), method: :delete,
                 'data-confirm' => I18n.t('counseling_rooms.show.destroy.confirmation') %>
   </p>
-
 </section>
