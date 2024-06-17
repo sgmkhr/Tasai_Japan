@@ -1,5 +1,5 @@
 <p class='guide-links'>
-  <%= link_to I18n.t('top_page'),         root_path %>>
+  <%= link_to I18n.t('top_page'),         root_path, data: { turbolinks: false } %>>
   <%= link_to I18n.t('menu'),             menu_path %>>
   <%= link_to I18n.t('menus.users'),      users_path %>>
   <%= link_to '@' + @user.canonical_name, user_path(@user.canonical_name) %>>
@@ -11,7 +11,6 @@
 <section>
 
   <!--ユーザー一覧の表示-->
-
   <%= render 'public/users/index', users: @users %>
 
 </section>

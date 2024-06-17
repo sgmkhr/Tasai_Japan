@@ -3,40 +3,29 @@ class Admin::UsersController < ApplicationController
   before_action :set_selected_user, except: [:index]
   
   def show
-    if params[:latest]                #ソート切り替え(作成新着順)
-      @posts = @user.posts.latest
-    elsif params[:old]                #ソート切り替え(作成古い順)
-      @posts = @user.posts.old
-    elsif params[:favorites_count]    #ソート切り替え(いいね多い順)
-      posts = @user.posts.sort {|a,b| 
-        b.post_favorites.size <=> a.post_favorites.size
-      }
-      @posts = Kaminari.paginate_array(posts)
-    elsif params[:content]            #キーワード検索
-      @posts = Post.search_with_user_for(params[:content], @user)
-    else
-      @posts = @user.posts
-    end
-    @posts = @posts.page(params[:page]).per(12)
-  end
+    @user  = User.find_by(canonical_name: params[:canonical_name])
+    @posts      = @user.posts&.includes(:post_tags).includes(:post_favorites)
+    @keyword    = params[:keyword]
+    @prefecture = params[:prefecture]
+    @sort       = params[:sort]
+    @posts = @posts.search_with_user_for(@keyword, @user) if @keyword.present?
+    @posts = @posts.where(prefecture: @prefecture)        if @prefecture.present? && (@prefecture != 'unspecified')
+    @posts = @posts.latest if (@sort == 'latest') || (@sort.nil?)
+    @posts = @posts.old    if @sort == 'old'
+    @posts = @posts.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
+  end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
 
   def index #退会済みユーザーも含め表示
-    if params[:latest]                #ソート切り替え(新参順)
-      @users = User.latest
-    elsif params[:old]                #ソート切り替え(古参順)
-      @users = User.old
-    elsif params[:posts_count]        #ソート切り替え(投稿数順)
-      users = User.all.sort {|a,b| 
-        b.posts.size <=> a.posts.size
-      }
-      @users = Kaminari.paginate_array(users)
-    elsif params[:content]            #キーワード検索順
-      @users = User.search_for(params[:content])
-    else
-      @users = User.all
-    end
-    @users = @users.page(params[:page]).per(18)
-  end
+    @users   = User.includes(:posts)
+    @keyword = params[:keyword]
+    @sort    = params[:sort]
+    @users = @users.search_for(@keyword) if @keyword.present?
+    @users = @users.latest               if @sort == 'latest'
+    @users = @users.old                  if @sort == 'old'
+    @users = @users.sort_by { |user| -user.posts.count } if @sort == 'posts_count'
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(18)
+  end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
   
   def cancel
     @user.update(is_active: true)

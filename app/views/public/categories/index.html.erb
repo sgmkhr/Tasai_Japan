@@ -1,5 +1,5 @@
 <p class='guide-links'>
-  <%= link_to I18n.t('top_page'), root_path %>>
+  <%= link_to I18n.t('top_page'), root_path, data: { turbolinks: false } %>>
   <%= link_to I18n.t('menu'),     menu_path %>>
   <%= I18n.t('categories.title') %>
 </p>
@@ -8,17 +8,19 @@
 
 <section>
   
+  <div>
     <%= render 'public/categories/bars', category: @category %>
   </div>
 
   <!--ソート切り替えリンク-->
-  <div class='text-center py-2'>
-  <%= link_to I18n.t('sort.latest'), categories_path(latest: true) %>
-  |<%= link_to I18n.t('sort.old'),   categories_path(old: true) %>
+  <p class='md-font text-center mb-0'><%= I18n.t('sort.with_display_all') %></p>
+  <div class='text-center pb-2'>
+  <%= link_to I18n.t('sort.latest'), categories_path(sort: 'latest') %>
+  |<%= link_to I18n.t('sort.old'),   categories_path(sort: 'old') %>
   </div>
 
   <div class='d-flex flex-wrap justify-content-center'>
-    <% if @categories.exists? %>
+    <% if @categories.any? %>
 
       <% @categories.each do |category| %>
         <%= link_to category_counseling_rooms_path(category.id) do %>

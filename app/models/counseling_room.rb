@@ -16,19 +16,17 @@ class CounselingRoom < ApplicationRecord
 
   validates :topic,  presence: true, length: { maximum: 100 }, uniqueness: { scope: :category }
   validates :detail, presence: true, length: { maximum: 2000 }
-  
+
   # トピック画像を指定サイズへ圧縮してからデータ表示するメソッド
   def get_topic_image(width, height)
     topic_image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   # 指定のカテゴリ内でのキーワード検索メソッド
-  def self.search_with_category_for(content, category)
-    counseling_rooms = CounselingRoom.where(category_id: category.id)
-    return counseling_rooms if content == ''
-    counseling_rooms.where(['topic LIKE(?) OR detail LIKE(?)', "%#{content}%", "%#{content}%"])
+  def self.search_with_category_for(content)
+    CounselingRoom.where(['topic LIKE(?) OR detail LIKE(?)', "%#{content}%", "%#{content}%"])
   end
-  
+
   # タグ情報を保存するためのメソッド
   def save_tags(save_tag_names)
     current_tag_names = self.room_tags.pluck(:name) unless self.room_tags.nil?

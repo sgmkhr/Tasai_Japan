@@ -1,7 +1,7 @@
 ja:
   languages:
-    japanese: 日本語
-    english: 英語
+    japanese: Japanese
+    english: English
   site_name: 多彩な日本
   top_page: トップページ
   login: ログイン
@@ -18,11 +18,15 @@ ja:
   send: 送信
   search_blank: 全件表示は空で検索
   search_tag: タグ検索(完全一致のみ)
+  file_form:
+    label: 画像を選択
+    unselected: 選択されていません
   placeholder:
     canonical_name: 20文字以内の半角英数字
     public_name: 公開用のお名前を入力
     comment: こちらにコメントをどうぞ
     tag_name: ｽﾗｯｼｭ(/)区切りで複数入力
+    introduction: 最大200文字まで入力可能
   guestuser:
     signin:
       notice: ゲストユーザーとしてログインしました。
@@ -195,6 +199,7 @@ ja:
     posts_count: 投稿数順
     participations_count: 参加人数順
     opinions_count: 盛り上がり順
+    with_display_all: 全件表示ソート切替え
   views_count:
     profile: プロフィール閲覧人数：
   relationships:
@@ -227,20 +232,18 @@ ja:
     send: 送信
   notifications:
     messages:
-      chat_room: さんがチャットルームを作成しました
-      comment: にコメントが届きました
-      comment_favorite: さんがあなたのコメントにいいねしました
-      opinion: 相談室で新しい意見が挙がりました
-      opinion_favorite: さんがあなたの意見にいいねしました
-      participation:
-        for_creator: に新しく参加申請が届きました
-      post: さんが新しいおすすめ記事を投稿しました
-      post_favorite: さんがあなたの投稿にいいねしました
+      comment: "%{public_name}が「%{title}」にコメントしました"
+      comment_favorite: "%{public_name}さんがあなたのコメントにいいねしました"
+      opinion: "「%{topic}」相談室で新しい意見が挙がりました"
+      opinion_favorite: "%{public_name}さんがあなたの意見にいいねしました"
+      participation: "「%{topic}」相談室に%{public_name}さんから参加申請が届きました"
+      post: "%{public_name}さんが新しいおすすめ記事「%{title}」を投稿しました"
+      post_favorite: "%{public_name}さんがあなたの投稿「%{title}」にいいねしました"
       profile_view:
         hundred: あなたのプロフィールに100人以上のユーザーが訪れました
         thousand: あなたのプロフィールに1,000人以上のユーザーが訪れました
         ten_thousand: あなたのプロフィールに10,000人以上のユーザーが訪れました
-      relationship: にフォローされました
+      relationship: "%{canonical_name}にフォローされました"
     non_exist: 未読の通知はありません
     limited_by: 直近10件の未読通知を表示しています
     clear_all: 全ての通知を既読にする

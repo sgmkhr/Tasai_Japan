@@ -3,17 +3,14 @@ class Public::CategoriesController < ApplicationController
   before_action :ensure_guest_user, only: [:create]
   
   def index
-    if params[:latest]      #ソート切り替え(作成新しい順)
-      @categories = Category.latest
-    elsif params[:old]      #ソート切り替え(作成古い順)
-      @categories = Category.old
-    elsif params[:content]  #キーワード検索
-      @categories = Category.search_for(params[:content])
-    else
-      @categories = Category.all
-    end
+    @category   = Category.new
+    @categories = Category.all
+    @keyword    = params[:keyword]
+    @sort       = params[:sort]
+    @categories = @categories.search_for(@keyword) if @keyword.present?
+    @categories = @categories.latest if @sort == 'latest'
+    @categories = @categories.old    if @sort == 'old'
     @categories = @categories.page(params[:page]).per(30)
-    @category = Category.new
   end
   
   def create
@@ -31,12 +28,6 @@ class Public::CategoriesController < ApplicationController
   
   def category_params
     params.require(:category).permit(:name)
-  end
-  
-  def ensure_guest_user
-    if current_user.guest_user?
-      redirect_to request.referer, alert: I18n.t('guestuser.validates')
-    end
   end
   
 end

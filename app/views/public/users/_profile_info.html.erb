@@ -1,0 +1,57 @@
+<p class='text-center'>
+  <i class="fa-solid fa-chart-line"></i>
+  <%= I18n.t('views_count.profile') %>
+  <%= user.passive_profile_views.count %>
+</p>
+
+<%= image_tag user.get_profile_image(60, 60), class: 'rounded-circle' %>
+
+<% if user == current_user %><!--自分のページでのみ表示される-->
+  <%= link_to edit_user_path(current_user.canonical_name) do %>
+    <i class="fa-solid fa-gear"></i>
+  <% end %>
+  <%= link_to user_chat_rooms_path(current_user.canonical_name), class: 'btn btn-sm success-btn ml-2 mt-2' do %>
+    <%= I18n.t('chats.index.title') %>
+    <% if current_user.has_unread_chat? %>
+      <span class='ml-2 text-danger'>
+        <i class="fa-solid fa-exclamation"></i>
+      </span>
+    <% end %>
+  <% end %>
+
+<% else %><!--自分のページでない場合-->
+  <span id='follow-btn' class='ml-1'>
+    <%= render 'public/relationships/btn', user: user %>
+  </span>
+  <span id='relationship-status'>
+    <%= render 'public/relationships/relationship', user: user %>
+  </span>
+<% end %>
+
+<!--基本情報-->
+<p class='my-3'><strong><%= user.public_name %></strong></p>
+
+<div class='user-data-display mb-3'>
+  <div id='following-count'>
+    <%= render 'public/relationships/links', user: user %>
+  </div>
+  <%= render 'public/users/count', user: user %>
+
+  <% if user.id == current_user.id %>
+    <p class='text-right mb-0'>
+      <%= link_to user_insite_path(current_user.canonical_name) do %>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+
+<p class='mb-3'> <!--positionによってcss表示カラー変わる-->
+  <%= I18n.t('users.show.position_start') %>
+  <span class=<%= user.get_class_associated_with_position %>>
+    <%= user.position_i18n %>
+  </span>
+  <%= I18n.t('users.show.position_end') %>
+</p>
+
+<p><%= user.introduction %></p>

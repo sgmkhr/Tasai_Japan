@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
      { :locale => I18n.locale }.merge options
   end
   
+  private
+  
+  def ensure_guest_user
+    if current_user.guest_user?
+      redirect_to request.referer, alert: I18n.t('guestuser.validates')
+    end
+  end
+  
 end

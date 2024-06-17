@@ -21,10 +21,10 @@ class Public::ParticipationsController < ApplicationController
   def destroy
     participation = Participation.find(params[:id])
     participation.destroy
-    if participation.user == current_user   #参加者による脱退の場合
+    if participation.user == current_user #参加者による脱退の場合
       flash[:notice] = I18n.t('participations.destroy.by_participation')
       redirect_to category_counseling_room_path(@category.id, @counseling_room.id)
-    else                                    #作成者による参加却下の場合
+    else                                  #作成者による参加却下の場合
       flash[:notice] = I18n.t('participations.destroy.by_creator')
       redirect_to edit_category_counseling_room_path(@category.id, @counseling_room.id)
     end
@@ -32,14 +32,8 @@ class Public::ParticipationsController < ApplicationController
   
   private
   
-  def ensure_guest_user
-    if current_user.guest_user?
-      redirect_to request.referer, alert: I18n.t('guestuser.validates')
-    end
-  end
-  
   def set_category_and_room
-    @category = Category.find(params[:category_id])
+    @category        = Category.find(params[:category_id])
     @counseling_room = CounselingRoom.find(params[:counseling_room_id])
   end
   

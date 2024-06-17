@@ -1,5 +1,5 @@
 <p class='guide-links'>
-  <%= link_to I18n.t('top_page'),         root_path %>>
+  <%= link_to I18n.t('top_page'),         root_path, data: { turbolinks: false } %>>
   <%= link_to I18n.t('menu'),             admin_root_path %>>
   <%= link_to I18n.t('categories.title'), admin_categories_path %>>
   <%= I18n.t('counseling_rooms.search.title') %>
@@ -8,7 +8,7 @@
 <div class='section-title'>
   <h2>
     #<%= @tag_name %>
-    <% if @counseling_rooms.present? %>
+    <% if @counseling_rooms.a? %>
       <%= ' ' + @counseling_rooms.count.to_s + I18n.t('counseling_rooms.search.count') %>
     <% end %>
   </h2>

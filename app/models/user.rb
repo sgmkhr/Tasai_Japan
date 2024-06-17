@@ -97,13 +97,11 @@ class User < ApplicationRecord
   
   # キーワード検索メソッド
   def self.search_for(content)
-    return User.all if content == ''
     User.where(['public_name LIKE(?) OR canonical_name LIKE(?) OR introduction LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
   
   # マイページでのブックマーク投稿のキーワード検索メソッド
   def search_with_bookmarks_for(content)
-    return self.bookmarked_posts if content == ''
     self.bookmarked_posts.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
   

@@ -1,5 +1,5 @@
 <p class='guide-links'>
-  <%= link_to I18n.t('top_page'), root_path %>>
+  <%= link_to I18n.t('top_page'), root_path, data: { turbolinks: false } %>>
   <%= link_to I18n.t('menu'),     admin_root_path %>>
   <%=  I18n.t('menus.users') %>
 </p>
@@ -11,8 +11,13 @@
   <!--検索バー-->
   <%= form_with url: admin_users_path, method: :get, local: true do |f| %>
     <div class='row justify-content-md-end justify-content-center'>
+      <div class='form-group col-md-5 col-10 mb-1'>
+        <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old'],[I18n.t('sort.posts_count'), 'posts_count']], class: 'form-control' %>
+      </div>
+    </div>
+    <div class='row justify-content-md-end justify-content-center'>
       <div class='form-group col-md-5 col-9'>
-        <%= f.text_field :content, class: 'form-control', placeholder: I18n.t('search_blank') %>
+        <%= f.text_field :keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
       </div>
       <div class='form-group mt-1'>
         <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn' %>
@@ -21,14 +26,15 @@
   <% end %>
 
   <!--ソート切り替えリンク-->
-  <div class='d-flex justify-content-center py-2'>
+  <p class='md-font text-center mb-0'><%= I18n.t('sort.with_display_all') %></p>
+  <div class='d-flex justify-content-center pb-2'>
     <div class='d-md-flex'>
       <p class='mb-0'>
-        <%= link_to I18n.t('sort.user_latest'),  admin_users_path(latest: true) %>
-        |<%= link_to I18n.t('sort.user_old'),    admin_users_path(old: true) %>
+        <%= link_to I18n.t('sort.user_latest'),  admin_users_path(sort: 'latest') %>
+        |<%= link_to I18n.t('sort.user_old'),    admin_users_path(sort: 'old') %>
       </p>
       <p class='mb-0'><span class='d-md-inline d-none pl-1'>|</span>
-        <%= link_to I18n.t('sort.posts_count'), admin_users_path(posts_count: true) %>
+        <%= link_to I18n.t('sort.posts_count'), admin_users_path(sort: 'posts_count') %>
       </p>
     </div>
   </div>

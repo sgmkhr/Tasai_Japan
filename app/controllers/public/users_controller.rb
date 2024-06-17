@@ -6,62 +6,47 @@ class Public::UsersController < ApplicationController
 
   def show
     @user  = User.find_by(canonical_name: params[:canonical_name])
-    #以下、投稿データの取得
-    if params[:latest]              #ソート切り替え(作成新しい順)
-      @posts = @user.posts.latest
-    elsif params[:old]              #ソート切り替え(作成古い順)
-      @posts = @user.posts.old
-    elsif params[:favorites_count]  #ソート切り替え(いいね多い順)
-      posts = @user.posts.sort {|a,b|
-        b.post_favorites.size <=> a.post_favorites.size
-      }
-      @posts = Kaminari.paginate_array(posts)
-    elsif params[:content]          #キーワード検索
-      @posts = Post.search_with_user_for(params[:content], @user)
-    else
-      @posts = @user.posts.latest
-    end
-    @posts = @posts.page(params[:page]).per(12)
-    #以下、マイページ内のみ表示のブックマーク投稿データ取得
-    if params[:content_in_bookmarks]  #ブックマーク内キーワード検索
-      @bookmarked_posts = current_user.search_with_bookmarks_for(params[:content_in_bookmarks])
-    else
-      @bookmarked_posts = current_user.bookmarked_posts.latest
-    end
-    @bookmarked_posts = @bookmarked_posts.page(params[:page]).per(12)
+    @posts      = @user.posts&.includes(:post_tags).includes(:post_favorites)
+    @keyword    = params[:keyword]
+    @prefecture = params[:prefecture]
+    @sort       = params[:sort]
+    @keyword_in_bookmarks = params[:keyword_in_bookmarks]
+    @bookmarked_posts = current_user.bookmarked_posts.latest
+
+    @posts = @posts.search_with_user_for(@keyword, @user) if @keyword.present?
+    @posts = @posts.where(prefecture: @prefecture)        if @prefecture.present? && (@prefecture != 'unspecified')
+    @posts = @posts.latest if (@sort == 'latest') || (@sort.nil?)
+    @posts = @posts.old    if @sort == 'old'
+    @posts = @posts&.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
+    @bookmarked_posts = current_user.search_with_bookmarks_for(@keyword_in_bookmarks) if @keyword_in_bookmarks.present?
+
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
+    @bookmarked_posts = Kaminari.paginate_array(@bookmarked_posts).page(params[:page]).per(12)
+    
     #以下、マイページ内のみ表示のフォローユーザー投稿データ取得
-    friends = current_user.followings
-    if friends.present?
-      @friends_posts = Post.where(user_id: friends.ids)
-      if @friends_posts.present?
-        @friends_posts = @friends_posts.latest.page(params[:page]).per(12)
-      end
+    if current_user.followings
+      @friends_posts = Post.where(user_id: current_user.followings.ids)&.latest.page(params[:page]).per(12)
     else
-      @friends_posts = nil
+      @friends_posts = []
     end
+    
     #以下、閲覧カウント
     unless ProfileView.find_by(viewer_id: current_user.id, viewed_id: @user.id)
       current_user.active_profile_views.create(viewed_id: @user.id)
     end
   end
 
-  def index #退会済みユーザーは表示しない
-    if params[:latest]            #ソート切り替え(新参順)
-      @users = User.where(is_active: true).latest
-    elsif params[:old]            #ソート切り替え(古参順)
-      @users = User.where(is_active: true).old
-    elsif params[:posts_count]    #ソート切り替え(投稿数順)
-      users = User.where(is_active: true).sort {|a,b|
-        b.posts.size <=> a.posts.size
-      }
-      @users = Kaminari.paginate_array(users)
-    elsif params[:content]        #キーワード検索
-      @users = User.search_for(params[:content]).where(is_active: true)
-    else
-      @users = User.where(is_active: true)
-    end
-    @users = @users.page(params[:page]).per(18)
-  end
+  def index
+    @users   = User.includes(:posts)
+    @keyword = params[:keyword]
+    @sort    = params[:sort]
+    @users = @users.search_for(@keyword) if @keyword.present?
+    @users = @users.where(is_active: true) #退会済みユーザーは表示しない
+    @users = @users.latest               if @sort == 'latest'
+    @users = @users.old                  if @sort == 'old'
+    @users = @users.sort_by { |user| -user.posts.count } if @sort == 'posts_count'
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(18)
+  end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
 
   def edit
   end
@@ -76,23 +61,19 @@ class Public::UsersController < ApplicationController
   end
 
   def insite
-    @rooms_managing = @user.counseling_rooms.page(params[:page]).per(20)
     @rooms_participated_in = []
-    @rooms_applying_for = []
-    true_participations = Participation.where(user_id: @user.id, status: true)
-    if true_participations
-      true_participations.each do |participation|
-        @rooms_participated_in << participation.counseling_room
-      end
-    end
-    @rooms_participated_in = Kaminari.paginate_array(@rooms_participated_in).page(params[:page]).per(20)
+    @rooms_applying_for    = []
+    true_participations  = Participation.where(user_id: @user.id, status: true)
     false_participations = Participation.where(user_id: @user.id, status: false)
-    if false_participations
-      false_participations.each do |participation|
-        @rooms_applying_for << participation.counseling_room
-      end
+    true_participations&.each do |participation|
+      @rooms_participated_in << participation.counseling_room
     end
-    @rooms_applying_for = Kaminari.paginate_array(@rooms_applying_for).page(params[:page]).per(20)
+    false_participations&.each do |participation|
+      @rooms_applying_for << participation.counseling_room
+    end
+    @rooms_managing        = @user.counseling_rooms.page(params[:page]).per(20)
+    @rooms_participated_in = Kaminari.paginate_array(@rooms_participated_in).page(params[:page]).per(20)
+    @rooms_applying_for    = Kaminari.paginate_array(@rooms_applying_for).page(params[:page]).per(20)
   end
 
   def withdraw
@@ -110,18 +91,9 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:last_name, :first_name, :public_name, :email, :position, :introduction, :profile_image)
   end
 
-  def ensure_guest_user
-    if current_user.guest_user?
-      redirect_to user_path(current_user.canonical_name), alert: I18n.t('guestuser.validates')
-    end
-  end
-
   def ensure_correct_user
-    if params[:canonical_name]
-      user = User.find_by(canonical_name: params[:canonical_name])
-    else
-      user = User.find_by(canonical_name: params[:user_canonical_name])
-    end
+    user = User.find_by(canonical_name: params[:canonical_name])      if params[:canonical_name]
+    user = User.find_by(canonical_name: params[:user_canonical_name]) if params[:user_canonical_name]
     unless user == current_user
       redirect_to users_path, alert: I18n.t('users.incorrect_user.validates')
     end
