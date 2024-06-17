@@ -6,18 +6,18 @@ class Public::UsersController < ApplicationController
 
   def show
     @user  = User.find_by(canonical_name: params[:canonical_name])
-    @posts      = @user.posts&.includes(:post_tags)
+    @posts      = @user.posts&.includes(:post_tags).includes(:post_favorites)
     @keyword    = params[:keyword]
     @prefecture = params[:prefecture]
     @sort       = params[:sort]
     @keyword_in_bookmarks = params[:keyword_in_bookmarks]
     @bookmarked_posts = current_user.bookmarked_posts.latest
-
-    @posts = @posts&.latest if (@sort == 'latest') || (@sort.nil?)
-    @posts = @posts&.old    if @sort == 'old'
-    @posts = @posts&.where(prefecture: @prefecture) if @prefecture.present? && (@prefecture != 'unspecified')
-    @posts = @posts&.search_with_user_for(@keyword, @user) if @keyword.present?
-    @posts = @posts&.includes(:post_favorites).sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
+    
+    @posts = @posts.search_with_user_for(@keyword, @user) if @keyword.present?
+    @posts = @posts.where(prefecture: @prefecture)        if @prefecture.present? && (@prefecture != 'unspecified')
+    @posts = @posts.latest if (@sort == 'latest') || (@sort.nil?)
+    @posts = @posts.old    if @sort == 'old'
+    @posts = @posts&.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
     @bookmarked_posts = current_user.search_with_bookmarks_for(@keyword_in_bookmarks) if @keyword_in_bookmarks.present?
     
     @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
@@ -34,22 +34,16 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def index #退会済みユーザーは表示しない
-    if params[:latest]            #ソート切り替え(新参順)
-      @users = User.where(is_active: true).latest
-    elsif params[:old]            #ソート切り替え(古参順)
-      @users = User.where(is_active: true).old
-    elsif params[:posts_count]    #ソート切り替え(投稿数順)
-      users = User.where(is_active: true).sort {|a,b|
-        b.posts.size <=> a.posts.size
-      }
-      @users = Kaminari.paginate_array(users)
-    elsif params[:content]        #キーワード検索
-      @users = User.search_for(params[:content]).where(is_active: true)
-    else
-      @users = User.where(is_active: true)
-    end
-    @users = @users.page(params[:page]).per(18)
+  def index
+    @users   = User.includes(:posts)
+    @keyword = params[:keyword]
+    @sort    = params[:sort]
+    @users = @users.search_for(@keyword) if @keyword.present?
+    @users = @users.where(is_active: true) #退会済みユーザーは表示しない
+    @users = @users.latest               if @sort == 'latest'
+    @users = @users.old                  if @sort == 'old'
+    @users = @users.sort_by { |user| -user.posts.count } if @sort == 'posts_count'
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(18)
   end
 
   def edit

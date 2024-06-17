@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts      = Post.includes(:post_tags)
+    @posts      = Post.includes(:post_tags).includes(:post_favorites)
     @keyword    = params[:keyword]
     @prefecture = params[:prefecture]
     @sort       = params[:sort]
@@ -17,11 +17,11 @@ class Public::PostsController < ApplicationController
     if @tag_name.present?
       @posts = @posts.where('post_tags.name': @tag_name)
     else
-      @posts = @posts&.latest if (@sort == 'latest') || (@sort.nil?)
-      @posts = @posts&.old    if @sort == 'old'
-      @posts = @posts&.where(prefecture: @prefecture) if @prefecture.present? && (@prefecture != 'unspecified')
-      @posts = @posts&.search_for(@keyword) if @keyword.present?
-      @posts = @posts&.includes(:post_favorites).sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
+      @posts = @posts.search_for(@keyword)           if @keyword.present?
+      @posts = @posts.where(prefecture: @prefecture) if @prefecture.present? && (@prefecture != 'unspecified')
+      @posts = @posts.latest                         if (@sort == 'latest') || (@sort.nil?)
+      @posts = @posts.old                            if @sort == 'old'
+      @posts = @posts.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
     end
     @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
   end

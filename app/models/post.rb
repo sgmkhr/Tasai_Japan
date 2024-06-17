@@ -63,13 +63,11 @@ class Post < ApplicationRecord
   
   # キーワード検索メソッド
   def self.search_for(content)
-    return Post.all if content == ''
     Post.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
   
   # 各ユーザー詳細内でのキーワード検索メソッド
   def self.search_with_user_for(content, user)
-    return Post.where(user_id: user.id) if content == ''
     Post.where(user_id: user.id).where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
   
