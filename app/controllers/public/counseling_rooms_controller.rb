@@ -91,12 +91,6 @@ class Public::CounselingRoomsController < ApplicationController
   def counseling_room_params
     params.require(:counseling_room).permit(:topic, :detail, :topic_image)
   end
-  
-  def ensure_guest_user
-    if current_user.guest_user?
-      redirect_to request.referer, alert: I18n.t('guestuser.validates')
-    end
-  end
 
   def set_category
     @category = Category.find(params[:category_id])

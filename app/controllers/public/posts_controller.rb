@@ -83,12 +83,6 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :caption, :body, :prefecture, :post_image)
   end
-  
-  def ensure_guest_user
-    if current_user.guest_user?
-      redirect_to request.referer, alert: I18n.t('guestuser.validates')
-    end
-  end
 
   def set_selected_post
     @post = Post.find(params[:id])

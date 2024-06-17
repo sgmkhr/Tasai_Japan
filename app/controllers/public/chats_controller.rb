@@ -52,12 +52,6 @@ class Public::ChatsController < ApplicationController
     params.require(:chat).permit(:content, :chat_room_id)
   end
 
-  def ensure_guest_user
-    if current_user.guest_user?
-      redirect_to request.referer, alert: I18n.t('guestuser.validates')
-    end
-  end
-
   def ensure_permitted_user
     user = User.find_by(canonical_name: params[:user_canonical_name])
     unless user.id == current_user.id

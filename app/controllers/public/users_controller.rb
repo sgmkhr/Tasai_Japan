@@ -110,12 +110,6 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:last_name, :first_name, :public_name, :email, :position, :introduction, :profile_image)
   end
 
-  def ensure_guest_user
-    if current_user.guest_user?
-      redirect_to user_path(current_user.canonical_name), alert: I18n.t('guestuser.validates')
-    end
-  end
-
   def ensure_correct_user
     if params[:canonical_name]
       user = User.find_by(canonical_name: params[:canonical_name])
