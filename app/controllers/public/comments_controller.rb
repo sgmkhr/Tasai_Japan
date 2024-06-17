@@ -4,7 +4,7 @@ class Public::CommentsController < ApplicationController
   before_action :ensure_comment_author_and_set_comment, only: [:destroy]
 
   def create
-    @post = Post.find(params[:post_id])
+    @post    = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
     render :validator unless @comment.save
@@ -24,7 +24,7 @@ class Public::CommentsController < ApplicationController
 
   def ensure_comment_author_and_set_comment
     @comment = Comment.find(params[:id])
-    @post = Post.find(params[:post_id])
+    @post    = Post.find(params[:post_id])
     unless @comment.user == current_user
       redirect_to post_path(@post.id), alert: I18n.t('comments.validates')
     end

@@ -24,7 +24,7 @@ class Public::OpinionsController < ApplicationController
   end
   
   def set_category_and_room
-    @category = Category.find(params[:category_id])
+    @category        = Category.find(params[:category_id])
     @counseling_room = CounselingRoom.find(params[:counseling_room_id])
   end
   

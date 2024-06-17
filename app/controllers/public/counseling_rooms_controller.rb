@@ -14,7 +14,7 @@ class Public::CounselingRoomsController < ApplicationController
     @counseling_rooms = @counseling_rooms.sort_by { |room| -room.participations.count } if @sort == 'participations_count'
     @counseling_rooms = @counseling_rooms.sort_by { |room| -room.opinions.count }       if @sort == 'opinions_count'
     @counseling_rooms = Kaminari.paginate_array(@counseling_rooms).page(params[:page]).per(20)
-  end
+  end                   #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
 
   def new
     @counseling_room = CounselingRoom.new
@@ -23,7 +23,7 @@ class Public::CounselingRoomsController < ApplicationController
   def create
     @counseling_room = CounselingRoom.new(counseling_room_params)
     @counseling_room.category_id = @category.id
-    @counseling_room.user_id = current_user.id
+    @counseling_room.user_id     = current_user.id
     tag_name_list = params[:counseling_room][:tag_name].split('/')
     if @counseling_room.save
       @counseling_room.save_tags(tag_name_list)
@@ -36,9 +36,9 @@ class Public::CounselingRoomsController < ApplicationController
 
   def show
     @counseling_room = CounselingRoom.find(params[:id])
-    @participations = @counseling_room.participations.where(status: true) #参加承認を受けているユーザーのみ表示
-    @participation = current_user.participations.find_by(counseling_room_id: @counseling_room.id)
-    @opinion = Opinion.new
+    @participations  = @counseling_room.participations.where(status: true) #参加承認を受けているユーザーのみ表示
+    @participation   = current_user.participations.find_by(counseling_room_id: @counseling_room.id)
+    @opinion  = Opinion.new
     @opinions = @counseling_room.opinions
   end
 

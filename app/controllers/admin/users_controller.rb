@@ -12,9 +12,9 @@ class Admin::UsersController < ApplicationController
     @posts = @posts.where(prefecture: @prefecture)        if @prefecture.present? && (@prefecture != 'unspecified')
     @posts = @posts.latest if (@sort == 'latest') || (@sort.nil?)
     @posts = @posts.old    if @sort == 'old'
-    @posts = @posts&.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
+    @posts = @posts.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
     @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
-  end
+  end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
 
   def index #退会済みユーザーも含め表示
     @users   = User.includes(:posts)
@@ -25,7 +25,7 @@ class Admin::UsersController < ApplicationController
     @users = @users.old                  if @sort == 'old'
     @users = @users.sort_by { |user| -user.posts.count } if @sort == 'posts_count'
     @users = Kaminari.paginate_array(@users).page(params[:page]).per(18)
-  end
+  end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
   
   def cancel
     @user.update(is_active: true)

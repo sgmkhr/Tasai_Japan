@@ -17,7 +17,7 @@ class Admin::PostsController < ApplicationController
       @posts = @posts.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
     end
     @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
-  end
+  end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
 
   def show
     @post = Post.find(params[:id])
