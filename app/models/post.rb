@@ -86,10 +86,12 @@ class Post < ApplicationRecord
     current_tag_names = self.post_tags.pluck(:name) unless self.post_tags.nil?
     old_tag_names = current_tag_names - save_tag_names
     new_tag_names = save_tag_names - current_tag_names
+    
     old_tag_names.each do |old_tag_name|
       post_tag = PostTag.find_by(name: old_tag_name)
       RelatedPostTag.find_by(post_tag_id: post_tag.id).destroy
     end
+    
     new_tag_names.each do |new_tag_name|
       post_tag = PostTag.find_or_create_by(name: new_tag_name)
       self.post_tags << post_tag
