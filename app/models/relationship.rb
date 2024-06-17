@@ -13,7 +13,7 @@ class Relationship < ApplicationRecord
   
   # 表示する通知メッセージを取得するメソッド
   def notification_message
-    follower.canonical_name + I18n.t('notifications.messages.relationship')
+    I18n.t('notifications.messages.relationship', canonical_name: follower.canonical_name)
   end
   
   # 通知クリック時のパス先指定のメソッド

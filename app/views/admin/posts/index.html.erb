@@ -1,17 +1,17 @@
 <p class='guide-links'>
-  <%= link_to I18n.t('top_page'), root_path %>>
+  <%= link_to I18n.t('top_page'), root_path, data: { turbolinks: false } %>>
   <%= link_to I18n.t('menu'),     admin_root_path %>>
   <%= I18n.t('posts.index.title') %>
 </p>
 
 <div class='section-title'>
   <h2>
-    <% if @tag_name.present? %>
-      #<%= @tag_name　%>
-      <% if @posts.present? %>
+    <% if @tag_name %>
+      #<%= @tag_name %>
+      <% if @posts %>
         <%= ' ' + @posts.count.to_s + I18n.t('posts.index.count') %>
       <% end %>
-    <% elsif @keyword.present? || @prefecture.present? %>
+    <% elsif @keyword || @prefecture %>
       <%= I18n.t('posts.index.prefecture') + I18n.t('enums.post.prefecture.' + @prefecture) %>
       </br><i class="fa-solid fa-magnifying-glass"></i><%= '「' + @keyword + '」' %>
     <% else %>
@@ -25,10 +25,11 @@
   <%= render 'admin/posts/bars' %>
 
   <!--ソート切り替えリンク-->
-  <div class='text-center py-2'>
-  <%= link_to I18n.t('sort.latest'), admin_posts_path(latest: true) %>
-  |<%= link_to I18n.t('sort.old'), admin_posts_path(old: true) %>
-  |<%= link_to I18n.t('sort.favorites_count'), admin_posts_path(favorites_count: true) %>
+  <p class='md-font text-center mb-0'><%= I18n.t('sort.with_display_all') %></p>
+  <div class='text-center pb-2'>
+  <%= link_to I18n.t('sort.latest'), admin_posts_path(sort: 'latest') %>
+  |<%= link_to I18n.t('sort.old'), admin_posts_path(sort: 'old') %>
+  |<%= link_to I18n.t('sort.favorites_count'), admin_posts_path(sort: 'favorites_count') %>
   </div>
 
   <!--投稿一覧表示-->

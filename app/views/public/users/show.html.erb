@@ -1,5 +1,5 @@
 <p class='guide-links'>
-  <%= link_to I18n.t('top_page'),    root_path %>>
+  <%= link_to I18n.t('top_page'),    root_path, data: { turbolinks: false } %>>
   <%= link_to I18n.t('menu'),        menu_path %>>
   <%= link_to I18n.t('menus.users'), users_path %>>
   @<%= @user.canonical_name %>
@@ -18,169 +18,99 @@
 <section>
 
   <div class='row justify-content-center'>
+
     <div class='col-md-4'><!--ユーザーの情報-->
-
-      <p class='text-center'>
-        <i class="fa-solid fa-chart-line"></i>
-        <%= I18n.t('views_count.profile') %>
-        <%= @user.passive_profile_views.count %>
-      </p>
-
-      <%= image_tag @user.get_profile_image(60, 60), class: 'rounded-circle' %>
-
-      <% if @user == current_user %><!--自分のページでのみ表示される-->
-
-        <%= link_to edit_user_path(current_user.canonical_name) do %>
-          <i class="fa-solid fa-gear"></i>
-        <% end %>
-
-        <%= link_to user_chat_rooms_path(current_user.canonical_name), class: 'btn btn-sm success-btn ml-2 mt-2' do %>
-          <%= I18n.t('chats.index.title') %>
-          <% if current_user.has_unread_chat? %>
-            <span class='ml-2 text-danger'>
-              <i class="fa-solid fa-exclamation"></i>
-            </span>
-          <% end %>
-        <% end %>
-
-      <% else %><!--自分のページでない場合-->
-
-        <span id='follow-btn' class='ml-1'>
-          <%= render 'public/relationships/btn', user: @user %>
-        </span>
-        
-        <span id='relationship-statu'>
-          <%= render 'public/relationships/relationship', user: @user %>
-        </span>
-
-      <% end %>
-
-      <!--基本情報-->
-      <p class='my-3'><strong><%= @user.public_name %></strong></p>
-
-      <div class='user-data-display mb-3'>
-        <div id='following-count'>
-          <%= render 'public/relationships/links', user: @user %>
-        </div>
-        <%= render 'public/users/count', user: @user %>
-
-        <% if @user.id == current_user.id %>
-          <p class='text-right mb-0'>
-            <%= link_to user_insite_path(current_user.canonical_name) do %>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            <% end %>
-          </p>
-        <% end %>
-      </div>
-
-      <p class='mb-3'> <!--positionによってcss表示カラー変わる-->
-        <%= I18n.t('users.show.position_start') %>
-        <span class=<%= @user.get_class_associated_with_position %>>
-          <%= @user.position_i18n %>
-        </span>
-        <%= I18n.t('users.show.position_end') %>
-      </p>
-
-      <p><%= @user.introduction %></p>
+      <%= render 'public/users/profile_info', user: @user %>
     </div>
 
     <div class='col-md-8'>
 
       <!--以下、マイページの場合に表示される内容-->
       <% if @user == current_user %>
-
         <%= link_to new_post_path do %>
           <%= I18n.t('posts.new.title') %>
           <i class="fa-solid fa-plus"></i>
         <% end %>
 
         <ul id="tab-menu" class='d-flex justify-content-center mt-3'>
-          <li>
-            <a href="#user_posts_tab" class="active"><i class="fa-solid fa-user"></i></a>
-          </li>
-          <li>
-            <a href="#bookmarked_posts_tab" class=""><i class="fa-solid fa-bookmark"></i></a>
-          </li>
-          <li>
-            <a href="#followusers_posts_tab" class=""><i class="fa-solid fa-users"></i></a>
-          </li>
+          <li><a href="#user_posts_tab" class="active"><i class="fa-solid fa-user"></i></a></li>
+          <li><a href="#bookmarked_posts_tab" class=""><i class="fa-solid fa-bookmark"></i></a></li>
+          <li><a href="#followusers_posts_tab" class=""><i class="fa-solid fa-users"></i></a></li>
         </ul>
 
         <div id='tab-contents'>
 
           <!--以下、「ユーザー投稿一覧」タブ選択時の表示-->
           <div id='user_posts_tab' class='tab'>
-
             <p class='text-center tab-title'><%= I18n.t('users.show.user_posts_tab') %></p>
-
             <!--検索バー-->
             <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
               <div class='row justify-content-md-end justify-content-center'>
+                <div class='form-group col-md-5 col-10 mb-1'>
+                  <%= f.select :prefecture, Post.prefectures.keys.map {|k| [I18n.t("enums.post.prefecture.#{k}"), k]}, class: 'form-control' %>
+                  <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old'],[I18n.t('sort.favorites_count'), 'favorites_count']], class: 'form-control ml-1' %>
+                </div>
+              </div>
+              <div class='row justify-content-md-end justify-content-center'>
                 <div class='form-group col-md-5 col-9'>
-                  <%= f.text_field :content, class: 'form-control', placeholder: I18n.t('search_blank') %>
+                  <%= f.text_field :keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
                 </div>
                 <div class='form-group mt-1'>
                   <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn' %>
                 </div>
               </div>
             <% end %>
-
             <!--ソート切り替えリンク-->
-            <div class='text-center py-2'>
-            <%= link_to I18n.t('sort.latest'), user_path(@user.canonical_name, latest: true) %>
-            |<%= link_to I18n.t('sort.old'), user_path(@user.canonical_name, old: true) %>
-            |<%= link_to I18n.t('sort.favorites_count'), user_path(@user.canonical_name, favorites_count: true) %>
+            <p class='md-font text-center mb-0'><%= I18n.t('sort.with_display_all') %></p>
+            <div class='text-center pb-2'>
+            <%= link_to I18n.t('sort.latest'), user_path(@user.canonical_name, sort: 'latest') %>
+            |<%= link_to I18n.t('sort.old'), user_path(@user.canonical_name, sort: 'old') %>
+            |<%= link_to I18n.t('sort.favorites_count'), user_path(@user.canonical_name, sort: 'favorites_count') %>
             </div>
-
             <!--ユーザーの投稿一覧表示-->
             <%= render 'public/posts/index', posts: @posts %>
-
           </div>
 
           <!--以下、「ブックマーク一覧」タブ選択時の表示-->
           <div id='bookmarked_posts_tab' class='tab'>
-
             <p class='text-center tab-title'><%= I18n.t('users.show.bookmarked_posts_tab') %></p>
-
             <!--ブックマーク検索バー-->
             <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
               <div class='row justify-content-md-end justify-content-center'>
                 <div class='form-group col-md-5 col-9'>
-                  <%= f.text_field :content_in_bookmarks, class: 'form-control', placeholder: I18n.t('search_blank') %>
+                  <%= f.text_field :keyword_in_bookmarks, class: 'form-control', placeholder: I18n.t('search_blank') %>
                 </div>
                 <div class='form-group mt-1'>
                   <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn' %>
                 </div>
               </div>
             <% end %>
-
             <!--ユーザーのブックマーク一覧表示-->
             <%= render 'public/posts/index', posts: @bookmarked_posts %>
-
           </div>
 
           <!--以下、「フォローユーザー投稿一覧」タブ選択時の表示-->
           <div id='followusers_posts_tab' class='tab'>
-
             <p class='text-center tab-title'><%= I18n.t('users.show.followusers_posts_tab') %></p>
-
             <!--フォローユーザー投稿一覧表示-->
             <%= render 'public/posts/index', posts: @friends_posts %>
-
           </div>
-
         </div>
-
         <%= javascript_pack_tag 'mypage_tab' %>
 
       <!--以下、マイページではない場合に表示される内容-->
       <% else %>
-
         <!--検索バー-->
         <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
           <div class='row justify-content-md-end justify-content-center'>
+            <div class='form-group col-md-5 col-10 mb-1'>
+              <%= f.select :prefecture, Post.prefectures.keys.map {|k| [I18n.t("enums.post.prefecture.#{k}"), k]}, class: 'form-control' %>
+              <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old'],[I18n.t('sort.favorites_count'), 'favorites_count']], class: 'form-control ml-1' %>
+            </div>
+          </div>
+          <div class='row justify-content-md-end justify-content-center'>
             <div class='form-group col-md-5 col-9'>
-              <%= f.text_field :content, class: 'form-control', placeholder: I18n.t('search_blank') %>
+              <%= f.text_field :keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
             </div>
             <div class='form-group mt-1'>
               <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn' %>
@@ -189,10 +119,11 @@
         <% end %>
 
         <!--ソート切り替えリンク-->
-        <div class='text-center py-2'>
-        <%= link_to I18n.t('sort.latest'), user_path(@user.canonical_name, latest: true) %>
-        |<%= link_to I18n.t('sort.old'), user_path(@user.canonical_name, old: true) %>
-        |<%= link_to I18n.t('sort.favorites_count'), user_path(@user.canonical_name, favorites_count: true) %>
+        <p class='md-font text-center mb-0'><%= I18n.t('sort.with_display_all') %></p>
+        <div class='text-center pb-2'>
+        <%= link_to I18n.t('sort.latest'), user_path(@user.canonical_name, sort: 'latest') %>
+        |<%= link_to I18n.t('sort.old'), user_path(@user.canonical_name, sort: 'old') %>
+        |<%= link_to I18n.t('sort.favorites_count'), user_path(@user.canonical_name, sort: 'favorites_count') %>
         </div>
 
         <!--ユーザーの投稿一覧表示-->

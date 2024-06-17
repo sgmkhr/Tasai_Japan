@@ -9,35 +9,22 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    if params[:latest]              #ソート切り替え(新着順)
-      @posts = Post.latest
-    elsif params[:old]              #ソート切り替え(古い順)
-      @posts = Post.old
-    elsif params[:favorites_count]  #ソート切り替え(いいね多い順)
-      posts = Post.all.sort {|a,b| 
-        b.post_favorites.size <=> a.post_favorites.size
-      }
-      @posts = Kaminari.paginate_array(posts)
-    elsif params[:tag_name]         #タグ検索
-      @tag_name = params[:tag_name]
-      post_tag = PostTag.find_by(name: @tag_name)
-      if post_tag
-        @posts = post_tag.posts
-      else
-        return @posts = nil
-      end
-    elsif params[:content]          #キーワード検索
-      @keyword = params[:content]
-      @prefecture = params[:prefecture]
-      @posts = Post.search_for(@keyword)
-      if @posts && (@prefecture != 'unspecified')
-        @posts = @posts.where(prefecture: @prefecture)
-      end
+    @posts      = Post.includes(:post_tags).includes(:post_favorites)
+    @keyword    = params[:keyword]
+    @prefecture = params[:prefecture]
+    @sort       = params[:sort]
+    @tag_name   = params[:tag_name]
+    if @tag_name.present?
+      @posts = @posts.where('post_tags.name': @tag_name)
     else
-      @posts = Post.latest
+      @posts = @posts.search_for(@keyword)           if @keyword.present?
+      @posts = @posts.where(prefecture: @prefecture) if @prefecture.present? && (@prefecture != 'unspecified')
+      @posts = @posts.latest                         if (@sort == 'latest') || (@sort.nil?)
+      @posts = @posts.old                            if @sort == 'old'
+      @posts = @posts.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
     end
-    @posts = @posts.page(params[:page]).per(12)
-  end
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
+  end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
 
   def show
     @comment = Comment.new
@@ -82,12 +69,6 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :caption, :body, :prefecture, :post_image)
-  end
-  
-  def ensure_guest_user
-    if current_user.guest_user?
-      redirect_to request.referer, alert: I18n.t('guestuser.validates')
-    end
   end
 
   def set_selected_post

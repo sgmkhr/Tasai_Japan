@@ -48,7 +48,7 @@ class Post < ApplicationRecord
   
   # 表示する通知メッセージを取得するメソッド
   def notification_message
-    user.public_name + I18n.t('notifications.messages.post')
+    I18n.t('notifications.messages.post', public_name: user.public_name, title: title)
   end
   
   # 通知クリック時のパス先指定のメソッド
@@ -63,13 +63,11 @@ class Post < ApplicationRecord
   
   # キーワード検索メソッド
   def self.search_for(content)
-    return Post.all if content == ''
     Post.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
   
   # 各ユーザー詳細内でのキーワード検索メソッド
   def self.search_with_user_for(content, user)
-    return Post.where(user_id: user.id) if content == ''
     Post.where(user_id: user.id).where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
   
@@ -88,10 +86,12 @@ class Post < ApplicationRecord
     current_tag_names = self.post_tags.pluck(:name) unless self.post_tags.nil?
     old_tag_names = current_tag_names - save_tag_names
     new_tag_names = save_tag_names - current_tag_names
+    
     old_tag_names.each do |old_tag_name|
       post_tag = PostTag.find_by(name: old_tag_name)
       RelatedPostTag.find_by(post_tag_id: post_tag.id).destroy
     end
+    
     new_tag_names.each do |new_tag_name|
       post_tag = PostTag.find_or_create_by(name: new_tag_name)
       self.post_tags << post_tag

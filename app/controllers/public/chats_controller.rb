@@ -17,9 +17,9 @@ class Public::ChatsController < ApplicationController
     @user = User.find(params[:id])
     room_ids = current_user.entries.pluck(:chat_room_id)
     entry = Entry.find_by(user_id: @user.id, chat_room_id: room_ids)
-    if entry      #相手とのチャットルームがすでに存在する場合
+    if entry #相手とのチャットルームがすでに存在する場合
       @room = entry.chat_room
-    else          #相手とのチャットルームがまだ存在しない場合
+    else     #相手とのチャットルームがまだ存在しない場合
       @room = ChatRoom.new
       @room.save
       Entry.create(user_id: current_user.id, chat_room_id: @room.id)
@@ -29,7 +29,7 @@ class Public::ChatsController < ApplicationController
     @chat = Chat.new
     @room.read_chats(@user) #ルーム内の相手の未読チャットを既読にするメソッド
     if @chats && @chats.where(content: I18n.t('chats.index.zero_chat_history'))
-      @chats.where(content: I18n.t('chats.index.zero_chat_history')).destroy_all
+      @chats.where(content: I18n.t('chats.index.zero_chat_history')).destroy_all #チャット一覧でチャット履歴のないルームに付与されるダミーチャットの削除
     end
   end
 
@@ -50,12 +50,6 @@ class Public::ChatsController < ApplicationController
 
   def chat_params
     params.require(:chat).permit(:content, :chat_room_id)
-  end
-
-  def ensure_guest_user
-    if current_user.guest_user?
-      redirect_to request.referer, alert: I18n.t('guestuser.validates')
-    end
   end
 
   def ensure_permitted_user

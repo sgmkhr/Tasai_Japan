@@ -15,7 +15,7 @@ class OpinionFavorite < ApplicationRecord
   
   # 表示する通知メッセージを取得するメソッド
   def notification_message
-    user.public_name + I18n.t('notifications.messages.opinion_favorite')
+    I18n.t('notifications.messages.opinion_favorite', public_name: user.public_name)
   end
   
   # 通知クリック時のパス先指定のメソッド

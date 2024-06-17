@@ -15,9 +15,9 @@ class ProfileView < ApplicationRecord
   
   # 表示する通知メッセージを取得するメソッド
   def notification_message
-    if self.count < 1000
+    if viewed.passive_profile_views.count < 1000
       I18n.t('notifications.messages.profile_view.hundred')
-    elsif self.count < 10000
+    elsif viewed.passive_profile_views.count < 10000
       I18n.t('notifications.messages.profile_view.thousand')
     else
       I18n.t('notifications.messages.profile_view.ten_thousand')

@@ -25,7 +25,7 @@ class Opinion < ApplicationRecord
 
   # 表示する通知メッセージを取得するメソッド
   def notification_message
-    I18n.t('notifications.messages.opinion')
+    I18n.t('notifications.messages.opinion', topic: counseling_room.topic)
   end
 
   # 通知クリック時のパス先指定のメソッド

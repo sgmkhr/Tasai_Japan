@@ -1,5 +1,5 @@
 <p class='guide-links'>
-  <%= link_to I18n.t('top_page'), root_path %>>
+  <%= link_to I18n.t('top_page'), root_path, data: { turbolinks: false } %>>
   <%= link_to I18n.t('menu'),     admin_root_path %>>
   <%= I18n.t('categories.title') %>
 </p>
@@ -11,8 +11,13 @@
   <!--キーワード検索バー-->
   <%= form_with url: admin_categories_path, method: :get, local: true do |f| %>
     <div class='row justify-content-md-end justify-content-center'>
+      <div class='form-group col-md-5 col-10 mb-1'>
+        <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old']], class: 'form-control' %>
+      </div>
+    </div>
+    <div class='row justify-content-md-end justify-content-center'>
       <div class='form-group col-md-5 col-9'>
-        <%= f.text_field :content, class: 'form-control', placeholder: I18n.t('search_blank') %>
+        <%= f.text_field :keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
       </div>
       <div class='form-group mt-1'>
         <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn' %>
@@ -33,14 +38,15 @@
   <% end %>
   
   <!--ソート切り替えリンク-->
-  <div class='text-center py-2'>
-  <%= link_to I18n.t('sort.latest'), admin_categories_path(latest: true) %>
-  |<%= link_to I18n.t('sort.old'),   admin_categories_path(old: true) %>
+  <p class='md-font text-center mb-0'><%= I18n.t('sort.with_display_all') %></p>
+  <div class='text-center pb-2'>
+  <%= link_to I18n.t('sort.latest'), admin_categories_path(sort: 'latest') %>
+  |<%= link_to I18n.t('sort.old'),   admin_categories_path(sort: 'old') %>
   </div> 
   
   <div class='d-flex flex-wrap justify-content-center'>
     
-    <% if @categories.exists? %>
+    <% if @categories.any? %>
     
       <% @categories.each do |category| %>
         <%= link_to admin_category_counseling_rooms_path(category.id) do %>

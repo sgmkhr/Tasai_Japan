@@ -23,14 +23,8 @@ class Public::OpinionsController < ApplicationController
     params.require(:opinion).permit(:content)
   end
   
-  def ensure_guest_user
-    if current_user.guest_user?
-      redirect_to request.referer, alert: I18n.t('guestuser.validates')
-    end
-  end
-  
   def set_category_and_room
-    @category = Category.find(params[:category_id])
+    @category        = Category.find(params[:category_id])
     @counseling_room = CounselingRoom.find(params[:counseling_room_id])
   end
   

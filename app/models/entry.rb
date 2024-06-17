@@ -23,13 +23,13 @@ class Entry < ApplicationRecord
 
   # 対象entryに紐ずくチャットルーム内の最終チャットデータを取得するメソッド
   def get_last_chat(user)
-    if self.chat_room.chats.exists?
-      chats = Chat.latest.where(chat_room_id: self.chat_room_id)
+    if chat_room.chats.present?
+      chats = Chat.where(chat_room_id: self.chat_room_id).latest
       return chats[0]
     else
       #このデータがないと、チャット一覧にルーム二つ以上且つチャット履歴のないルームがある際にエラーになる
-      Chat.find_or_create_by!(user_id: user.id) do |chat|
-        chat.chat_room_id = self.chat_room_id
+      Chat.find_or_create_by!(chat_room_id: chat_room.id) do |chat|
+        chat.user_id = user.id
         chat.content = I18n.t('chats.index.zero_chat_history')
         chat.created_at = self.chat_room.created_at
         chat.updated_at = self.chat_room.created_at
