@@ -10,52 +10,52 @@
 <div class='section-title'><h2><%= I18n.t('inquiries.confirm.title') %></h2></div>
 
 <section>
-  
+
   <div class='row justify-content-center'>
-    <h4 class='col-md-3 col-10'>
+    <h7 class='col-md-3 col-10'>
       <%= Inquiry.human_attribute_name(:name) %>
-    </h4>
+    </h7>
     <p class='col-md-7 col-10'>
       <%= @inquiry.name %>
     </p>
   </div>
-  
+
   <div class='row justify-content-center'>
-    <h4 class='col-md-3 col-10'>
+    <h7 class='col-md-3 col-10'>
       <%= Inquiry.human_attribute_name(:email) %>
-    </h4>
+    </h7>
     <p class='col-md-7 col-10'>
       <%= @inquiry.email %>
     </p>
   </div>
-  
+
   <div class='row justify-content-center'>
-    <h4 class='col-md-3 col-10'>
+    <h7 class='col-md-3 col-10'>
       <%= Inquiry.human_attribute_name(:phone_number) %>
-    </h4>
+    </h7>
     <p class='col-md-7 col-10'>
       <%= @inquiry.phone_number %>
     </p>
   </div>
-  
+
   <div class='row justify-content-center'>
-    <h4 class='col-md-3 col-10'>
+    <h7 class='col-md-3 col-10'>
       <%= Inquiry.human_attribute_name(:subject) %>
-    </h4>
+    </h7>
     <p class='col-md-7 col-10'>
-      <%= @inquiry.subject %>
+      <%= @inquiry.subject_i18n %>
     </p>
   </div>
-  
+
   <div class='row justify-content-center'>
-    <h4 class='col-md-3 col-10'>
+    <h7 class='col-md-3 col-10'>
       <%= Inquiry.human_attribute_name(:body) %>
-    </h4>
+    </h7>
     <p class='col-md-7 col-10'>
       <%= @inquiry.body %>
     </p>
   </div>
-  
+
   <div class='actions d-flex justify-content-center col-10 mt-5'>
     <%= form_with model: @inquiry do |f| %>
       <%= f.hidden_field :name %>
@@ -65,7 +65,7 @@
       <%= f.hidden_field :body %>
       <%= f.submit I18n.t('send'), class: 'btn btn-sm success-btn' %>
     <% end %>
-    
+
     <%= form_with model: @inquiry, url: inquiry_back_path do |f| %>
       <%= f.hidden_field :name %>
       <%= f.hidden_field :email %>
@@ -75,5 +75,5 @@
       <%= f.submit I18n.t('inquiries.confirm.back_btn'), class: 'btn btn-sm success-btn ml-3' %>
     <% end %>
   </div>
-  
+
 </section>
