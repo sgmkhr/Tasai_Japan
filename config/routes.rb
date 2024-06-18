@@ -66,6 +66,10 @@ Rails.application.routes.draw do
       resources :chats, only: [:show, :create, :destroy]
       resources :notifications, only: [:update]
       patch 'clear_all_notifications', to: 'notifications#clear_all', as: 'clear_all_notifications'
+      resources :inquiries, only: [:new, :create]
+      post 'inquiries/confirm', to: 'inquiries#confirm', as: 'inquiry_confirm'
+      post 'inquiries/back', to: 'inquiries#back', as: 'inquiry_back'
+      get 'inquiries/done', to: 'inquiries#done', as: 'inquiry_done'
     end
 
   end

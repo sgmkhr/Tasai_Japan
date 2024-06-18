@@ -108,9 +108,12 @@ en:
       managing_rooms_tab: Your rooms
       participating_rooms_tab: Participating
       applying_rooms_tab: Applying
-    unsubscribe: Unsubscribe
-    unsubscribe_confirmation: Are you sure you want to proceed to the cancellation process?
-    unsubscribe_cancel: Cancel unsubscribing
+    unsubscribe:
+      title: Unsubscribe page
+      btn: Unsubscribe
+      information: The data will be retained even after you delete the account. If you wish to restore your account or delete the data completely, please contact us from the about page.
+      confirmation: Are you sure you want to proceed to the cancellation process?
+      cancel: Cancel unsubscribing
   admin:
     login_link: Log in as an administrator
     users:
@@ -280,6 +283,21 @@ en:
     non_exist: No unread notification exists.
     limited_by: Only the last 10 unread notifications are being displayed.
     clear_all: Clear all the notifications
+  inquiries:
+    text1_not_to_switch_languages: Please don't switch languages.
+    text2_not_to_switch_languages: Otherwise input data will be lost.
+    to_contact: Contact the administrator
+    send_failed: Failed to send.
+    new:
+      title: Inquiry form
+      submit_btn: Confirm
+    confirm:
+      title: Confirmation
+      back_btn: Back to the form page
+    done:
+      title: Your inquiry completed
+      message: We have received your inquiry. We usually reply within a week. Please be patient until we respond.
+      link_to_menu: To the menu page
 
   enums:
     user:
@@ -338,6 +356,13 @@ en:
         okinawa: Okinawa
         others: Others
         unspecified: Unspecified
+    inquiry:
+      subject:
+        system_issue: About system issues
+        malicious_user: Report a malicious user
+        activate_account: Activate your withdrew account
+        destroy_account_data: Destroy your account data
+        other: other
 
   activerecord:
     models:
@@ -350,6 +375,7 @@ en:
       opinion: opinion
       post_tag: post tag
       room_tag: room tag
+      inquiry: inquiry
     attributes:
       post:
         post_image: post image
@@ -375,5 +401,11 @@ en:
         name: name
       room_tag:
         name: name
+      inquiry:
+        name: Full name
+        email: Email
+        phone_number: Phone number
+        subject: Subject
+        body: Contents
   errors:
     count: " errors have occurred."

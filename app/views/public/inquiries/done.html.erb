@@ -1,0 +1,16 @@
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'), root_path, data: { turbolinks: false } %>>
+  <%= link_to I18n.t('menu'),     menu_path %>>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('inquiries.done.title') %></h2></div>
+
+<section>
+  
+  <p class='mt-5 text-center'>
+    <%= I18n.t('inquiries.done.message') %>
+  </p>
+  
+  <p class='text-center mt-5'><%= link_to I18n.t('inquiries.done.link_to_menu'), menu_path %></p>
+  
+</section>
