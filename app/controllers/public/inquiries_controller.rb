@@ -10,12 +10,12 @@ class Public::InquiriesController < ApplicationController
       render :new
     end
   end
-　
+  
   def back # 入力内容を保持したまま入力画面に戻れるようにする
     @inquiry = Inquiry.new(inquiry_params)
     render :new
   end
-
+  
   def create
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
@@ -32,8 +32,8 @@ class Public::InquiriesController < ApplicationController
 
   private
 
-  def contact_params
-    params.require(:contact).permit(:email, :name, :phone_number, :subject, :body)
+  def inquiry_params
+    params.require(:inquiry).permit(:email, :name, :phone_number, :subject, :body)
   end
   
 end

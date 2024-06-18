@@ -75,9 +75,12 @@ ja:
       managing_rooms_tab: あなたの相談室
       participating_rooms_tab: 参加中相談室
       applying_rooms_tab: 参加申請中
-    unsubscribe: 退会する
-    unsubscribe_confirmation: 本当に退会処理に進んでよろしいですか？
-    unsubscribe_cancel: 退会しない
+    unsubscribe:
+      title: 退会画面
+      btn: 退会する
+      information: 退会処理後もデータは保持されます。アカウント復活やデータの完全削除をご希望の場合は、アバウトページより管理者へ問い合わせください。
+      confirmation: 本当に退会処理に進んでよろしいですか？
+      cancel: 退会しない
   admin:
     login_link: 管理者ログイン
     users:
@@ -248,6 +251,9 @@ ja:
     limited_by: 直近10件の未読通知を表示しています
     clear_all: 全ての通知を既読にする
   inquiries:
+    text1_not_to_switch_languages: 言語切り替えはしないでください。
+    text2_not_to_switch_languages: 入力したデータが失われます。
+    to_contact: 管理者へ問い合わせる
     send_failed: 送信に失敗しました
     new:
       title: お問い合わせフォーム
@@ -255,7 +261,11 @@ ja:
     confirm:
       title: 内容確認
       back_btn: 入力画面へ戻る
-      
+    done:
+      title: お問い合わせ完了
+      message: 問い合わせを受け付けました。原則、1週間以内にはご返信しております。ご回答までしばらくお待ちください。
+      link_to_menu: メニューページへ
+
   enums:
     user:
       position:
@@ -313,6 +323,13 @@ ja:
         okinawa: 沖縄県
         others: その他
         unspecified: 指定なし
+    inquiry:
+      subject:
+        system_issue: システムの不具合について
+        malicious_user: 悪質ユーザーの申告
+        activate_account: 退会済みアカウントの有効化
+        destroy_account_data: アカウントデータの削除
+        other: その他
 
   views:
     pagination:

@@ -1,15 +1,9 @@
+<p class='md-font text-danger text-center mb-0'><%= I18n.t('inquiries.text1_not_to_switch_languages') %></p>
+<p class='md-font text-danger text-center mb-0'><%= I18n.t('inquiries.text2_not_to_switch_languages') %></p>
+
 <p class='guide-links'>
   <%= link_to I18n.t('top_page'), root_path, data: { turbolinks: false } %>>
   <%= link_to I18n.t('menu'),     menu_path %>>
-  <%= form_with model: @inquiry, url: inquiry_back_path do |f| %>
-    <%= f.hidden_field :name %>
-    <%= f.hidden_field :email %>
-    <%= f.hidden_field :phone_number %>
-    <%= f.hidden_field :subject %>
-    <%= f.hidden_field :body %>
-    <%= f.submit I18n.t('inquiries.new.title') %>>
-  <% end %>
-  <%= I18n.t('inquiries.confirm.title') %>
 </p>
 
 
@@ -17,35 +11,69 @@
 
 <section>
   
-  <table>
-    <tbody>
-      <tr>
-        <th class="text-center" style="width: 30%;"><%= Inquiry.human_attribute_name(:name) %></th>
-        <td><%= @inquiry.name %></td>
-      </tr>
-      <tr>
-        <th class="text-center"><%= Inquiry.human_attribute_name(:body) %></th>
-        <td style="white-space: pre-wrap;"><%= @inquiry.body %></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class='row justify-content-center'>
+    <h4 class='col-md-3 col-10'>
+      <%= Inquiry.human_attribute_name(:name) %>
+    </h4>
+    <p class='col-md-7 col-10'>
+      <%= @inquiry.name %>
+    </p>
+  </div>
   
-  <%= form_with model: @inquiry do |f| %>
-    <%= f.hidden_field :name %>
-    <%= f.hidden_field :email %>
-    <%= f.hidden_field :phone_number %>
-    <%= f.hidden_field :subject %>
-    <%= f.hidden_field :body %>
-    <div><%= f.submit I18n.t('send') %></div>
-  <% end %>
+  <div class='row justify-content-center'>
+    <h4 class='col-md-3 col-10'>
+      <%= Inquiry.human_attribute_name(:email) %>
+    </h4>
+    <p class='col-md-7 col-10'>
+      <%= @inquiry.email %>
+    </p>
+  </div>
   
-  <%= form_with model: @inquiry, url: inquiry_back_path do |f| %>
-    <%= f.hidden_field :name %>
-    <%= f.hidden_field :email %>
-    <%= f.hidden_field :phone_number %>
-    <%= f.hidden_field :subject %>
-    <%= f.hidden_field :body %>
-    <div><%= f.submit I18n.t('inquiries.confirm.back_btn') %></div>
-  <% end %>
+  <div class='row justify-content-center'>
+    <h4 class='col-md-3 col-10'>
+      <%= Inquiry.human_attribute_name(:phone_number) %>
+    </h4>
+    <p class='col-md-7 col-10'>
+      <%= @inquiry.phone_number %>
+    </p>
+  </div>
+  
+  <div class='row justify-content-center'>
+    <h4 class='col-md-3 col-10'>
+      <%= Inquiry.human_attribute_name(:subject) %>
+    </h4>
+    <p class='col-md-7 col-10'>
+      <%= @inquiry.subject %>
+    </p>
+  </div>
+  
+  <div class='row justify-content-center'>
+    <h4 class='col-md-3 col-10'>
+      <%= Inquiry.human_attribute_name(:body) %>
+    </h4>
+    <p class='col-md-7 col-10'>
+      <%= @inquiry.body %>
+    </p>
+  </div>
+  
+  <div class='actions d-flex justify-content-center col-10 mt-5'>
+    <%= form_with model: @inquiry do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :email %>
+      <%= f.hidden_field :phone_number %>
+      <%= f.hidden_field :subject %>
+      <%= f.hidden_field :body %>
+      <%= f.submit I18n.t('send'), class: 'btn btn-sm success-btn' %>
+    <% end %>
+    
+    <%= form_with model: @inquiry, url: inquiry_back_path do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :email %>
+      <%= f.hidden_field :phone_number %>
+      <%= f.hidden_field :subject %>
+      <%= f.hidden_field :body %>
+      <%= f.submit I18n.t('inquiries.confirm.back_btn'), class: 'btn btn-sm success-btn ml-3' %>
+    <% end %>
+  </div>
   
 </section>
