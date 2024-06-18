@@ -2,7 +2,7 @@
   <%= link_to I18n.t('top_page'),    root_path, data: { turbolinks: false } %>>
   <%= link_to I18n.t('menu'),        menu_path %>>
   <%= link_to I18n.t('menus.users'), users_path %>>
-  <%=link_to '@' + @user.canonical_name,  user_path(@user.canonical_name) %>>
+  <%= link_to '@' + @user.canonical_name,  user_path(@user.canonical_name) %>>
   <%= I18n.t('users.edit.title') %>
 </p>
 
@@ -13,6 +13,6 @@
   <%= render 'layouts/errors', obj: @user %>
   <%= render 'public/users/form', user: @user, btn_name: I18n.t('update') %>
   
-  <p class='text-right mt-5'><%= link_to I18n.t('users.unsubscribe'), unsubscribe_path(@user.canonical_name) %></p>
+  <p class='text-right mt-5'><%= link_to I18n.t('users.unsubscribe.btn'), unsubscribe_path(@user.canonical_name) %></p>
 
 </section>

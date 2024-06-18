@@ -14,7 +14,7 @@
 
   <body>
     
-    <p id='locale-select-button' class='text-center'>
+    <p id='locale-select-button' class='text-center mb-0'>
       <span><%= I18n.t('languages.japanese') %></span>
       <% if I18n.locale.to_s == 'en' %>
         <%= link_to :locale => 'ja', data: { turbolinks: false } do %>

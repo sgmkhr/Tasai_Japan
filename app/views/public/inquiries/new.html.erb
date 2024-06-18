@@ -1,0 +1,52 @@
+<p class='md-font text-danger text-center mb-0'><%= I18n.t('inquiries.text1_not_to_switch_languages') %></p>
+<p class='md-font text-danger text-center mb-0'><%= I18n.t('inquiries.text2_not_to_switch_languages') %></p>
+
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'), root_path, data: { turbolinks: false } %>>
+  <%= link_to I18n.t('menu'),     menu_path %>>
+  <%= I18n.t('inquiries.new.title') %>
+</p>
+
+
+<div class='section-title'><h2><%= I18n.t('inquiries.new.title') %></h2></div>
+
+<section>
+  
+  <%= render 'layouts/errors', obj: @inquiry %>
+  
+  <%= form_with model: @inquiry, url: inquiry_confirm_path, method: :post do |f| %>
+    <div class='row justify-content-center'>
+
+      <div class='form-group col-11 row'>
+        <%= f.label :name, class: 'col-md-3 required' %>
+        <%= f.text_field :name, autofocus: true, class: 'form-control col-md-9' %>
+      </div>
+      
+      <div class='form-group col-11 row'>
+        <%= f.label :email, class: 'col-md-3 required' %>
+        <%= f.email_field :email, class: 'form-control col-md-9' %>
+      </div>
+      
+      <div class='form-group col-11 row'>
+        <%= f.label :phone_number, class: 'col-md-3 required' %>
+        <%= f.text_field :phone_number, class: 'form-control col-md-9' %>
+      </div>
+      
+      <div class='form-group col-11 row'>
+        <%= f.label :subject, class: 'col-md-3 required' %>
+        <%= f.select :subject, Inquiry.subjects.keys.map {|k| [I18n.t("enums.inquiry.subject.#{k}"), k]}, class: 'form-control col-md-9' %>
+      </div>
+    
+      <div class='form-group col-11 row'>
+        <%= f.label :body, class: 'col-md-3 required' %>
+        <%= f.text_area :body, size: '10x10', class: 'form-control col-md-9' %>
+      </div>
+    
+      <div class='actions col-11 text-right'>
+        <%= f.submit I18n.t('inquiries.new.submit_btn'), class: 'btn btn-sm success-btn mb-2' %>
+      </div>
+      
+    </div>
+  <% end %>
+
+</section>

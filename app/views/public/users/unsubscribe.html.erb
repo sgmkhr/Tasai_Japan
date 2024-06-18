@@ -1,10 +1,23 @@
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),          root_path, data: { turbolinks: false } %>>
+  <%= link_to I18n.t('menu'),              menu_path %>>
+  <%= link_to I18n.t('menus.users'),       users_path %>>
+  <%= link_to '@' + @user.canonical_name,  user_path(@user.canonical_name) %>>
+  <%= link_to I18n.t('users.edit.title'),  edit_user_path(@user.canonical_name) %>>
+  <%= I18n.t('users.unsubscribe.title') %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('users.unsubscribe.title') %></h2></div>
+
 <section>
   
-  <p class='text-center my-5'><%= I18n.t('users.unsubscribe_confirmation') %></p>
+  <p class='text-center mt-5'><%= I18n.t('users.unsubscribe.information') %></p>
+  
+  <p class='text-center mt-5'><%= I18n.t('users.unsubscribe.confirmation') %></p>
   
   <div class='mt-5 d-flex justify-content-center'>
-    <%= link_to I18n.t('users.unsubscribe_cancel'), user_path(@user.canonical_name),     class: 'mr-5' %>
-    <%= link_to I18n.t('users.unsubscribe'),        withdraw_path(@user.canonical_name), method: :patch %>
+    <%= link_to I18n.t('users.unsubscribe.cancel'), user_path(@user.canonical_name),     class: 'mr-5' %>
+    <%= link_to I18n.t('users.unsubscribe.btn'),    withdraw_path(@user.canonical_name), method: :patch %>
   </div>
   
 </section>
