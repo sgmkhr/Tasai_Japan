@@ -118,7 +118,7 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  config.action_mailer.default_url_options = { protocol: 'https', host:'tasai-japan.life'} #ホストの設定
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -127,6 +127,5 @@ Rails.application.configure do
       user_name: ENV['SMTP_USERNAME'],
       password: ENV['SMTP_PASSWORD'],
       enable_starttls_auto: true,
-      authentication: :plain
     }
 end
