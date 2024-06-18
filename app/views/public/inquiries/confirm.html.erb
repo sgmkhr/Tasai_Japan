@@ -1,0 +1,51 @@
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'), root_path, data: { turbolinks: false } %>>
+  <%= link_to I18n.t('menu'),     menu_path %>>
+  <%= form_with model: @inquiry, url: inquiry_back_path do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :phone_number %>
+    <%= f.hidden_field :subject %>
+    <%= f.hidden_field :body %>
+    <%= f.submit I18n.t('inquiries.new.title') %>>
+  <% end %>
+  <%= I18n.t('inquiries.confirm.title') %>
+</p>
+
+
+<div class='section-title'><h2><%= I18n.t('inquiries.confirm.title') %></h2></div>
+
+<section>
+  
+  <table>
+    <tbody>
+      <tr>
+        <th class="text-center" style="width: 30%;"><%= Inquiry.human_attribute_name(:name) %></th>
+        <td><%= @inquiry.name %></td>
+      </tr>
+      <tr>
+        <th class="text-center"><%= Inquiry.human_attribute_name(:body) %></th>
+        <td style="white-space: pre-wrap;"><%= @inquiry.body %></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <%= form_with model: @inquiry do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :phone_number %>
+    <%= f.hidden_field :subject %>
+    <%= f.hidden_field :body %>
+    <div><%= f.submit I18n.t('send') %></div>
+  <% end %>
+  
+  <%= form_with model: @inquiry, url: inquiry_back_path do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :phone_number %>
+    <%= f.hidden_field :subject %>
+    <%= f.hidden_field :body %>
+    <div><%= f.submit I18n.t('inquiries.confirm.back_btn') %></div>
+  <% end %>
+  
+</section>

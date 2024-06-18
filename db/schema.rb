@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_11_041008) do
+ActiveRecord::Schema.define(version: 2024_06_18_031954) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -120,6 +120,16 @@ ActiveRecord::Schema.define(version: 2024_06_11_041008) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chat_room_id"], name: "index_entries_on_chat_room_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "phone_number", null: false
+    t.integer "subject", default: 0, null: false
+    t.text "body", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "notifications", force: :cascade do |t|

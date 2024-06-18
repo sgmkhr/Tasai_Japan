@@ -247,7 +247,15 @@ ja:
     non_exist: 未読の通知はありません
     limited_by: 直近10件の未読通知を表示しています
     clear_all: 全ての通知を既読にする
-
+  inquiries:
+    send_failed: 送信に失敗しました
+    new:
+      title: お問い合わせフォーム
+      submit_btn: 入力内容確認
+    confirm:
+      title: 内容確認
+      back_btn: 入力画面へ戻る
+      
   enums:
     user:
       position:
@@ -331,6 +339,7 @@ ja:
       opinion: 意見
       post_tag: 投稿タグ
       room_tag: 相談室タグ
+      inquiry: 問い合わせ
     attributes:
       post:
         post_image: 投稿画像
@@ -356,6 +365,12 @@ ja:
         name: 名前
       room_tag:
         name: 名前
+      inquiry:
+        name: 氏名
+        email: メールアドレス
+        phone_number: 電話番号
+        subject: 件名
+        body: お問い合わせ内容
   date:
     abbr_day_names:
     - 日

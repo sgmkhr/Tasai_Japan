@@ -280,6 +280,14 @@ en:
     non_exist: No unread notification exists.
     limited_by: Only the last 10 unread notifications are being displayed.
     clear_all: Clear all the notifications
+  inquiries:
+    send_failed: Failed to send.
+    new:
+      title: Inquiry form
+      submit_btn: Confirm
+    confirm:
+      title: Confirmation
+      back_btn: Back to the form page
 
   enums:
     user:
@@ -350,6 +358,7 @@ en:
       opinion: opinion
       post_tag: post tag
       room_tag: room tag
+      inquiry: inquiry
     attributes:
       post:
         post_image: post image
@@ -375,5 +384,11 @@ en:
         name: name
       room_tag:
         name: name
+      inquiry:
+        name: Full name
+        email: Email
+        phone_number: Phone number
+        subject: Subject
+        body: Contents
   errors:
     count: " errors have occurred."
