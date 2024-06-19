@@ -44,8 +44,8 @@ class Public::CounselingRoomsController < ApplicationController
 
   def edit
     @counseling_room = CounselingRoom.find(params[:id])
-    @active_participations  = @counseling_room.participations.where(status: true).page(params[:page]).per(10)
-    @waiting_participations = @counseling_room.participations.where(status: false).page(params[:page]).per(10)
+    @active_participations  = @counseling_room.participations.where(status: true).page(params[:active_participations_page]).per(10)
+    @waiting_participations = @counseling_room.participations.where(status: false).page(params[:waiting_participations_page]).per(10)
   end
 
   def update
