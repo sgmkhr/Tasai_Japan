@@ -3,14 +3,16 @@ class Public::CategoriesController < ApplicationController
   before_action :ensure_guest_user, only: [:create]
   
   def index
-    @category   = Category.new
-    @categories = Category.all
-    @keyword    = params[:keyword]
-    @sort       = params[:sort]
-    @categories = @categories.search_for(@keyword) if @keyword.present?
-    @categories = @categories.latest if @sort == 'latest'
-    @categories = @categories.old    if @sort == 'old'
-    @categories = @categories.page(params[:page]).per(30)
+    @category    = Category.new
+    @categories  = Category.all
+    @keyword     = params[:keyword]
+    @sort        = params[:sort]
+    @current_tab = params[:current_tab]
+    @categories  = @categories.search_for(@keyword) if @keyword.present?
+    @categories  = @categories.latest if @sort == 'latest'
+    @categories  = @categories.old    if @sort == 'old'
+    @categories  = @categories.page(params[:page]).per(30)
+    @current_tab = 'category_create_tab' unless @current_tab.present?
   end
   
   def create

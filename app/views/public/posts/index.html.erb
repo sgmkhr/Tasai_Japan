@@ -32,7 +32,7 @@
     <% end %>
   </p>
 
-  <%= render 'public/posts/bars' %>
+  <%= render 'public/posts/bars', prefecture: @prefecture, sort: @sort, keyword: @keyword, current_tab: @current_tab %>
 
   <!--ソート切り替えリンク-->
   <p class='md-font text-center mb-0'><%= I18n.t('sort.with_display_all') %></p>
