@@ -9,12 +9,12 @@
 
 <div class='section-title'><h2><%= I18n.t('participations.edit.title.active') %></h2></div>
 <section class='pb-5'>
-  <%= render 'public/counseling_rooms/edit_active_participations', category: @category, counseling_room: @counseling_room, active_participations: @active_participations %>
+  <%= render 'public/counseling_rooms/edit_active_participations_list', category: @category, counseling_room: @counseling_room, active_participations: @active_participations %>
 </section>
 
 <div class='section-title'><h2><%= I18n.t('participations.edit.title.waiting') %></h2></div>
 <section class='mt-5 pb-5'>
-  <%= render 'public/counseling_rooms/edit_waiting_participations', category: @category, counseling_room: @counseling_room, waiting_participations: @waiting_participations %>
+  <%= render 'public/counseling_rooms/edit_waiting_participations_list', category: @category, counseling_room: @counseling_room, waiting_participations: @waiting_participations %>
 </section>
 
 <div class='section-title'><h2><%= I18n.t('counseling_rooms.edit.title') %></h2></div>
