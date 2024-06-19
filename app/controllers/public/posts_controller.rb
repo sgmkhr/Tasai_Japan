@@ -30,7 +30,7 @@ class Public::PostsController < ApplicationController
 
   def show
     if (@post.is_published == false) && (@post.user != current_user)
-      redirect_to admin_posts_path, alert: I18n.t('posts.index.non_published')
+      redirect_to posts_path, alert: I18n.t('posts.index.non_published')
     end
     unless PostView.find_by(user_id: current_user.id, post_id: @post.id)
       current_user.post_views.create(post_id: @post.id) #閲覧カウント
