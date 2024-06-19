@@ -104,10 +104,17 @@ en:
       inactive: Inactive
     insite:
       title: Insite
-      main_tab: General
+      main_tab: Contribution
       managing_rooms_tab: Your rooms
       participating_rooms_tab: Participating
       applying_rooms_tab: Applying
+      submit: Display
+      posts_data: Posts count
+      opinions_data: Opinions count
+      no_data: "It can not be displayed due to no enough data to calculate."
+      chart_title:
+        posts: Numbers of posts you shared from the last week
+        opinions: Numbers of opinions you shared from the last week
     unsubscribe:
       title: Unsubscribe page
       btn: Unsubscribe

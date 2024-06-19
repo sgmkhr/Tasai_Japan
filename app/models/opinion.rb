@@ -8,6 +8,8 @@ class Opinion < ApplicationRecord
 
   has_many :notifications, as: :notifiable, dependent: :destroy
 
+  scope :created_days_ago, ->(n) { where(created_at: n.days.ago.all_day) }
+
   validates :content, presence: true, length: { maximum: 1000 }
 
   # データが作成されると直後に通知データも作成される
@@ -36,6 +38,11 @@ class Opinion < ApplicationRecord
   # 対象の意見へ既にいいねしているか確認するメソッド
   def favorited_by?(user)
     opinion_favorites.exists?(user_id: user.id)
+  end
+
+  # 過去１週間の各日の意見数データを取得するメソッド
+  def self.past_week_count
+   (0..6).map { |n| created_days_ago(n).count }.reverse
   end
 
 end

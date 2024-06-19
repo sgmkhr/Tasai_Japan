@@ -71,10 +71,17 @@ ja:
       inactive: 退会済み
     insite:
       title: インサイト
-      main_tab: 総合インサイト
+      main_tab: 貢献度
       managing_rooms_tab: あなたの相談室
       participating_rooms_tab: 参加中相談室
       applying_rooms_tab: 参加申請中
+      submit: 表示
+      posts_data: 投稿数
+      opinions_data: 意見数
+      no_data: 算出するデータがないため表示できません
+      chart_title:
+        posts: 過去１週間のおすすめ投稿数
+        opinions: 過去1週間の意見投稿数
     unsubscribe:
       title: 退会画面
       btn: 退会する
