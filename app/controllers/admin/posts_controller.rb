@@ -2,7 +2,7 @@ class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @posts      = Post.includes(:post_tags).includes(:post_favorites)
+    @posts      = Post.where(is_published: true).includes(:post_tags).includes(:post_favorites)
     @keyword    = params[:keyword]
     @prefecture = params[:prefecture]
     @sort       = params[:sort]
@@ -23,6 +23,7 @@ class Admin::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    redirect_to admin_posts_path, alert: I18n.t('posts.index.non_published') if @post.is_published == false
     @comment = Comment.new
   end
   

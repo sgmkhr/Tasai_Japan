@@ -9,7 +9,7 @@
     </p>
 
     <p class='text-center mb-0'>
-      <%= user.posts.count %>
+      <%= user.posts.where(is_published: true).count %>
     </p>
 
   </div>

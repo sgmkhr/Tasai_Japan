@@ -44,13 +44,13 @@
             <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
               <div class='row justify-content-md-end justify-content-center'>
                 <div class='form-group col-md-5 col-10 mb-1'>
-                  <%= f.select :prefecture, Post.prefectures.keys.map {|k| [I18n.t("enums.post.prefecture.#{k}"), k]}, class: 'form-control' %>
-                  <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old'],[I18n.t('sort.favorites_count'), 'favorites_count']], class: 'form-control ml-1' %>
+                  <%= f.select :prefecture, Post.prefectures.keys.map {|k| [I18n.t("enums.post.prefecture.#{k}"), k]}, selected: @prefecture, class: 'form-control' %>
+                  <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old'],[I18n.t('sort.favorites_count'), 'favorites_count']], selected: @sort, class: 'form-control ml-1' %>
                 </div>
               </div>
               <div class='row justify-content-md-end justify-content-center'>
                 <div class='form-group col-md-5 col-9'>
-                  <%= f.text_field :keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
+                  <%= f.text_field :keyword, value: @keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
                 </div>
                 <div class='form-group mt-1'>
                   <%= f.hidden_field :current_tab, :value => 'user_posts_tab' %>
@@ -76,7 +76,7 @@
             <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
               <div class='row justify-content-md-end justify-content-center'>
                 <div class='form-group col-md-5 col-9'>
-                  <%= f.text_field :keyword_in_bookmarks, class: 'form-control', placeholder: I18n.t('search_blank') %>
+                  <%= f.text_field :keyword_in_bookmarks, value: @keyword_in_bookmarks, class: 'form-control', placeholder: I18n.t('search_blank') %>
                 </div>
                 <div class='form-group mt-1'>
                   <%= f.hidden_field :current_tab, :value => 'bookmarked_posts_tab' %>
@@ -94,6 +94,14 @@
             <!--フォローユーザー投稿一覧表示-->
             <%= render 'public/posts/index', posts: @friends_posts, param_name: 'friends_page', current_tab: 'followusers_posts_tab' %>
           </div>
+          
+          <!--以下、「非公開設定中投稿一覧」タブ選択時の表示-->
+          <div id='draft_posts_tab' class='tab'>
+            <p class='text-center tab-title'><%= I18n.t('users.show.draft_posts_tab') %></p>
+            <!--フォローユーザー投稿一覧表示-->
+            <%= render 'public/posts/index', posts: @draft_posts, param_name: 'drafts_page', current_tab: 'draft_posts_tab' %>
+          </div>
+          
         </div>
         
         <script>
@@ -107,13 +115,13 @@
         <%= form_with url: user_path(@user.canonical_name), method: :get, local: true do |f| %>
           <div class='row justify-content-md-end justify-content-center'>
             <div class='form-group col-md-5 col-10 mb-1'>
-              <%= f.select :prefecture, Post.prefectures.keys.map {|k| [I18n.t("enums.post.prefecture.#{k}"), k]}, class: 'form-control' %>
-              <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old'],[I18n.t('sort.favorites_count'), 'favorites_count']], class: 'form-control ml-1' %>
+              <%= f.select :prefecture, Post.prefectures.keys.map {|k| [I18n.t("enums.post.prefecture.#{k}"), k]}, selected: @prefecture, class: 'form-control' %>
+              <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old'],[I18n.t('sort.favorites_count'), 'favorites_count']], selected: @sort, class: 'form-control ml-1' %>
             </div>
           </div>
           <div class='row justify-content-md-end justify-content-center'>
             <div class='form-group col-md-5 col-9'>
-              <%= f.text_field :keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
+              <%= f.text_field :keyword, value: @keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
             </div>
             <div class='form-group mt-1'>
               <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn' %>

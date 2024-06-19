@@ -6,12 +6,13 @@ class Public::UsersController < ApplicationController
 
   def show
     @user  = User.find_by(canonical_name: params[:canonical_name])
-    @posts      = @user.posts&.includes(:post_tags).includes(:post_favorites)
+    @posts      = @user.posts&.where(is_published: true)&.includes(:post_tags).includes(:post_favorites)
     @keyword    = params[:keyword]
     @prefecture = params[:prefecture]
     @sort       = params[:sort]
     @keyword_in_bookmarks = params[:keyword_in_bookmarks]
-    @bookmarked_posts = current_user.bookmarked_posts.latest
+    @bookmarked_posts = current_user.bookmarked_posts&.where(is_published: true)&.latest
+    @draft_posts = @user.posts&.where(is_published: false)&.latest.page(params[:drafts_page]).per(12)
     @current_tab = params[:current_tab]
 
     @posts = @posts.search_with_user_for(@keyword, @user) if @keyword.present?
@@ -27,7 +28,7 @@ class Public::UsersController < ApplicationController
 
     #以下、マイページ内のみ表示のフォローユーザー投稿データ取得
     if current_user.followings
-      @friends_posts = Post.where(user_id: current_user.followings.ids)&.latest.page(params[:friends_page]).per(12)
+      @friends_posts = Post.where(user_id: current_user.followings.ids)&.where(is_published: true)&.latest.page(params[:friends_page]).per(12)
     else
       @friends_posts = []
     end

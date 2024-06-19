@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts      = Post.includes(:post_tags).includes(:post_favorites)
+    @posts      = Post.where(is_published: true).includes(:post_tags).includes(:post_favorites)
     @keyword    = params[:keyword]
     @prefecture = params[:prefecture]
     @sort       = params[:sort]
@@ -29,10 +29,13 @@ class Public::PostsController < ApplicationController
   end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
 
   def show
-    @comment = Comment.new
+    if (@post.is_published == false) && (@post.user != current_user)
+      redirect_to admin_posts_path, alert: I18n.t('posts.index.non_published')
+    end
     unless PostView.find_by(user_id: current_user.id, post_id: @post.id)
       current_user.post_views.create(post_id: @post.id) #閲覧カウント
     end
+    @comment = Comment.new
   end
 
   def create
@@ -70,7 +73,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :caption, :body, :prefecture, :post_image)
+    params.require(:post).permit(:title, :caption, :body, :prefecture, :post_image, :is_published)
   end
 
   def set_selected_post
