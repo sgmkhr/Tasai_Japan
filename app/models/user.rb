@@ -94,32 +94,32 @@ class User < ApplicationRecord
       I18n.t('participations.not_participating')
     end
   end
-  
+
   # キーワード検索メソッド
   def self.search_for(content)
     User.where(['public_name LIKE(?) OR canonical_name LIKE(?) OR introduction LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
-  
+
   # マイページでのブックマーク投稿のキーワード検索メソッド
   def search_with_bookmarks_for(content)
     self.bookmarked_posts.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
   end
-  
+
   # フォローするメソッド
   def follow(user)
     active_relationships.create(followed_id: user.id)
   end
-  
+
   # フォローを外すメソッド
   def unfollow(user)
     active_relationships.find_by(followed_id: user.id).destroy
   end
-  
+
   # フォローしてるか確かめるメソッド
   def following?(user)
     followings.include?(user)
   end
-  
+
   # 未読のチャットがあるか確かめるメソッド
   def has_unread_chat?
     self.chat_rooms.each do |chat_room|

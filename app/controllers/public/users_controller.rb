@@ -68,6 +68,7 @@ class Public::UsersController < ApplicationController
     true_participations  = Participation.where(user_id: @user.id, status: true)
     false_participations = Participation.where(user_id: @user.id, status: false)
     @current_tab = params[:current_tab]
+    @required_data = params[:required_data]
 
     true_participations&.each do |participation|
       @rooms_participated_in << participation.counseling_room
@@ -75,10 +76,13 @@ class Public::UsersController < ApplicationController
     false_participations&.each do |participation|
       @rooms_applying_for << participation.counseling_room
     end
+
     @rooms_managing        = @user.counseling_rooms.page(params[:managing_rooms_page]).per(20)
     @rooms_participated_in = Kaminari.paginate_array(@rooms_participated_in).page(params[:participating_rooms_page]).per(20)
     @rooms_applying_for    = Kaminari.paginate_array(@rooms_applying_for).page(params[:applying_rooms_page]).per(20)
     @current_tab = 'main_tab' unless @current_tab.present?
+    @data = @user.posts    if (@required_data == 'posts') || @required_data.nil?
+    @data = @user.opinions if @required_data == 'opinions'
   end
 
   def withdraw

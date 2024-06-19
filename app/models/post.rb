@@ -19,6 +19,7 @@ class Post < ApplicationRecord
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old,    -> { order(created_at: :asc) }
+  scope :created_days_ago, ->(n) { where(created_at: n.days.ago.all_day) }
 
   enum prefecture: {
     unspecified: 0, hokkaido: 1, aomori: 2, iwate: 3, miyagi: 4, akita: 5, yamagata: 6, fukushima: 7,
@@ -96,6 +97,11 @@ class Post < ApplicationRecord
       post_tag = PostTag.find_or_create_by(name: new_tag_name)
       self.post_tags << post_tag
     end
+  end
+  
+  # 過去１週間の各日の投稿数データを取得するメソッド
+  def self.past_week_count
+   (0..6).map { |n| created_days_ago(n).count }.reverse
   end
   
 end

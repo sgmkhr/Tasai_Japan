@@ -13,7 +13,7 @@
 <section>
 
   <%= render 'public/users/insite_tab_links', current_tab: @current_tab %>
-  
+
   <div id='tab-contents'>
 
     <!--以下、「総合インサイト」タブ選択時の表示-->
@@ -21,8 +21,7 @@
 
       <p class='text-center tab-title'><%= I18n.t('users.insite.main_tab') %></p>
 
-      <!--後ほど実装予定-->
-      Coming soon...
+      <%= render 'public/users/insite_main', user: @user, required_data: @required_data, data: @data %>
 
     </div>
 
@@ -55,6 +54,7 @@
 
   </div>
 </section>
+
 <script>
   $('#tab-contents .tab[id !=<%= @current_tab %>]').hide();
 </script>
