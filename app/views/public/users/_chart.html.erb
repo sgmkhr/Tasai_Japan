@@ -1,10 +1,10 @@
 <% if data.any? %>
 
   <p class='text-center my-3'>
-    <% if required_data == 'posts' %>
-      <%= I18n.t('users.insite.chart_title.posts') %>
-    <% else %>
+    <% if required_data == 'opinions' %>
       <%= I18n.t('users.insite.chart_title.opinions') %>
+    <% else %>
+      <%= I18n.t('users.insite.chart_title.posts.') %>
     <% end %>
   </p>
 
@@ -12,7 +12,7 @@
   <canvas id="myLineChart"></canvas>
 
   <script>
-    $(document).on('turbolinks:load', function() {
+    document.addEventListener("turbolinks:load", function() {
       var ctx = document.getElementById("myLineChart");
       var myLineChart = new Chart(ctx, {
         type: 'line',
