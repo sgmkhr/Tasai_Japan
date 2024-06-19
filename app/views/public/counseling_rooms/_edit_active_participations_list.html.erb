@@ -27,7 +27,7 @@
   <% end %>
 
   <div class='d-flex justify-content-center mt-3'>
-    <%= paginate active_participations, theme: 'bootstrap-5' %>
+    <%= paginate active_participations, theme: 'bootstrap-5', :param_name => 'active_participations_page' %>
   </div>
 
 <% else %>

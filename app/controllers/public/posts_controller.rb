@@ -23,7 +23,7 @@ class Public::PostsController < ApplicationController
       @posts = @posts.old                            if @sort == 'old'
       @posts = @posts.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
     end
-    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
+    @posts = Kaminari.paginate_array(@posts).page(params[:normal_page]).per(12)
   end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
 
   def show

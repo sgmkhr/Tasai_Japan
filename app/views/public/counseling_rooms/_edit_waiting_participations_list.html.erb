@@ -30,7 +30,7 @@
   <% end %>
 
   <div class='d-flex justify-content-center mt-3'>
-    <%= paginate waiting_participations, theme: 'bootstrap-5' %>
+    <%= paginate waiting_participations, theme: 'bootstrap-5', :param_name => 'waiting_participations_page' %>
   </div>
 
 <% else %>
