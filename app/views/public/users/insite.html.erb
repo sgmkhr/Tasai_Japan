@@ -12,29 +12,8 @@
 
 <section>
 
-  <div class='d-md-block d-none'>
-    <ul id="tab-menu" class='d-flex justify-content-around'>
-      <li><a href="#main_tab" class="active"         ><%= I18n.t('users.insite.main_tab') %></a></li>
-      <li><a href="#managing_rooms_tab" class=""     ><%= I18n.t('users.insite.managing_rooms_tab') %></a></li>
-      <li><a href="#participating_rooms_tab" class=""><%= I18n.t('users.insite.participating_rooms_tab') %></a></li>
-      <li><a href="#applying_rooms_tab" class=""     ><%= I18n.t('users.insite.applying_rooms_tab') %></a></li>
-    </ul>
-  </div>
-
-  <div class='d-md-none'>
-    <ul id="tab-menu">
-      <div class='row'>
-        <li class='col-6'><a href="#main_tab" class="active"         ><%= I18n.t('users.insite.main_tab') %></a></li>
-        <li class='col-6'><a href="#managing_rooms_tab" class=""     ><%= I18n.t('users.insite.managing_rooms_tab') %></a></li>
-      </div>
-      <div class='row mt-1'>
-        <li class='col-6'><a href="#participating_rooms_tab" class=""><%= I18n.t('users.insite.participating_rooms_tab') %></a></li>
-        <li class='col-6'><a href="#applying_rooms_tab" class=""     ><%= I18n.t('users.insite.applying_rooms_tab') %></a></li>
-      </div>
-    </ul>
-  </div>
-
-
+  <%= render 'public/users/insite_tab_links', current_tab: @current_tab %>
+  
   <div id='tab-contents'>
 
     <!--以下、「総合インサイト」タブ選択時の表示-->
@@ -52,7 +31,7 @@
 
       <p class='text-center tab-title'><%= I18n.t('users.insite.managing_rooms_tab') %></p>
 
-      <%= render 'public/counseling_rooms/index', counseling_rooms: @rooms_managing %>
+      <%= render 'public/counseling_rooms/index', counseling_rooms: @rooms_managing, param_name: 'managing_rooms_page', current_tab: 'managing_rooms_tab' %>
 
     </div>
 
@@ -61,7 +40,7 @@
 
       <p class='text-center tab-title'><%= I18n.t('users.insite.participating_rooms_tab') %></p>
 
-      <%= render 'public/counseling_rooms/index', counseling_rooms: @rooms_participated_in %>
+      <%= render 'public/counseling_rooms/index', counseling_rooms: @rooms_participated_in, param_name: 'participating_rooms_page', current_tab: 'participating_rooms_tab' %>
 
     </div>
 
@@ -70,10 +49,13 @@
 
       <p class='text-center tab-title'><%= I18n.t('users.insite.applying_rooms_tab') %></p>
 
-      <%= render 'public/counseling_rooms/index', counseling_rooms: @rooms_applying_for %>
+      <%= render 'public/counseling_rooms/index', counseling_rooms: @rooms_applying_for, param_name: 'applying_rooms_page', current_tab: 'applying_rooms_tab' %>
 
     </div>
 
   </div>
 </section>
+<script>
+  $('#tab-contents .tab[id !=<%= @current_tab %>]').hide();
+</script>
 <%= javascript_pack_tag 'insite' %>

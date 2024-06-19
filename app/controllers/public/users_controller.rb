@@ -13,7 +13,7 @@ class Public::UsersController < ApplicationController
     @keyword_in_bookmarks = params[:keyword_in_bookmarks]
     @bookmarked_posts = current_user.bookmarked_posts.latest
     @current_tab = params[:current_tab]
-    
+
     @posts = @posts.search_with_user_for(@keyword, @user) if @keyword.present?
     @posts = @posts.where(prefecture: @prefecture)        if @prefecture.present? && (@prefecture != 'unspecified')
     @posts = @posts.latest if (@sort == 'latest') || (@sort.nil?)
@@ -24,14 +24,14 @@ class Public::UsersController < ApplicationController
     @posts = Kaminari.paginate_array(@posts).page(params[:normal_page]).per(12)
     @bookmarked_posts = Kaminari.paginate_array(@bookmarked_posts).page(params[:bookmarks_page]).per(12)
     @current_tab = 'user_posts_tab' unless @current_tab.present?
-    
+
     #以下、マイページ内のみ表示のフォローユーザー投稿データ取得
     if current_user.followings
       @friends_posts = Post.where(user_id: current_user.followings.ids)&.latest.page(params[:friends_page]).per(12)
     else
       @friends_posts = []
     end
-    
+
     #以下、閲覧カウント
     unless ProfileView.find_by(viewer_id: current_user.id, viewed_id: @user.id)
       current_user.active_profile_views.create(viewed_id: @user.id)
@@ -67,15 +67,18 @@ class Public::UsersController < ApplicationController
     @rooms_applying_for    = []
     true_participations  = Participation.where(user_id: @user.id, status: true)
     false_participations = Participation.where(user_id: @user.id, status: false)
+    @current_tab = params[:current_tab]
+
     true_participations&.each do |participation|
       @rooms_participated_in << participation.counseling_room
     end
     false_participations&.each do |participation|
       @rooms_applying_for << participation.counseling_room
     end
-    @rooms_managing        = @user.counseling_rooms.page(params[:page]).per(20)
-    @rooms_participated_in = Kaminari.paginate_array(@rooms_participated_in).page(params[:page]).per(20)
-    @rooms_applying_for    = Kaminari.paginate_array(@rooms_applying_for).page(params[:page]).per(20)
+    @rooms_managing        = @user.counseling_rooms.page(params[:managing_rooms_page]).per(20)
+    @rooms_participated_in = Kaminari.paginate_array(@rooms_participated_in).page(params[:participating_rooms_page]).per(20)
+    @rooms_applying_for    = Kaminari.paginate_array(@rooms_applying_for).page(params[:applying_rooms_page]).per(20)
+    @current_tab = 'main_tab' unless @current_tab.present?
   end
 
   def withdraw

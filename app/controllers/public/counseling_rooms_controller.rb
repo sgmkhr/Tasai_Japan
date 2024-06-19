@@ -13,7 +13,7 @@ class Public::CounselingRoomsController < ApplicationController
     @counseling_rooms = @counseling_rooms.old    if @sort == 'old'
     @counseling_rooms = @counseling_rooms.sort_by { |room| -room.participations.where(status: true).count } if @sort == 'participations_count'
     @counseling_rooms = @counseling_rooms.sort_by { |room| -room.opinions.count }       if @sort == 'opinions_count'
-    @counseling_rooms = Kaminari.paginate_array(@counseling_rooms).page(params[:page]).per(20)
+    @counseling_rooms = Kaminari.paginate_array(@counseling_rooms).page(params[:normal_page]).per(20)
   end                   #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
 
   def new
@@ -67,7 +67,7 @@ class Public::CounselingRoomsController < ApplicationController
   
   def search
     @tag_name   = params[:tag_name]
-    @counseling_rooms = CounselingRoom.includes(:room_tags).where('room_tags.name': @tag_name).page(params[:page]).per(20)
+    @counseling_rooms = CounselingRoom.includes(:room_tags).where('room_tags.name': @tag_name).page(params[:normal_page]).per(20)
   end
 
   private
