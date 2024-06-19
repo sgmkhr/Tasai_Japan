@@ -86,6 +86,7 @@ en:
       user_posts_tab: Your posts
       bookmarked_posts_tab: Bookmarked posts
       followusers_posts_tab: Friends' posts
+      draft_posts_tab: Your private posts
       posts_count: Posts
       counseling_rooms_count: Managing Rooms
       participations_count: Participating
@@ -142,10 +143,12 @@ en:
       not_exist: No post exists.
       prefecture: "prefecture:"
       count: posts
+      non_published: You cannot view a non published post.
     show:
       title: Post detail
       edit_btn: Edit
       comment: Comment
+      non_published: Being set as a private 
     new:
       title: Create a new post
       create_btn: Create
@@ -156,6 +159,9 @@ en:
       confirmation: Are you sure you want to delete the post?
       success: The post has successfully been deleted.
     validates: You cannot navigate to pages of editing other users' information.
+    is_published:
+      true: Publish
+      false: Make it private(Save as draft)
   comments:
     validates: You cannot delete other users' comments.
   categories:
@@ -391,6 +397,7 @@ en:
         body: content
         prefecture: prefecture
         tag_name: tag name
+        is_published: Publishing setting
       counseling_room:
         topic: topic
         detail: detail
