@@ -13,12 +13,12 @@
   <%= form_with url: admin_category_counseling_rooms_path(@category.id), method: :get, local: true do |f| %>
     <div class='row justify-content-md-end justify-content-center'>
       <div class='form-group col-md-5 col-10 mb-1'>
-        <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old'],[I18n.t('sort.participations_count'), 'participations_count'],[I18n.t('sort.opinions_count'), 'opinions_count']], class: 'form-control' %>
+        <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old'],[I18n.t('sort.participations_count'), 'participations_count'],[I18n.t('sort.opinions_count'), 'opinions_count']], selected: @sort, class: 'form-control' %>
       </div>
     </div>
     <div class='row justify-content-md-end justify-content-center'>
       <div class='form-group col-md-5 col-9'>
-        <%= f.text_field :keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
+        <%= f.text_field :keyword, value: @keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
       </div>
       <div class='form-group mt-1'>
         <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn' %>
