@@ -12,7 +12,8 @@ class Public::UsersController < ApplicationController
     @sort       = params[:sort]
     @keyword_in_bookmarks = params[:keyword_in_bookmarks]
     @bookmarked_posts = current_user.bookmarked_posts.latest
-
+    @current_tab = params[:current_tab]
+    
     @posts = @posts.search_with_user_for(@keyword, @user) if @keyword.present?
     @posts = @posts.where(prefecture: @prefecture)        if @prefecture.present? && (@prefecture != 'unspecified')
     @posts = @posts.latest if (@sort == 'latest') || (@sort.nil?)
@@ -20,12 +21,13 @@ class Public::UsersController < ApplicationController
     @posts = @posts&.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
     @bookmarked_posts = current_user.search_with_bookmarks_for(@keyword_in_bookmarks) if @keyword_in_bookmarks.present?
 
-    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
-    @bookmarked_posts = Kaminari.paginate_array(@bookmarked_posts).page(params[:page]).per(12)
+    @posts = Kaminari.paginate_array(@posts).page(params[:normal_page]).per(12)
+    @bookmarked_posts = Kaminari.paginate_array(@bookmarked_posts).page(params[:bookmarks_page]).per(12)
+    @current_tab = 'user_posts_tab' unless @current_tab.present?
     
     #以下、マイページ内のみ表示のフォローユーザー投稿データ取得
     if current_user.followings
-      @friends_posts = Post.where(user_id: current_user.followings.ids)&.latest.page(params[:page]).per(12)
+      @friends_posts = Post.where(user_id: current_user.followings.ids)&.latest.page(params[:friends_page]).per(12)
     else
       @friends_posts = []
     end
