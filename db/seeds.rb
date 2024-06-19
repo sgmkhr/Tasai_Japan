@@ -142,7 +142,7 @@ faina = User.find_or_create_by!(email: 'fiana@example.com') do |user|
   user.public_name = 'Fiana'
   user.position = 0
   user.password = '121212'
-  user.introduction = "I'm a English teacher in Japan, who learning Japanese."  
+  user.introduction = "I'm a English teacher in Japan, who learning Japanese."
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w3.jpg"),filename: 'sample_icon_image.jpeg')
 end
 
@@ -697,6 +697,63 @@ topic_manner.participations.find_or_create_by!(user_id: ritsu.id) do |participat
   participation.status = true
 end
 topic_manner.participations.find_or_create_by!(user_id: amado.id) do |participation|
+  participation.status = false
+end
+topic_manner.participations.find_or_create_by!(user_id: hana.id) do |participation|
+  participation.status = true
+end
+topic_manner.participations.find_or_create_by!(user_id: yuko.id) do |participation|
+  participation.status = true
+end
+topic_manner.participations.find_or_create_by!(user_id: james.id) do |participation|
+  participation.status = true
+end
+topic_manner.participations.find_or_create_by!(user_id: abramo.id) do |participation|
+  participation.status = true
+end
+topic_manner.participations.find_or_create_by!(user_id: brunello.id) do |participation|
+  participation.status = true
+end
+topic_manner.participations.find_or_create_by!(user_id: ambre.id) do |participation|
+  participation.status = true
+end
+topic_manner.participations.find_or_create_by!(user_id: char.id) do |participation|
+  participation.status = true
+end
+topic_manner.participations.find_or_create_by!(user_id: jacobo.id) do |participation|
+  participation.status = true
+end
+topic_manner.participations.find_or_create_by!(user_id: juana.id) do |participation|
+  participation.status = true
+end
+topic_manner.participations.find_or_create_by!(user_id: faina.id) do |participation|
+  participation.status = false
+end
+topic_manner.participations.find_or_create_by!(user_id: celina.id) do |participation|
+  participation.status = false
+end
+topic_manner.participations.find_or_create_by!(user_id: bolek.id) do |participation|
+  participation.status = false
+end
+topic_manner.participations.find_or_create_by!(user_id: aoi.id) do |participation|
+  participation.status = false
+end
+topic_manner.participations.find_or_create_by!(user_id: dan.id) do |participation|
+  participation.status = false
+end
+topic_manner.participations.find_or_create_by!(user_id: yuka.id) do |participation|
+  participation.status = false
+end
+topic_manner.participations.find_or_create_by!(user_id: koharu.id) do |participation|
+  participation.status = false
+end
+topic_manner.participations.find_or_create_by!(user_id: emi.id) do |participation|
+  participation.status = false
+end
+topic_manner.participations.find_or_create_by!(user_id: sana.id) do |participation|
+  participation.status = false
+end
+topic_manner.participations.find_or_create_by!(user_id: mio.id) do |participation|
   participation.status = false
 end
 
