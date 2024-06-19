@@ -33,25 +33,7 @@
           <i class="fa-solid fa-plus"></i>
         <% end %>
         
-        <% if @current_tab == 'bookmarked_posts_tab' %>
-          <ul id="tab-menu" class='d-flex justify-content-center mt-3'>
-            <li><a href="#user_posts_tab" class=""><i class="fa-solid fa-user"></i></a></li>
-            <li><a href="#bookmarked_posts_tab" class="active"><i class="fa-solid fa-bookmark"></i></a></li>
-            <li><a href="#followusers_posts_tab" class=""><i class="fa-solid fa-users"></i></a></li>
-          </ul>
-        <% elsif @current_tab == 'followusers_posts_tab' %>
-          <ul id="tab-menu" class='d-flex justify-content-center mt-3'>
-            <li><a href="#user_posts_tab" class=""><i class="fa-solid fa-user"></i></a></li>
-            <li><a href="#bookmarked_posts_tab" class=""><i class="fa-solid fa-bookmark"></i></a></li>
-            <li><a href="#followusers_posts_tab" class="active"><i class="fa-solid fa-users"></i></a></li>
-          </ul>
-        <% else %>
-          <ul id="tab-menu" class='d-flex justify-content-center mt-3'>
-            <li><a href="#user_posts_tab" class="active"><i class="fa-solid fa-user"></i></a></li>
-            <li><a href="#bookmarked_posts_tab" class=""><i class="fa-solid fa-bookmark"></i></a></li>
-            <li><a href="#followusers_posts_tab" class=""><i class="fa-solid fa-users"></i></a></li>
-          </ul>
-        <% end %>
+        <%= render 'public/users/tab_links', current_tab: @current_tab %>
 
         <div id='tab-contents'>
 
