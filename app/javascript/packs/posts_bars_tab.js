@@ -1,6 +1,4 @@
 /*global $*/
-$('#tab-contents .tab[id != "post_keyword_tab"]').hide();
-
 $('#tab-menu a').on('click', function(event) {
   $('#tab-contents .tab').hide();
   $('#tab-menu .btn-active').removeClass('btn-active');

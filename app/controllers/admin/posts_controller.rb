@@ -2,11 +2,12 @@ class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @posts      = Post.includes(:post_tags).includes(:post_favorites)
+    @posts      = Post.where(is_published: true).includes(:post_tags).includes(:post_favorites)
     @keyword    = params[:keyword]
     @prefecture = params[:prefecture]
     @sort       = params[:sort]
     @tag_name   = params[:tag_name]
+    @current_tab = params[:current_tab]
     if @tag_name.present?
       @posts = @posts.where('post_tags.name': @tag_name)
     else
@@ -16,11 +17,13 @@ class Admin::PostsController < ApplicationController
       @posts = @posts.old                            if @sort == 'old'
       @posts = @posts.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
     end
+    @current_tab = 'post_keyword_tab' unless @current_tab.present?
     @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
   end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
 
   def show
     @post = Post.find(params[:id])
+    redirect_to admin_posts_path, alert: I18n.t('posts.index.non_published') if @post.is_published == false
     @comment = Comment.new
   end
   

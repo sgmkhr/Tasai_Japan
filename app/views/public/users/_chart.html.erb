@@ -1,0 +1,55 @@
+<% if data.any? %>
+
+  <p class='text-center my-3'>
+    <% if required_data == 'opinions' %>
+      <%= I18n.t('users.insite.chart_title.opinions') %>
+    <% else %>
+      <%= I18n.t('users.insite.chart_title.posts.') %>
+    <% end %>
+  </p>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <canvas id="myLineChart"></canvas>
+
+  <script>
+    document.addEventListener("turbolinks:load", function() {
+      var ctx = document.getElementById("myLineChart");
+      var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['6 days ago', '5 days ago', '4 days ago', '3 days ago', '2 days ago', '1 days ago', 'today'],
+          datasets: [
+            {
+              data: <%= data.past_week_count %>,
+              borderColor: 'rgba(108,128,109,1)',
+              backgroundColor: 'rgba(0,0,0,0)',
+              tension: 0.4
+            }
+          ],
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          responsive: true,
+          scales: {
+            y:{
+              suggestedMin: 0,
+              suggestedMax: 10
+            },
+            x:{
+              stacked: true
+            },
+          },
+        }
+      });
+    });
+  </script>
+
+<% else %>
+
+  <p class='text-center mt-3'><%= I18n.t('users.insite.no_data') %></p>
+
+<% end %>

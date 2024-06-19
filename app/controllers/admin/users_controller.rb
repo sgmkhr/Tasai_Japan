@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   
   def show
     @user  = User.find_by(canonical_name: params[:canonical_name])
-    @posts      = @user.posts&.includes(:post_tags).includes(:post_favorites)
+    @posts      = @user.posts&.where(is_published: true)&.includes(:post_tags).includes(:post_favorites)
     @keyword    = params[:keyword]
     @prefecture = params[:prefecture]
     @sort       = params[:sort]

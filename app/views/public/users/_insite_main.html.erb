@@ -1,0 +1,8 @@
+<%= form_with url: user_insite_path(user.canonical_name), method: :get do |f| %>
+  <%= f.select :required_data, [[I18n.t('users.insite.posts_data'), 'posts'],[I18n.t('users.insite.opinions_data'), 'opinions']], selected: required_data %>
+  <%= f.submit I18n.t('users.insite.submit'), class: 'btn btn-sm success-btn py-0 mb-2' %>
+<% end %>
+
+<div id='chart'>
+  <%= render 'public/users/chart', data: data, required_data: required_data %>
+</div>

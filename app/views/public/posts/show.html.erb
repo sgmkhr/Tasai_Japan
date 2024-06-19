@@ -8,6 +8,10 @@
 <div class='section-title'><h2><%= I18n.t('posts.show.title') %></h2></div>
 
 <section>
+  
+  <% if @post.is_published == false %>
+    <p class='text-center text-danger'><%= I18n.t('posts.show.non_published') %></p>
+  <% end %>
 
   <div class='d-md-block d-none'>
     <%= image_tag @post.get_post_image(400, 400) %>

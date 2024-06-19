@@ -53,6 +53,7 @@ ja:
       user_posts_tab: 投稿履歴一覧
       bookmarked_posts_tab: ブックマーク一覧
       followusers_posts_tab: フォローユーザーの投稿一覧
+      draft_posts_tab: 非公開設定中の投稿一覧
       posts_count: 記事投稿数
       counseling_rooms_count: 作成相談室数
       participations_count: 参加相談室数
@@ -71,10 +72,17 @@ ja:
       inactive: 退会済み
     insite:
       title: インサイト
-      main_tab: 総合インサイト
+      main_tab: 貢献度
       managing_rooms_tab: あなたの相談室
       participating_rooms_tab: 参加中相談室
       applying_rooms_tab: 参加申請中
+      submit: 表示
+      posts_data: 投稿数
+      opinions_data: 意見数
+      no_data: 算出するデータがないため表示できません
+      chart_title:
+        posts: 過去１週間のおすすめ投稿数
+        opinions: 過去1週間の意見投稿数
     unsubscribe:
       title: 退会画面
       btn: 退会する
@@ -102,10 +110,12 @@ ja:
       not_exist: 投稿が存在しません。
       prefecture: "都道府県:"
       count: 件
+      non_published: 非公開投稿は参照できません
     show:
       title: 投稿詳細
       edit_btn: 編集
       comment: コメント
+      non_published: 非公開設定中
     new:
       title: 新規投稿
       create_btn: 投稿
@@ -116,6 +126,9 @@ ja:
       confirmation: 本当に削除してもいいですか？
       success: 投稿を削除しました。
     validates: 他のユーザーの投稿編集画面には遷移できません。
+    is_published:
+      true: 公開
+      false: 非公開(下書き保存)
   comments:
     validates: 他のユーザーのコメントは削除できません。
   categories:
@@ -365,6 +378,7 @@ ja:
         body: 本文
         prefecture: 都道府県
         tag_name: タグ
+        is_published: 公開設定
       counseling_room:
         topic: お題
         detail: 詳細
