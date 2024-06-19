@@ -14,6 +14,7 @@ class Public::PostsController < ApplicationController
     @prefecture = params[:prefecture]
     @sort       = params[:sort]
     @tag_name   = params[:tag_name]
+    @current_tab = params[:current_tab]
     if @tag_name.present?
       @posts = @posts.where('post_tags.name': @tag_name)
     else
@@ -23,6 +24,7 @@ class Public::PostsController < ApplicationController
       @posts = @posts.old                            if @sort == 'old'
       @posts = @posts.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
     end
+    @current_tab = 'post_keyword_tab' unless @current_tab.present?
     @posts = Kaminari.paginate_array(@posts).page(params[:normal_page]).per(12)
   end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
 
