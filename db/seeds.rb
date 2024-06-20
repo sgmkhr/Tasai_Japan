@@ -323,6 +323,7 @@ brunello.active_relationships.find_or_create_by(followed_id: char.id)
 ambre.active_relationships.find_or_create_by(followed_id: faina.id)
 char.active_relationships.find_or_create_by(followed_id: filipp.id)
 char.active_relationships.find_or_create_by(followed_id: yuka.id)
+char.active_relationships.find_or_create_by(followed_id: yuma.id)#相互フォロー
 amado.active_relationships.find_or_create_by(followed_id: aoi.id)
 amado.active_relationships.find_or_create_by(followed_id: hana.id)
 amado.active_relationships.find_or_create_by(followed_id: koharu.id)#相互フォロー
@@ -331,6 +332,7 @@ jacobo.active_relationships.find_or_create_by(followed_id: mio.id)#相互フォ�
 jacobo.active_relationships.find_or_create_by(followed_id: ritsu.id)
 jacobo.active_relationships.find_or_create_by(followed_id: bolek.id)
 jacobo.active_relationships.find_or_create_by(followed_id: yuka.id)#相互フォロー
+jacobo.active_relationships.find_or_create_by(followed_id: dan.id)#相互フォロー
 juana.active_relationships.find_or_create_by(followed_id: aoi.id)
 juana.active_relationships.find_or_create_by(followed_id: faina.id)
 faina.active_relationships.find_or_create_by(followed_id: hana.id)
@@ -353,11 +355,12 @@ aoi.active_relationships.find_or_create_by(followed_id: yuko.id)#相互フォロ
 dan.active_relationships.find_or_create_by(followed_id: henry.id)
 dan.active_relationships.find_or_create_by(followed_id: juana.id)
 dan.active_relationships.find_or_create_by(followed_id: sana.id)
+dan.active_relationships.find_or_create_by(followed_id: jacobo.id)#相互フォロー
 ritsu.active_relationships.find_or_create_by(followed_id: brunello.id)
 ritsu.active_relationships.find_or_create_by(followed_id: ambre.id)
 ritsu.active_relationships.find_or_create_by(followed_id: mio.id)#相互フォロー
 yuma.active_relationships.find_or_create_by(followed_id: james.id)
-yuma.active_relationships.find_or_create_by(followed_id: char.id)
+yuma.active_relationships.find_or_create_by(followed_id: char.id)#相互フォロー
 yuka.active_relationships.find_or_create_by(followed_id: jacobo.id)#相互フォロー
 koharu.active_relationships.find_or_create_by(followed_id: amado.id)#相互フォロー
 koharu.active_relationships.find_or_create_by(followed_id: james.id)#相互フォロー
@@ -462,6 +465,25 @@ post_unagi.post_favorites.find_or_create_by(user_id: amado.id)
 post_unagi.bookmarks.find_or_create_by(user_id: brunello.id)
 post_unagi.bookmarks.find_or_create_by(user_id: ambre.id)
 
+comment5 = post_unagi.comments.find_or_create_by(content: "I've never tried to eat unagi(eel)! How is it?") do |comment|
+  comment.user_id = ambre.id
+  comment.created_at = '2024-06-19'
+end
+
+comment6 = post_unagi.comments.find_or_create_by(content: "It's one of luxious food in Japan. It's juicy and soft, but also healthy.") do |comment|
+  comment.user_id = aoi.id
+  comment.created_at = '2024-06-19'
+end
+
+comment7 = post_unagi.comments.find_or_create_by(content: "I'll definitely try it. Thank you and followed your account.") do |comment|
+  comment.user_id = ambre.id
+  comment.created_at = '2024-06-20'
+end
+
+comment5.comment_favorites.find_or_create_by(user_id: aoi.id)
+comment6.comment_favorites.find_or_create_by(user_id: ambre.id)
+comment7.comment_favorites.find_or_create_by(user_id: aoi.id)
+
 post_winter = Post.find_or_create_by!(title: '竜王スキー場') do |po|
   po.caption = '関東のスキー場といえばここ！'
   po.body = '関東に住まいの方に人気のスキー場。上の方に登ると、素敵な景色と共にビールも飲めちゃいます！'
@@ -480,6 +502,25 @@ post_winter.post_favorites.find_or_create_by(user_id: celina.id)
 post_winter.bookmarks.find_or_create_by(user_id: char.id)
 post_winter.bookmarks.find_or_create_by(user_id: amado.id)
 
+comment7 = post_winter.comments.find_or_create_by(content: "はじめまして! I'm into skiing and visit ski areas around in Japan. I would go to that place this year.") do |comment|
+  comment.user_id = jacobo.id
+  comment.created_at = '2024-06-20'
+end
+
+comment8 = post_winter.comments.find_or_create_by(content: "Thanks for your comment. We can probably see each other there.") do |comment|
+  comment.user_id = dan.id
+  comment.created_at = '2024-06-20'
+end
+
+comment9 = post_winter.comments.find_or_create_by(content: "ありがとうございます! I'll send you a DM. Let's keep in touch!") do |comment|
+  comment.user_id = jacobo.id
+  comment.created_at = '2024-06-21'
+end
+
+comment7.comment_favorites.find_or_create_by(user_id: dan.id)
+comment8.comment_favorites.find_or_create_by(user_id: jacobo.id)
+comment9.comment_favorites.find_or_create_by(user_id: dan.id)
+
 post_kanto = Post.find_or_create_by!(title: '秩父') do |po|
   po.caption = '東京から日帰りドライブにおすすめ'
   po.body = '秩父では荒川のライン下りが楽しいですよ！ランチはここがお気に入り。新鮮なジビエを岩の上で焼いて、きのこもたっぷり、自然の中で味わえる贅沢ランチです！'
@@ -497,6 +538,34 @@ post_kanto.post_favorites.find_or_create_by(user_id: aoi.id)
 post_kanto.bookmarks.find_or_create_by(user_id: jacobo.id)
 post_kanto.bookmarks.find_or_create_by(user_id: juana.id)
 post_kanto.bookmarks.find_or_create_by(user_id: faina.id)
+
+comment10 = post_kanto.comments.find_or_create_by(content: "今度長期で東京に遊びに行くので秩父も行ってみようと思います！") do |comment|
+  comment.user_id = aoi.id
+  comment.created_at = '2024-06-21'
+end
+
+comment11 = post_kanto.comments.find_or_create_by(content: "Amazing！I wanna try to grill meats on a rock too! Could you send me a place's name in English, please?") do |comment|
+  comment.user_id = celina.id
+  comment.created_at = '2024-06-23'
+end
+
+post_kanto.comments.find_or_create_by(content: "aoiさんメッセージありがとうございます！気づくのが遅くなってしまいすみません。少し険しい道もあるので運転気をつけて楽しんでください！") do |comment|
+  comment.user_id = dan.id
+  comment.created_at = '2024-06-24'
+end
+
+post_kanto.comments.find_or_create_by(content: "Thank you for your message, Celina-san. The restaurant is \"Kinoko-no-sato Suzuka-en\".") do |comment|
+  comment.user_id = dan.id
+  comment.created_at = '2024-06-24'
+end
+
+post_kanto.comments.find_or_create_by(content: "Thank you. I'm looking forward to the new experience!") do |comment|
+  comment.user_id = celina.id
+  comment.created_at = '2024-06-24'
+end
+
+comment10.comment_favorites.find_or_create_by(user_id: dan.id)
+comment11.comment_favorites.find_or_create_by(user_id: dan.id)
 
 post_asakusa = Post.find_or_create_by!(title: '浅草寺') do |po|
   po.caption = '日本の象徴的な観光スポット'
@@ -528,8 +597,9 @@ post_shibuya.post_favorites.find_or_create_by(user_id: yuma.id)
 post_shibuya.bookmarks.find_or_create_by(user_id: bolek.id)
 post_shibuya.bookmarks.find_or_create_by(user_id: aoi.id)
 
-post_shibuya.comments.find_or_create_by(user_id: bolek.id) do |comment|
-  comment.content = "It sounds like a relaxing place."
+post_shibuya.comments.find_or_create_by(content: "It sounds like a relaxing place.") do |comment|
+  comment.user_id = bolek.id
+  comment.created_at = '2024-06-22'
 end
 
 post_aogawa = Post.find_or_create_by!(title: '青川') do |po|
@@ -553,9 +623,18 @@ post_aogawa.bookmarks.find_or_create_by(user_id: yuma.id)
 post_aogawa.bookmarks.find_or_create_by(user_id: koharu.id)
 post_aogawa.bookmarks.find_or_create_by(user_id: emi.id)
 
-post_aogawa.comments.find_or_create_by(user_id: emi.id) do |comment|
-  comment.content = 'こんな素敵な場所があるんですね！'
+comment12 = post_aogawa.comments.find_or_create_by(content: 'こんな素敵な場所があるんですね！岐阜はまだ訪れたことがないので、次の長期休みに行ってみたいと思います！') do |comment|
+  comment.user_id = emi.id
+  comment.created_at = '2024-06-20'
 end
+
+comment13 = post_aogawa.comments.find_or_create_by(content: "すごい！癒されそうですね！") do |comment|
+  comment.user_id = yuma.id
+  comment.created_at = '2024-06-23'
+end
+
+comment12.comment_favorites.find_or_create_by(user_id: ritsu.id)
+comment13.comment_favorites.find_or_create_by(user_id: ritsu.id)
 
 post_sirakawago = Post.find_or_create_by!(title: '白川郷') do |po|
   po.caption = 'ここでしか見れない景色'
@@ -573,6 +652,14 @@ post_sirakawago.bookmarks.find_or_create_by(user_id: mio.id)
 post_sirakawago.bookmarks.find_or_create_by(user_id: aoi.id)
 post_sirakawago.bookmarks.find_or_create_by(user_id: bolek.id)
 
+comment14 = post_sirakawago.comments.find_or_create_by(content: "Thank you for sharing that nice place here. I'll visit there.") do |comment|
+  comment.user_id = bolek.id
+  comment.created_at = '2024-06-21'
+end
+
+comment14.comment_favorites.find_or_create_by(user_id: ritsu.id)
+comment14.comment_favorites.find_or_create_by(user_id: mio.id)
+
 post_kobe = Post.find_or_create_by!(title: '神戸') do |po|
   po.caption = '県名よりもよく知られている場所'
   po.body = '程よく品もあるエリア。遊ぶスポットもたくさんある、栄えた場所です。住む場所としても人気があります！'
@@ -586,6 +673,19 @@ post_kobe.post_favorites.find_or_create_by(user_id: brunello.id)
 
 post_kobe.bookmarks.find_or_create_by(user_id: celina.id)
 post_kobe.bookmarks.find_or_create_by(user_id: aoi.id)
+
+comment15 = post_kobe.comments.find_or_create_by(content: "確かに！品がある街ですよね。海外から遊びに来た方々にはぜひ観光でも行ってみて欲しいですね！") do |comment|
+  comment.user_id = aoi.id
+  comment.created_at = '2024-06-22'
+end
+
+post_kobe.comments.find_or_create_by(content: "コメントありがとうございますー！そうですね！ぜひ行ってみてほしいですよね！") do |comment|
+  comment.user_id = yuma.id
+  comment.created_at = '2024-06-23'
+end
+
+comment15.comment_favorites.find_or_create_by(user_id: yuma.id)
+comment15.comment_favorites.find_or_create_by(user_id: brunello.id)
 
 post_enoden = Post.find_or_create_by!(title: '江ノ電') do |po|
   po.caption = 'ドライブも良し、電車旅も良し'
@@ -602,9 +702,17 @@ post_enoden.post_favorites.find_or_create_by(user_id: filipp.id)
 post_enoden.bookmarks.find_or_create_by(user_id: dan.id)
 post_enoden.bookmarks.find_or_create_by(user_id: ritsu.id)
 
-post_enoden.comments.find_or_create_by(user_id: dan.id) do |comment|
-  comment.content = '何度も言ってますが飽きませんよね！また行きます！！'
+comment16 = post_enoden.comments.find_or_create_by(content: '何度も言ってますが飽きませんよね！また行きます！！') do |comment|
+  comment.user_id = dan.id
+  comment.created_at = '2024-06-22'
 end
+
+post_enoden.comments.find_or_create_by(content: '確かに！飽きない場所っていうのは納得です！') do |comment|
+  comment.user_id = yuma.id
+  comment.created_at = '2024-06-23'
+end
+
+comment16.comment_favorites.find_or_create_by(user_id: yuma.id)
 
 post_kamogawa = Post.find_or_create_by!(title: '鴨川') do |po|
   po.caption = '京都の代表的な景色'
@@ -621,6 +729,32 @@ post_kamogawa.post_favorites.find_or_create_by(user_id: jacobo.id)
 
 post_kamogawa.bookmarks.find_or_create_by(user_id: koharu.id)
 post_kamogawa.bookmarks.find_or_create_by(user_id: yuka.id)
+
+comment17 = post_kamogawa.comments.find_or_create_by(content: '有名なところですね！行こう行こうと思っているけどなかなか行けていませんでした。この写真を見て改めて気になったので、この夏は行ってみます！！') do |comment|
+  comment.user_id = yuka.id
+  comment.created_at = '2024-06-22'
+end
+
+comment18 = post_kamogawa.comments.find_or_create_by(content: "You've been posting so beautiful places. I'll follow you and see your posts to decide where to visit in Japan.") do |comment|
+  comment.user_id = char.id
+  comment.created_at = '2024-06-23'
+end
+
+comment19 = post_kamogawa.comments.find_or_create_by(content: "yukaさん、ぜひです！今年こそは行ってみてください〜！") do |comment|
+  comment.user_id = yuma.id
+  comment.created_at = '2024-06-23'
+end
+
+comment20 = post_kamogawa.comments.find_or_create_by(content: "Thank you for following my account. I'll follow you back.") do |comment|
+  comment.user_id = yuma.id
+  comment.created_at = '2024-06-23'
+end
+
+comment17.comment_favorites.find_or_create_by(user_id: char.id)
+comment17.comment_favorites.find_or_create_by(user_id: yuma.id)
+comment18.comment_favorites.find_or_create_by(user_id: yuma.id)
+comment19.comment_favorites.find_or_create_by(user_id: yuka.id)
+comment20.comment_favorites.find_or_create_by(user_id: char.id)
 
 post_nihonsyu = Post.find_or_create_by!(title: '京都で日本酒') do |po|
   po.caption = 'お酒好きにはたまりません！'
@@ -653,6 +787,15 @@ post_doitsumura.post_favorites.find_or_create_by(user_id: koharu.id)
 post_doitsumura.bookmarks.find_or_create_by(user_id: sana.id)
 post_doitsumura.bookmarks.find_or_create_by(user_id: mio.id)
 
+comment21 = post_doitsumura.comments.find_or_create_by(content: "私も行ったことありますが、今まで観たイルミネーションの中で一番規模がすごかったです！") do |comment|
+  comment.user_id = koharu.id
+  comment.created_at = '2024-06-20'
+end
+
+comment21.comment_favorites.find_or_create_by(user_id: amado.id)
+comment21.comment_favorites.find_or_create_by(user_id: dan.id)
+comment21.comment_favorites.find_or_create_by(user_id: juana.id)
+
 post_isumi = Post.find_or_create_by!(title: 'いすみ市') do |po|
   po.caption = '星を見るならここ'
   po.body = '田舎町ではありますが、グランピング施設が多く点在しており、喧騒から離れて自然の中で癒されたい時におすすめのスポットです。'
@@ -666,6 +809,18 @@ post_isumi.post_favorites.find_or_create_by(user_id: koharu.id)
 post_isumi.post_favorites.find_or_create_by(user_id: celina.id)
 
 post_isumi.bookmarks.find_or_create_by(user_id: sana.id)
+
+comment22 = post_isumi.comments.find_or_create_by(content: "こんにちは。It looks quiet and beautiful. I'd like to visit there.") do |comment|
+  comment.user_id = celina.id
+  comment.created_at = '2024-06-20'
+end
+
+post_isumi.comments.find_or_create_by(content: "こんにちは！It's quiet and beautiful in nature as you said.") do |comment|
+  comment.user_id = yuka.id
+  comment.created_at = '2024-06-21'
+end
+
+comment22.comment_favorites.find_or_create_by(user_id: yuka.id)
 
 post_tokyotower = Post.find_or_create_by!(title: 'Tokyo Tower') do |po|
   po.caption = 'A beautiful tower'
@@ -696,6 +851,24 @@ post_kamosui.post_favorites.find_or_create_by(user_id: abramo.id)
 post_kamosui.post_favorites.find_or_create_by(user_id: yuma.id)
 
 post_kamosui.bookmarks.find_or_create_by(user_id: yuko.id)
+
+comment23 = post_kamosui.comments.find_or_create_by(content: "IT IS BEAUTIFUL! I googled it and hit \"Kamo aquarium\". Is it the place you posted?") do |comment|
+  comment.user_id = abramo.id
+  comment.created_at = '2024-06-23'
+end
+
+comment24 = post_kamosui.comments.find_or_create_by(content: "Thank you. I think so. \"Sui\" means aquarium, so it should be correct. Enjoy Japan!") do |comment|
+  comment.user_id = henry.id
+  comment.created_at = '2024-06-23'
+end
+
+post_kamosui.comments.find_or_create_by(content: "Oh good! Thanks. You too!") do |comment|
+  comment.user_id = abramo.id
+  comment.created_at = '2024-06-23'
+end
+
+comment23.comment_favorites.find_or_create_by(user_id: henry.id)
+comment24.comment_favorites.find_or_create_by(user_id: abramo.id)
 
 # 以下、相談室カテゴリデータ
 Category.find_or_create_by!(name: 'マナー')
