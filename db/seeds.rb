@@ -23,6 +23,7 @@ hana = User.find_or_create_by!(email: 'hanako@example.com') do |user|
   user.password = '111111'
   user.introduction = '北海道生まれ、現在東京住まいです。'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w1.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-15'
 end
 
 yuko = User.find_or_create_by!(email: 'yuko@example.com') do |user|
@@ -34,6 +35,7 @@ yuko = User.find_or_create_by!(email: 'yuko@example.com') do |user|
   user.password = '222222'
   user.introduction = 'どうぞよろしくお願いします！'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w2.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-15'
 end
 
 james = User.find_or_create_by!(email: 'james@example.com') do |user|
@@ -45,6 +47,7 @@ james = User.find_or_create_by!(email: 'james@example.com') do |user|
   user.password = '333333'
   user.introduction = '日本来たばかりです！'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m1.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-15'
 end
 
 henry = User.find_or_create_by!(email: 'henry@example.com') do |user|
@@ -56,6 +59,7 @@ henry = User.find_or_create_by!(email: 'henry@example.com') do |user|
   user.password = '444444'
   user.introduction = '日本に住み始めて8年ほど。日本語大丈夫です。'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m2.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-15'
 end
 
 abramo = User.find_or_create_by!(email: 'abramo@example.com') do |user|
@@ -67,6 +71,7 @@ abramo = User.find_or_create_by!(email: 'abramo@example.com') do |user|
   user.password = '555555'
   user.introduction = '2年前から日本。Please teach me Japanese manners.'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m3.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-15'
 end
 
 brunello = User.find_or_create_by!(email: 'brunello@example.com') do |user|
@@ -78,6 +83,7 @@ brunello = User.find_or_create_by!(email: 'brunello@example.com') do |user|
   user.password = '666666'
   user.introduction = '日本のこともっと知りたい！'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m4.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-16'
 end
 
 ambre = User.find_or_create_by!(email: 'abmre@example.com') do |user|
@@ -89,6 +95,7 @@ ambre = User.find_or_create_by!(email: 'abmre@example.com') do |user|
   user.password = '777777'
   user.introduction = 'Nice to meet all you guys. I love Japan!!'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m5.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-16'
 end
 
 char = User.find_or_create_by!(email: 'char@example.com') do |user|
@@ -100,6 +107,7 @@ char = User.find_or_create_by!(email: 'char@example.com') do |user|
   user.password = '888888'
   user.introduction = '初めまして。日本に来たばかりです。'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w4.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-16'
 end
 
 amado = User.find_or_create_by!(email: 'amado@example.com') do |user|
@@ -111,6 +119,7 @@ amado = User.find_or_create_by!(email: 'amado@example.com') do |user|
   user.password = '999999'
   user.introduction = 'Hi, feel free to contact me.'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m6.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-16'
 end
 
 jacobo = User.find_or_create_by!(email: 'jacob@example.com') do |user|
@@ -122,6 +131,7 @@ jacobo = User.find_or_create_by!(email: 'jacob@example.com') do |user|
   user.password = '101010'
   user.introduction = '日本のこと勉強してます！いろいろ相談に乗ってくれると嬉しいです。'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m1.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-16'
 end
 
 juana = User.find_or_create_by!(email: 'juana@example.com') do |user|
@@ -133,6 +143,7 @@ juana = User.find_or_create_by!(email: 'juana@example.com') do |user|
   user.password = '111111'
   user.introduction = "Hello. I'm planning to visit Japan in this year."
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w2.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-17'
 end
 
 faina = User.find_or_create_by!(email: 'fiana@example.com') do |user|
@@ -144,6 +155,7 @@ faina = User.find_or_create_by!(email: 'fiana@example.com') do |user|
   user.password = '121212'
   user.introduction = "I'm a English teacher in Japan, who learning Japanese."
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w3.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-17'
 end
 
 filipp = User.find_or_create_by!(email: 'filipp@example.com') do |user|
@@ -155,6 +167,7 @@ filipp = User.find_or_create_by!(email: 'filipp@example.com') do |user|
   user.password = '131313'
   user.introduction = '日本で友達たくさん作りたいです！！'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m2.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-17'
 end
 
 celina = User.find_or_create_by!(email: 'celina@example.com') do |user|
@@ -166,6 +179,7 @@ celina = User.find_or_create_by!(email: 'celina@example.com') do |user|
   user.password = '141414'
   user.introduction = "Just arrived and enjoying in Japan. "
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w5.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-17'
 end
 
 bolek = User.find_or_create_by!(email: 'bolek@example.com') do |user|
@@ -177,6 +191,7 @@ bolek = User.find_or_create_by!(email: 'bolek@example.com') do |user|
   user.password = '151515'
   user.introduction = 'I like traveling and exploring new places'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m3.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-17'
 end
 
 aoi = User.find_or_create_by!(email: 'aoi@example.com') do |user|
@@ -188,6 +203,7 @@ aoi = User.find_or_create_by!(email: 'aoi@example.com') do |user|
   user.password = '161616'
   user.introduction = '福岡生まれ福岡育ちです！福岡の魅力を伝えたいです！海外留学経験あります！英語もOKです！'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m4.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-17'
 end
 
 dan = User.find_or_create_by!(email: 'dan@example.com') do |user|
@@ -199,6 +215,7 @@ dan = User.find_or_create_by!(email: 'dan@example.com') do |user|
   user.password = '171717'
   user.introduction = '東京に長く住んでいます。東京のおすすめを発信します。'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m5.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-18'
 end
 
 ritsu = User.find_or_create_by!(email: 'ritsu@example.com') do |user|
@@ -210,6 +227,7 @@ ritsu = User.find_or_create_by!(email: 'ritsu@example.com') do |user|
   user.password = '181818'
   user.introduction = '岐阜生まれです。岐阜のおすすめスポットを投稿します。'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m6.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-18'
 end
 
 yuma = User.find_or_create_by!(email: 'yuma@example.com') do |user|
@@ -221,6 +239,7 @@ yuma = User.find_or_create_by!(email: 'yuma@example.com') do |user|
   user.password = '191919'
   user.introduction = '旅行が趣味です。日本国内で行って良かったところをお伝えしていきたいです！'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_m6.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-18'
 end
 
 yuka = User.find_or_create_by!(email: 'yuka@example.com') do |user|
@@ -232,6 +251,7 @@ yuka = User.find_or_create_by!(email: 'yuka@example.com') do |user|
   user.password = '202020'
   user.introduction = '千葉県在住です。千葉にもいろんなおすすめスポットあるので、紹介していきたいと思います。'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w1.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-18'
 end
 
 koharu = User.find_or_create_by!(email: 'koharu@example.com') do |user|
@@ -243,6 +263,7 @@ koharu = User.find_or_create_by!(email: 'koharu@example.com') do |user|
   user.password = '212121'
   user.introduction = '海外へ行ったことはないですが、海外から来た人たちとも仲良くなりたい！'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w2.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-18'
 end
 
 emi = User.find_or_create_by!(email: 'ema@example.com') do |user|
@@ -254,6 +275,7 @@ emi = User.find_or_create_by!(email: 'ema@example.com') do |user|
   user.password = '222222'
   user.introduction = 'ぜひ気軽にフォローしてください。よろしくお願いします！'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w3.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-18'
 end
 
 sana = User.find_or_create_by!(email: 'sana@example.com') do |user|
@@ -265,6 +287,7 @@ sana = User.find_or_create_by!(email: 'sana@example.com') do |user|
   user.password = '232323'
   user.introduction = '日本の楽しい場所をもっと知りたいので登録しました。'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w4.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-19'
 end
 
 mio = User.find_or_create_by!(email: 'mio@example.com') do |user|
@@ -276,6 +299,7 @@ mio = User.find_or_create_by!(email: 'mio@example.com') do |user|
   user.password = '242424'
   user.introduction = 'いろんな人と交流したいです！'
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/icon_w5.jpg"),filename: 'sample_icon_image.jpeg')
+  user.created_at = '2024-06-19'
 end
 
 # 以下、フォローデータ
@@ -287,6 +311,7 @@ yuko.active_relationships.find_or_create_by(followed_id: abramo.id)
 yuko.active_relationships.find_or_create_by(followed_id: hana.id)#相互フォロー
 yuko.active_relationships.find_or_create_by(followed_id: brunello.id)
 yuko.active_relationships.find_or_create_by(followed_id: dan.id)
+yuko.active_relationships.find_or_create_by(followed_id: aoi.id)#相互フォロー
 james.active_relationships.find_or_create_by(followed_id: ambre.id)
 james.active_relationships.find_or_create_by(followed_id: jacobo.id)
 james.active_relationships.find_or_create_by(followed_id: koharu.id)#相互フォロー
@@ -298,6 +323,7 @@ brunello.active_relationships.find_or_create_by(followed_id: char.id)
 ambre.active_relationships.find_or_create_by(followed_id: faina.id)
 char.active_relationships.find_or_create_by(followed_id: filipp.id)
 char.active_relationships.find_or_create_by(followed_id: yuka.id)
+char.active_relationships.find_or_create_by(followed_id: yuma.id)#相互フォロー
 amado.active_relationships.find_or_create_by(followed_id: aoi.id)
 amado.active_relationships.find_or_create_by(followed_id: hana.id)
 amado.active_relationships.find_or_create_by(followed_id: koharu.id)#相互フォロー
@@ -306,6 +332,7 @@ jacobo.active_relationships.find_or_create_by(followed_id: mio.id)#相互フォ�
 jacobo.active_relationships.find_or_create_by(followed_id: ritsu.id)
 jacobo.active_relationships.find_or_create_by(followed_id: bolek.id)
 jacobo.active_relationships.find_or_create_by(followed_id: yuka.id)#相互フォロー
+jacobo.active_relationships.find_or_create_by(followed_id: dan.id)#相互フォロー
 juana.active_relationships.find_or_create_by(followed_id: aoi.id)
 juana.active_relationships.find_or_create_by(followed_id: faina.id)
 faina.active_relationships.find_or_create_by(followed_id: hana.id)
@@ -324,15 +351,16 @@ bolek.active_relationships.find_or_create_by(followed_id: emi.id)
 aoi.active_relationships.find_or_create_by(followed_id: filipp.id)
 aoi.active_relationships.find_or_create_by(followed_id: hana.id)
 aoi.active_relationships.find_or_create_by(followed_id: dan.id)
-aoi.active_relationships.find_or_create_by(followed_id: yuko.id)
+aoi.active_relationships.find_or_create_by(followed_id: yuko.id)#相互フォロー
 dan.active_relationships.find_or_create_by(followed_id: henry.id)
 dan.active_relationships.find_or_create_by(followed_id: juana.id)
 dan.active_relationships.find_or_create_by(followed_id: sana.id)
+dan.active_relationships.find_or_create_by(followed_id: jacobo.id)#相互フォロー
 ritsu.active_relationships.find_or_create_by(followed_id: brunello.id)
 ritsu.active_relationships.find_or_create_by(followed_id: ambre.id)
 ritsu.active_relationships.find_or_create_by(followed_id: mio.id)#相互フォロー
 yuma.active_relationships.find_or_create_by(followed_id: james.id)
-yuma.active_relationships.find_or_create_by(followed_id: char.id)
+yuma.active_relationships.find_or_create_by(followed_id: char.id)#相互フォロー
 yuka.active_relationships.find_or_create_by(followed_id: jacobo.id)#相互フォロー
 koharu.active_relationships.find_or_create_by(followed_id: amado.id)#相互フォロー
 koharu.active_relationships.find_or_create_by(followed_id: james.id)#相互フォロー
@@ -355,6 +383,7 @@ post_drive = Post.find_or_create_by!(title: '糸島の芥屋') do |po|
   po.prefecture = 7
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/fukuoka_itoshima.jpeg"), filename: 'fukuoka_itoshima.jpeg')
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
+  po.created_at = '2024-06-18'
 end
 
 post_drive.post_favorites.find_or_create_by(user_id: hana.id)
@@ -364,9 +393,30 @@ post_drive.post_favorites.find_or_create_by(user_id: james.id)
 post_drive.bookmarks.find_or_create_by(user_id: hana.id)
 post_drive.bookmarks.find_or_create_by(user_id: yuko.id)
 
-post_drive.comments.find_or_create_by(user_id: hana.id) do |comment|
-  comment.content = '今度福岡に行くので参加してみようと思います！素敵な情報ありがとうございます。'
+comment1 = post_drive.comments.find_or_create_by(content: '今度福岡に行くので参加してみようと思います！素敵な情報ありがとうございます。') do |comment|
+  comment.user_id = hana.id
+  comment.created_at = '2024-06-19'
 end
+
+comment2 = post_drive.comments.find_or_create_by(content: '参考にしていただけて嬉しいです！ぜひ楽しんできてください！') do |comment|
+  comment.user_id = aoi.id
+  comment.created_at = '2024-06-20'
+end
+
+comment3 = post_drive.comments.find_or_create_by(content: '私もよく福岡へ旅行に行きますが、そこは知りませんでした！フォローさせていただきます！') do |comment|
+  comment.user_id = yuko.id
+  comment.created_at = '2024-06-21'
+end
+
+post_drive.comments.find_or_create_by(content: 'フォローありがとうございます！私もフォローさせていただきました。また福岡に来る際は気軽にDMしてください〜') do |comment|
+  comment.user_id = aoi.id
+  comment.created_at = '2024-06-23'
+end
+
+comment1.comment_favorites.find_or_create_by(user_id: aoi.id)
+comment2.comment_favorites.find_or_create_by(user_id: hana.id)
+comment2.comment_favorites.find_or_create_by(user_id: yuko.id)
+comment3.comment_favorites.find_or_create_by(user_id: aoi.id)
 
 post_mentai = Post.find_or_create_by!(title: '明太子のお重') do |po|
   po.caption = '博多に来たら必ず行ってほしい'
@@ -374,20 +424,30 @@ post_mentai = Post.find_or_create_by!(title: '明太子のお重') do |po|
   po.prefecture = 7
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/fukuoka_mentaizyu.jpeg"),filename: 'fukuoka_mentaizyu.jpeg')
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
+  po.created_at = '2024-06-19'
 end
 
 post_mentai.post_favorites.find_or_create_by(user_id: henry.id)
 post_mentai.post_favorites.find_or_create_by(user_id: abramo.id)
 post_mentai.post_favorites.find_or_create_by(user_id: brunello.id)
 post_mentai.post_favorites.find_or_create_by(user_id: hana.id)
+post_mentai.post_favorites.find_or_create_by(user_id: yuka.id)
 
 post_mentai.bookmarks.find_or_create_by(user_id: james.id)
 post_mentai.bookmarks.find_or_create_by(user_id: henry.id)
 post_mentai.bookmarks.find_or_create_by(user_id: abramo.id)
 
-post_mentai.comments.find_or_create_by(user_id: henry.id) do |comment|
-  comment.content = 'Looks good! まだ食べたことないですが、福岡行ったら試したい。'
+comment4 = post_mentai.comments.find_or_create_by(content: 'Looks good! まだ食べたことないですが、福岡行ったら試したい。') do |comment|
+  comment.user_id = henry.id
+  comment.created_at = '2024-06-20'
 end
+
+post_mentai.comments.find_or_create_by(content: 'Thank you! 辛いの大丈夫だったらぜひ食べてみてください！') do |comment|
+  comment.user_id = aoi.id
+  comment.created_at = '2024-06-21'
+end
+
+comment4.comment_favorites.find_or_create_by(user_id: aoi.id)
 
 post_unagi = Post.find_or_create_by!(title: '柳川') do |po|
   po.caption = 'うなぎも有名な場所'
@@ -395,6 +455,7 @@ post_unagi = Post.find_or_create_by!(title: '柳川') do |po|
   po.prefecture = 7
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/fukuoka_yanagawa.jpeg"),filename: 'fukuoka_yanagawa.jpeg')
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
+  po.created_at = '2024-06-19'
 end
 
 post_unagi.post_favorites.find_or_create_by(user_id: ambre.id)
@@ -404,12 +465,32 @@ post_unagi.post_favorites.find_or_create_by(user_id: amado.id)
 post_unagi.bookmarks.find_or_create_by(user_id: brunello.id)
 post_unagi.bookmarks.find_or_create_by(user_id: ambre.id)
 
+comment5 = post_unagi.comments.find_or_create_by(content: "I've never tried to eat unagi(eel)! How is it?") do |comment|
+  comment.user_id = ambre.id
+  comment.created_at = '2024-06-19'
+end
+
+comment6 = post_unagi.comments.find_or_create_by(content: "It's one of luxious food in Japan. It's juicy and soft, but also healthy.") do |comment|
+  comment.user_id = aoi.id
+  comment.created_at = '2024-06-19'
+end
+
+comment7 = post_unagi.comments.find_or_create_by(content: "I'll definitely try it. Thank you and followed your account.") do |comment|
+  comment.user_id = ambre.id
+  comment.created_at = '2024-06-20'
+end
+
+comment5.comment_favorites.find_or_create_by(user_id: aoi.id)
+comment6.comment_favorites.find_or_create_by(user_id: ambre.id)
+comment7.comment_favorites.find_or_create_by(user_id: aoi.id)
+
 post_winter = Post.find_or_create_by!(title: '竜王スキー場') do |po|
   po.caption = '関東のスキー場といえばここ！'
   po.body = '関東に住まいの方に人気のスキー場。上の方に登ると、素敵な景色と共にビールも飲めちゃいます！'
   po.prefecture = 20
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/nagano_ryuo.jpeg"),filename: 'nagano_ryuo.jpeg')
   po.user = dan # 東京に馴染み深いサンプルユーザー
+  po.created_at = '2024-06-19'
 end
 
 post_winter.post_favorites.find_or_create_by(user_id: jacobo.id)
@@ -421,12 +502,32 @@ post_winter.post_favorites.find_or_create_by(user_id: celina.id)
 post_winter.bookmarks.find_or_create_by(user_id: char.id)
 post_winter.bookmarks.find_or_create_by(user_id: amado.id)
 
+comment7 = post_winter.comments.find_or_create_by(content: "はじめまして! I'm into skiing and visit ski areas around in Japan. I would go to that place this year.") do |comment|
+  comment.user_id = jacobo.id
+  comment.created_at = '2024-06-20'
+end
+
+comment8 = post_winter.comments.find_or_create_by(content: "Thanks for your comment. We can probably see each other there.") do |comment|
+  comment.user_id = dan.id
+  comment.created_at = '2024-06-20'
+end
+
+comment9 = post_winter.comments.find_or_create_by(content: "ありがとうございます! I'll send you a DM. Let's keep in touch!") do |comment|
+  comment.user_id = jacobo.id
+  comment.created_at = '2024-06-21'
+end
+
+comment7.comment_favorites.find_or_create_by(user_id: dan.id)
+comment8.comment_favorites.find_or_create_by(user_id: jacobo.id)
+comment9.comment_favorites.find_or_create_by(user_id: dan.id)
+
 post_kanto = Post.find_or_create_by!(title: '秩父') do |po|
   po.caption = '東京から日帰りドライブにおすすめ'
   po.body = '秩父では荒川のライン下りが楽しいですよ！ランチはここがお気に入り。新鮮なジビエを岩の上で焼いて、きのこもたっぷり、自然の中で味わえる贅沢ランチです！'
   po.prefecture = 11
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/saitama_chichibu.jpg"),filename: 'saitama_chichibu.jpg')
   po.user = dan # 東京に馴染み深いサンプルユーザー
+  po.created_at = '2024-06-19'
 end
 
 post_kanto.post_favorites.find_or_create_by(user_id: filipp.id)
@@ -438,12 +539,41 @@ post_kanto.bookmarks.find_or_create_by(user_id: jacobo.id)
 post_kanto.bookmarks.find_or_create_by(user_id: juana.id)
 post_kanto.bookmarks.find_or_create_by(user_id: faina.id)
 
+comment10 = post_kanto.comments.find_or_create_by(content: "今度長期で東京に遊びに行くので秩父も行ってみようと思います！") do |comment|
+  comment.user_id = aoi.id
+  comment.created_at = '2024-06-21'
+end
+
+comment11 = post_kanto.comments.find_or_create_by(content: "Amazing！I wanna try to grill meats on a rock too! Could you send me a place's name in English, please?") do |comment|
+  comment.user_id = celina.id
+  comment.created_at = '2024-06-23'
+end
+
+post_kanto.comments.find_or_create_by(content: "aoiさんメッセージありがとうございます！気づくのが遅くなってしまいすみません。少し険しい道もあるので運転気をつけて楽しんでください！") do |comment|
+  comment.user_id = dan.id
+  comment.created_at = '2024-06-24'
+end
+
+post_kanto.comments.find_or_create_by(content: "Thank you for your message, Celina-san. The restaurant is \"Kinoko-no-sato Suzuka-en\".") do |comment|
+  comment.user_id = dan.id
+  comment.created_at = '2024-06-24'
+end
+
+post_kanto.comments.find_or_create_by(content: "Thank you. I'm looking forward to the new experience!") do |comment|
+  comment.user_id = celina.id
+  comment.created_at = '2024-06-24'
+end
+
+comment10.comment_favorites.find_or_create_by(user_id: dan.id)
+comment11.comment_favorites.find_or_create_by(user_id: dan.id)
+
 post_asakusa = Post.find_or_create_by!(title: '浅草寺') do |po|
   po.caption = '日本の象徴的な観光スポット'
   po.body = '浅草寺の雷門が有名ですが、奥に進んだ場所から見えるこの眺めもおすすめです。夜は空いているので写真も撮りやすいですよ。'
   po.prefecture = 13
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/tokyo_asakusa.jpeg"),filename: 'tokyo_asakusa.jpeg')
   po.user = dan # 東京に馴染み深いサンプルユーザー
+  po.created_at = '2024-06-20'
 end
 
 post_asakusa.post_favorites.find_or_create_by(user_id: aoi.id)
@@ -459,6 +589,7 @@ post_shibuya = Post.find_or_create_by!(title: '渋谷スカイ') do |po|
   po.prefecture = 13
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/tokyo_shibuya.jpg"),filename: 'tokyo_shibuya.jpg')
   po.user = dan # 東京に馴染み深いサンプルユーザー
+  po.created_at = '2024-06-22'
 end
 
 post_shibuya.post_favorites.find_or_create_by(user_id: yuma.id)
@@ -466,8 +597,9 @@ post_shibuya.post_favorites.find_or_create_by(user_id: yuma.id)
 post_shibuya.bookmarks.find_or_create_by(user_id: bolek.id)
 post_shibuya.bookmarks.find_or_create_by(user_id: aoi.id)
 
-post_shibuya.comments.find_or_create_by(user_id: bolek.id) do |comment|
-  comment.content = "It sounds like a relaxing place."
+post_shibuya.comments.find_or_create_by(content: "It sounds like a relaxing place.") do |comment|
+  comment.user_id = bolek.id
+  comment.created_at = '2024-06-22'
 end
 
 post_aogawa = Post.find_or_create_by!(title: '青川') do |po|
@@ -476,6 +608,7 @@ post_aogawa = Post.find_or_create_by!(title: '青川') do |po|
   po.prefecture = 21
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/gifu_river.jpeg"),filename: 'gifu_river.jpeg')
   po.user = ritsu # 岐阜に馴染み深いサンプルユーザー
+  po.created_at = '2024-06-19'
 end
 
 post_aogawa.post_favorites.find_or_create_by(user_id: yuma.id)
@@ -490,9 +623,18 @@ post_aogawa.bookmarks.find_or_create_by(user_id: yuma.id)
 post_aogawa.bookmarks.find_or_create_by(user_id: koharu.id)
 post_aogawa.bookmarks.find_or_create_by(user_id: emi.id)
 
-post_aogawa.comments.find_or_create_by(user_id: emi.id) do |comment|
-  comment.content = 'こんな素敵な場所があるんですね！'
+comment12 = post_aogawa.comments.find_or_create_by(content: 'こんな素敵な場所があるんですね！岐阜はまだ訪れたことがないので、次の長期休みに行ってみたいと思います！') do |comment|
+  comment.user_id = emi.id
+  comment.created_at = '2024-06-20'
 end
+
+comment13 = post_aogawa.comments.find_or_create_by(content: "すごい！癒されそうですね！") do |comment|
+  comment.user_id = yuma.id
+  comment.created_at = '2024-06-23'
+end
+
+comment12.comment_favorites.find_or_create_by(user_id: ritsu.id)
+comment13.comment_favorites.find_or_create_by(user_id: ritsu.id)
 
 post_sirakawago = Post.find_or_create_by!(title: '白川郷') do |po|
   po.caption = 'ここでしか見れない景色'
@@ -500,6 +642,7 @@ post_sirakawago = Post.find_or_create_by!(title: '白川郷') do |po|
   po.prefecture = 21
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/gifu_shirakawago.jpg"),filename: 'gifu_shirakawago.jpg')
   po.user = ritsu # 岐阜に馴染み深いサンプルユーザー
+  po.created_at = '2024-06-20'
 end
 
 post_sirakawago.post_favorites.find_or_create_by(user_id: mio.id)
@@ -509,12 +652,21 @@ post_sirakawago.bookmarks.find_or_create_by(user_id: mio.id)
 post_sirakawago.bookmarks.find_or_create_by(user_id: aoi.id)
 post_sirakawago.bookmarks.find_or_create_by(user_id: bolek.id)
 
+comment14 = post_sirakawago.comments.find_or_create_by(content: "Thank you for sharing that nice place here. I'll visit there.") do |comment|
+  comment.user_id = bolek.id
+  comment.created_at = '2024-06-21'
+end
+
+comment14.comment_favorites.find_or_create_by(user_id: ritsu.id)
+comment14.comment_favorites.find_or_create_by(user_id: mio.id)
+
 post_kobe = Post.find_or_create_by!(title: '神戸') do |po|
   po.caption = '県名よりもよく知られている場所'
   po.body = '程よく品もあるエリア。遊ぶスポットもたくさんある、栄えた場所です。住む場所としても人気があります！'
   po.prefecture = 28
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/hyogo_kobe.jpeg"),filename: 'hyogo_kobe.jpeg')
   po.user = yuma # 旅行好きのサンプルユーザー
+  po.created_at = '2024-06-21'
 end
 
 post_kobe.post_favorites.find_or_create_by(user_id: brunello.id)
@@ -522,12 +674,26 @@ post_kobe.post_favorites.find_or_create_by(user_id: brunello.id)
 post_kobe.bookmarks.find_or_create_by(user_id: celina.id)
 post_kobe.bookmarks.find_or_create_by(user_id: aoi.id)
 
+comment15 = post_kobe.comments.find_or_create_by(content: "確かに！品がある街ですよね。海外から遊びに来た方々にはぜひ観光でも行ってみて欲しいですね！") do |comment|
+  comment.user_id = aoi.id
+  comment.created_at = '2024-06-22'
+end
+
+post_kobe.comments.find_or_create_by(content: "コメントありがとうございますー！そうですね！ぜひ行ってみてほしいですよね！") do |comment|
+  comment.user_id = yuma.id
+  comment.created_at = '2024-06-23'
+end
+
+comment15.comment_favorites.find_or_create_by(user_id: yuma.id)
+comment15.comment_favorites.find_or_create_by(user_id: brunello.id)
+
 post_enoden = Post.find_or_create_by!(title: '江ノ電') do |po|
   po.caption = 'ドライブも良し、電車旅も良し'
   po.body = '関東エリアに住まいの人々は定期的に足を運ぶような場所。気軽に海を眺めに行けます。'
   po.prefecture = 14
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/kanagawa_enoden.jpg"),filename: 'kanagawa_enoden.jpg')
   po.user = yuma # 旅行好きのサンプルユーザー
+  po.created_at = '2024-06-22'
 end
 
 post_enoden.post_favorites.find_or_create_by(user_id: brunello.id)
@@ -536,9 +702,17 @@ post_enoden.post_favorites.find_or_create_by(user_id: filipp.id)
 post_enoden.bookmarks.find_or_create_by(user_id: dan.id)
 post_enoden.bookmarks.find_or_create_by(user_id: ritsu.id)
 
-post_enoden.comments.find_or_create_by(user_id: dan.id) do |comment|
-  comment.content = '何度も言ってますが飽きませんよね！また行きます！！'
+comment16 = post_enoden.comments.find_or_create_by(content: '何度も言ってますが飽きませんよね！また行きます！！') do |comment|
+  comment.user_id = dan.id
+  comment.created_at = '2024-06-22'
 end
+
+post_enoden.comments.find_or_create_by(content: '確かに！飽きない場所っていうのは納得です！') do |comment|
+  comment.user_id = yuma.id
+  comment.created_at = '2024-06-23'
+end
+
+comment16.comment_favorites.find_or_create_by(user_id: yuma.id)
 
 post_kamogawa = Post.find_or_create_by!(title: '鴨川') do |po|
   po.caption = '京都の代表的な景色'
@@ -546,6 +720,7 @@ post_kamogawa = Post.find_or_create_by!(title: '鴨川') do |po|
   po.prefecture = 26
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/kyoto_kamogawa.jpeg"),filename: 'kyoto_kamogawa.jpeg')
   po.user = yuma # 旅行好きのサンプルユーザー
+  po.created_at = '2024-06-22'
 end
 
 post_kamogawa.post_favorites.find_or_create_by(user_id: char.id)
@@ -555,12 +730,39 @@ post_kamogawa.post_favorites.find_or_create_by(user_id: jacobo.id)
 post_kamogawa.bookmarks.find_or_create_by(user_id: koharu.id)
 post_kamogawa.bookmarks.find_or_create_by(user_id: yuka.id)
 
+comment17 = post_kamogawa.comments.find_or_create_by(content: '有名なところですね！行こう行こうと思っているけどなかなか行けていませんでした。この写真を見て改めて気になったので、この夏は行ってみます！！') do |comment|
+  comment.user_id = yuka.id
+  comment.created_at = '2024-06-22'
+end
+
+comment18 = post_kamogawa.comments.find_or_create_by(content: "You've been posting so beautiful places. I'll follow you and see your posts to decide where to visit in Japan.") do |comment|
+  comment.user_id = char.id
+  comment.created_at = '2024-06-23'
+end
+
+comment19 = post_kamogawa.comments.find_or_create_by(content: "yukaさん、ぜひです！今年こそは行ってみてください〜！") do |comment|
+  comment.user_id = yuma.id
+  comment.created_at = '2024-06-23'
+end
+
+comment20 = post_kamogawa.comments.find_or_create_by(content: "Thank you for following my account. I'll follow you back.") do |comment|
+  comment.user_id = yuma.id
+  comment.created_at = '2024-06-23'
+end
+
+comment17.comment_favorites.find_or_create_by(user_id: char.id)
+comment17.comment_favorites.find_or_create_by(user_id: yuma.id)
+comment18.comment_favorites.find_or_create_by(user_id: yuma.id)
+comment19.comment_favorites.find_or_create_by(user_id: yuka.id)
+comment20.comment_favorites.find_or_create_by(user_id: char.id)
+
 post_nihonsyu = Post.find_or_create_by!(title: '京都で日本酒') do |po|
   po.caption = 'お酒好きにはたまりません！'
   po.body = '日本酒の飲み比べに加えて、京都では、おちょこも選べちゃうお店が多い！'
   po.prefecture = 26
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/kyoto_nihonsyu.jpg"),filename: 'kyoto_nihonsyu.jpg')
   po.user = yuma # 旅行好きのサンプルユーザー
+  po.created_at = '2024-06-23'
 end
 
 post_nihonsyu.post_favorites.find_or_create_by(user_id: char.id)
@@ -574,6 +776,7 @@ post_doitsumura = Post.find_or_create_by!(title: '東京ドイツ村') do |po|
   po.prefecture = 12
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/chiba_doitumura.jpeg"),filename: 'chiba_doitumura.jpeg')
   po.user = yuka # 千葉に馴染みの深いユーザー
+  po.created_at = '2024-06-19'
 end
 
 post_doitsumura.post_favorites.find_or_create_by(user_id: juana.id)
@@ -584,12 +787,22 @@ post_doitsumura.post_favorites.find_or_create_by(user_id: koharu.id)
 post_doitsumura.bookmarks.find_or_create_by(user_id: sana.id)
 post_doitsumura.bookmarks.find_or_create_by(user_id: mio.id)
 
+comment21 = post_doitsumura.comments.find_or_create_by(content: "私も行ったことありますが、今まで観たイルミネーションの中で一番規模がすごかったです！") do |comment|
+  comment.user_id = koharu.id
+  comment.created_at = '2024-06-20'
+end
+
+comment21.comment_favorites.find_or_create_by(user_id: amado.id)
+comment21.comment_favorites.find_or_create_by(user_id: dan.id)
+comment21.comment_favorites.find_or_create_by(user_id: juana.id)
+
 post_isumi = Post.find_or_create_by!(title: 'いすみ市') do |po|
   po.caption = '星を見るならここ'
   po.body = '田舎町ではありますが、グランピング施設が多く点在しており、喧騒から離れて自然の中で癒されたい時におすすめのスポットです。'
   po.prefecture = 12
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/chiba_isumi.jpg"),filename: 'chiba_isumi.jpg')
   po.user = yuka # 千葉に馴染みの深いユーザー
+  po.created_at = '2024-06-20'
 end
 
 post_isumi.post_favorites.find_or_create_by(user_id: koharu.id)
@@ -597,12 +810,25 @@ post_isumi.post_favorites.find_or_create_by(user_id: celina.id)
 
 post_isumi.bookmarks.find_or_create_by(user_id: sana.id)
 
+comment22 = post_isumi.comments.find_or_create_by(content: "こんにちは。It looks quiet and beautiful. I'd like to visit there.") do |comment|
+  comment.user_id = celina.id
+  comment.created_at = '2024-06-20'
+end
+
+post_isumi.comments.find_or_create_by(content: "こんにちは！It's quiet and beautiful in nature as you said.") do |comment|
+  comment.user_id = yuka.id
+  comment.created_at = '2024-06-21'
+end
+
+comment22.comment_favorites.find_or_create_by(user_id: yuka.id)
+
 post_tokyotower = Post.find_or_create_by!(title: 'Tokyo Tower') do |po|
   po.caption = 'A beautiful tower'
   po.body = 'The color change on each day. You can see the tower in mostly red but sometimes other colors.'
   po.prefecture = 13
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/tokyo_tower.jpeg"),filename: 'tokyo_tower.jpeg')
   po.user = henry # 日本生活中級者のユーザー
+  po.created_at = '2024-06-21'
 end
 
 post_tokyotower.post_favorites.find_or_create_by(user_id: celina.id)
@@ -618,12 +844,31 @@ post_kamosui = Post.find_or_create_by!(title: 'Kamosui') do |po|
   po.prefecture = 6
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/yamagata_kamosui.jpeg"),filename: 'yamagata_kamosui.jpeg')
   po.user = henry # 日本生活中級者のユーザー
+  po.created_at = '2024-06-22'
 end
 
 post_kamosui.post_favorites.find_or_create_by(user_id: abramo.id)
 post_kamosui.post_favorites.find_or_create_by(user_id: yuma.id)
 
 post_kamosui.bookmarks.find_or_create_by(user_id: yuko.id)
+
+comment23 = post_kamosui.comments.find_or_create_by(content: "IT IS BEAUTIFUL! I googled it and hit \"Kamo aquarium\". Is it the place you posted?") do |comment|
+  comment.user_id = abramo.id
+  comment.created_at = '2024-06-23'
+end
+
+comment24 = post_kamosui.comments.find_or_create_by(content: "Thank you. I think so. \"Sui\" means aquarium, so it should be correct. Enjoy Japan!") do |comment|
+  comment.user_id = henry.id
+  comment.created_at = '2024-06-23'
+end
+
+post_kamosui.comments.find_or_create_by(content: "Oh good! Thanks. You too!") do |comment|
+  comment.user_id = abramo.id
+  comment.created_at = '2024-06-23'
+end
+
+comment23.comment_favorites.find_or_create_by(user_id: henry.id)
+comment24.comment_favorites.find_or_create_by(user_id: abramo.id)
 
 # 以下、相談室カテゴリデータ
 Category.find_or_create_by!(name: 'マナー')
@@ -757,6 +1002,34 @@ topic_manner.participations.find_or_create_by!(user_id: mio.id) do |participatio
   participation.status = false
 end
 
+opinion1 = topic_manner.opinions.find_or_create_by!(content: "今までと違う常識を受け入れようとしていて素晴らしいと思います！電車の中での電話は日本では非常識と思われがちですかね！") do |opinion|
+  opinion.user_id = yuma.id
+  opinion.created_at = '2024-06-20'
+end
+
+topic_manner.opinions.find_or_create_by!(content: "That's true! I was so confused when one of my friends told me to put my hand on the side of a plate.") do |opinion|
+  opinion.user_id = henry.id
+  opinion.created_at = '2024-06-20'
+end
+
+topic_manner.opinions.find_or_create_by!(content: "I understand. If you don't do that, you'll be told \"Gyogi ga warui\" which means that you have bad manners.") do |opinion|
+  opinion.user_id = ritsu.id
+  opinion.created_at = '2024-06-21'
+end
+
+topic_manner.opinions.find_or_create_by!(content: "Oh I didn't know we should not call someone in a train. これも行儀が悪いですか？") do |opinion|
+  opinion.user_id = filipp.id
+  opinion.created_at = '2024-06-22'
+end
+
+topic_manner.opinions.find_or_create_by!(content: "それは行儀とは違うけど、迷惑になるから控えたほうがいい、暗黙の了解(あんもくのりょうかい)ですね！") do |opinion|
+  opinion.user_id = ritsu.id
+  opinion.created_at = '2024-06-23'
+end
+
+opinion1.opinion_favorites.find_or_create_by!(user_id: filipp.id)
+opinion1.opinion_favorites.find_or_create_by!(user_id: henry.id)
+
 topic_music_fes.participations.find_or_create_by!(user_id: jacobo.id) do |participation|
   participation.status = true
 end
@@ -773,6 +1046,30 @@ topic_music_fes.participations.find_or_create_by!(user_id: ritsu.id) do |partici
   participation.status = false
 end
 
+opinion2 = topic_music_fes.opinions.find_or_create_by!(content: "I visited and enjoyed Japan Jam this year. It was comfortable and not too crowded.") do |opinion|
+  opinion.user_id = jacobo.id
+  opinion.created_at = '2024-06-22'
+end
+
+topic_music_fes.opinions.find_or_create_by!(content: "確かに。Japan Jamは人混みがマシな気がしますね。日本で一番知名度高いのは、ロッキンかな！") do |opinion|
+  opinion.user_id = hana.id
+  opinion.created_at = '2024-06-22'
+end
+
+topic_music_fes.opinions.find_or_create_by!(content: "ロッキン means Rock in Japan Festival?") do |opinion|
+  opinion.user_id = abramo.id
+  opinion.created_at = '2024-06-23'
+end
+
+opinion3 = topic_music_fes.opinions.find_or_create_by!(content: "Yes. It's Rock in Japan Festival.ほとんど日本のアーティストが出演するイメージ！") do |opinion|
+  opinion.user_id = hana.id
+  opinion.created_at = '2024-06-23'
+end
+
+opinion2.opinion_favorites.find_or_create_by!(user_id: hana.id)
+opinion2.opinion_favorites.find_or_create_by!(user_id: bolek.id)
+opinion3.opinion_favorites.find_or_create_by!(user_id: bolek.id)
+
 topic_transportation.participations.find_or_create_by!(user_id: ambre.id) do |participation|
   participation.status = true
 end
@@ -785,6 +1082,33 @@ end
 topic_transportation.participations.find_or_create_by!(user_id: jacobo.id) do |participation|
   participation.status = false
 end
+
+topic_transportation.opinions.find_or_create_by!(content: "Thank you for accepting my application to join here.") do |opinion|
+  opinion.user_id = ambre.id
+  opinion.created_at = '2024-06-21'
+end
+
+topic_transportation.opinions.find_or_create_by!(content: "No worries. Thanks for joining this room.") do |opinion|
+  opinion.user_id = bolek.id
+  opinion.created_at = '2024-06-21'
+end
+
+opinion4 = topic_transportation.opinions.find_or_create_by!(content: "I'm from out of Japan but have been living here for more than 10 years. If I could answer your question, I'd like to be a help.") do |opinion|
+  opinion.user_id = henry.id
+  opinion.created_at = '2024-06-21'
+end
+
+topic_transportation.opinions.find_or_create_by!(content: "That's so nice of you. Thanks. I was wondering where to get on a bus, front or back side of doors?") do |opinion|
+  opinion.user_id = bolek.id
+  opinion.created_at = '2024-06-22'
+end
+
+topic_transportation.opinions.find_or_create_by!(content: "I experienced the same situation because it's different by where you use a transportation. If Tokyo, it's besically from the front.") do |opinion|
+  opinion.user_id = henry.id
+  opinion.created_at = '2024-06-22'
+end
+
+opinion4.opinion_favorites.find_or_create_by!(user_id: bolek.id)
 
 topic_moral.participations.find_or_create_by!(user_id: brunello.id) do |participation|
   participation.status = true
@@ -801,6 +1125,35 @@ end
 topic_moral.participations.find_or_create_by!(user_id: james.id) do |participation|
   participation.status = false
 end
+
+topic_moral.opinions.find_or_create_by!(content: "とてもいいトピックですね！私は10年日本に住んでいますが、私も知りたいです。") do |opinion|
+  opinion.user_id = henry.id
+  opinion.created_at = '2024-06-23'
+end
+
+opinion5 = topic_moral.opinions.find_or_create_by!(content: "参加させていただきました！emaです、よろしくお願いします。私の意見では、人の気持ちを思いやる文化みたいなのは大事にしたいなと思います。") do |opinion|
+  opinion.user_id = emi.id
+  opinion.created_at = '2024-06-23'
+end
+
+topic_moral.opinions.find_or_create_by!(content: "みなさん参加ありがとうございます。確かに、日本は聞き手に責任があるコミュニケーションの仕方ですよね。海外だと話し手に責任が重いというか。") do |opinion|
+  opinion.user_id = koharu.id
+  opinion.created_at = '2024-06-23'
+end
+
+topic_moral.opinions.find_or_create_by!(content: "日本のその風潮は、僕にとって未だに難しいです。言葉がなくても気持ちを理解しないといけない。") do |opinion|
+  opinion.user_id = henry.id
+  opinion.created_at = '2024-06-24'
+end
+
+opinion6 = topic_moral.opinions.find_or_create_by!(content: "そうですよね。難しい気持ちもわかります。私ははっきり言葉で伝えるのも大事だと思うので、日本のそういう風潮に少しは変化が加わるといいなと思います。") do |opinion|
+  opinion.user_id = koharu.id
+  opinion.created_at = '2024-06-24'
+end
+
+opinion5.opinion_favorites.find_or_create_by!(user_id: koharu.id)
+opinion5.opinion_favorites.find_or_create_by!(user_id: henry.id)
+opinion6.opinion_favorites.find_or_create_by!(user_id: emi.id)
 
 topic_dishes.participations.find_or_create_by!(user_id: james.id) do |participation|
   participation.status = true
@@ -821,6 +1174,24 @@ topic_dishes.participations.find_or_create_by!(user_id: ambre.id) do |participat
   participation.status = false
 end
 
+topic_dishes.opinions.find_or_create_by!(content: "日本に来てまだ1年くらい！まだもんじゃ食べてない。") do |opinion|
+  opinion.user_id = brunello.id
+  opinion.created_at = '2024-06-20'
+end
+
+topic_dishes.opinions.find_or_create_by!(content: "先月日本！I'm a student from outside of Japan. My Japanese is not well yet, so I'll speak in English.") do |opinion|
+  opinion.user_id = james.id
+  opinion.created_at = '2024-06-20'
+end
+
+opinion7 = topic_dishes.opinions.find_or_create_by!(content: "That's totally no worries. Feel easy to talk here in any language. 何語でもOK!") do |opinion|
+  opinion.user_id = filipp.id
+  opinion.created_at = '2024-06-21'
+end
+
+opinion7.opinion_favorites.find_or_create_by!(user_id: james.id)
+opinion7.opinion_favorites.find_or_create_by!(user_id: brunello.id)
+
 topic_table_manner.participations.find_or_create_by!(user_id: amado.id) do |participation|
   participation.status = true
 end
@@ -837,6 +1208,34 @@ topic_table_manner.participations.find_or_create_by!(user_id: ritsu.id) do |part
   participation.status = false
 end
 
+topic_table_manner.opinions.find_or_create_by!(content: "みなさんご参加ありがとうございます！よくある話だと、ラーメン食べる時はすする方が良い食べ方とされている！とか、なんでも意見ください〜") do |opinion|
+  opinion.user_id = yuko.id
+  opinion.created_at = '2024-06-22'
+end
+
+opinion8 = topic_table_manner.opinions.find_or_create_by!(content: "I've been scolded by my host mother for sticking my chopsticks into your bowl of rice. I was surprised at the reason.") do |opinion|
+  opinion.user_id = amado.id
+  opinion.created_at = '2024-06-22'
+end
+
+topic_table_manner.opinions.find_or_create_by!(content: "What is the reason? I don't do that but I'm curious.") do |opinion|
+  opinion.user_id = faina.id
+  opinion.created_at = '2024-06-23'
+end
+
+topic_table_manner.opinions.find_or_create_by!(content: "She tought me it's considered bad luck because of its affiliation with Japanese funerals.") do |opinion|
+  opinion.user_id = amado.id
+  opinion.created_at = '2024-06-23'
+end
+
+opinion9 = topic_table_manner.opinions.find_or_create_by!(content: "I googled about that yesterday. I learnt those thigs in Japanese traditional funerals for the first time.") do |opinion|
+  opinion.user_id = faina.id
+  opinion.created_at = '2024-06-24'
+end
+
+opinion8.opinion_favorites.find_or_create_by!(user_id: yuko.id)
+opinion9.opinion_favorites.find_or_create_by!(user_id: amado.id)
+
 topic_residence.participations.find_or_create_by!(user_id: faina.id) do |participation|
   participation.status = true
 end
@@ -846,6 +1245,25 @@ end
 topic_residence.participations.find_or_create_by!(user_id: celina.id) do |participation|
   participation.status = false
 end
+
+topic_residence.opinions.find_or_create_by!(content: "私自身日本育ちなのですが、日本内でどこかすみやすい場所教えていただきたく、このルームを作りました！よろしくお願いします。") do |opinion|
+  opinion.user_id = sana.id
+  opinion.created_at = '2024-06-20'
+end
+
+opinion10 = topic_residence.opinions.find_or_create_by!(content: "I'm now living in Tokyo. I was expecting it would be noisy and crowded everywhere, but it's a comfortable city to live except for price.") do |opinion|
+  opinion.user_id = faina.id
+  opinion.created_at = '2024-06-20'
+end
+
+opinion11 = topic_residence.opinions.find_or_create_by!(content: "fainaさんのおっしゃる通り、東京は家賃も物価も高いイメージ。私は福岡おすすめですよ！家賃も安いのに不便のない楽しい街です。") do |opinion|
+  opinion.user_id = emi.id
+  opinion.created_at = '2024-06-20'
+end
+
+opinion10.opinion_favorites.find_or_create_by!(user_id: sana.id)
+opinion10.opinion_favorites.find_or_create_by!(user_id: emi.id)
+opinion11.opinion_favorites.find_or_create_by!(user_id: faina.id)
 
 topic_job_search.participations.find_or_create_by!(user_id: henry.id) do |participation|
   participation.status = true
@@ -863,6 +1281,15 @@ topic_job_search.participations.find_or_create_by!(user_id: celina.id) do |parti
   participation.status = false
 end
 
+opinion12 = topic_job_search.opinions.find_or_create_by!(content: "初めまして。僕は日本でしばらく住んでいるけど、このサイトで今の仕事見つけたよ。https://****/****/") do |opinion|
+  opinion.user_id = henry.id
+  opinion.created_at = '2024-06-20'
+end
+
+opinion12.opinion_favorites.find_or_create_by!(user_id: char.id)
+opinion12.opinion_favorites.find_or_create_by!(user_id: amado.id)
+opinion12.opinion_favorites.find_or_create_by!(user_id: brunello.id)
+
 topic_job_offer.participations.find_or_create_by!(user_id: emi.id) do |participation|
   participation.status = true
 end
@@ -878,6 +1305,14 @@ end
 topic_job_offer.participations.find_or_create_by!(user_id: ambre.id) do |participation|
   participation.status = false
 end
+
+opinion13 = topic_job_offer.opinions.find_or_create_by!(content: "この仕事募集記事サイトの運営をしています！https://*****/*****/知りたいこととかあったら気軽にこのルームで質問ください") do |opinion|
+  opinion.user_id = dan.id
+  opinion.created_at = '2024-06-21'
+end
+
+opinion13.opinion_favorites.find_or_create_by!(user_id: abramo.id)
+opinion13.opinion_favorites.find_or_create_by!(user_id: brunello.id)
 
 topic_job_hunting.participations.find_or_create_by!(user_id: ritsu.id) do |participation|
   participation.status = true
