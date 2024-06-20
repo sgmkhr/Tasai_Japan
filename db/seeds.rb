@@ -1002,6 +1002,34 @@ topic_manner.participations.find_or_create_by!(user_id: mio.id) do |participatio
   participation.status = false
 end
 
+opinion1 = topic_manner.opinions.find_or_create_by!(content: "今までと違う常識を受け入れようとしていて素晴らしいと思います！電車の中での電話は日本では非常識と思われがちですかね！") do |opinion|
+  opinion.user_id = yuma.id
+  opinion.created_at = '2024-06-20'
+end
+
+topic_manner.opinions.find_or_create_by!(content: "That's true! I was so confused when one of my friends told me to put my hand on the side of a plate.") do |opinion|
+  opinion.user_id = henry.id
+  opinion.created_at = '2024-06-20'
+end
+
+topic_manner.opinions.find_or_create_by!(content: "I understand. If you don't do that, you'll be told \"Gyogi ga warui\" which means that you have bad manners.") do |opinion|
+  opinion.user_id = ritsu.id
+  opinion.created_at = '2024-06-21'
+end
+
+topic_manner.opinions.find_or_create_by!(content: "Oh I didn't know we should not call someone in a train. これも行儀が悪いですか？") do |opinion|
+  opinion.user_id = filipp.id
+  opinion.created_at = '2024-06-22'
+end
+
+topic_manner.opinions.find_or_create_by!(content: "それは行儀とは違うけど、迷惑になるから控えたほうがいい、暗黙の了解(あんもくのりょうかい)ですね！") do |opinion|
+  opinion.user_id = ritsu.id
+  opinion.created_at = '2024-06-23'
+end
+
+opinion1.opinion_favorites.find_or_create_by!(user_id: filipp.id)
+opinion1.opinion_favorites.find_or_create_by!(user_id: henry.id)
+
 topic_music_fes.participations.find_or_create_by!(user_id: jacobo.id) do |participation|
   participation.status = true
 end
@@ -1018,6 +1046,30 @@ topic_music_fes.participations.find_or_create_by!(user_id: ritsu.id) do |partici
   participation.status = false
 end
 
+opinion2 = topic_music_fes.opinions.find_or_create_by!(content: "I visited and enjoyed Japan Jam this year. It was comfortable and not too crowded.") do |opinion|
+  opinion.user_id = jacobo.id
+  opinion.created_at = '2024-06-22'
+end
+
+topic_music_fes.opinions.find_or_create_by!(content: "確かに。Japan Jamは人混みがマシな気がしますね。日本で一番知名度高いのは、ロッキンかな！") do |opinion|
+  opinion.user_id = hana.id
+  opinion.created_at = '2024-06-22'
+end
+
+topic_music_fes.opinions.find_or_create_by!(content: "ロッキン means Rock in Japan Festival?") do |opinion|
+  opinion.user_id = abramo.id
+  opinion.created_at = '2024-06-23'
+end
+
+opinion3 = topic_music_fes.opinions.find_or_create_by!(content: "Yes. It's Rock in Japan Festival.ほとんど日本のアーティストが出演するイメージ！") do |opinion|
+  opinion.user_id = hana.id
+  opinion.created_at = '2024-06-23'
+end
+
+opinion2.opinion_favorites.find_or_create_by!(user_id: hana.id)
+opinion2.opinion_favorites.find_or_create_by!(user_id: bolek.id)
+opinion3.opinion_favorites.find_or_create_by!(user_id: bolek.id)
+
 topic_transportation.participations.find_or_create_by!(user_id: ambre.id) do |participation|
   participation.status = true
 end
@@ -1030,6 +1082,33 @@ end
 topic_transportation.participations.find_or_create_by!(user_id: jacobo.id) do |participation|
   participation.status = false
 end
+
+topic_transportation.opinions.find_or_create_by!(content: "Thank you for accepting my application to join here.") do |opinion|
+  opinion.user_id = ambre.id
+  opinion.created_at = '2024-06-21'
+end
+
+topic_transportation.opinions.find_or_create_by!(content: "No worries. Thanks for joining this room.") do |opinion|
+  opinion.user_id = bolek.id
+  opinion.created_at = '2024-06-21'
+end
+
+opinion4 = topic_transportation.opinions.find_or_create_by!(content: "I'm from out of Japan but have been living here for more than 10 years. If I could answer your question, I'd like to be a help.") do |opinion|
+  opinion.user_id = henry.id
+  opinion.created_at = '2024-06-21'
+end
+
+topic_transportation.opinions.find_or_create_by!(content: "That's so nice of you. Thanks. I was wondering where to get on a bus, front or back side of doors?") do |opinion|
+  opinion.user_id = bolek.id
+  opinion.created_at = '2024-06-22'
+end
+
+topic_transportation.opinions.find_or_create_by!(content: "I experienced the same situation because it's different by where you use a transportation. If Tokyo, it's besically from the front.") do |opinion|
+  opinion.user_id = henry.id
+  opinion.created_at = '2024-06-22'
+end
+
+opinion4.opinion_favorites.find_or_create_by!(user_id: bolek.id)
 
 topic_moral.participations.find_or_create_by!(user_id: brunello.id) do |participation|
   participation.status = true
@@ -1046,6 +1125,35 @@ end
 topic_moral.participations.find_or_create_by!(user_id: james.id) do |participation|
   participation.status = false
 end
+
+topic_moral.opinions.find_or_create_by!(content: "とてもいいトピックですね！私は10年日本に住んでいますが、私も知りたいです。") do |opinion|
+  opinion.user_id = henry.id
+  opinion.created_at = '2024-06-23'
+end
+
+opinion5 = topic_moral.opinions.find_or_create_by!(content: "参加させていただきました！emaです、よろしくお願いします。私の意見では、人の気持ちを思いやる文化みたいなのは大事にしたいなと思います。") do |opinion|
+  opinion.user_id = emi.id
+  opinion.created_at = '2024-06-23'
+end
+
+topic_moral.opinions.find_or_create_by!(content: "みなさん参加ありがとうございます。確かに、日本は聞き手に責任があるコミュニケーションの仕方ですよね。海外だと話し手に責任が重いというか。") do |opinion|
+  opinion.user_id = koharu.id
+  opinion.created_at = '2024-06-23'
+end
+
+topic_moral.opinions.find_or_create_by!(content: "日本のその風潮は、僕にとって未だに難しいです。言葉がなくても気持ちを理解しないといけない。") do |opinion|
+  opinion.user_id = henry.id
+  opinion.created_at = '2024-06-24'
+end
+
+opinion6 = topic_moral.opinions.find_or_create_by!(content: "そうですよね。難しい気持ちもわかります。私ははっきり言葉で伝えるのも大事だと思うので、日本のそういう風潮に少しは変化が加わるといいなと思います。") do |opinion|
+  opinion.user_id = koharu.id
+  opinion.created_at = '2024-06-24'
+end
+
+opinion5.opinion_favorites.find_or_create_by!(user_id: koharu.id)
+opinion5.opinion_favorites.find_or_create_by!(user_id: henry.id)
+opinion6.opinion_favorites.find_or_create_by!(user_id: emi.id)
 
 topic_dishes.participations.find_or_create_by!(user_id: james.id) do |participation|
   participation.status = true
@@ -1066,6 +1174,24 @@ topic_dishes.participations.find_or_create_by!(user_id: ambre.id) do |participat
   participation.status = false
 end
 
+topic_dishes.opinions.find_or_create_by!(content: "日本に来てまだ1年くらい！まだもんじゃ食べてない。") do |opinion|
+  opinion.user_id = brunello.id
+  opinion.created_at = '2024-06-20'
+end
+
+topic_dishes.opinions.find_or_create_by!(content: "先月日本！I'm a student from outside of Japan. My Japanese is not well yet, so I'll speak in English.") do |opinion|
+  opinion.user_id = james.id
+  opinion.created_at = '2024-06-20'
+end
+
+opinion7 = topic_dishes.opinions.find_or_create_by!(content: "That's totally no worries. Feel easy to talk here in any language. 何語でもOK!") do |opinion|
+  opinion.user_id = filipp.id
+  opinion.created_at = '2024-06-21'
+end
+
+opinion7.opinion_favorites.find_or_create_by!(user_id: james.id)
+opinion7.opinion_favorites.find_or_create_by!(user_id: brunello.id)
+
 topic_table_manner.participations.find_or_create_by!(user_id: amado.id) do |participation|
   participation.status = true
 end
@@ -1082,6 +1208,34 @@ topic_table_manner.participations.find_or_create_by!(user_id: ritsu.id) do |part
   participation.status = false
 end
 
+topic_table_manner.opinions.find_or_create_by!(content: "みなさんご参加ありがとうございます！よくある話だと、ラーメン食べる時はすする方が良い食べ方とされている！とか、なんでも意見ください〜") do |opinion|
+  opinion.user_id = yuko.id
+  opinion.created_at = '2024-06-22'
+end
+
+opinion8 = topic_table_manner.opinions.find_or_create_by!(content: "I've been scolded by my host mother for sticking my chopsticks into your bowl of rice. I was surprised at the reason.") do |opinion|
+  opinion.user_id = amado.id
+  opinion.created_at = '2024-06-22'
+end
+
+topic_table_manner.opinions.find_or_create_by!(content: "What is the reason? I don't do that but I'm curious.") do |opinion|
+  opinion.user_id = faina.id
+  opinion.created_at = '2024-06-23'
+end
+
+topic_table_manner.opinions.find_or_create_by!(content: "She tought me it's considered bad luck because of its affiliation with Japanese funerals.") do |opinion|
+  opinion.user_id = amado.id
+  opinion.created_at = '2024-06-23'
+end
+
+opinion9 = topic_table_manner.opinions.find_or_create_by!(content: "I googled about that yesterday. I learnt those thigs in Japanese traditional funerals for the first time.") do |opinion|
+  opinion.user_id = faina.id
+  opinion.created_at = '2024-06-24'
+end
+
+opinion8.opinion_favorites.find_or_create_by!(user_id: yuko.id)
+opinion9.opinion_favorites.find_or_create_by!(user_id: amado.id)
+
 topic_residence.participations.find_or_create_by!(user_id: faina.id) do |participation|
   participation.status = true
 end
@@ -1091,6 +1245,25 @@ end
 topic_residence.participations.find_or_create_by!(user_id: celina.id) do |participation|
   participation.status = false
 end
+
+topic_residence.opinions.find_or_create_by!(content: "私自身日本育ちなのですが、日本内でどこかすみやすい場所教えていただきたく、このルームを作りました！よろしくお願いします。") do |opinion|
+  opinion.user_id = sana.id
+  opinion.created_at = '2024-06-20'
+end
+
+opinion10 = topic_residence.opinions.find_or_create_by!(content: "I'm now living in Tokyo. I was expecting it would be noisy and crowded everywhere, but it's a comfortable city to live except for price.") do |opinion|
+  opinion.user_id = faina.id
+  opinion.created_at = '2024-06-20'
+end
+
+opinion11 = topic_residence.opinions.find_or_create_by!(content: "fainaさんのおっしゃる通り、東京は家賃も物価も高いイメージ。私は福岡おすすめですよ！家賃も安いのに不便のない楽しい街です。") do |opinion|
+  opinion.user_id = emi.id
+  opinion.created_at = '2024-06-20'
+end
+
+opinion10.opinion_favorites.find_or_create_by!(user_id: sana.id)
+opinion10.opinion_favorites.find_or_create_by!(user_id: emi.id)
+opinion11.opinion_favorites.find_or_create_by!(user_id: faina.id)
 
 topic_job_search.participations.find_or_create_by!(user_id: henry.id) do |participation|
   participation.status = true
@@ -1108,6 +1281,15 @@ topic_job_search.participations.find_or_create_by!(user_id: celina.id) do |parti
   participation.status = false
 end
 
+opinion12 = topic_job_search.opinions.find_or_create_by!(content: "初めまして。僕は日本でしばらく住んでいるけど、このサイトで今の仕事見つけたよ。https://****/****/") do |opinion|
+  opinion.user_id = henry.id
+  opinion.created_at = '2024-06-20'
+end
+
+opinion12.opinion_favorites.find_or_create_by!(user_id: char.id)
+opinion12.opinion_favorites.find_or_create_by!(user_id: amado.id)
+opinion12.opinion_favorites.find_or_create_by!(user_id: brunello.id)
+
 topic_job_offer.participations.find_or_create_by!(user_id: emi.id) do |participation|
   participation.status = true
 end
@@ -1123,6 +1305,14 @@ end
 topic_job_offer.participations.find_or_create_by!(user_id: ambre.id) do |participation|
   participation.status = false
 end
+
+opinion13 = topic_job_offer.opinions.find_or_create_by!(content: "この仕事募集記事サイトの運営をしています！https://*****/*****/知りたいこととかあったら気軽にこのルームで質問ください") do |opinion|
+  opinion.user_id = dan.id
+  opinion.created_at = '2024-06-21'
+end
+
+opinion13.opinion_favorites.find_or_create_by!(user_id: abramo.id)
+opinion13.opinion_favorites.find_or_create_by!(user_id: brunello.id)
 
 topic_job_hunting.participations.find_or_create_by!(user_id: ritsu.id) do |participation|
   participation.status = true
