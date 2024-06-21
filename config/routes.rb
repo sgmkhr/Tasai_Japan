@@ -71,7 +71,7 @@ Rails.application.routes.draw do
       post 'inquiries/confirm', to: 'inquiries#confirm', as: 'inquiry_confirm'
       post 'inquiries/back', to: 'inquiries#back', as: 'inquiry_back'
       get 'inquiries/done', to: 'inquiries#done', as: 'inquiry_done'
-      get 'maps', to: 'maps#index', as: 'maps_path'
+      get 'maps', to: 'maps#index', as: 'maps'
     end
 
   end

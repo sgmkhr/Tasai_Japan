@@ -285,7 +285,8 @@ ja:
   maps:
     show:
       title: 所在地 地図
-
+    index:
+      title: 投稿所在地 一覧地図
   enums:
     user:
       position:

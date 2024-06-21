@@ -1,2 +1,16 @@
-<h1>Public::Maps#index</h1>
-<p>Find me in app/views/public/maps/index.html.erb</p>
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),         root_path, data: { turbolinks: false } %>>
+  <%= link_to I18n.t('menu'),             menu_path %>>
+  <%= link_to I18n.t('menus.posts'),      posts_path %>>
+  <%= I18n.t('maps.index.title') %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('maps.index.title') %></h2></div>
+
+<section>
+
+  <div id='map' class='map-display'></div>
+
+</section>
+
+<%= javascript_pack_tag 'map_index', 'data-turbolinks-track': 'reload' %>

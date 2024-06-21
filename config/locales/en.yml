@@ -318,7 +318,8 @@ en:
   maps:
     show:
       title: Location map
-
+    index:
+      title: Locations map of all the posts
   enums:
     user:
       position:

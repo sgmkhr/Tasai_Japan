@@ -10,7 +10,8 @@
 <section>
 
   <div id='map' class='map-display'></div>
+  <input type="hidden" id="post" value="<%= @post %>">
 
 </section>
 
-<%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'map_show', 'data-turbolinks-track': 'reload' %>

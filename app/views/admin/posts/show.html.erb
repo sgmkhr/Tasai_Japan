@@ -63,7 +63,7 @@
     </div>
   <% end %>
   
-  <% if @post.address %>
+  <% if @post.address.present? %>
     <p class='md-font mt-1'>
       <i class="fa-solid fa-location-dot"></i>
       <%= @post.address %>
