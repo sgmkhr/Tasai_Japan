@@ -31,6 +31,7 @@ ja:
     signin:
       notice: ゲストユーザーとしてログインしました。
     validates: ゲストユーザーは制限されている操作です。ログインまたは新規登録してください。
+  logout_confirmation: ログアウトしてよろしいですか？
 
   top:
     caption: 日本生活の初心者とベテランが繋がるためのサイトです。
@@ -146,6 +147,8 @@ ja:
       create: カテゴリ作成
       keyword: キーワード検索
       tag: 関連タグ検索
+      category: カテゴリ検索
+      counseling_room: 相談室検索
   counseling_rooms:
     title: 相談室を探す
     index:
@@ -171,7 +174,7 @@ ja:
       failed: 更新に失敗しました。
     destroy: 相談室を削除しました。
     search:
-      title: タグ検索 相談室一覧
+      title: 全カテゴリ内 検索結果
       count: 部屋
     ensure_creator: 他のユーザーが作成した相談室の情報は編集できません。
   participations:

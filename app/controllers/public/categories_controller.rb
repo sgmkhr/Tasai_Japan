@@ -8,6 +8,14 @@ class Public::CategoriesController < ApplicationController
     @keyword     = params[:keyword]
     @sort        = params[:sort]
     @current_tab = params[:current_tab]
+    @model       = params[:model]
+    @counseling_rooms = CounselingRoom.all
+    if @model == 'counseling_room'
+      @counseling_rooms = @counseling_rooms.search_for(@keyword) if @keyword.present?
+      @counseling_rooms = @counseling_rooms.latest.page(params[:normal_page]).per(20) if @sort == 'latest'
+      @counseling_rooms = @counseling_rooms.old.page(params[:normal_page]).per(20)    if @sort == 'old'
+      render 'public/counseling_rooms/search'
+    end
     @categories  = @categories.search_for(@keyword) if @keyword.present?
     @categories  = @categories.latest if @sort == 'latest'
     @categories  = @categories.old    if @sort == 'old'

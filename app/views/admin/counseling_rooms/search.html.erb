@@ -7,14 +7,26 @@
 
 <div class='section-title'>
   <h2>
-    #<%= @tag_name %>
-    <% if @counseling_rooms.any? %>
-      <%= ' ' + @counseling_rooms.count.to_s + I18n.t('counseling_rooms.search.count') %>
-    <% end %>
+    <% if @tag_name %>#<%= @tag_name %><% end %>
+    <% if @keyword %><%= '「' + @keyword + '」' %><% end %>
+    <%= ' ' + @counseling_rooms.count.to_s + I18n.t('counseling_rooms.search.count') %>
   </h2>
 </div>
 
 <section>
+  
+  <!--キーワード検索バー-->
+  <%= form_with url: admin_search_rooms_path, method: :get, local: true do |f| %>
+    <div class='row justify-content-md-end justify-content-center'>
+      <div class='form-group d-flex col-md-5 col-9'>
+        <%= f.select :sort, [[I18n.t('sort.latest'), 'latest'],[I18n.t('sort.old'), 'old']], selected: @sort, class: 'form-control' %>
+        <%= f.text_field :keyword, value: @keyword, class: 'form-control', placeholder: I18n.t('search_blank') %>
+      </div>
+      <div class='form-group mt-1'>
+        <%= f.submit I18n.t('search'), class: 'btn btn-sm success-btn' %>
+      </div>
+    </div>
+  <% end %>
   
   <!--タグ検索バー-->
   <%= form_with url: admin_search_rooms_path, method: :get, local: true do |f| %>

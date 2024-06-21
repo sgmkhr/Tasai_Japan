@@ -296,6 +296,12 @@ input {
   max-height:       208px;
   min-height:       208px;
 }
+                                            // 以下、相談室詳細のレイアウト
+.room-detail-box {
+  background-color: rgb(245, 243, 242);
+  border-radius:    10px;
+  padding:          10px;
+}
                                             // 以下、各種タグの共通レイアウト
 .tag-item {
   display:          inline-block;
