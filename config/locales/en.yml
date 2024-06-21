@@ -64,6 +64,7 @@ en:
     signin:
       notice: You logged in as a guest user.
     validates: A guest user cannot operate this function. You need to log in or sign up.
+  logout_confirmation: Are you sure you want to log out?
 
   top:
     caption: This website makes connections between beginners and veterans of life in Japan.
@@ -148,7 +149,7 @@ en:
       title: Post detail
       edit_btn: Edit
       comment: Comment
-      non_published: Being set as a private 
+      non_published: Being set as a private
     new:
       title: Create a new post
       create_btn: Create
@@ -179,6 +180,8 @@ en:
       create: Create another category
       keyword: Search with a keyword
       tag: Search with a tag name
+      category: Search categories
+      counseling_room: Search counseling rooms
   counseling_rooms:
     title: Find a counseling room
     index:
@@ -204,8 +207,8 @@ en:
       failed: Updating failed.
     destroy: The counseling room has been deleted.
     search:
-      title: Counseling rooms with a tag name
-      count: rooms
+      title: Search results from all the categories
+      count: " rooms"
     ensure_creator: You cannot view the edit page of a room other users created.
   participations:
     destroy:
@@ -397,7 +400,7 @@ en:
         body: content
         prefecture: prefecture
         tag_name: tag name
-        is_published: Publishing setting
+        is_published: publishing setting
       counseling_room:
         topic: topic
         detail: detail

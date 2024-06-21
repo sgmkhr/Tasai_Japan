@@ -7,10 +7,10 @@
       <%= I18n.t('users.insite.chart_title.posts.') %>
     <% end %>
   </p>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
   <canvas id="myLineChart"></canvas>
-
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     document.addEventListener("turbolinks:load", function() {
       var ctx = document.getElementById("myLineChart");

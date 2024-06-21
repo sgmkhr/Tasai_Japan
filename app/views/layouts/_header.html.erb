@@ -42,7 +42,7 @@
     </li>
 
     <li class='mb-4'>
-      <%= link_to destroy_user_session_path, method: :delete do %>
+      <%= link_to destroy_user_session_path, method: :delete, 'data-confirm' => I18n.t('logout_confirmation') do %>
         <span class='d-lg-inline d-none'><%= I18n.t('signout') %></span>
         <span class='d-lg-none'><i class="fa-solid fa-right-from-bracket"></i></span>
       <% end %>
@@ -61,7 +61,7 @@
     </li>
 
     <li>
-      <%= link_to destroy_admin_session_path, method: :delete do %>
+      <%= link_to destroy_admin_session_path, method: :delete, 'data-confirm' => I18n.t('logout_confirmation') do %>
         <span class='d-lg-inline d-none'><%= I18n.t('signout') %></span>
         <span class='d-lg-none'><i class="fa-solid fa-right-from-bracket"></i></span>
       <% end %>
