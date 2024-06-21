@@ -53,6 +53,7 @@ Rails.application.routes.draw do
         resources :comments, only: [:create, :destroy] do
           resource :comment_favorites, only: [:create, :destroy]
         end
+        resource :map, only: [:show]
       end
       resources :categories, only: [:create, :index] do
         resources :counseling_rooms do
@@ -70,6 +71,7 @@ Rails.application.routes.draw do
       post 'inquiries/confirm', to: 'inquiries#confirm', as: 'inquiry_confirm'
       post 'inquiries/back', to: 'inquiries#back', as: 'inquiry_back'
       get 'inquiries/done', to: 'inquiries#done', as: 'inquiry_done'
+      get 'maps', to: 'maps#index', as: 'maps_path'
     end
 
   end
