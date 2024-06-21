@@ -22,8 +22,8 @@ class CounselingRoom < ApplicationRecord
     topic_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  # 指定のカテゴリ内でのキーワード検索メソッド
-  def self.search_with_category_for(content)
+  # キーワード検索メソッド
+  def self.search_for(content)
     CounselingRoom.where(['topic LIKE(?) OR detail LIKE(?)', "%#{content}%", "%#{content}%"])
   end
 

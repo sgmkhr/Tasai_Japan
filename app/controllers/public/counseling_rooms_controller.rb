@@ -8,7 +8,7 @@ class Public::CounselingRoomsController < ApplicationController
     @counseling_rooms = @category.counseling_rooms&.includes(:participations).includes(:opinions)
     @keyword = params[:keyword]
     @sort    = params[:sort]
-    @counseling_rooms = @counseling_rooms.search_with_category_for(@keyword)
+    @counseling_rooms = @counseling_rooms.search_for(@keyword)
     @counseling_rooms = @counseling_rooms.latest if @sort == 'latest'
     @counseling_rooms = @counseling_rooms.old    if @sort == 'old'
     @counseling_rooms = @counseling_rooms.sort_by { |room| -room.participations.where(status: true).count } if @sort == 'participations_count'
@@ -66,8 +66,15 @@ class Public::CounselingRoomsController < ApplicationController
   end
   
   def search
-    @tag_name   = params[:tag_name]
-    @counseling_rooms = CounselingRoom.includes(:room_tags).where('room_tags.name': @tag_name).page(params[:normal_page]).per(20)
+    @sort     = params[:sort]
+    @keyword  = params[:keyword]
+    @tag_name = params[:tag_name]
+    @counseling_rooms = CounselingRoom.includes(:room_tags)
+    @counseling_rooms = @counseling_rooms.search_for(@keyword) if @keyword.present?
+    @counseling_rooms = @counseling_rooms.latest               if @sort == 'latest'
+    @counseling_rooms = @counseling_rooms.old                  if @sort == 'old'
+    @counseling_rooms = @counseling_rooms.where('room_tags.name': @tag_name) if @tag_name.present?
+    @counseling_rooms = @counseling_rooms.page(params[:normal_page]).per(20)
   end
 
   private
