@@ -5,14 +5,14 @@ class Public::CounselingRoomsController < ApplicationController
   before_action :ensure_room_creator, only: [:edit, :update, :destroy]
 
   def index
-    @counseling_rooms = @category.counseling_rooms&.includes(:participations).includes(:opinions)
     @keyword = params[:keyword]
     @sort    = params[:sort]
-    @counseling_rooms = @counseling_rooms.search_for(@keyword)
+    @counseling_rooms = @category.counseling_rooms&.includes(:participations).includes(:opinions)
+    @counseling_rooms = @counseling_rooms.search_for(@keyword) if @keyword.present?
     @counseling_rooms = @counseling_rooms.latest if @sort == 'latest'
     @counseling_rooms = @counseling_rooms.old    if @sort == 'old'
     @counseling_rooms = @counseling_rooms.sort_by { |room| -room.participations.where(status: true).count } if @sort == 'participations_count'
-    @counseling_rooms = @counseling_rooms.sort_by { |room| -room.opinions.count }       if @sort == 'opinions_count'
+    @counseling_rooms = @counseling_rooms.sort_by { |room| -room.opinions.count } if @sort == 'opinions_count'
     @counseling_rooms = Kaminari.paginate_array(@counseling_rooms).page(params[:normal_page]).per(20)
   end                   #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
 

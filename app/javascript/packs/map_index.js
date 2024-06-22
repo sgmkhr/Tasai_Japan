@@ -11,7 +11,7 @@ let map;
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
-  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
+  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 
   map = new Map(document.getElementById("map"), {
     center: { lat: 38.5371, lng: 139.767125 },
@@ -40,7 +40,7 @@ async function initMap() {
         map,
         title: title,
       });
-
+      
       const contentString = `
         <div class="information container p-0">
           <p class="text-muted mb-1">${address}</p>

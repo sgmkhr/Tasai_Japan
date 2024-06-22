@@ -9,24 +9,22 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts      = Post.where(is_published: true).includes(:post_tags).includes(:post_favorites)
-    @keyword    = params[:keyword]
-    @prefecture = params[:prefecture]
-    @sort       = params[:sort]
-    @tag_name   = params[:tag_name]
+    @keyword     = params[:keyword]
+    @prefecture  = params[:prefecture]
+    @sort        = params[:sort]
+    @tag_name    = params[:tag_name]
     @current_tab = params[:current_tab]
+    @posts = Post.where(is_published: true).includes(:post_tags).includes(:post_favorites)
     if @tag_name.present?
       @posts = @posts.where('post_tags.name': @tag_name)
     else
       @posts = @posts.search_for(@keyword)           if @keyword.present?
       @posts = @posts.where(prefecture: @prefecture) if @prefecture.present? && (@prefecture != 'unspecified')
-      @posts = @posts.latest                         if (@sort == 'latest') || (@sort.nil?)
-      @posts = @posts.old                            if @sort == 'old'
-      @posts = @posts.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
+      @posts = @sort == 'old' ? @posts.old : ( @sort == 'favorites_count' ? @posts&.sort_by { |post| -post.post_favorites.count } : @posts.latest )
     end
-    @current_tab = 'post_keyword_tab' unless @current_tab.present?
     @posts = Kaminari.paginate_array(@posts).page(params[:normal_page]).per(12)
-  end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
+    @current_tab = 'post_keyword_tab' unless @current_tab.present?
+  end
 
   def show
     if (@post.is_published == false) && (@post.user != current_user)
