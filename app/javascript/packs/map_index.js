@@ -12,59 +12,51 @@ let map;
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
   const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
-  
+
   map = new Map(document.getElementById("map"), {
-    center: { lat: 35.681236, lng: 139.767125 }, 
-    zoom: 15,
+    center: { lat: 38.5371, lng: 139.767125 },
+    zoom: 5,
     mapId: "DEMO_MAP_ID",
     mapTypeControl: false
   });
-  
+
   try {
-    const response = await fetch("/maps.json");
+    const response = await fetch("maps.json");
     if (!response.ok) throw new Error('Network response was not ok');
 
     const { data: { items } } = await response.json();
     if (!Array.isArray(items)) throw new Error("Items is not an array");
 
     items.forEach( item => {
-      const latitude  = item.latitude;
-      const longitude = item.longitude;
-      const address   = item.address;
-      const postImage = item.postImage;
+      const id        = item.id;
       const title     = item.title;
       const caption   = item.caption;
-      const userImage = item.user.image;
-      const userName  = item.user.name;
+      const address   = item.address;
+      const latitude  = item.latitude;
+      const longitude = item.longitude;
 
       const marker = new google.maps.marker.AdvancedMarkerElement ({
         position: { lat: latitude, lng: longitude },
         map,
         title: title,
       });
-      
+
       const contentString = `
         <div class="information container p-0">
-          <div class="mb-3 d-flex align-items-center">
-            <img class="rounded-circle mr-2" src="${userImage}" width="40" height="40">
-            <p class="lead m-0 font-weight-bold">${userName}</p>
-          </div>
-          <div class="mb-3">
-            <img class="thumbnail" src="${postImage}" loading="lazy">
-          </div>
-          <div>
-            <h1 class="h4 font-weight-bold">${title}</h1>
-            <p class="text-muted">${address}</p>
-            <p class="lead">${caption}</p>
-          </div>
+          <p class="text-muted mb-1">${address}</p>
+          <h1 class="h4 font-weight-bold">${title}</h1>
+          <p class="lead">${caption}</p>
+          <a href="/posts/${id}/" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
         </div>
       `;
-      
+
       const infowindow = new google.maps.InfoWindow({
         content: contentString,
         ariaLabel: title,
       });
-      
+
       marker.addListener("click", () => {
           infowindow.open({
           anchor: marker,

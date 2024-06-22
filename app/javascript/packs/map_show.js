@@ -8,35 +8,54 @@
 
 // ライブラリの読み込み
 let map;
-let post;
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
   const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
-  
-  post = document.getElementById("post").value;
-  map = new Map(document.getElementById("map"), {
-    center: { lat: post.latitude, lng: post.longitude },
-    zoom: 15,
-    mapId: "DEMO_MAP_ID",
-    mapTypeControl: false
-  });
 
   try {
-    post = document.getElementById("post").value;
-    const response = await fetch("/posts/" + post.id +"/map.json");
+    const response = await fetch("map.json");
     if (!response.ok) throw new Error('Network response was not ok');
 
-    const { data: item } = await response.json();
+    const { data: { item } } = await response.json();
 
     const latitude  = item.latitude;
     const longitude = item.longitude;
     const title     = item.title;
+    const caption   = item.caption
+    const address   = item.address
+    
+    map = new Map(document.getElementById("map"), {
+      center: { lat: latitude, lng: longitude },
+      zoom: 15,
+      mapId: "DEMO_MAP_ID",
+      mapTypeControl: false
+    });
 
     const marker = new google.maps.marker.AdvancedMarkerElement ({
       position: { lat: latitude, lng: longitude },
       map,
       title: title,
+    });
+    
+    const contentString = `
+      <div class="information container p-0">
+        <p class="text-muted mb-1">${address}</p>
+        <h1 class="h4 font-weight-bold">${title}</h1>
+        <p class="lead">${caption}</p>
+      </div>
+    `;
+
+    const infowindow = new google.maps.InfoWindow({
+      content: contentString,
+      ariaLabel: title,
+    });
+
+    marker.addListener("click", () => {
+        infowindow.open({
+        anchor: marker,
+        map,
+        })
     });
   } catch (error) {
     console.error('Error fetching or processing post:', error);
