@@ -60,6 +60,7 @@ en:
     comment: Comment here
     tag_name: Separate each with a slash(/) if multiple words
     introduction: "Up to 200 characters"
+    postal_code: postal code
   guestuser:
     signin:
       notice: You logged in as a guest user.
@@ -314,7 +315,11 @@ en:
       title: Your inquiry completed
       message: We have received your inquiry. We usually reply within a week. Please be patient until we respond.
       link_to_menu: To the menu page
-
+  maps:
+    show:
+      title: Location map
+    index:
+      title: Locations map of all the posts
   enums:
     user:
       position:
@@ -399,6 +404,7 @@ en:
         caption: caption
         body: content
         prefecture: prefecture
+        address: detail address(To show on map)
         tag_name: tag name
         is_published: publishing setting
       counseling_room:

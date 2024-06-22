@@ -384,6 +384,7 @@ post_drive = Post.find_or_create_by!(title: '糸島の芥屋') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/fukuoka_itoshima.jpeg"), filename: 'fukuoka_itoshima.jpeg')
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
   po.created_at = '2024-06-18'
+  po.address = '福岡県糸島志摩芥屋'
 end
 
 post_drive.post_favorites.find_or_create_by(user_id: hana.id)
@@ -425,6 +426,7 @@ post_mentai = Post.find_or_create_by!(title: '明太子のお重') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/fukuoka_mentaizyu.jpeg"),filename: 'fukuoka_mentaizyu.jpeg')
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
   po.created_at = '2024-06-19'
+  po.address = '福岡県福岡市中央区西中洲6-15'
 end
 
 post_mentai.post_favorites.find_or_create_by(user_id: henry.id)
@@ -456,6 +458,7 @@ post_unagi = Post.find_or_create_by!(title: '柳川') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/fukuoka_yanagawa.jpeg"),filename: 'fukuoka_yanagawa.jpeg')
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
   po.created_at = '2024-06-19'
+  po.address = '福岡県柳川市'
 end
 
 post_unagi.post_favorites.find_or_create_by(user_id: ambre.id)
@@ -491,6 +494,7 @@ post_winter = Post.find_or_create_by!(title: '竜王スキー場') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/nagano_ryuo.jpeg"),filename: 'nagano_ryuo.jpeg')
   po.user = dan # 東京に馴染み深いサンプルユーザー
   po.created_at = '2024-06-19'
+  po.address = '長野県下高井郡山ノ内町夜間瀬11700'
 end
 
 post_winter.post_favorites.find_or_create_by(user_id: jacobo.id)
@@ -528,6 +532,7 @@ post_kanto = Post.find_or_create_by!(title: '秩父') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/saitama_chichibu.jpg"),filename: 'saitama_chichibu.jpg')
   po.user = dan # 東京に馴染み深いサンプルユーザー
   po.created_at = '2024-06-19'
+  po.address = '埼玉県秩父市荒川小野原178'
 end
 
 post_kanto.post_favorites.find_or_create_by(user_id: filipp.id)
@@ -574,6 +579,7 @@ post_asakusa = Post.find_or_create_by!(title: '浅草寺') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/tokyo_asakusa.jpeg"),filename: 'tokyo_asakusa.jpeg')
   po.user = dan # 東京に馴染み深いサンプルユーザー
   po.created_at = '2024-06-20'
+  po.address = '東京都台東区雷門'
 end
 
 post_asakusa.post_favorites.find_or_create_by(user_id: aoi.id)
@@ -590,6 +596,7 @@ post_shibuya = Post.find_or_create_by!(title: '渋谷スカイ') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/tokyo_shibuya.jpg"),filename: 'tokyo_shibuya.jpg')
   po.user = dan # 東京に馴染み深いサンプルユーザー
   po.created_at = '2024-06-22'
+  po.address = '東京都渋谷区渋谷2-24-12'
 end
 
 post_shibuya.post_favorites.find_or_create_by(user_id: yuma.id)
@@ -609,6 +616,7 @@ post_aogawa = Post.find_or_create_by!(title: '青川') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/gifu_river.jpeg"),filename: 'gifu_river.jpeg')
   po.user = ritsu # 岐阜に馴染み深いサンプルユーザー
   po.created_at = '2024-06-19'
+  po.address = '岐阜県中津川市付知町6-39'
 end
 
 post_aogawa.post_favorites.find_or_create_by(user_id: yuma.id)
@@ -643,6 +651,7 @@ post_sirakawago = Post.find_or_create_by!(title: '白川郷') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/gifu_shirakawago.jpg"),filename: 'gifu_shirakawago.jpg')
   po.user = ritsu # 岐阜に馴染み深いサンプルユーザー
   po.created_at = '2024-06-20'
+  po.address = '岐阜県大野郡白川郷荻町'
 end
 
 post_sirakawago.post_favorites.find_or_create_by(user_id: mio.id)
@@ -667,6 +676,7 @@ post_kobe = Post.find_or_create_by!(title: '神戸') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/hyogo_kobe.jpeg"),filename: 'hyogo_kobe.jpeg')
   po.user = yuma # 旅行好きのサンプルユーザー
   po.created_at = '2024-06-21'
+  po.address = '神戸市'
 end
 
 post_kobe.post_favorites.find_or_create_by(user_id: brunello.id)
@@ -694,6 +704,7 @@ post_enoden = Post.find_or_create_by!(title: '江ノ電') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/kanagawa_enoden.jpg"),filename: 'kanagawa_enoden.jpg')
   po.user = yuma # 旅行好きのサンプルユーザー
   po.created_at = '2024-06-22'
+  po.address = '神奈川県藤沢市'
 end
 
 post_enoden.post_favorites.find_or_create_by(user_id: brunello.id)
@@ -721,6 +732,7 @@ post_kamogawa = Post.find_or_create_by!(title: '鴨川') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/kyoto_kamogawa.jpeg"),filename: 'kyoto_kamogawa.jpeg')
   po.user = yuma # 旅行好きのサンプルユーザー
   po.created_at = '2024-06-22'
+  po.address = '京都府京都市中京区松本町'
 end
 
 post_kamogawa.post_favorites.find_or_create_by(user_id: char.id)
@@ -763,6 +775,7 @@ post_nihonsyu = Post.find_or_create_by!(title: '京都で日本酒') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/kyoto_nihonsyu.jpg"),filename: 'kyoto_nihonsyu.jpg')
   po.user = yuma # 旅行好きのサンプルユーザー
   po.created_at = '2024-06-23'
+  po.address = '京都府'
 end
 
 post_nihonsyu.post_favorites.find_or_create_by(user_id: char.id)
@@ -777,6 +790,7 @@ post_doitsumura = Post.find_or_create_by!(title: '東京ドイツ村') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/chiba_doitumura.jpeg"),filename: 'chiba_doitumura.jpeg')
   po.user = yuka # 千葉に馴染みの深いユーザー
   po.created_at = '2024-06-19'
+  po.address = '千葉県袖ヶ浦市永吉419'
 end
 
 post_doitsumura.post_favorites.find_or_create_by(user_id: juana.id)
@@ -803,6 +817,7 @@ post_isumi = Post.find_or_create_by!(title: 'いすみ市') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/chiba_isumi.jpg"),filename: 'chiba_isumi.jpg')
   po.user = yuka # 千葉に馴染みの深いユーザー
   po.created_at = '2024-06-20'
+  po.address = '千葉県いすみ市'
 end
 
 post_isumi.post_favorites.find_or_create_by(user_id: koharu.id)
@@ -824,11 +839,12 @@ comment22.comment_favorites.find_or_create_by(user_id: yuka.id)
 
 post_tokyotower = Post.find_or_create_by!(title: 'Tokyo Tower') do |po|
   po.caption = 'A beautiful tower'
-  po.body = 'The color change on each day. You can see the tower in mostly red but sometimes other colors.'
+  po.body = 'The color changes on each day. You can see the tower in mostly red but sometimes other colors.'
   po.prefecture = 13
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/tokyo_tower.jpeg"),filename: 'tokyo_tower.jpeg')
   po.user = henry # 日本生活中級者のユーザー
   po.created_at = '2024-06-21'
+  po.address = '東京都港区芝公園4-2-8'
 end
 
 post_tokyotower.post_favorites.find_or_create_by(user_id: celina.id)
@@ -845,6 +861,7 @@ post_kamosui = Post.find_or_create_by!(title: 'Kamosui') do |po|
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/yamagata_kamosui.jpeg"),filename: 'yamagata_kamosui.jpeg')
   po.user = henry # 日本生活中級者のユーザー
   po.created_at = '2024-06-22'
+  po.address = '山形県鶴岡市今泉大久保657-'
 end
 
 post_kamosui.post_favorites.find_or_create_by(user_id: abramo.id)

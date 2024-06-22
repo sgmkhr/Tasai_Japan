@@ -1,0 +1,17 @@
+<p class='guide-links'>
+  <%= link_to I18n.t('top_page'),         root_path, data: { turbolinks: false } %>>
+  <%= link_to I18n.t('menu'),             menu_path %>>
+  <%= link_to I18n.t('menus.posts'),      posts_path %>>
+  <%= link_to I18n.t('posts.show.title'), post_path(@post.id) %>>
+  <%= I18n.t('maps.show.title') %>
+</p>
+
+<div class='section-title'><h2><%= I18n.t('maps.show.title') %></h2></div>
+
+<section>
+
+  <div id='map' class='map-display'></div>
+
+</section>
+
+<%= javascript_pack_tag 'map_show', 'data-turbolinks-track': 'reload' %>
