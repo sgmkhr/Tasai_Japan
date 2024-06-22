@@ -55,8 +55,8 @@
 
   <p><%= @post.body %></p>
 
-  <div class='d-flex flex-wrap'>
-    <% if @post.post_tags.present? %>
+  <% if @post.post_tags.present? %>
+    <div class='d-flex flex-wrap mt-1'>
       <% @post.post_tags.each do |post_tag| %>
         <%= link_to posts_path(tag_name: post_tag.name) do %>
           <div class='tag-item'>
@@ -64,8 +64,17 @@
           </div>
         <% end %>
       <% end %>
+    </div>
+  <% end %>
+  
+  <% if @post.address.present? %>
+    <%= link_to post_map_path(@post.id) do %>
+      <p class='md-font mt-1'>
+        <i class="fa-solid fa-location-dot"></i>
+        <%= @post.address %>
+      </p>
     <% end %>
-  </div>
+  <% end %>
 
   <hr>
 

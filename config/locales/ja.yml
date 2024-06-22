@@ -27,6 +27,7 @@ ja:
     comment: こちらにコメントをどうぞ
     tag_name: ｽﾗｯｼｭ(/)区切りで複数入力
     introduction: 最大200文字まで入力可能
+    postal_code: 郵便番号
   guestuser:
     signin:
       notice: ゲストユーザーとしてログインしました。
@@ -281,7 +282,11 @@ ja:
       title: お問い合わせ完了
       message: 問い合わせを受け付けました。原則、1週間以内にはご返信しております。ご回答までしばらくお待ちください。
       link_to_menu: メニューページへ
-
+  maps:
+    show:
+      title: 所在地 地図
+    index:
+      title: 投稿所在地 一覧地図
   enums:
     user:
       position:
@@ -380,6 +385,7 @@ ja:
         caption: 見出し
         body: 本文
         prefecture: 都道府県
+        address: 詳細住所(マップに表示)
         tag_name: タグ
         is_published: 公開設定
       counseling_room:

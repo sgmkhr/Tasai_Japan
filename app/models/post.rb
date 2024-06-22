@@ -39,6 +39,9 @@ class Post < ApplicationRecord
   validates :caption, length: { maximum: 100 }
   validates :body,    length: { maximum: 2000 }
   
+  geocoded_by :address
+  after_validation :geocode
+  
   # データが作成されると直後に通知データも作成される
   after_create do
     records = user.followers.map do |follower|

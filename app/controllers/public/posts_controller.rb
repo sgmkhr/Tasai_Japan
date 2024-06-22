@@ -73,7 +73,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :caption, :body, :prefecture, :post_image, :is_published)
+    params.require(:post).permit(:title, :caption, :body, :prefecture, :post_image, :is_published, :address)
   end
 
   def set_selected_post
