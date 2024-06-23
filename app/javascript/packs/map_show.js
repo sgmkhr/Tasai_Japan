@@ -11,7 +11,7 @@ let map;
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
-  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
+  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 
   try {
     const response = await fetch("map.json");

@@ -1,0 +1,7 @@
+<% post_tags.each do |post_tag| %>
+  <%= link_to posts_path(tag_name: post_tag.name, current_tab: 'post_tag_tab') do %>
+    <div class='tag-item'>
+      #<%= post_tag.name %>
+    </div>
+  <% end %>
+<% end %>

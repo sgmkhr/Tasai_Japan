@@ -24,13 +24,7 @@
     
     <div class='d-flex flex-wrap'>
       <% if @counseling_room.room_tags.present? %>
-        <% @counseling_room.room_tags.each do |room_tag| %>
-          <%= link_to admin_search_rooms_path(tag_name: room_tag.name) do %>
-            <div class='tag-item'>
-              #<%= room_tag.name %>
-            </div>
-          <% end %>
-        <% end %>
+        <%= render 'admin/room_tags/index', room_tags: @counseling_room.room_tags %>
       <% end %>
     </div>
     
@@ -63,7 +57,7 @@
     <%= link_to admin_user_path(@counseling_room.user.canonical_name) do %>
       <%= I18n.t('counseling_rooms.show.creator') + @counseling_room.user.public_name %>
     <% end %>
-    
+  
   </p>
   
   <hr>

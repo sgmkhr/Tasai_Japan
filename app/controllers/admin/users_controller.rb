@@ -3,27 +3,24 @@ class Admin::UsersController < ApplicationController
   before_action :set_selected_user, except: [:index]
   
   def show
-    @user  = User.find_by(canonical_name: params[:canonical_name])
-    @posts      = @user.posts&.where(is_published: true)&.includes(:post_tags).includes(:post_favorites)
     @keyword    = params[:keyword]
     @prefecture = params[:prefecture]
     @sort       = params[:sort]
+    @user  = User.find_by(canonical_name: params[:canonical_name])
+    @posts = @user.posts&.where(is_published: true)
+    
     @posts = @posts.search_with_user_for(@keyword, @user) if @keyword.present?
     @posts = @posts.where(prefecture: @prefecture)        if @prefecture.present? && (@prefecture != 'unspecified')
-    @posts = @posts.latest if (@sort == 'latest') || (@sort.nil?)
-    @posts = @posts.old    if @sort == 'old'
-    @posts = @posts.sort_by { |post| -post.post_favorites.count } if @sort == 'favorites_count'
+    @posts = @sort == 'old' ? @posts.old : (@sort == 'favorites_count' ? @posts&.sort_by { |post| -post.post_favorites.count } : @posts.latest)
     @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
   end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
 
-  def index #退会済みユーザーも含め表示
-    @users   = User.includes(:posts)
+  def index
     @keyword = params[:keyword]
     @sort    = params[:sort]
+    @users = User.all #退会済みユーザーも含め表示
     @users = @users.search_for(@keyword) if @keyword.present?
-    @users = @users.latest               if @sort == 'latest'
-    @users = @users.old                  if @sort == 'old'
-    @users = @users.sort_by { |user| -user.posts.count } if @sort == 'posts_count'
+    @users = @sort == 'latest' ? @users.latest : ( @sort == 'posts_count' ? @users.sort_by { |user| -user.posts.count } : @users.old )
     @users = Kaminari.paginate_array(@users).page(params[:page]).per(18)
   end        #sort_byで取得したデータの場合に必要な、pageメソッドの配列レシーバ対応化
   

@@ -1,0 +1,7 @@
+<% room_tags.each do |room_tag| %>
+  <%= link_to admin_search_rooms_path(tag_name: room_tag.name) do %>
+    <div class='tag-item'>
+      #<%= room_tag.name %>
+    </div>
+  <% end %>
+<% end %>

@@ -81,6 +81,7 @@ ja:
       submit: 表示
       posts_data: 投稿数
       opinions_data: 意見数
+      total: 過去の総計
       no_data: 算出するデータがないため表示できません
       chart_title:
         posts: 過去１週間のおすすめ投稿数

@@ -1,9 +1,7 @@
 <% if waiting_participations.any? %>
 
   <% waiting_participations.each do |participation| %>
-
     <div class='row d-flex'>
-
       <div class='col-md-7'>
         <span class=<%= participation.user.get_class_associated_with_position %>>
           <%= participation.user.position_i18n %>
@@ -22,11 +20,8 @@
       </div>
 
     </div>
-
     <p><%= participation.user.introduction %></p>
-
     <hr>
-
   <% end %>
 
   <div class='d-flex justify-content-center mt-3'>
