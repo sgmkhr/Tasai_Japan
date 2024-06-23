@@ -114,6 +114,7 @@ en:
       submit: Display
       posts_data: Posts count
       opinions_data: Opinions count
+      total: Past totals
       no_data: "It can not be displayed due to no enough data to calculate."
       chart_title:
         posts: Numbers of posts you shared from the last week
