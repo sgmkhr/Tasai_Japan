@@ -55,6 +55,8 @@ class Public::CounselingRoomsController < ApplicationController
       @counseling_room.save_tags(tag_name_list)
       redirect_to category_counseling_room_path(@category.id, @counseling_room.id), notice: I18n.t('counseling_rooms.update.succeeded')
     else
+      @active_participations  = @counseling_room.participations.where(status: true).page(params[:active_participations_page]).per(10)
+      @waiting_participations = @counseling_room.participations.where(status: false).page(params[:waiting_participations_page]).per(10)
       flash.now[:alert] = I18n.t('counseling_rooms.update.failed')
       render :edit
     end
