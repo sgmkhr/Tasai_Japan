@@ -356,6 +356,10 @@ dan.active_relationships.find_or_create_by(followed_id: henry.id)
 dan.active_relationships.find_or_create_by(followed_id: juana.id)
 dan.active_relationships.find_or_create_by(followed_id: sana.id)
 dan.active_relationships.find_or_create_by(followed_id: jacobo.id)#相互フォロー
+dan.active_relationships.find_or_create_by(followed_id: aoi.id)#相互フォロー
+dan.active_relationships.find_or_create_by(followed_id: ritsu.id)
+dan.active_relationships.find_or_create_by(followed_id: yuma.id)
+dan.active_relationships.find_or_create_by(followed_id: yuka.id)
 ritsu.active_relationships.find_or_create_by(followed_id: brunello.id)
 ritsu.active_relationships.find_or_create_by(followed_id: ambre.id)
 ritsu.active_relationships.find_or_create_by(followed_id: mio.id)#相互フォロー
@@ -393,6 +397,7 @@ post_drive.post_favorites.find_or_create_by(user_id: james.id)
 
 post_drive.bookmarks.find_or_create_by(user_id: hana.id)
 post_drive.bookmarks.find_or_create_by(user_id: yuko.id)
+post_drive.bookmarks.find_or_create_by(user_id: dan.id)
 
 comment1 = post_drive.comments.find_or_create_by(content: '今度福岡に行くので参加してみようと思います！素敵な情報ありがとうございます。') do |comment|
   comment.user_id = hana.id
@@ -438,6 +443,7 @@ post_mentai.post_favorites.find_or_create_by(user_id: yuka.id)
 post_mentai.bookmarks.find_or_create_by(user_id: james.id)
 post_mentai.bookmarks.find_or_create_by(user_id: henry.id)
 post_mentai.bookmarks.find_or_create_by(user_id: abramo.id)
+post_mentai.bookmarks.find_or_create_by(user_id: dan.id)
 
 comment4 = post_mentai.comments.find_or_create_by(content: 'Looks good! まだ食べたことないですが、福岡行ったら試したい。') do |comment|
   comment.user_id = henry.id
@@ -894,6 +900,17 @@ Category.find_or_create_by!(name: '常識')
 Category.find_or_create_by!(name: '食事')
 Category.find_or_create_by!(name: '居住地')
 Category.find_or_create_by!(name: '仕事')
+Category.find_or_create_by!(name: '日本語')
+Category.find_or_create_by!(name: 'アニメ')
+Category.find_or_create_by!(name: '文化')
+Category.find_or_create_by!(name: 'ビザ')
+Category.find_or_create_by!(name: '旅行')
+Category.find_or_create_by!(name: '学校')
+Category.find_or_create_by!(name: '生活')
+Category.find_or_create_by!(name: '交流')
+Category.find_or_create_by!(name: 'スポーツ')
+Category.find_or_create_by!(name: '手続き')
+Category.find_or_create_by!(name: '経験')
 
 # 以下、相談室データ
 topic_manner = Category.find_by(name: 'マナー').counseling_rooms.find_or_create_by!(topic: 'マナーを知りたい！') do |room|
@@ -973,7 +990,7 @@ end
 topic_manner.participations.find_or_create_by!(user_id: abramo.id) do |participation|
   participation.status = true
 end
-topic_manner.participations.find_or_create_by!(user_id: brunello.id) do |participation|
+topic_manner.participations.find_or_create_by!(user_id: dan.id) do |participation|
   participation.status = true
 end
 topic_manner.participations.find_or_create_by!(user_id: ambre.id) do |participation|
@@ -1000,7 +1017,7 @@ end
 topic_manner.participations.find_or_create_by!(user_id: aoi.id) do |participation|
   participation.status = false
 end
-topic_manner.participations.find_or_create_by!(user_id: dan.id) do |participation|
+topic_manner.participations.find_or_create_by!(user_id: brunello.id) do |participation|
   participation.status = false
 end
 topic_manner.participations.find_or_create_by!(user_id: yuka.id) do |participation|
@@ -1020,7 +1037,7 @@ topic_manner.participations.find_or_create_by!(user_id: mio.id) do |participatio
 end
 
 opinion1 = topic_manner.opinions.find_or_create_by!(content: "今までと違う常識を受け入れようとしていて素晴らしいと思います！電車の中での電話は日本では非常識と思われがちですかね！") do |opinion|
-  opinion.user_id = yuma.id
+  opinion.user_id = dan.id
   opinion.created_at = '2024-06-20'
 end
 
@@ -1093,7 +1110,7 @@ end
 topic_transportation.participations.find_or_create_by!(user_id: henry.id) do |participation|
   participation.status = true
 end
-topic_transportation.participations.find_or_create_by!(user_id: ritsu.id) do |participation|
+topic_transportation.participations.find_or_create_by!(user_id: dan.id) do |participation|
   participation.status = false
 end
 topic_transportation.participations.find_or_create_by!(user_id: jacobo.id) do |participation|

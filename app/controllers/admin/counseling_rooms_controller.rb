@@ -35,7 +35,7 @@ class Admin::CounselingRoomsController < ApplicationController
     @counseling_rooms = @counseling_rooms.search_for(@keyword) if @keyword.present?
     @counseling_rooms = @counseling_rooms.latest               if (@sort == 'latest') || @sort.nil?
     @counseling_rooms = @counseling_rooms.old                  if @sort == 'old'
-    @counseling_rooms = @counseling_rooms.where('room_tags.name': @tag_name) if @tag_name.present?
+    @counseling_rooms = @counseling_rooms.where('room_tags.name': @tag_name) if @tag_name
     @counseling_rooms = @counseling_rooms.page(params[:normal_page]).per(20)
   end
 

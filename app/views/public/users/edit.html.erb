@@ -13,6 +13,6 @@
   <%= render 'layouts/errors', obj: @user %>
   <%= render 'public/users/form', user: @user, btn_name: I18n.t('update') %>
   
-  <p class='text-right mt-5'><%= link_to I18n.t('users.unsubscribe.btn'), unsubscribe_path(@user.canonical_name) %></p>
+  <p class='text-right mt-5 mr-5'><%= link_to I18n.t('users.unsubscribe.btn'), unsubscribe_path(@user.canonical_name) %></p>
 
 </section>

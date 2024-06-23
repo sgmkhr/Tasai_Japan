@@ -19,7 +19,7 @@ class Public::CategoriesController < ApplicationController
     end
     @categories = @categories.search_for(@keyword) if @keyword.present?
     @categories = @sort == 'old' ? @categories.old : @categories.latest
-    @categories = @categories.page(params[:page]).per(30)
+    @categories = @categories.page(params[:page]).per(12)
     @current_tab = 'category_create_tab' unless @current_tab.present?
   end
   
@@ -28,7 +28,9 @@ class Public::CategoriesController < ApplicationController
     if @category.save
       redirect_to category_counseling_rooms_path(@category.id), notice: I18n.t('categories.create.succeeded')
     else
-      @categories = Category.page(params[:page]).per(30)
+      @categories = Category.latest.page(params[:page]).per(12)
+      @tags = RoomTag.sort_by_popularity
+      @current_tab = 'category_create_tab' unless @current_tab.present?
       flash.now[:alert] = I18n.t('categories.create.failed')
       render :index
     end

@@ -16,7 +16,7 @@ class Public::PostsController < ApplicationController
     @current_tab = params[:current_tab]
     @posts = Post.where(is_published: true).includes(:post_tags)
     @tags  = PostTag.sort_by_popularity
-    if @tag_name.present?
+    if @tag_name
       @posts = @posts.where('post_tags.name': @tag_name)
     else
       @posts = @posts.search_for(@keyword)           if @keyword.present?

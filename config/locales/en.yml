@@ -122,7 +122,7 @@ en:
     unsubscribe:
       title: Unsubscribe page
       btn: Unsubscribe
-      information: The data will be retained even after you delete the account. If you wish to restore your account or delete the data completely, please contact us from the about page.
+      information: "The data will be retained even after you delete the account. If you wish to restore your account or delete the data completely, please contact us from the page \"about this website\"."
       confirmation: Are you sure you want to proceed to the cancellation process?
       cancel: Cancel unsubscribing
   admin:
