@@ -69,6 +69,7 @@ class Public::CounselingRoomsController < ApplicationController
     @sort     = params[:sort]
     @keyword  = params[:keyword]
     @tag_name = params[:tag_name]
+    @tags = RoomTag.sort_by_popularity
     @counseling_rooms = CounselingRoom.includes(:room_tags)
     @counseling_rooms = @counseling_rooms.search_for(@keyword) if @keyword.present?
     @counseling_rooms = @counseling_rooms.latest               if @sort == 'latest'

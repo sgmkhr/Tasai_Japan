@@ -7,6 +7,7 @@ class Admin::CategoriesController < ApplicationController
     @sort    = params[:sort]
     @categories       = Category.all
     @counseling_rooms = CounselingRoom.all
+    @tags = RoomTag.sort_by_popularity
     if @model == 'counseling_room'
       @counseling_rooms = @counseling_rooms.search_for(@keyword) if @keyword.present?
       @counseling_rooms = @sort == 'old' ? @counseling_rooms.old : @counseling_rooms.latest
