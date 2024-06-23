@@ -4,12 +4,19 @@
   <%= user.passive_profile_views.count %>
 </p>
 
-<%= image_tag user.get_profile_image(60, 60), class: 'rounded-circle' %>
+<div id='shrinked-image' class='d-inline'>
+  <%= image_tag user.get_profile_image(60, 60), class: 'rounded-circle' %>
+</div>
+
+<div id='expanded-image' class='image-non-expansion'>
+  <%= image_tag user.get_profile_image(250, 250), class: 'rounded-circle' %>
+</div>
 
 <% if user == current_user %><!--自分のページでのみ表示される-->
   <%= link_to edit_user_path(current_user.canonical_name) do %>
     <i class="fa-solid fa-gear"></i>
   <% end %>
+
   <%= link_to user_chat_rooms_path(current_user.canonical_name), class: 'btn btn-sm success-btn ml-2 mt-2' do %>
     <%= I18n.t('chats.index.title') %>
     <% if current_user.has_unread_chat? %>
