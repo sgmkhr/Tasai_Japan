@@ -1,4 +1,6 @@
-<%= current_user.get_participation_status(@counseling_room) %></br>
+<span class='participation-status'>
+  <%= current_user.get_participation_status(@counseling_room) %>
+</span></br>
 
 <% if counseling_room.user == current_user %>
       
