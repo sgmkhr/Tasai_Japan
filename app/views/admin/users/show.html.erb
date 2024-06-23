@@ -32,8 +32,12 @@
         <%= @user.passive_profile_views.count %>
       </p>
 
-      <div class='my-3 d-flex'>
-        <%= image_tag @user.get_profile_image(60, 60), class: 'rounded-circle mr-2' %>
+      <div id='shrinked-image' class='d-inline'>
+        <%= image_tag @user.get_profile_image(60, 60), class: 'rounded-circle' %>
+      </div>
+      
+      <div id='expanded-image' class='image-non-expansion'>
+        <%= image_tag @user.get_profile_image(250, 250), class: 'rounded-circle' %>
       </div>
 
       <p class='mb-3'><strong><%= @user.public_name %></strong></p>
@@ -90,3 +94,5 @@
 
   </div>
 </section>
+
+<%= javascript_pack_tag 'image_expansion' %>
