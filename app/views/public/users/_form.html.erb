@@ -1,52 +1,54 @@
 <%= form_with model: user do |f| %>
-
-  <div class='form-group row d-flex'>
-    <%= f.label :last_name, class: 'col-md-3 required' %>
-    <%= f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control col-md-9 col-11' %>
-  </div>
+  <div class='row justify-content-center'>
   
-  <div class='form-group row d-flex'>
-    <%= f.label :first_name, class: 'col-md-3 required' %>
-    <%= f.text_field :first_name, autocomplete: 'first_name', class: 'form-control col-md-9 col-11' %>
-  </div>
-  
-  <div class='form-group row d-flex'>
-    <%= f.label :public_name, class: 'col-md-3 required' %>
-    <%= f.text_field :public_name, autocomplete: 'public_name', placeholder: I18n.t('placeholder.public_name') , class: 'form-control col-md-9 col-11' %>
-  </div>
-  
-  <div class='form-group row d-flex'>
-    <%= f.label :email, class: 'col-md-3 required' %>
-    <%= f.email_field :email, autocomplete: 'email', placeholder: 'xxxx@xxx' , class: 'form-control col-md-9 col-11' %>
-  </div>
-  
-  <div class='form-group row d-flex'>
-    <%= f.label :position, class: 'col-md-3 required' %>
-    <div class='col-md-9 col-11 d-flex no-shadow'>
-      <%= f.radio_button :position, 'beginner' %>
-      <%= f.label :position, I18n.t('enums.user.position.beginner'),     { value: 'beginner' } %>
-      <%= f.radio_button :position, 'intermediate', class: 'ml-2' %>
-      <%= f.label :position, I18n.t('enums.user.position.intermediate'), { value: 'intermediate' } %>
-      <%= f.radio_button :position, 'veteran', class: 'ml-2' %>
-      <%= f.label :position, I18n.t('enums.user.position.veteran'),      { value: 'veteran' } %>
+    <div class='form-group col-11 row'>
+      <%= f.label :last_name, class: 'col-md-3 required' %>
+      <%= f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control col-md-9 col-11' %>
     </div>
-  </div>
+    
+    <div class='form-group col-11 row'>
+      <%= f.label :first_name, class: 'col-md-3 required' %>
+      <%= f.text_field :first_name, autocomplete: 'first_name', class: 'form-control col-md-9 col-11' %>
+    </div>
+    
+    <div class='form-group col-11 row'>
+      <%= f.label :public_name, class: 'col-md-3 required' %>
+      <%= f.text_field :public_name, autocomplete: 'public_name', placeholder: I18n.t('placeholder.public_name') , class: 'form-control col-md-9 col-11' %>
+    </div>
+    
+    <div class='form-group col-11 row'>
+      <%= f.label :email, class: 'col-md-3 required' %>
+      <%= f.email_field :email, autocomplete: 'email', placeholder: 'xxxx@xxx' , class: 'form-control col-md-9 col-11' %>
+    </div>
+    
+    <div class='form-group col-11 row'>
+      <%= f.label :position, class: 'col-md-3 required' %>
+      <div class='col-md-9 col-11 d-flex no-shadow'>
+        <%= f.radio_button :position, 'beginner' %>
+        <%= f.label :position, I18n.t('enums.user.position.beginner'),     { value: 'beginner' } %>
+        <%= f.radio_button :position, 'intermediate', class: 'ml-2' %>
+        <%= f.label :position, I18n.t('enums.user.position.intermediate'), { value: 'intermediate' } %>
+        <%= f.radio_button :position, 'veteran', class: 'ml-2' %>
+        <%= f.label :position, I18n.t('enums.user.position.veteran'),      { value: 'veteran' } %>
+      </div>
+    </div>
+    
+    <div class='form-group col-11 row no-shadow'>
+      <%= f.label :profile_image, class: 'col-md-3' %>
+      <label class='file-form'>
+        <span><%= I18n.t('file_form.label') %></span> 
+        <%= f.file_field :profile_image, accept: 'image/*', class: 'hidden ml-3' %>
+      </label>
+    </div>
+    
+    <div class='form-group col-11 row'>
+      <%= f.label :introduction, class: 'col-md-3' %>
+      <%= f.text_area :introduction, placeholder: I18n.t('placeholder.introduction') , class: 'form-control col-md-9 col-11' %>
+    </div>
   
-  <div class='form-group row d-flex no-shadow'>
-    <%= f.label :profile_image, class: 'col-md-3' %>
-    <label class='file-form'>
-      <span><%= I18n.t('file_form.label') %></span> 
-      <%= f.file_field :profile_image, accept: 'image/*', class: 'hidden ml-3' %>
-    </label>
-  </div>
+    <div class='actions col-11 text-right'>
+      <%= f.submit btn_name, class: 'btn btn-sm success-btn mr-2' %>
+    </div>
   
-  <div class='form-group row d-flex'>
-    <%= f.label :introduction, class: 'col-md-3' %>
-    <%= f.text_area :introduction, placeholder: I18n.t('placeholder.introduction') , class: 'form-control col-md-9 col-11' %>
   </div>
-
-  <div class='actions text-right'>
-    <%= f.submit btn_name, class: 'btn btn-sm success-btn mr-2' %>
-  </div>
-
 <% end %>

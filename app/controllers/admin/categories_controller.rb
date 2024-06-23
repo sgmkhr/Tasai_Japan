@@ -16,7 +16,7 @@ class Admin::CategoriesController < ApplicationController
     end
     @categories = @categories.search_for(@keyword) if @keyword.present?
     @categories = @sort == 'old' ? @categories.old : @categories.latest
-    @categories = @categories.page(params[:page]).per(30)
+    @categories = @categories.page(params[:page]).per(12)
   end
 
   def destroy

@@ -8,11 +8,7 @@
   <h2>
     <% if @tag_name %>
       #<%= @tag_name %>
-      <% if @posts %>
-        <%= ' ' + @posts.count.to_s + I18n.t('posts.index.count') %>
-      <% else %>
-        <%= ' 0' + I18n.t('posts.index.count') %>
-      <% end %>
+      <%= ' ' + @posts.count.to_s + I18n.t('posts.index.count') %>
     <% elsif @keyword || @prefecture %>
       <%= I18n.t('posts.index.prefecture') + I18n.t('enums.post.prefecture.' + @prefecture) %>
       </br><i class="fa-solid fa-magnifying-glass"></i><%= '「' + @keyword + '」' %>

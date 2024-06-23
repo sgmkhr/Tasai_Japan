@@ -1,11 +1,11 @@
 <div class='section-title'><h2><%= I18n.t('signin') %></h2></div>
 
 <section>
+  
+  <%= render 'public/shared/error_messages', resource: resource %>
 
   <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user' do |f| %>
     <div class='row justify-content-center'>
-
-      <%= render 'public/shared/error_messages', resource: resource %>
   
       <div class='form-group col-11 row'>
         <%= f.label :last_name, class: 'col-md-3' %>
