@@ -1,3 +1,4 @@
 $('.opinions-list').html('<%= j(render 'public/opinions/list', opinions: @opinions, category: @category, counseling_room: @counseling_room) %>');
 $('.opinion-form textarea').val('')
 $('.opinions-count').html('<%= @opinions.count %>');
+$('.errors').html('');
