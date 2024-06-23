@@ -57,13 +57,7 @@
 
   <% if @post.post_tags.present? %>
     <div class='d-flex flex-wrap mt-1'>
-      <% @post.post_tags.each do |post_tag| %>
-        <%= link_to posts_path(tag_name: post_tag.name) do %>
-          <div class='tag-item'>
-            #<%= post_tag.name %>
-          </div>
-        <% end %>
-      <% end %>
+      <%= render 'public/post_tags/index', post_tags: @post.post_tags %>
     </div>
   <% end %>
   

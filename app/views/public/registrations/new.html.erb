@@ -31,11 +31,11 @@
         <%= f.label :position, class: 'col-md-3' %>
         <div class='col-md-9 d-flex no-shadow'>
           <%= f.radio_button :position, 'beginner' %>
-          <%= f.label :position, I18n.t('enums.user.position.beginner'),     { value: 0 } %>
+          <%= f.label :position, I18n.t('enums.user.position.beginner'),     { value: 'beginner' } %>
           <%= f.radio_button :position, 'intermediate', class: 'ml-2' %>
-          <%= f.label :position, I18n.t('enums.user.position.intermediate'), { value: 1 } %>
+          <%= f.label :position, I18n.t('enums.user.position.intermediate'), { value: 'intermediate' } %>
           <%= f.radio_button :position, 'veteran', class: 'ml-2' %>
-          <%= f.label :position, I18n.t('enums.user.position.veteran'),      { value: 2 } %>
+          <%= f.label :position, I18n.t('enums.user.position.veteran'),      { value: 'veteran' } %>
         </div>
       </div>
   

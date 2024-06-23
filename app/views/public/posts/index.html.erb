@@ -1,7 +1,7 @@
 <p class='guide-links'>
   <%= link_to I18n.t('top_page'), root_path, data: { turbolinks: false } %>>
   <%= link_to I18n.t('menu'),     menu_path %>>
-  <%= I18n.t('posts.index.title') %>
+  <%= I18n.t('menus.posts') %>
 </p>
 
 <div class='section-title'>
@@ -34,7 +34,7 @@
     <% end %>
   </p>
 
-  <%= render 'public/posts/bars', prefecture: @prefecture, sort: @sort, keyword: @keyword, current_tab: @current_tab %>
+  <%= render 'public/posts/bars', prefecture: @prefecture, sort: @sort, keyword: @keyword, current_tab: @current_tab, tags: @tags %>
 
   <!--ソート切り替えリンク-->
   <p class='md-font text-center mb-0'><%= I18n.t('sort.with_display_all') %></p>

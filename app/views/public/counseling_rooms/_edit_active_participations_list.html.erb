@@ -1,9 +1,7 @@
 <% if active_participations.any? %>
 
   <% active_participations.each do |participation| %>
-
     <div class='row d-flex'>
-
       <div class='col-md-7'>
         <span class=<%= participation.user.get_class_associated_with_position %>>
           <%= participation.user.position_i18n %>
@@ -17,13 +15,9 @@
         <%= link_to I18n.t('participations.edit.leave'), category_counseling_room_participation_path(category.id, counseling_room.id, participation.id),
                                                          method: :delete, 'data-confirm' => I18n.t('participations.destroy.confirmation.by_creator') %>
       </div>
-
     </div>
-
     <p><%= participation.user.introduction %></p>
-
     <hr>
-
   <% end %>
 
   <div class='d-flex justify-content-center mt-3'>

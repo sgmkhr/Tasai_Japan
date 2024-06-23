@@ -31,16 +31,14 @@
   <div class='row d-flex justify-content-center pb-2'>
     <div class='d-md-flex'>
       <p class='mb-0'>
-        <%= link_to I18n.t('sort.latest'), admin_category_counseling_rooms_path(@category.id, sort: 'latest') %>
-        |<%= link_to I18n.t('sort.old'),   admin_category_counseling_rooms_path(@category.id, sort: 'old') %>
+        <%= link_to I18n.t('sort.latest'),               admin_category_counseling_rooms_path(@category.id, sort: 'latest') %>
+        |<%= link_to I18n.t('sort.old'),                 admin_category_counseling_rooms_path(@category.id, sort: 'old') %>
       </p>
       <p class='mb-0'><span class='d-md-inline d-none pl-1'>|</span>
-        <%= link_to I18n.t('sort.participations_count'),
-                                           admin_category_counseling_rooms_path(@category.id, sort: 'participations_count') %>
+        <%= link_to I18n.t('sort.participations_count'), admin_category_counseling_rooms_path(@category.id, sort: 'participations_count') %>
       </p>
       <p class='mb-0'><span class='d-md-inline d-none pl-1'>|</span>
-        |<%= link_to I18n.t('sort.opinions_count'),
-                                           admin_category_counseling_rooms_path(@category.id, sort: 'opinions_count') %>
+        <%= link_to I18n.t('sort.opinions_count'),       admin_category_counseling_rooms_path(@category.id, sort: 'opinions_count') %>
       </p>
     </div>
   </div> 

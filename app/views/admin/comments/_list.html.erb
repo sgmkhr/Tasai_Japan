@@ -3,7 +3,6 @@
   <div class='border-bottom p-3'>
     
     <div class='d-flex'>
-      
       <%= link_to admin_user_path(comment.user.canonical_name) do %>
         <i class="fa-regular fa-user"></i>
         <%= comment.user.public_name %>
@@ -13,7 +12,6 @@
                                      remote: true, data: {"turbolinks" => false}, 
                                      class: 'btn btn-sm bordered ml-auto', 
                                      'data-confirm' => I18n.t('posts.destroy.confirmation') %>
-      
     </div>
     
     <p><%= comment.content %></p>

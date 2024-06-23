@@ -3,23 +3,23 @@ class Public::CategoriesController < ApplicationController
   before_action :ensure_guest_user, only: [:create]
   
   def index
-    @category    = Category.new
-    @categories  = Category.all
+    @model       = params[:model]
     @keyword     = params[:keyword]
     @sort        = params[:sort]
     @current_tab = params[:current_tab]
-    @model       = params[:model]
+    @category         = Category.new
+    @categories       = Category.all
     @counseling_rooms = CounselingRoom.all
+    @tags = RoomTag.sort_by_popularity
     if @model == 'counseling_room'
       @counseling_rooms = @counseling_rooms.search_for(@keyword) if @keyword.present?
-      @counseling_rooms = @counseling_rooms.latest.page(params[:normal_page]).per(20) if @sort == 'latest'
-      @counseling_rooms = @counseling_rooms.old.page(params[:normal_page]).per(20)    if @sort == 'old'
-      render 'public/counseling_rooms/search'
+      @counseling_rooms = @sort == 'old' ? @counseling_rooms.old : @counseling_rooms.latest
+      @counseling_rooms = @counseling_rooms.old.page(params[:normal_page]).per(20)
+      render 'public/counseling_rooms/search'#検索対象が相談室の場合のみsearch画面へ遷移
     end
-    @categories  = @categories.search_for(@keyword) if @keyword.present?
-    @categories  = @categories.latest if @sort == 'latest'
-    @categories  = @categories.old    if @sort == 'old'
-    @categories  = @categories.page(params[:page]).per(30)
+    @categories = @categories.search_for(@keyword) if @keyword.present?
+    @categories = @sort == 'old' ? @categories.old : @categories.latest
+    @categories = @categories.page(params[:page]).per(30)
     @current_tab = 'category_create_tab' unless @current_tab.present?
   end
   

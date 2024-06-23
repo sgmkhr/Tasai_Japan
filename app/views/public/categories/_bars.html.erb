@@ -73,6 +73,11 @@
 
   <!--タグ検索バー-->
   <div id='category_tag_tab' class='tab'>
+    <div class='row justify-content-md-end justify-content-center'>
+      <div class='col-md-5 col-9 overflow-hidden text-nowrap text-truncate'>
+        <%= render 'public/room_tags/index', room_tags: tags %>
+      </div>
+    </div>
     <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
       <div class='row justify-content-md-end justify-content-center'>
         <div class='form-group col-md-5 col-9'>
