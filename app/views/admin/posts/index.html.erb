@@ -22,7 +22,7 @@
 
 <section>
 
-  <%= render 'admin/posts/bars', prefecture: @prefecture, sort: @sort, keyword: @keyword, current_tab: @current_tab %>
+  <%= render 'admin/posts/bars', prefecture: @prefecture, sort: @sort, keyword: @keyword, current_tab: @current_tab, tags: @tags %>
 
   <!--ソート切り替えリンク-->
   <p class='md-font text-center mb-0'><%= I18n.t('sort.with_display_all') %></p>
