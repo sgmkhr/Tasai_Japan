@@ -894,6 +894,17 @@ Category.find_or_create_by!(name: '常識')
 Category.find_or_create_by!(name: '食事')
 Category.find_or_create_by!(name: '居住地')
 Category.find_or_create_by!(name: '仕事')
+Category.find_or_create_by!(name: '日本語')
+Category.find_or_create_by!(name: 'アニメ')
+Category.find_or_create_by!(name: '文化')
+Category.find_or_create_by!(name: 'ビザ')
+Category.find_or_create_by!(name: '旅行')
+Category.find_or_create_by!(name: '学校')
+Category.find_or_create_by!(name: '生活')
+Category.find_or_create_by!(name: '交流')
+Category.find_or_create_by!(name: 'スポーツ')
+Category.find_or_create_by!(name: '手続き')
+Category.find_or_create_by!(name: '経験')
 
 # 以下、相談室データ
 topic_manner = Category.find_by(name: 'マナー').counseling_rooms.find_or_create_by!(topic: 'マナーを知りたい！') do |room|
