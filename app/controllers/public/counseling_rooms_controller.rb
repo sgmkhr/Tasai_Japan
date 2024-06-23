@@ -7,9 +7,9 @@ class Public::CounselingRoomsController < ApplicationController
   def index
     @keyword = params[:keyword]
     @sort    = params[:sort]
-    @counseling_rooms = @category.counseling_rooms&.includes(:participations).includes(:opinions)
+    @counseling_rooms = @category.counseling_rooms
     @counseling_rooms = @counseling_rooms.search_for(@keyword) if @keyword.present?
-    @counseling_rooms = @counseling_rooms.latest if @sort == 'latest'
+    @counseling_rooms = @counseling_rooms.latest if (@sort == 'latest') || @sort.nil?
     @counseling_rooms = @counseling_rooms.old    if @sort == 'old'
     @counseling_rooms = @counseling_rooms.sort_by { |room| -room.participations.where(status: true).count } if @sort == 'participations_count'
     @counseling_rooms = @counseling_rooms.sort_by { |room| -room.opinions.count } if @sort == 'opinions_count'

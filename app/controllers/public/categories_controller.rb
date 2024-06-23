@@ -15,7 +15,7 @@ class Public::CategoriesController < ApplicationController
       @counseling_rooms = @counseling_rooms.search_for(@keyword) if @keyword.present?
       @counseling_rooms = @sort == 'old' ? @counseling_rooms.old : @counseling_rooms.latest
       @counseling_rooms = @counseling_rooms.old.page(params[:normal_page]).per(20)
-      render 'public/counseling_rooms/search'
+      render 'public/counseling_rooms/search'#検索対象が相談室の場合のみsearch画面へ遷移
     end
     @categories = @categories.search_for(@keyword) if @keyword.present?
     @categories = @sort == 'old' ? @categories.old : @categories.latest

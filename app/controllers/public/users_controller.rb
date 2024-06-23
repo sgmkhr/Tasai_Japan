@@ -11,7 +11,7 @@ class Public::UsersController < ApplicationController
     @keyword_in_bookmarks = params[:keyword_in_bookmarks]
     @current_tab          = params[:current_tab]
     @user                 = User.find_by(canonical_name: params[:canonical_name])
-    @posts            = @user.posts&.where(is_published: true)&.includes(:post_tags).includes(:post_favorites)
+    @posts            = @user.posts&.where(is_published: true)
     @bookmarked_posts = current_user.bookmarked_posts&.where(is_published: true)&.latest
 
     @posts = @posts.search_with_user_for(@keyword, @user) if @keyword.present?
@@ -40,7 +40,7 @@ class Public::UsersController < ApplicationController
   def index
     @keyword = params[:keyword]
     @sort    = params[:sort]
-    @users = User.where(is_active: true)&.includes(:posts) #退会済みユーザーは表示しない
+    @users = User.where(is_active: true) #退会済みユーザーは表示しない
     @users = @users.search_for(@keyword) if @keyword.present?
     @users = @sort == 'latest' ? @users.latest : ( @sort == 'posts_count' ? @users.sort_by { |user| -user.posts.count } : @users.old )
     @users = Kaminari.paginate_array(@users).page(params[:page]).per(18)

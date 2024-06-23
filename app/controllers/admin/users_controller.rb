@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
     @prefecture = params[:prefecture]
     @sort       = params[:sort]
     @user  = User.find_by(canonical_name: params[:canonical_name])
-    @posts = @user.posts&.where(is_published: true)&.includes(:post_tags).includes(:post_favorites)
+    @posts = @user.posts&.where(is_published: true)
     
     @posts = @posts.search_with_user_for(@keyword, @user) if @keyword.present?
     @posts = @posts.where(prefecture: @prefecture)        if @prefecture.present? && (@prefecture != 'unspecified')
@@ -18,7 +18,7 @@ class Admin::UsersController < ApplicationController
   def index
     @keyword = params[:keyword]
     @sort    = params[:sort]
-    @users = User.includes(:posts) #退会済みユーザーも含め表示
+    @users = User.all #退会済みユーザーも含め表示
     @users = @users.search_for(@keyword) if @keyword.present?
     @users = @sort == 'latest' ? @users.latest : ( @sort == 'posts_count' ? @users.sort_by { |user| -user.posts.count } : @users.old )
     @users = Kaminari.paginate_array(@users).page(params[:page]).per(18)
