@@ -28,7 +28,9 @@ class Public::CategoriesController < ApplicationController
     if @category.save
       redirect_to category_counseling_rooms_path(@category.id), notice: I18n.t('categories.create.succeeded')
     else
-      @categories = Category.page(params[:page]).per(30)
+      @categories = Category.latest.page(params[:page]).per(12)
+      @tags = RoomTag.sort_by_popularity
+      @current_tab = 'category_create_tab' unless @current_tab.present?
       flash.now[:alert] = I18n.t('categories.create.failed')
       render :index
     end
