@@ -21,7 +21,6 @@
   </div>
   
   <div class='room-detail-box my-2'>
-    
     <div class='d-flex flex-wrap'>
       <% if @counseling_room.room_tags.present? %>
         <%= render 'public/room_tags/index', room_tags: @counseling_room.room_tags %>
@@ -40,11 +39,9 @@
     <h4 class='mt-3'><%= @counseling_room.topic %></h4>
   
     <p><%= @counseling_room.detail %></p>
-    
   </div>
 
   <p class='text-right'>
-
     <i class="fa-solid fa-user-group"></i>
     <span class='mr-2'>
       <%= @participations.count %>
@@ -58,7 +55,6 @@
     <%= link_to user_path(@counseling_room.user.canonical_name) do %>
       <%= I18n.t('counseling_rooms.show.creator') + '' + @counseling_room.user.public_name %>
     <% end %>
-
   </p>
 
   <hr>

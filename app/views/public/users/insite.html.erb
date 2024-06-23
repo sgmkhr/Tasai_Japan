@@ -27,29 +27,20 @@
 
     <!--以下、「あなたの相談室」タブ選択時の表示-->
     <div id='managing_rooms_tab' class='tab'>
-
       <p class='text-center tab-title'><%= I18n.t('users.insite.managing_rooms_tab') %></p>
-
       <%= render 'public/counseling_rooms/index', counseling_rooms: @rooms_managing, param_name: 'managing_rooms_page', current_tab: 'managing_rooms_tab' %>
-
     </div>
 
     <!--以下、「参加中相談室」タブ選択時の表示-->
     <div id='participating_rooms_tab' class='tab'>
-
       <p class='text-center tab-title'><%= I18n.t('users.insite.participating_rooms_tab') %></p>
-
       <%= render 'public/counseling_rooms/index', counseling_rooms: @rooms_participated_in, param_name: 'participating_rooms_page', current_tab: 'participating_rooms_tab' %>
-
     </div>
 
     <!--以下、「参加申請中相談室」タブ選択時の表示-->
     <div id='applying_rooms_tab' class='tab'>
-
       <p class='text-center tab-title'><%= I18n.t('users.insite.applying_rooms_tab') %></p>
-
       <%= render 'public/counseling_rooms/index', counseling_rooms: @rooms_applying_for, param_name: 'applying_rooms_page', current_tab: 'applying_rooms_tab' %>
-
     </div>
 
   </div>
