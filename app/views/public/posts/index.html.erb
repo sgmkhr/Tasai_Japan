@@ -20,11 +20,11 @@
 
 <section>
 
-  <!--新規投稿リンク-->
+  <!--地図表示リンクと新規投稿リンク-->
   <p class='mb-3 text-right pr-5'>
     <%= link_to maps_path do %><i class="fa-solid fa-map-location-dot"></i><% end %>
      | 
-    <%= link_to new_post_path do %>
+    <%= link_to new_post_path, data: { turbolinks: false } do %>
       <%= I18n.t('posts.new.title') %>
       <i class="fa-solid fa-plus"></i>
     <% end %>

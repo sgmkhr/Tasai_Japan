@@ -27,7 +27,7 @@
       <!--以下、マイページの場合に表示される内容-->
       <% if @user == current_user %>
       
-        <%= link_to new_post_path do %>
+        <%= link_to new_post_path, data: { turbolinks: false } do %>
           <%= I18n.t('posts.new.title') %>
           <i class="fa-solid fa-plus"></i>
         <% end %>
