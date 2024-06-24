@@ -98,6 +98,7 @@ en:
         active: One of users you are following
       active: An active user
       inactive: An inactive user
+      inactive_page: You cannot view an unsubscribed user's page.
     edit:
       title: Edit your information
     index:
