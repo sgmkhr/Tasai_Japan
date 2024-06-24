@@ -3,11 +3,11 @@
   <%= f.submit I18n.t('users.insite.submit'), class: 'btn btn-sm success-btn py-0 mb-2' %>
 <% end %>
 
-<div class='d-flex'>
+<div class='d-flex mt-3'>
   <table class='table table-bordered ml-auto col-md-3 col-7'>
     <tr>
-      <th><p class='mb-0'><%= I18n.t('users.insite.total') %></p></th>
-      <td><%= data.count %></td>
+      <th class='py-1'><p class='mb-0'><%= I18n.t('users.insite.total') %></p></th>
+      <td class='py-1'><%= data.count %></td>
     </tr>
   </table>
 </div>
