@@ -307,6 +307,11 @@ input {
   border-radius:    10px;
   padding:          0 10px;
 }
+.limitedly-displayed-icons {
+  overflow:      hidden;
+  white-space:   nowrap;
+  text-overflow: ellipsis;
+}
                                             // 以下、各種タグの共通レイアウト
 .tag-item {
   display:          inline-block;
