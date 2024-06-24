@@ -61,7 +61,9 @@
 
   <% if (current_user == @counseling_room.user) || @participations.exists?(user_id: current_user.id) %>
 
-    <div>
+    <div id='icons' class='limitedly-displayed-icons'>
+      <a href='#' id='down-arrow'><i class="fa-solid fa-chevron-down"></i></a>
+      <a href='#' id='up-arrow'><i class="fa-solid fa-chevron-up"></i></a>
       <% @participations.each do |participation| %>
         <%= link_to user_path(participation.user.canonical_name) do %>
           <%= image_tag participation.user.get_profile_image(40, 40), class: 'rounded-circle m-1' %>
@@ -91,3 +93,5 @@
   <% end %>
 
 </section>
+
+<%= javascript_pack_tag 'display_icons_in_counseling_room' %>
