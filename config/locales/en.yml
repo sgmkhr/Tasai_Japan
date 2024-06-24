@@ -253,7 +253,7 @@ en:
     posts_count: Numbers of posts
     participations_count: Number of members
     opinions_count: Number of opinions
-    with_display_all: Swith sort order for all items
+    with_display_all: Switch sort order for all items
   views_count:
     profile: Number of viewers：
   relationships:

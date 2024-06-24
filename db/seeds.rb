@@ -384,7 +384,7 @@ mio.active_relationships.find_or_create_by(followed_id: ritsu.id)#相互フォ�
 post_drive = Post.find_or_create_by!(title: '糸島の芥屋') do |po|
   po.caption = '福岡のドライブスポットといえば！'
   po.body = 'この前はドライブではなく、遊覧船に乗って鍾乳洞を覗きにいけるアクティビティに参加してきました。'
-  po.prefecture = 7
+  po.prefecture = 40
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/fukuoka_itoshima.jpeg"), filename: 'fukuoka_itoshima.jpeg')
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
   po.created_at = '2024-06-18'
@@ -427,7 +427,7 @@ comment3.comment_favorites.find_or_create_by(user_id: aoi.id)
 post_mentai = Post.find_or_create_by!(title: '明太子のお重') do |po|
   po.caption = '博多に来たら必ず行ってほしい'
   po.body = '明太子好きにはたまらない！重厚な雰囲気だけどカジュアルにランチで楽しめる。'
-  po.prefecture = 7
+  po.prefecture = 40
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/fukuoka_mentaizyu.jpeg"),filename: 'fukuoka_mentaizyu.jpeg')
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
   po.created_at = '2024-06-19'
@@ -460,7 +460,7 @@ comment4.comment_favorites.find_or_create_by(user_id: aoi.id)
 post_unagi = Post.find_or_create_by!(title: '柳川') do |po|
   po.caption = 'うなぎも有名な場所'
   po.body = '福岡市からは少し離れていますが、美味しい鰻重と穏やかな川下りが楽しめますよ。'
-  po.prefecture = 7
+  po.prefecture = 40
   po.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/fukuoka_yanagawa.jpeg"),filename: 'fukuoka_yanagawa.jpeg')
   po.user = aoi # 福岡に馴染み深いサンプルユーザー
   po.created_at = '2024-06-19'
@@ -990,9 +990,6 @@ end
 topic_manner.participations.find_or_create_by!(user_id: abramo.id) do |participation|
   participation.status = true
 end
-topic_manner.participations.find_or_create_by!(user_id: dan.id) do |participation|
-  participation.status = true
-end
 topic_manner.participations.find_or_create_by!(user_id: ambre.id) do |participation|
   participation.status = true
 end
@@ -1037,7 +1034,7 @@ topic_manner.participations.find_or_create_by!(user_id: mio.id) do |participatio
 end
 
 opinion1 = topic_manner.opinions.find_or_create_by!(content: "今までと違う常識を受け入れようとしていて素晴らしいと思います！電車の中での電話は日本では非常識と思われがちですかね！") do |opinion|
-  opinion.user_id = dan.id
+  opinion.user_id = yuma.id
   opinion.created_at = '2024-06-20'
 end
 
@@ -1071,6 +1068,9 @@ topic_music_fes.participations.find_or_create_by!(user_id: hana.id) do |particip
   participation.status = true
 end
 topic_music_fes.participations.find_or_create_by!(user_id: abramo.id) do |participation|
+  participation.status = true
+end
+topic_music_fes.participations.find_or_create_by!(user_id: dan.id) do |participation|
   participation.status = true
 end
 topic_music_fes.participations.find_or_create_by!(user_id: ambre.id) do |participation|
