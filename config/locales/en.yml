@@ -53,7 +53,6 @@ en:
   search_tag: Search with a tag name
   file_form:
     label: Choose image
-    unselected: Not selected yet
   placeholder:
     canonical_name: less than 20 alphanumeric characters
     public_name: Anyone can see this name
