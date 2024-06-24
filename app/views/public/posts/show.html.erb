@@ -79,7 +79,7 @@
     </p>
     <% if @post.user == current_user %>
       <div class='col-3 text-right'>
-        <%= link_to I18n.t('posts.show.edit_btn'), edit_post_path(@post.id), class: 'pb-5' %>
+        <%= link_to I18n.t('posts.show.edit_btn'), edit_post_path(@post.id), class: 'pb-5', data: { turbolinks: false } %>
       </div>
     <% end %>
   </div>

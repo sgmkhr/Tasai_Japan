@@ -3,6 +3,7 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user,   except: [:show, :index]
   before_action :ensure_correct_user, only: [:edit, :insite, :withdraw, :unsubscribe]
   before_action :set_current_user,    except: [:show, :index]
+  before_action :ensure_active_page,  only: [:show]
 
   def show
     @keyword              = params[:keyword]
@@ -83,6 +84,7 @@ class Public::UsersController < ApplicationController
 
   def withdraw
     @user.update(is_active: false)
+    @user.posts.update_all(is_published: false) #公開中の投稿全て非公開に変更
     reset_session
     redirect_to new_user_registration_path, notice: I18n.t('users.withdraw.notice')
   end
@@ -106,6 +108,13 @@ class Public::UsersController < ApplicationController
 
   def set_current_user
     @user = current_user
+  end
+  
+  def ensure_active_page
+    user = User.find_by(canonical_name: params[:canonical_name])
+    if user.is_active == false
+      redirect_to request.referer, alert: I18n.t('users.show.inactive_page')
+    end
   end
 
 end

@@ -65,6 +65,7 @@ ja:
         active: フォローしているユーザーです
       active: 有効ユーザー
       inactive: 退会済み
+      inactive_page: 退会済みユーザーのため遷移できません
     edit:
       title: 登録情報編集
     index:
