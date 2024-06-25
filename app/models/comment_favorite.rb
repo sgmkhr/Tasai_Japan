@@ -19,8 +19,8 @@ class CommentFavorite < ApplicationRecord
   end
   
   # 通知クリック時のパス先指定のメソッド
-  def notification_path
-    post_path(comment.post.id)
+  def notification_path(locale_params)
+    post_path(comment.post.id, locale: locale_params)
   end
   
 end

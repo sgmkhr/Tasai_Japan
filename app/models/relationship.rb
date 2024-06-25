@@ -17,8 +17,8 @@ class Relationship < ApplicationRecord
   end
   
   # 通知クリック時のパス先指定のメソッド
-  def notification_path
-    user_path(follower.canonical_name)
+  def notification_path(locale_params)
+    user_path(follower.canonical_name, locale: locale_params)
   end
   
 end

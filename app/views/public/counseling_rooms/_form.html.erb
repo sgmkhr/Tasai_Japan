@@ -6,6 +6,7 @@
       <span><%= I18n.t('file_form.label') %></span> 
       <%= f.file_field :topic_image, accept: 'image/*', class: 'hidden ml-3' %>
     </label>
+    <span id='file_name' class='ml-1'></span>
   </div>
 
   <div class='form-group row d-flex'>
@@ -28,3 +29,5 @@
   </div>
 
 <% end %>
+
+<%= javascript_pack_tag 'display_topic_image_file' %>

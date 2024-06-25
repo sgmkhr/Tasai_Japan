@@ -21,8 +21,8 @@ class Comment < ApplicationRecord
   end
   
   # 通知クリック時のパス先指定のメソッド
-  def notification_path
-    post_path(post_id)
+  def notification_path(locale_params)
+    post_path(post_id, locale: locale_params)
   end
   
   # 対象のコメントへ既にいいねしているか確認するメソッド

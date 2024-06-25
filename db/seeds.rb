@@ -340,6 +340,7 @@ faina.active_relationships.find_or_create_by(followed_id: sana.id)
 filipp.active_relationships.find_or_create_by(followed_id: juana.id)
 filipp.active_relationships.find_or_create_by(followed_id: yuka.id)
 filipp.active_relationships.find_or_create_by(followed_id: koharu.id)#相互フォロー
+filipp.active_relationships.find_or_create_by(followed_id: dan.id)
 celina.active_relationships.find_or_create_by(followed_id: abramo.id)
 celina.active_relationships.find_or_create_by(followed_id: brunello.id)
 celina.active_relationships.find_or_create_by(followed_id: ritsu.id)
