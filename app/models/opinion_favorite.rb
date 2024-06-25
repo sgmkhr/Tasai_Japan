@@ -19,8 +19,8 @@ class OpinionFavorite < ApplicationRecord
   end
   
   # 通知クリック時のパス先指定のメソッド
-  def notification_path
-    category_counseling_room_path(opinion.counseling_room.category.id, opinion.counseling_room.id)
+  def notification_path(locale_params)
+    category_counseling_room_path(opinion.counseling_room.category.id, opinion.counseling_room.id, locale: locale_params)
   end
   
 end

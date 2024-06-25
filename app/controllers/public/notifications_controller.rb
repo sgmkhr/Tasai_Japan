@@ -4,7 +4,7 @@ class Public::NotificationsController < ApplicationController
   def update
     notification = current_user.notifications.find(params[:id])
     notification.update(read: true)
-    redirect_to notification.notifiable_path
+    redirect_to notification.notifiable_path(params[:locale])
   end
 
   def clear_all
