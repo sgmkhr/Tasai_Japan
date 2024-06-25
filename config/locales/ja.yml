@@ -269,8 +269,6 @@ ja:
     limited_by: 直近10件の未読通知を表示しています
     clear_all: 全ての通知を既読にする
   inquiries:
-    text1_not_to_switch_languages: 言語切り替えはしないでください。
-    text2_not_to_switch_languages: 入力したデータが失われます。
     to_contact: 管理者へ問い合わせる
     send_failed: 送信に失敗しました
     new:

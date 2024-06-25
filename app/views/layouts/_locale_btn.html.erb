@@ -1,0 +1,17 @@
+<% if !(params[:controller] == 'public/inquiries')%>
+
+  <p id='locale-select-button' class='text-center mb-0'>
+    <span><%= I18n.t('languages.japanese') %></span>
+    <% if I18n.locale.to_s == 'en' %>
+      <%= link_to :locale => 'ja', data: { turbolinks: false } do %>
+        <i class="fa-solid fa-toggle-on"></i>
+      <% end %>
+    <% else %>
+      <%= link_to :locale => 'en', data: { turbolinks: false } do %>
+        <i class="fa-solid fa-toggle-off"></i>
+      <% end %>
+    <% end %>
+    <span><%= I18n.t('languages.english') %></span>
+  </p>
+
+<% end %>
