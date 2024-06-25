@@ -9,8 +9,8 @@ class Notification < ApplicationRecord
   end
   
   # 各notifiableモデル通知クリック時のパス先指定メソッドを呼び出す
-  def notifiable_path
-    notifiable.notification_path
+  def notifiable_path(locale_params)
+    notifiable.notification_path(locale_params)
   end
   
 end

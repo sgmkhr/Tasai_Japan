@@ -17,8 +17,8 @@ class Participation < ApplicationRecord
   end
 
   # 通知クリック時のパス先指定のメソッド
-  def notification_path
-    edit_category_counseling_room_path(counseling_room.category.id, counseling_room.id)
+  def notification_path(locale_params)
+    edit_category_counseling_room_path(counseling_room.category.id, counseling_room.id, locale: locale_params)
   end
 
 end

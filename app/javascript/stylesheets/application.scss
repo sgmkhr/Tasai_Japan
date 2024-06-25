@@ -312,6 +312,9 @@ input {
   white-space:   nowrap;
   text-overflow: ellipsis;
 }
+#up-arrow {
+  display:       none;
+}
                                             // 以下、各種タグの共通レイアウト
 .tag-item {
   display:          inline-block;

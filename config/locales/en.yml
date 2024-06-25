@@ -302,8 +302,6 @@ en:
     limited_by: Only the last 10 unread notifications are being displayed.
     clear_all: Clear all the notifications
   inquiries:
-    text1_not_to_switch_languages: Please don't switch languages.
-    text2_not_to_switch_languages: Otherwise input data will be lost.
     to_contact: Contact the administrator
     send_failed: Failed to send.
     new:
