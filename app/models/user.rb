@@ -132,4 +132,9 @@ class User < ApplicationRecord
     false
   end
 
+  # 有効ユーザーか確認
+  def active_for_authentication?
+    super && is_active
+  end
+
 end
