@@ -74,6 +74,7 @@ en:
     rooms: Share your opinions
   users:
     reject_inactive_user: This account has already unsubscribed. Please sign up as a new account.
+    inactive_message: Your account is invalid now.
     incorrect_user:
       validates: You cannot navigate to pages that involve editing other users' information.
     update:
