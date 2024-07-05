@@ -41,7 +41,6 @@ ja:
     rooms: 意見を共有する
   users:
     reject_inactive_user: 退会済みのアカウントです。再度新規登録をしてご利用ください。
-    inactive_message: 現在無効のアカウントです。
     incorrect_user:
       validates: 他のユーザーの情報編集に関わる画面へは遷移できません。
     update:

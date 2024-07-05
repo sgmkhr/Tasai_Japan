@@ -137,9 +137,4 @@ class User < ApplicationRecord
     super && is_active
   end
 
-  # 無効ユーザーの場合に表示するメッセージ
-  def inactive_message
-    I18n.t('users.inactive_message')
-  end
-
 end
