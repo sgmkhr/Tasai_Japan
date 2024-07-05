@@ -31,6 +31,8 @@ class Admin::UsersController < ApplicationController
   
   def withdraw
     @user.update(is_active: false)
+    @user.posts.update_all(is_published: false) #公開中の投稿全て非公開に変更
+    sign_out(@user)
     redirect_to request.referer
   end
   
