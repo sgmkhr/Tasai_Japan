@@ -37,16 +37,15 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-  
+
   def after_sign_up_path_for(resource)
     menu_path
   end
-  
+
   protected
-  
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :canonical_name, :public_name, :position])
-  end
+    def configure_sign_up_params
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :canonical_name, :public_name, :position])
+    end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

@@ -17,10 +17,10 @@ class User < ApplicationRecord
     has_many :opinion_favorites
     has_many :bookmarks
     has_many :post_views
-    has_many :active_profile_views,  class_name: 'ProfileView',  foreign_key: 'viewer_id'
-    has_many :passive_profile_views, class_name: 'ProfileView',  foreign_key: 'viewed_id'
-    has_many :active_relationships,  class_name: 'Relationship', foreign_key: 'follower_id'
-    has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id'
+    has_many :active_profile_views,  class_name: "ProfileView",  foreign_key: "viewer_id"
+    has_many :passive_profile_views, class_name: "ProfileView",  foreign_key: "viewed_id"
+    has_many :active_relationships,  class_name: "Relationship", foreign_key: "follower_id"
+    has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id"
     has_many :entries
     has_many :chats
     has_many :notifications
@@ -47,32 +47,32 @@ class User < ApplicationRecord
 
   validates :introduction, length: { maximum: 200 }
 
-  GUEST_USER_EMAIL = 'guest@example.com'
+  GUEST_USER_EMAIL = "guest@example.com"
 
   # プロフィール画像を指定サイズへ圧縮してからデータ表示するメソッド(画像の登録がなければデフォルト画像を表示)
   def get_profile_image(width, height)
     unless profile_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      profile_image.attach(io: File.open(file_path), filename: 'default-profile-image.jpg', content_type: 'image/jpeg')
+      file_path = Rails.root.join("app/assets/images/no_image.jpg")
+      profile_image.attach(io: File.open(file_path), filename: "default-profile-image.jpg", content_type: "image/jpeg")
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  #ポジションによって別のcssクラスを呼び出すメソッド
+  # ポジションによって別のcssクラスを呼び出すメソッド
   def get_class_associated_with_position
-    return 'position-beginner'     if position == 'beginner'
-    return 'position-intermediate' if position == 'intermediate'
-    return 'position-veteran'
+    return "position-beginner"     if position == "beginner"
+    return "position-intermediate" if position == "intermediate"
+    "position-veteran"
   end
 
-  #ゲストログイン時のメソッド
+  # ゲストログイン時のメソッド
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
       user.password       = SecureRandom.urlsafe_base64
-      user.last_name      = 'guest'
-      user.first_name     = 'user'
-      user.public_name    = 'guestuser'
-      user.canonical_name = 'guestuser'
+      user.last_name      = "guest"
+      user.first_name     = "user"
+      user.public_name    = "guestuser"
+      user.canonical_name = "guestuser"
       user.position       = 1
     end
   end
@@ -85,24 +85,24 @@ class User < ApplicationRecord
   # 相談室の参加ステータスを確認するためのメソッド
   def get_participation_status(room)
     if id == room.user_id
-      I18n.t('participations.creator')
+      I18n.t("participations.creator")
     elsif participations.exists?(counseling_room_id: room.id) && participations.find_by(counseling_room_id: room.id).status
-      I18n.t('participations.participating')
+      I18n.t("participations.participating")
     elsif participations.exists?(counseling_room_id: room.id)
-      I18n.t('participations.applying')
+      I18n.t("participations.applying")
     else
-      I18n.t('participations.not_participating')
+      I18n.t("participations.not_participating")
     end
   end
 
   # キーワード検索メソッド
   def self.search_for(content)
-    User.where(['public_name LIKE(?) OR canonical_name LIKE(?) OR introduction LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
+    User.where(["public_name LIKE(?) OR canonical_name LIKE(?) OR introduction LIKE(?)", "%#{content}%", "%#{content}%", "%#{content}%"])
   end
 
   # マイページでのブックマーク投稿のキーワード検索メソッド
   def search_with_bookmarks_for(content)
-    self.bookmarked_posts.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
+    self.bookmarked_posts.where(["title LIKE(?) OR caption LIKE(?) OR body LIKE(?)", "%#{content}%", "%#{content}%", "%#{content}%"])
   end
 
   # フォローするメソッド
@@ -136,5 +136,4 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && is_active
   end
-
 end

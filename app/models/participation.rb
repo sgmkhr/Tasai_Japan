@@ -13,12 +13,11 @@ class Participation < ApplicationRecord
 
   # 表示する通知メッセージを取得するメソッド
   def notification_message
-    I18n.t('notifications.messages.participation', public_name: user.public_name, topic: counseling_room.topic)
+    I18n.t("notifications.messages.participation", public_name: user.public_name, topic: counseling_room.topic)
   end
 
   # 通知クリック時のパス先指定のメソッド
   def notification_path(locale_params)
     edit_category_counseling_room_path(counseling_room.category.id, counseling_room.id, locale: locale_params)
   end
-
 end

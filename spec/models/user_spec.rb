@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Userモデルのテスト", type: :model do
   describe "バリデーションのテスト" do
@@ -15,14 +15,14 @@ RSpec.describe "Userモデルのテスト", type: :model do
         is_expected.to eq false
       end
     end
-    
+
     context "first_nameカラム" do
       it "空欄でないこと", spec_category: "バリデーションとメッセージ表示" do
         user.first_name = ""
         is_expected.to eq false
       end
     end
-    
+
     context "canonical_nameカラム" do
       it "空欄でないこと", spec_category: "バリデーションとメッセージ表示" do
         user.canonical_name = ""
@@ -61,7 +61,7 @@ RSpec.describe "Userモデルのテスト", type: :model do
         is_expected.to eq false
       end
     end
-    
+
     context "public_nameカラム" do
       it "空欄でないこと", spec_category: "バリデーションとメッセージ表示" do
         user.public_name = ""

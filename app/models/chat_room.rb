@@ -1,5 +1,4 @@
 class ChatRoom < ApplicationRecord
-
   has_many :entries, dependent: :destroy
   has_many :chats,   dependent: :destroy
 
@@ -11,5 +10,4 @@ class ChatRoom < ApplicationRecord
     return unless self.chats.where(read: false).any?
     self.chats.where(user_id: user.id, read: false)&.update_all(read: true)
   end
-
 end

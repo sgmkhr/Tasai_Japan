@@ -1,5 +1,4 @@
 class Public::InquiriesController < ApplicationController
-  
   def new
     @inquiry = Inquiry.new
   end
@@ -10,19 +9,19 @@ class Public::InquiriesController < ApplicationController
       render :new
     end
   end
-  
+
   def back # 入力内容を保持したまま入力画面に戻れるようにする
     @inquiry = Inquiry.new(inquiry_params)
     render :new
   end
-  
+
   def create
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
       InquiryMailer.send_mail(@inquiry).deliver_now
       redirect_to inquiry_done_path
     else
-      flash.now[:alert] = I18n.t('inquiries.send_failed')
+      flash.now[:alert] = I18n.t("inquiries.send_failed")
       render :new
     end
   end
@@ -31,9 +30,7 @@ class Public::InquiriesController < ApplicationController
   end
 
   private
-
-  def inquiry_params
-    params.require(:inquiry).permit(:email, :name, :phone_number, :subject, :body)
-  end
-  
+    def inquiry_params
+      params.require(:inquiry).permit(:email, :name, :phone_number, :subject, :body)
+    end
 end

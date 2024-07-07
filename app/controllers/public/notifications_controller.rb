@@ -11,5 +11,4 @@ class Public::NotificationsController < ApplicationController
     current_user.notifications.update_all(read: true)
     redirect_to request.referer
   end
-
 end

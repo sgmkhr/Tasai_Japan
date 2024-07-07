@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :post do
-    title { Faker::Lorem.characters(number:15) }
-    caption { Faker::Lorem.characters(number:50) }
-    body { Faker::Lorem.characters(number:1000) }
+    title { Faker::Lorem.characters(number: 15) }
+    caption { Faker::Lorem.characters(number: 50) }
+    body { Faker::Lorem.characters(number: 1000) }
     prefecture { rand(0..48) }
     user
     after(:build) do |post|

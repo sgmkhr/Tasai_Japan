@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :user do
-    last_name { Faker::Lorem.characters(number:5) }
-    first_name { Faker::Lorem.characters(number:5) }
-    canonical_name { Faker::Lorem.characters(number:6) }
-    public_name { Faker::Lorem.characters(number:6) }
+    last_name { Faker::Lorem.characters(number: 5) }
+    first_name { Faker::Lorem.characters(number: 5) }
+    canonical_name { Faker::Lorem.characters(number: 6) }
+    public_name { Faker::Lorem.characters(number: 6) }
     position { rand(0..2) }
     email { Faker::Internet.email }
     password { "password" }
