@@ -1,5 +1,4 @@
 class CounselingRoom < ApplicationRecord
-
   has_one_attached :topic_image
 
   belongs_to :user
@@ -24,7 +23,7 @@ class CounselingRoom < ApplicationRecord
 
   # キーワード検索メソッド
   def self.search_for(content)
-    CounselingRoom.where(['topic LIKE(?) OR detail LIKE(?)', "%#{content}%", "%#{content}%"])
+    CounselingRoom.where(["topic LIKE(?) OR detail LIKE(?)", "%#{content}%", "%#{content}%"])
   end
 
   # タグ情報を保存するためのメソッド
@@ -41,5 +40,4 @@ class CounselingRoom < ApplicationRecord
       self.room_tags << room_tag
     end
   end
-
 end

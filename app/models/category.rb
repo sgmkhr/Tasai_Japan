@@ -1,5 +1,4 @@
 class Category < ApplicationRecord
-
   has_many :counseling_rooms, dependent: :destroy
 
   scope :latest, -> { order(created_at: :desc) }
@@ -9,7 +8,6 @@ class Category < ApplicationRecord
 
   # キーワード検索のメソッド
   def self.search_for(content)
-    Category.where('name LIKE ?', "%#{content}%")
+    Category.where("name LIKE ?", "%#{content}%")
   end
-
 end

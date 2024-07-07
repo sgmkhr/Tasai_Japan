@@ -15,7 +15,7 @@ class Opinion < ApplicationRecord
   # データが作成されると直後に通知データも作成される
   after_create do
     participations = counseling_room.participations.where(status: true)
-    if participations.count >= 2 #意見投稿者以外にも参加者がいる場合のみ実行
+    if participations.count >= 2 # 意見投稿者以外にも参加者がいる場合のみ実行
       records = counseling_room.participations.map do |participation|
         next if (user_id == participation.user_id) || (participation.status == false)
         notifications.new(user_id: participation.user_id)
@@ -27,7 +27,7 @@ class Opinion < ApplicationRecord
 
   # 表示する通知メッセージを取得するメソッド
   def notification_message
-    I18n.t('notifications.messages.opinion', topic: counseling_room.topic)
+    I18n.t("notifications.messages.opinion", topic: counseling_room.topic)
   end
 
   # 通知クリック時のパス先指定のメソッド
@@ -42,7 +42,6 @@ class Opinion < ApplicationRecord
 
   # 過去１週間の各日の意見数データを取得するメソッド
   def self.past_week_count
-   (0..6).map { |n| created_days_ago(n).count }.reverse
+    (0..6).map { |n| created_days_ago(n).count }.reverse
   end
-
 end

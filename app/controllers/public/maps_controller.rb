@@ -1,6 +1,6 @@
 class Public::MapsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def show
     @post = Post.find(params[:post_id])
     respond_to do |format|
@@ -16,5 +16,4 @@ class Public::MapsController < ApplicationController
       format.json
     end
   end
-  
 end

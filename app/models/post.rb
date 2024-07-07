@@ -52,7 +52,7 @@ class Post < ApplicationRecord
 
   # 表示する通知メッセージを取得するメソッド
   def notification_message
-    I18n.t('notifications.messages.post', public_name: user.public_name, title: title)
+    I18n.t("notifications.messages.post", public_name: user.public_name, title: title)
   end
 
   # 通知クリック時のパス先指定のメソッド
@@ -67,12 +67,12 @@ class Post < ApplicationRecord
 
   # キーワード検索メソッド
   def self.search_for(content)
-    Post.where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
+    Post.where(["title LIKE(?) OR caption LIKE(?) OR body LIKE(?)", "%#{content}%", "%#{content}%", "%#{content}%"])
   end
 
   # 各ユーザー詳細内でのキーワード検索メソッド
   def self.search_with_user_for(content, user)
-    Post.where(user_id: user.id).where(['title LIKE(?) OR caption LIKE(?) OR body LIKE(?)', "%#{content}%", "%#{content}%", "%#{content}%"])
+    Post.where(user_id: user.id).where(["title LIKE(?) OR caption LIKE(?) OR body LIKE(?)", "%#{content}%", "%#{content}%", "%#{content}%"])
   end
 
   # 対象の投稿が既にいいねされているか確かめるメソッド
@@ -104,7 +104,6 @@ class Post < ApplicationRecord
 
   # 過去１週間の各日の投稿数データを取得するメソッド
   def self.past_week_count
-   (0..6).map { |n| created_days_ago(n).count }.reverse
+    (0..6).map { |n| created_days_ago(n).count }.reverse
   end
-
 end

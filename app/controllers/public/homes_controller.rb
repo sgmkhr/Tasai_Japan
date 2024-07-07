@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   before_action :authenticate_user!, only: [:menu]
-  
+
   def top
   end
 
@@ -9,5 +9,4 @@ class Public::HomesController < ApplicationController
 
   def menu
   end
-  
 end
