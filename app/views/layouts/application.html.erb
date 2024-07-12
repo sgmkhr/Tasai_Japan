@@ -18,7 +18,12 @@
     
     <header>
       <%= render 'layouts/header' %>
+      <p class='d-md-none copy-right'>© sgmkhr</p><!--レスポンシブ時にのみ表示のコピーライト-->
     </header>
+    
+    <p class='d-md-none responsive-site-name'>
+      <%= link_to I18n.t('site_name'), root_path, data: { turbolinks: false } %>
+    </p>
 
     <main>
       <div class='w-100 text-center mt-2' style='color: #8f2e14'><%= flash[:alert] %></div>
@@ -30,7 +35,6 @@
     <footer>
       <%= render 'layouts/footer' %>
     </footer>
-    <p class='d-md-none copy-right'>© sgmkhr</p><!--レスポンシブ時にのみ表示のコピーライト-->
     
     <%= debug params if Rails.env.development? %><!--開発環境でのみ起動のparams表示-->
   </body>
