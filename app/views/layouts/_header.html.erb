@@ -2,13 +2,13 @@
 
   <% if user_signed_in? %>
 
-    <li class='mb-4'>
+    <li class='mb-md-4'>
       <%= link_to menu_path do %>
         <i class="fa-solid fa-house"></i>
       <% end %>
     </li>
 
-    <li id='notification-icon' class='mb-4'>
+    <li id='notification-icon' class='mb-md-4'>
       <%= link_to '#' do %>
         <% if current_user.notifications.where(read: false).any? %>
           <span class='ringing'>
@@ -21,7 +21,7 @@
     </li>
     <%= render 'public/notifications/dropdown' %>
 
-    <li class='mb-4'>
+    <li class='mb-md-4'>
       <%= link_to user_chat_rooms_path(current_user.canonical_name) do %>
         <% if current_user.has_unread_chat? %>
           <span class='ringing'>
@@ -34,14 +34,14 @@
 
     </li>
 
-    <li class='mb-4'>
+    <li class='mb-md-4'>
       <%= link_to user_path(current_user.canonical_name) do %>
         <span class='d-lg-inline d-none'><%= I18n.t('mypage') %></span>
         <span class='d-lg-none'><i class="fa-solid fa-user-check"></i></span>
       <% end %>
     </li>
 
-    <li class='mb-4'>
+    <li class='mb-md-4'>
       <%= link_to destroy_user_session_path, method: :delete, 'data-confirm' => I18n.t('logout_confirmation') do %>
         <span class='d-lg-inline d-none'><%= I18n.t('signout') %></span>
         <span class='d-lg-none'><i class="fa-solid fa-right-from-bracket"></i></span>
@@ -54,7 +54,7 @@
 
   <% elsif admin_signed_in? %>
 
-    <li class='mb-4'>
+    <li class='mb-md-4'>
       <%= link_to admin_root_path do %>
         <i class="fa-solid fa-house"></i>
       <% end %>
@@ -69,20 +69,20 @@
 
   <% else %>
 
-    <li class='mb-4'>
+    <li class='mb-md-4'>
       <%= link_to root_path, data: { turbolinks: false } do %>
         <i class="fa-solid fa-house"></i>
       <% end %>
     </li>
 
-    <li class='mb-4'>
+    <li class='mb-md-4'>
       <%= link_to new_user_registration_path do %>
         <span class='d-lg-inline d-none'><%= I18n.t('signin') %></span>
         <span class='d-lg-none'><i class="fa-solid fa-user-plus"></i></span>
       <% end %>
     </li>
 
-    <li class='mb-4'>
+    <li class='mb-md-4'>
       <%= link_to new_user_session_path do %>
         <span class='d-lg-inline d-none'><%= I18n.t('login') %></span>
         <span class='d-lg-none'><i class="fa-solid fa-right-to-bracket"></i></span>
