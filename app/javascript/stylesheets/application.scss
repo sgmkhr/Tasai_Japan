@@ -466,10 +466,11 @@ input {
   .copy-right { //コピーライトの表示変更
     // position:     absolute;
     // bottom:       2px;
-    width:        100%;
-    text-align:   center;
-    color:        rgb(71, 68, 67);
-    font-size:    10px;
+    width:         100%;
+    text-align:    center;
+    color:         rgb(71, 68, 67);
+    font-size:     10px;
+    margin-bottom: 0;
   }
 
   .responsive-site-name {
