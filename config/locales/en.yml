@@ -114,7 +114,7 @@ en:
       submit: Display
       posts_data: Posts count
       opinions_data: Opinions count
-      total: Past totals
+      total: Total count
       no_data: "It can not be displayed due to no enough data to calculate."
       chart_title:
         posts: Numbers of posts you shared from the last week
@@ -200,7 +200,7 @@ en:
       destroy:
         btn: Delete this  room
         confirmation: Are you sure you want to delete this room and also all the opinions in it?
-      no_viewing_permission: (You are not have permission to view the all in this page because you are not participating.)
+      no_viewing_permission: (You don't have permission to view the all in this page because you are not participating.)
     create:
       succeeded: The new counseling room has successfully been created.
       failed: The creation failed.
