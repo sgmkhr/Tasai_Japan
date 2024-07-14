@@ -7,7 +7,7 @@
 
 <div class='section-title'><h2><%= I18n.t('about') %></h2></div>
 
-<section>
+<section class="about-website">
 
   <% if I18n.locale.to_s == 'ja' %>
     <p class='text-center mb-3'>
@@ -54,8 +54,8 @@
 
   <% end %>
 
-  <p class='text-right'>
-    <%= link_to I18n.t('inquiries.to_contact'), new_inquiry_path %>
-  </p>
+  <div class='link-to-inquiry'>
+    <p><%= link_to I18n.t('inquiries.to_contact'), new_inquiry_path %></p>
+  </div>
 
 </section>
