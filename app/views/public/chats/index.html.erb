@@ -13,12 +13,12 @@
   
     <% @entries.each do |entry| %>
       <%= link_to chat_path(entry.get_partner(current_user).id), data: { turbolinks: false } do %>
-        <div class='d-flex chat-rooms-item'>
-          <div>
+        <div class='chat-rooms-item row'>
+          <div class='col-md-2 col-3'>
             <%= image_tag entry.get_partner(current_user).get_profile_image(40, 40), class: 'rounded-circle mt-2 mr-1' %>
           </div>
 
-          <div class='w-100'>
+          <div class='col-md-9 col-8'>
             <p class='mb-0'>
               <%= entry.get_partner(current_user).public_name %>
               <% if entry.is_there_unread?(entry.get_partner(current_user)) %>
