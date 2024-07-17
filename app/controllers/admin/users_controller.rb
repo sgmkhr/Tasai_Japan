@@ -6,7 +6,6 @@ class Admin::UsersController < ApplicationController
     @keyword    = params[:keyword]
     @prefecture = params[:prefecture]
     @sort       = params[:sort]
-    @user  = User.find_by(canonical_name: params[:canonical_name])
     @posts = @user.posts&.where(is_published: true)
 
     @posts = @posts.search_with_user_for(@keyword, @user) if @keyword.present?
