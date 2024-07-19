@@ -36,6 +36,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
+    @user.destroy_entries(@user)
     @user.destroy
     redirect_to admin_users_path, notice: I18n.t("admin.users.destroy.notice")
   end
