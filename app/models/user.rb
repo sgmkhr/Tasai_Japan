@@ -29,7 +29,7 @@ class User < ApplicationRecord
   has_many :bookmarked_posts, through: :bookmarks,             source: :post
   has_many :followings,       through: :active_relationships,  source: :followed
   has_many :followers,        through: :passive_relationships, source: :follower
-  has_many :chat_rooms,       through: :entries
+  has_many :chat_rooms,       through: :entries, dependent: :destroy
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old,    -> { order(created_at: :asc) }
@@ -135,5 +135,14 @@ class User < ApplicationRecord
   # 有効ユーザーか確認
   def active_for_authentication?
     super && is_active
+  end
+  
+  # ユーザーがアカウント削除する際、紐付くチャットルームの相手側のEntryモデル削除
+  def destroy_entries(user)
+    chat_rooms.each do |room|
+      room.entries.each do |entry|
+        entry.destroy if entry.user_id != user.id
+      end
+    end
   end
 end
